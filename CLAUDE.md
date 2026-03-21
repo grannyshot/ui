@@ -2,56 +2,106 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Project Overview
+## 프로젝트 개요
 
-**grannyshot-ui** — A minimal, theme-aware design system built with vanilla-extract. Published as the `grannyshot-ui` npm package.
+**grannyshot-ui** — Panda CSS 기반 개인 디자인 시스템. `grannyshot-ui` npm 패키지로 퍼블리시.
 
-## Commands
+## 커맨드
 
 ```bash
-# Install dependencies
-pnpm install
-
-# Build the core library
-pnpm build          # runs: pnpm --filter grannyshot-ui build (tsup)
-
-# Watch mode for development
-pnpm dev            # runs: pnpm --filter grannyshot-ui dev (tsup --watch)
-
-# Type check
-pnpm --filter grannyshot-ui exec tsc --noEmit
+pnpm install                                  # 의존성 설치
+pnpm build                                    # codegen + tsup + cssgen
+pnpm dev                                      # codegen + tsup --watch
+pnpm --filter grannyshot-ui exec tsc --noEmit # 타입 체크
+npx panda codegen                             # styled-system 재생성
 ```
 
-## Architecture
+## 모노레포 구조
 
-This is a **pnpm monorepo** with packages under `packages/`:
-- `packages/core` — The main `grannyshot-ui` library (the only published package)
+pnpm workspace. 패키지는 `packages/` 하위:
+- `packages/core` — 메인 라이브러리 (`grannyshot-ui`)
+- `packages/docs` — Nextra 기반 문서 사이트 (예정)
 
-### Core Package Structure (`packages/core/src/`)
+## 아키텍처 — 레이어 구조
 
-The library is organized into 5 entry points, each independently importable:
+```
+panda.config.ts  → 디자인 토큰 정의 (colors, typography, spacing, animation, semanticTokens)
+  ↓ codegen
+src/styled-system/  → Panda 생성 런타임 (css, cva, cx, tokens) — .gitignore 대상
+  ↓ import
+src/styles/      → 컴포넌트 recipes (cva)
+  ↓ import
+src/react/       → React 컴포넌트 (styles 위에 얇은 래퍼)
+src/context/     → ThemeProvider + useTheme
+src/tokens/      → Panda token 함수 re-export (소비자용)
+src/utils/       → cx re-export
+```
 
-| Entry point | Path | Purpose |
-|-------------|------|---------|
-| `grannyshot-ui` | `src/index.ts` | Re-exports everything |
-| `grannyshot-ui/tokens` | `src/tokens/` | Design tokens: colors, typography, spacing, animation |
-| `grannyshot-ui/styles` | `src/styles/` | Sprinkles utilities + component recipes (button, input, badge, card) |
-| `grannyshot-ui/react` | `src/react/` | React components (Box, Button, Input, Badge, Card) |
-| `grannyshot-ui/context` | `src/context/` | ThemeProvider + useTheme hook |
-| `grannyshot-ui/utils` | `src/utils/` | `cn` class name helper |
+각 레이어는 독립 엔트리포인트로 임포트 가능 (`grannyshot-ui/tokens`, `grannyshot-ui/styles`, `grannyshot-ui/react`, `grannyshot-ui/context`, `grannyshot-ui/utils`).
 
-### Styling System (vanilla-extract)
+## 핵심 패턴
 
-- **All styles** live in `.css.ts` files — these run at build time and produce zero-runtime CSS
-- **Theme tokens** use `createGlobalThemeContract` with `gs-` prefixed CSS custom properties (e.g., `--gs-color-bg`)
-- **Theming**: Light theme applied to `:root` by default; dark theme auto-applied via `prefers-color-scheme` media query; class-based themes (`lightTheme`/`darkTheme`) available for manual switching via `ThemeProvider`
-- **Component variants** use `recipe()` from `@vanilla-extract/recipes` — variant types are exported alongside recipes (e.g., `ButtonVariants`)
-- **Sprinkles** provide type-safe utility props for the `Box` component (layout, spacing, colors with responsive conditions)
-- **Build**: tsup with `@vanilla-extract/esbuild-plugin`, outputs ESM + CJS + `.d.ts`
+### 스타일링 (Panda CSS)
 
-### Key Conventions
+- 토큰은 `panda.config.ts`에 정의 — `tokens` (원시값) + `semanticTokens` (light/dark 조건부)
+- CSS 변수 접두사: `--gs-` (prefix: `gs`)
+- 컴포넌트 variant: `cva()` 사용, variant 타입은 `RecipeVariantProps<typeof recipe>`로 추출
+- 클래스 병합: `cx()` (Panda 내장)
+- 스타일 파일: `styles/{name}.ts` (`.css.ts` 아님)
+- 토큰 참조: Panda shorthand 사용 (e.g., `bg: 'accent'`, `color: 'fg.muted'`, `borderRadius: 'md'`)
+- CSS 변수 직접 참조 시: `token(colors.accent)` 구문
 
-- Accent color is **emerald** (not blue) — the primary palette
-- CSS variable contract names follow `gs-color-{semantic}` pattern (bg, fg, border, accent, success, warning, error, info — each with subtle/muted variants)
-- React components are thin wrappers around recipe/sprinkles classes
-- React and React DOM are **peer dependencies** (optional) — tokens and styles can be used without React
+### 테마
+
+- `:root`에 라이트 테마 기본 적용
+- `[data-theme=dark]` 선택자로 다크모드 토큰 오버라이드
+- `ThemeProvider`가 `<div data-theme={resolvedTheme}>` 렌더링
+- 테마 설정은 `localStorage` (`grannyshot-theme` 키)에 저장
+- light / dark / system 모드 지원
+
+### 새 컴포넌트 추가 시 패턴
+
+1. `styles/{name}.ts` — `cva()` 정의 + `RecipeVariantProps` 타입 export
+2. `styles/index.ts` — re-export 추가
+3. `react/{Name}.tsx` — `forwardRef` + `cx(recipe({variants}), className)` 패턴
+4. `react/index.ts` — re-export 추가
+5. `src/index.ts` — 스타일/컴포넌트 모두 re-export
+
+### 컴포넌트 작성 규칙
+
+- `forwardRef`로 ref 전달
+- `displayName` 설정
+- native HTML attributes 확장 (`React.ButtonHTMLAttributes` 등)
+- variant props + native props를 분리하여 recipe에 variant만 전달
+- `cx()` 로 recipe 클래스와 외부 className 병합
+- 컴포넌트는 순수 UI 래퍼 — 비즈니스 로직/접근성 조합은 상위 Field 패턴으로 분리
+
+### 토큰 체계
+
+색상은 시맨틱 네이밍 (accent = emerald). `panda.config.ts` `semanticTokens`에 정의:
+- `bg`, `bg.subtle`, `bg.muted`, `bg.inverse`
+- `fg`, `fg.muted`, `fg.subtle`, `fg.inverse`
+- `border`, `border.muted`, `border.focus`
+- `accent`, `accent.hover`, `accent.muted`, `accent.subtle`, `accent.fg`
+- `success`, `warning`, `error`, `info` (각각 `.subtle` 변형 포함)
+
+### 빌드
+
+- 빌드 파이프라인: `panda codegen` → `tsup` (ESM + CJS + `.d.ts`) → `panda cssgen` (`dist/styles.css`)
+- 소비자는 `import 'grannyshot-ui/styles.css'` + 컴포넌트 import로 사용
+- React/React DOM은 optional peer dependency
+- `src/styled-system/`은 codegen 생성물 — git에 커밋하지 않음
+
+### UI 프리뷰
+
+- `preview.html` — 빌드된 CSS (`dist/styles.css`)를 참조하는 정적 프리뷰
+- `pnpm build` 후 브라우저에서 열어서 확인
+- 테마 토글 (`data-theme` 속성)로 light/dark 전환
+
+## FE 전용 DoD (Definition of Done)
+
+글로벌 CLAUDE.md의 공통 DoD에 추가:
+- [ ] 빌드 성공 (`pnpm build` 통과)
+- [ ] 새 컴포넌트는 위 패턴(cva → forwardRef wrapper → re-export) 준수
+- [ ] 토큰 참조 시 하드코딩 금지, Panda 시맨틱 토큰 사용 (e.g., `bg: 'accent'`)
+- [ ] 스타일은 `styles/*.ts` 파일에서 `cva()` / `css()`로 정의
