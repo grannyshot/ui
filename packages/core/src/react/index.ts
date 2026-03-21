@@ -1,4 +1,4 @@
-export { Button } from './Button'
-export { Input } from './Input'
-export { Badge } from './Badge'
-export { Card } from './Card'
+export { Button } from '../components/Button/Button'
+export { Input } from '../components/Input/Input'
+export { Badge } from '../components/Badge/Badge'
+export { Card } from '../components/Card/Card'

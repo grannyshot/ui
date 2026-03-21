@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react'
-import { input, type InputVariants } from '../styles/input'
-import { cx } from '../styled-system/css'
+import { input, type InputVariants } from './input.recipe'
+import { cx } from '../../styled-system/css'
 
 type InputProps = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> &
   InputVariants

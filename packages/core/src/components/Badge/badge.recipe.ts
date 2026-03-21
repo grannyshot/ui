@@ -1,5 +1,5 @@
-import { cva } from '../styled-system/css'
-import type { RecipeVariantProps } from '../styled-system/css'
+import { cva } from '../../styled-system/css'
+import type { RecipeVariantProps } from '../../styled-system/css'
 
 export const badge = cva({
   base: {

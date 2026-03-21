@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react'
-import { badge, type BadgeVariants } from '../styles/badge'
-import { cx } from '../styled-system/css'
+import { badge, type BadgeVariants } from './badge.recipe'
+import { cx } from '../../styled-system/css'
 
 type BadgeProps = BadgeVariants & {
   children: React.ReactNode
