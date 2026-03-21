@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grannyshot UI — Token Preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #09090b;
+      color: #fafafa;
+      padding: 48px;
+      line-height: 1.5;
+    }
+
+    h1 {
+      font-size: 36px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+
+    h1 span { color: #10b981; }
+
+    .subtitle {
+      color: #71717a;
+      font-size: 16px;
+      margin-bottom: 64px;
+    }
+
+    .section {
+      margin-bottom: 64px;
+    }
+
+    .section-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: #a1a1aa;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #27272a;
+    }
+
+    /* Theme Toggle */
+    .theme-toggle {
+      position: fixed;
+      top: 24px;
+      right: 24px;
+      display: flex;
+      background: #27272a;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid #3f3f46;
+    }
+
+    .theme-toggle button {
+      padding: 8px 16px;
+      border: none;
+      background: transparent;
+      color: #a1a1aa;
+      font-family: inherit;
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .theme-toggle button.active {
+      background: #10b981;
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    /* Colors */
+    .color-group {
+      margin-bottom: 32px;
+    }
+
+    .color-group-label {
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 12px;
+      color: #d4d4d8;
+    }
+
+    .color-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .color-chip {
+      width: 80px;
+      text-align: center;
+    }
+
+    .color-swatch {
+      width: 80px;
+      height: 56px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.08);
+      margin-bottom: 6px;
+      transition: transform 0.2s;
+    }
+
+    .color-swatch:hover {
+      transform: scale(1.05);
+    }
+
+    .color-label {
+      font-size: 11px;
+      color: #71717a;
+    }
+
+    .color-hex {
+      font-size: 11px;
+      color: #52525b;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+    }
+
+    /* Semantic Colors */
+    .semantic-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+    }
+
+    .semantic-card {
+      padding: 16px;
+      border-radius: 12px;
+      border: 1px solid #27272a;
+      background: #18181b;
+      transition: border-color 0.2s;
+    }
+
+    .semantic-card:hover {
+      border-color: #3f3f46;
+    }
+
+    .semantic-preview {
+      width: 100%;
+      height: 40px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .semantic-name {
+      font-size: 13px;
+      font-weight: 500;
+      color: #d4d4d8;
+    }
+
+    .semantic-value {
+      font-size: 11px;
+      color: #52525b;
+      font-family: monospace;
+    }
+
+    /* Typography */
+    .type-row {
+      display: flex;
+      align-items: baseline;
+      gap: 24px;
+      padding: 16px 0;
+      border-bottom: 1px solid #18181b;
+    }
+
+    .type-meta {
+      min-width: 100px;
+      font-size: 12px;
+      color: #52525b;
+      font-family: monospace;
+    }
+
+    .type-sample {
+      color: #fafafa;
+      letter-spacing: -0.01em;
+    }
+
+    /* Spacing */
+    .space-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 8px;
+    }
+
+    .space-label {
+      min-width: 60px;
+      font-size: 12px;
+      color: #52525b;
+      font-family: monospace;
+    }
+
+    .space-bar {
+      height: 24px;
+      background: linear-gradient(90deg, #10b981, #059669);
+      border-radius: 4px;
+      transition: width 0.3s ease;
+    }
+
+    .space-value {
+      font-size: 12px;
+      color: #71717a;
+      font-family: monospace;
+    }
+
+    /* Radius */
+    .radius-row {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .radius-chip {
+      text-align: center;
+    }
+
+    .radius-box {
+      width: 64px;
+      height: 64px;
+      background: #27272a;
+      border: 1px solid #3f3f46;
+      margin-bottom: 8px;
+      transition: background 0.2s;
+    }
+
+    .radius-box:hover {
+      background: #10b981;
+    }
+
+    .radius-label {
+      font-size: 11px;
+      color: #71717a;
+    }
+
+    .radius-value {
+      font-size: 11px;
+      color: #52525b;
+      font-family: monospace;
+    }
+
+    /* Shadow */
+    .shadow-row {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .shadow-chip {
+      text-align: center;
+    }
+
+    .shadow-box {
+      width: 96px;
+      height: 96px;
+      background: #18181b;
+      border-radius: 12px;
+      margin-bottom: 8px;
+    }
+
+    .shadow-label {
+      font-size: 11px;
+      color: #71717a;
+    }
+
+    /* Button Preview */
+    .preview-section {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .btn {
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      border: none;
+      transition: all 0.15s;
+    }
+
+    .btn-primary {
+      background: #10b981;
+      color: #ffffff;
+    }
+    .btn-primary:hover { background: #059669; }
+
+    .btn-secondary {
+      background: #27272a;
+      color: #fafafa;
+      border: 1px solid #3f3f46;
+    }
+    .btn-secondary:hover { background: #3f3f46; }
+
+    .btn-ghost {
+      background: transparent;
+      color: #a1a1aa;
+    }
+    .btn-ghost:hover { background: #27272a; color: #fafafa; }
+
+    .btn-danger {
+      background: #ef4444;
+      color: white;
+    }
+    .btn-danger:hover { background: #dc2626; }
+
+    .btn-sm { padding: 6px 12px; font-size: 13px; }
+    .btn-lg { padding: 12px 24px; font-size: 16px; }
+
+    /* Input Preview */
+    .input-preview {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-width: 320px;
+    }
+
+    .input {
+      padding: 8px 12px;
+      border-radius: 8px;
+      border: 1px solid #27272a;
+      background: #18181b;
+      color: #fafafa;
+      font-family: inherit;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+
+    .input::placeholder { color: #52525b; }
+    .input:focus { border-color: #10b981; }
+
+    .input-error {
+      border-color: #ef4444;
+    }
+
+    .input-label {
+      font-size: 13px;
+      font-weight: 500;
+      color: #d4d4d8;
+    }
+
+    .input-hint {
+      font-size: 12px;
+      color: #52525b;
+    }
+
+    .input-error-text {
+      font-size: 12px;
+      color: #ef4444;
+    }
+
+    /* Badge Preview */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 2px 8px;
+      border-radius: 9999px;
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    .badge-success { background: #064e3b33; color: #34d399; }
+    .badge-warning { background: #78350f33; color: #fbbf24; }
+    .badge-error { background: #7f1d1d33; color: #f87171; }
+    .badge-info { background: #1e3a5f33; color: #60a5fa; }
+
+    /* Card Preview */
+    .card {
+      background: #18181b;
+      border: 1px solid #27272a;
+      border-radius: 12px;
+      padding: 24px;
+      max-width: 360px;
+      transition: border-color 0.2s;
+    }
+
+    .card:hover { border-color: #3f3f46; }
+
+    .card-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .card-desc {
+      font-size: 14px;
+      color: #d4d4d8;
+      margin-bottom: 16px;
+    }
+
+    /* Components Grid */
+    .component-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 32px;
+    }
+
+    .component-block h4 {
+      font-size: 13px;
+      color: #71717a;
+      font-weight: 500;
+      margin-bottom: 16px;
+    }
+
+    /* ---- LIGHT THEME ---- */
+    body.light {
+      background: #ffffff;
+      color: #09090b;
+    }
+
+    body.light .subtitle { color: #71717a; }
+    body.light .section-title { color: #52525b; border-color: #e4e4e7; }
+    body.light .color-label { color: #71717a; }
+    body.light .color-hex { color: #a1a1aa; }
+    body.light .color-swatch { border-color: rgba(0,0,0,0.08); }
+    body.light .semantic-card { background: #fafafa; border-color: #e4e4e7; }
+    body.light .semantic-card:hover { border-color: #d4d4d8; }
+    body.light .semantic-name { color: #3f3f46; }
+    body.light .semantic-value { color: #a1a1aa; }
+    body.light .type-row { border-color: #f4f4f5; }
+    body.light .type-meta { color: #a1a1aa; }
+    body.light .type-sample { color: #09090b; }
+    body.light .space-label { color: #a1a1aa; }
+    body.light .space-value { color: #71717a; }
+    body.light .radius-box { background: #f4f4f5; border-color: #e4e4e7; }
+    body.light .radius-box:hover { background: #10b981; }
+    body.light .radius-label { color: #71717a; }
+    body.light .radius-value { color: #a1a1aa; }
+    body.light .shadow-box { background: #ffffff; }
+    body.light .btn-secondary { background: #f4f4f5; color: #09090b; border-color: #e4e4e7; }
+    body.light .btn-secondary:hover { background: #e4e4e7; }
+    body.light .btn-ghost { color: #71717a; }
+    body.light .btn-ghost:hover { background: #f4f4f5; color: #09090b; }
+    body.light .input { background: #ffffff; border-color: #e4e4e7; color: #09090b; }
+    body.light .input::placeholder { color: #a1a1aa; }
+    body.light .input:focus { border-color: #10b981; }
+    body.light .card { background: #fafafa; border-color: #e4e4e7; }
+    body.light .card:hover { border-color: #d4d4d8; }
+    body.light .card-desc { color: #52525b; }
+    body.light .badge-success { background: #ecfdf5; color: #059669; }
+    body.light .badge-warning { background: #fffbeb; color: #d97706; }
+    body.light .badge-error { background: #fef2f2; color: #dc2626; }
+    body.light .badge-info { background: #eff6ff; color: #2563eb; }
+    body.light .theme-toggle { background: #f4f4f5; border-color: #e4e4e7; }
+    body.light .theme-toggle button { color: #71717a; }
+    body.light .theme-toggle button.active { background: #10b981; color: #ffffff; }
+  </style>
+</head>
+<body>
+  <div class="theme-toggle">
+    <button onclick="setTheme('dark')" class="active" id="btn-dark">Dark</button>
+    <button onclick="setTheme('light')" id="btn-light">Light</button>
+  </div>
+
+  <h1><span>Grannyshot</span> UI</h1>
+  <p class="subtitle">Design System Token Preview — Emerald + Cool Gray</p>
+
+  <!-- EMERALD -->
+  <div class="section">
+    <div class="section-title">Accent — Emerald</div>
+    <div class="color-row">
+      <div class="color-chip">
+        <div class="color-swatch" style="background:#ecfdf5"></div>
+        <div class="color-label">50</div>
+        <div class="color-hex">#ecfdf5</div>
+      </div>
+      <div class="color-chip">
+        <div class="color-swatch" style="background:#d1fae5"></div>
+        <div class="color-label">100</div>
+        <div class="color-hex">#d1fae5</div>
+      </div>
+      <div class="color-chip">
+        <div class="color-swatch" style="background:#a7f3d0"></div>
+        <div class="color-label">200</div>
+        <div class="color-hex">#a7f3d0</div>
+      </div>
+      <div class="color-chip">
+        <div class="color-swatch" style="background:#6ee7b7"></div>
+        <div class="color-label">300</div>
+        <div class="color-hex">#6ee7b7</div>
+      </div>
+      <div class="color-chip">
+        <div class="color-swatch" style="background:#34d399"></div>
+        <div class="color-label">400</div>
+        <div class="color-hex">#34d399</div>
+      </div>
+      <div class="color-chip">
+        <div class="color-swatch" style="background:#10b981"></div>
+        <div class="color-label">500</div>
+        <div class="color-hex">#10b981</div>
+      </div>
+      <div class="color-chip">
+        <div class="color-swatch" style="background:#059669"></div>
+        <div class="color-label">600</div>
+        <div class="color-hex">#059669</div>
+      </div>
+      <div class="color-chip">
+        <div class="color-swatch" style="background:#047857"></div>
+        <div class="color-label">700</div>
+        <div class="color-hex">#047857</div>
+      </div>
+      <div class="color-chip">
+        <div class="color-swatch" style="background:#065f46"></div>
+        <div class="color-label">800</div>
+        <div class="color-hex">#065f46</div>
+      </div>
+      <div class="color-chip">
+        <div class="color-swatch" style="background:#064e3b"></div>
+        <div class="color-label">900</div>
+        <div class="color-hex">#064e3b</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GRAY -->
+  <div class="section">
+    <div class="section-title">Neutral — Cool Gray</div>
+    <div class="color-row">
+      <div class="color-chip">
+        <div class="color-swatch" style="background:#fafafa"></div>
+        <div class="color-label">50</div>
+        <div class="color-hex">#fafafa</div>
+      </div>
+      <div class="color-chip">
+        <div class="color-swatch" style="background:#f4f4f5"></div>
+        <div class="color-label">100</div>
+        <div class="color-hex">#f4f4f5</div>
+      </div>
+      <div class="color-chip">
+        <div class="color-swatch" style="background:#e4e4e7"></div>
+        <div class="color-label">200</div>
+        <div class="color-hex">#e4e4e7</div>
+      </div>
+      <div class="color-chip">
+        <div class="color-swatch" style="background:#d4d4d8"></div>
+        <div class="color-label">300</div>
+        <div class="color-hex">#d4d4d8</div>
+      </div>
+      <div class="color-chip">
+        <div class="color-swatch" style="background:#a1a1aa"></div>
+        <div class="color-label">400</div>
+        <div class="color-hex">#a1a1aa</div>
+      </div>
+      <div class="color-chip">
+        <div class="color-swatch" style="background:#71717a"></div>
+        <div class="color-label">500</div>
+        <div class="color-hex">#71717a</div>
+      </div>
+      <div class="color-chip">
+        <div class="color-swatch" style="background:#52525b"></div>
+        <div class="color-label">600</div>
+        <div class="color-hex">#52525b</div>
+      </div>
+      <div class="color-chip">
+        <div class="color-swatch" style="background:#3f3f46"></div>
+        <div class="color-label">700</div>
+        <div class="color-hex">#3f3f46</div>
+      </div>
+      <div class="color-chip">
+        <div class="color-swatch" style="background:#27272a"></div>
+        <div class="color-label">800</div>
+        <div class="color-hex">#27272a</div>
+      </div>
+      <div class="color-chip">
+        <div class="color-swatch" style="background:#18181b"></div>
+        <div class="color-label">900</div>
+        <div class="color-hex">#18181b</div>
+      </div>
+      <div class="color-chip">
+        <div class="color-swatch" style="background:#09090b"></div>
+        <div class="color-label">950</div>
+        <div class="color-hex">#09090b</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEMANTIC -->
+  <div class="section">
+    <div class="section-title">Semantic Colors</div>
+    <div class="semantic-grid">
+      <div class="semantic-card">
+        <div class="semantic-preview" style="background:#10b981"></div>
+        <div class="semantic-name">accent</div>
+        <div class="semantic-value">#10b981</div>
+      </div>
+      <div class="semantic-card">
+        <div class="semantic-preview" style="background:#059669"></div>
+        <div class="semantic-name">success</div>
+        <div class="semantic-value">#059669</div>
+      </div>
+      <div class="semantic-card">
+        <div class="semantic-preview" style="background:#f59e0b"></div>
+        <div class="semantic-name">warning</div>
+        <div class="semantic-value">#f59e0b</div>
+      </div>
+      <div class="semantic-card">
+        <div class="semantic-preview" style="background:#ef4444"></div>
+        <div class="semantic-name">error</div>
+        <div class="semantic-value">#ef4444</div>
+      </div>
+      <div class="semantic-card">
+        <div class="semantic-preview" style="background:#3b82f6"></div>
+        <div class="semantic-name">info</div>
+        <div class="semantic-value">#3b82f6</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TYPOGRAPHY -->
+  <div class="section">
+    <div class="section-title">Typography</div>
+    <div class="type-row">
+      <span class="type-meta">6xl / 48px</span>
+      <span class="type-sample" style="font-size:48px;font-weight:700;letter-spacing:-0.02em">Grannyshot</span>
+    </div>
+    <div class="type-row">
+      <span class="type-meta">5xl / 36px</span>
+      <span class="type-sample" style="font-size:36px;font-weight:700;letter-spacing:-0.02em">Grannyshot</span>
+    </div>
+    <div class="type-row">
+      <span class="type-meta">4xl / 30px</span>
+      <span class="type-sample" style="font-size:30px;font-weight:600;letter-spacing:-0.01em">Design System</span>
+    </div>
+    <div class="type-row">
+      <span class="type-meta">3xl / 24px</span>
+      <span class="type-sample" style="font-size:24px;font-weight:600;letter-spacing:-0.01em">Design System</span>
+    </div>
+    <div class="type-row">
+      <span class="type-meta">2xl / 20px</span>
+      <span class="type-sample" style="font-size:20px;font-weight:600">Component Library</span>
+    </div>
+    <div class="type-row">
+      <span class="type-meta">xl / 18px</span>
+      <span class="type-sample" style="font-size:18px;font-weight:500">Component Library</span>
+    </div>
+    <div class="type-row">
+      <span class="type-meta">lg / 16px</span>
+      <span class="type-sample" style="font-size:16px;font-weight:400">디자인 토큰 기반의 일관된 UI를 제공합니다.</span>
+    </div>
+    <div class="type-row">
+      <span class="type-meta">md / 14px</span>
+      <span class="type-sample" style="font-size:14px;font-weight:400">디자인 토큰 기반의 일관된 UI를 제공합니다.</span>
+    </div>
+    <div class="type-row">
+      <span class="type-meta">sm / 13px</span>
+      <span class="type-sample" style="font-size:13px;font-weight:400;color:#a1a1aa">캡션이나 보조 텍스트에 사용합니다.</span>
+    </div>
+    <div class="type-row">
+      <span class="type-meta">xs / 12px</span>
+      <span class="type-sample" style="font-size:12px;font-weight:400;color:#71717a">라벨, 뱃지 등 가장 작은 텍스트</span>
+    </div>
+  </div>
+
+  <!-- SPACING -->
+  <div class="section">
+    <div class="section-title">Spacing</div>
+    <div class="space-row">
+      <span class="space-label">1</span>
+      <div class="space-bar" style="width:4px"></div>
+      <span class="space-value">4px</span>
+    </div>
+    <div class="space-row">
+      <span class="space-label">2</span>
+      <div class="space-bar" style="width:8px"></div>
+      <span class="space-value">8px</span>
+    </div>
+    <div class="space-row">
+      <span class="space-label">3</span>
+      <div class="space-bar" style="width:12px"></div>
+      <span class="space-value">12px</span>
+    </div>
+    <div class="space-row">
+      <span class="space-label">4</span>
+      <div class="space-bar" style="width:16px"></div>
+      <span class="space-value">16px</span>
+    </div>
+    <div class="space-row">
+      <span class="space-label">5</span>
+      <div class="space-bar" style="width:20px"></div>
+      <span class="space-value">20px</span>
+    </div>
+    <div class="space-row">
+      <span class="space-label">6</span>
+      <div class="space-bar" style="width:24px"></div>
+      <span class="space-value">24px</span>
+    </div>
+    <div class="space-row">
+      <span class="space-label">8</span>
+      <div class="space-bar" style="width:32px"></div>
+      <span class="space-value">32px</span>
+    </div>
+    <div class="space-row">
+      <span class="space-label">10</span>
+      <div class="space-bar" style="width:40px"></div>
+      <span class="space-value">40px</span>
+    </div>
+    <div class="space-row">
+      <span class="space-label">12</span>
+      <div class="space-bar" style="width:48px"></div>
+      <span class="space-value">48px</span>
+    </div>
+    <div class="space-row">
+      <span class="space-label">16</span>
+      <div class="space-bar" style="width:64px"></div>
+      <span class="space-value">64px</span>
+    </div>
+    <div class="space-row">
+      <span class="space-label">20</span>
+      <div class="space-bar" style="width:80px"></div>
+      <span class="space-value">80px</span>
+    </div>
+    <div class="space-row">
+      <span class="space-label">24</span>
+      <div class="space-bar" style="width:96px"></div>
+      <span class="space-value">96px</span>
+    </div>
+  </div>
+
+  <!-- RADIUS -->
+  <div class="section">
+    <div class="section-title">Border Radius</div>
+    <div class="radius-row">
+      <div class="radius-chip">
+        <div class="radius-box" style="border-radius:0px"></div>
+        <div class="radius-label">none</div>
+        <div class="radius-value">0px</div>
+      </div>
+      <div class="radius-chip">
+        <div class="radius-box" style="border-radius:4px"></div>
+        <div class="radius-label">sm</div>
+        <div class="radius-value">4px</div>
+      </div>
+      <div class="radius-chip">
+        <div class="radius-box" style="border-radius:8px"></div>
+        <div class="radius-label">md</div>
+        <div class="radius-value">8px</div>
+      </div>
+      <div class="radius-chip">
+        <div class="radius-box" style="border-radius:12px"></div>
+        <div class="radius-label">lg</div>
+        <div class="radius-value">12px</div>
+      </div>
+      <div class="radius-chip">
+        <div class="radius-box" style="border-radius:16px"></div>
+        <div class="radius-label">xl</div>
+        <div class="radius-value">16px</div>
+      </div>
+      <div class="radius-chip">
+        <div class="radius-box" style="border-radius:20px"></div>
+        <div class="radius-label">2xl</div>
+        <div class="radius-value">20px</div>
+      </div>
+      <div class="radius-chip">
+        <div class="radius-box" style="border-radius:9999px"></div>
+        <div class="radius-label">full</div>
+        <div class="radius-value">9999px</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SHADOW -->
+  <div class="section">
+    <div class="section-title">Shadows</div>
+    <div class="shadow-row">
+      <div class="shadow-chip">
+        <div class="shadow-box" style="box-shadow:0 1px 2px rgba(0,0,0,0.05)"></div>
+        <div class="shadow-label">xs</div>
+      </div>
+      <div class="shadow-chip">
+        <div class="shadow-box" style="box-shadow:0 1px 3px rgba(0,0,0,0.1),0 1px 2px rgba(0,0,0,0.06)"></div>
+        <div class="shadow-label">sm</div>
+      </div>
+      <div class="shadow-chip">
+        <div class="shadow-box" style="box-shadow:0 4px 6px rgba(0,0,0,0.1),0 2px 4px rgba(0,0,0,0.06)"></div>
+        <div class="shadow-label">md</div>
+      </div>
+      <div class="shadow-chip">
+        <div class="shadow-box" style="box-shadow:0 10px 15px rgba(0,0,0,0.1),0 4px 6px rgba(0,0,0,0.05)"></div>
+        <div class="shadow-label">lg</div>
+      </div>
+      <div class="shadow-chip">
+        <div class="shadow-box" style="box-shadow:0 20px 25px rgba(0,0,0,0.1),0 10px 10px rgba(0,0,0,0.04)"></div>
+        <div class="shadow-label">xl</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPONENT PREVIEW -->
+  <div class="section">
+    <div class="section-title">Component Preview</div>
+    <div class="component-grid">
+      <div class="component-block">
+        <h4>Button</h4>
+        <div class="preview-section" style="margin-bottom:12px">
+          <button class="btn btn-primary btn-sm">Small</button>
+          <button class="btn btn-primary">Default</button>
+          <button class="btn btn-primary btn-lg">Large</button>
+        </div>
+        <div class="preview-section">
+          <button class="btn btn-primary">Primary</button>
+          <button class="btn btn-secondary">Secondary</button>
+          <button class="btn btn-ghost">Ghost</button>
+          <button class="btn btn-danger">Danger</button>
+        </div>
+      </div>
+
+      <div class="component-block">
+        <h4>Input</h4>
+        <div class="input-preview">
+          <div>
+            <div class="input-label">Label</div>
+            <input class="input" style="width:100%;margin-top:4px" placeholder="Placeholder text..." />
+            <div class="input-hint">도움말 텍스트입니다.</div>
+          </div>
+          <div>
+            <div class="input-label">Error state</div>
+            <input class="input input-error" style="width:100%;margin-top:4px" value="잘못된 입력" />
+            <div class="input-error-text">오류 메시지입니다.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="component-block">
+        <h4>Badge</h4>
+        <div class="preview-section">
+          <span class="badge badge-success">Success</span>
+          <span class="badge badge-warning">Warning</span>
+          <span class="badge badge-error">Error</span>
+          <span class="badge badge-info">Info</span>
+        </div>
+      </div>
+
+      <div class="component-block">
+        <h4>Card</h4>
+        <div class="card">
+          <div class="card-title">Card Title</div>
+          <div class="card-desc">카드 컴포넌트 프리뷰입니다. 다양한 콘텐츠를 담을 수 있습니다.</div>
+          <button class="btn btn-primary" style="width:100%">Action</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function setTheme(theme) {
+      document.body.className = theme === 'light' ? 'light' : '';
+      document.getElementById('btn-dark').className = theme === 'dark' ? 'active' : '';
+      document.getElementById('btn-light').className = theme === 'light' ? 'active' : '';
+    }
+  </script>
+</body>
+</html>
