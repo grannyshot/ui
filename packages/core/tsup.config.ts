@@ -1,5 +1,4 @@
 import { defineConfig } from 'tsup'
-import { vanillaExtractPlugin } from '@vanilla-extract/esbuild-plugin'
 
 export default defineConfig({
   entry: {
@@ -14,5 +13,4 @@ export default defineConfig({
   dts: true,
   clean: true,
   external: ['react', 'react-dom'],
-  esbuildPlugins: [vanillaExtractPlugin()],
 })
