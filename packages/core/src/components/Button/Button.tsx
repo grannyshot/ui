@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react'
 import { button, type ButtonVariants } from './button.recipe'
-import { cx } from '../../styled-system/css'
+import { cx } from '@/styled-system/css'
 
 type ButtonProps = ButtonVariants &
   React.ButtonHTMLAttributes<HTMLButtonElement> & {

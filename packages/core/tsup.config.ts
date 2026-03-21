@@ -1,6 +1,12 @@
 import { defineConfig } from 'tsup'
+import path from 'path'
 
 export default defineConfig({
+  esbuildOptions(options) {
+    options.alias = {
+      '@': path.resolve(__dirname, 'src'),
+    }
+  },
   entry: {
     index: 'src/index.ts',
     'tokens/index': 'src/tokens/index.ts',

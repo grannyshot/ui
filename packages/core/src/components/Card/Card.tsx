@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react'
 import { card, type CardVariants } from './card.recipe'
-import { cx } from '../../styled-system/css'
+import { cx } from '@/styled-system/css'
 
 type CardProps = CardVariants &
   React.HTMLAttributes<HTMLDivElement> & {
