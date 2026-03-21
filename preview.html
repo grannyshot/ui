@@ -3,18 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Grannyshot UI — Token Preview</title>
+  <title>Grannyshot UI — Preview</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="packages/core/dist/styles.css">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
     body {
-      font-family: 'Inter', -apple-system, sans-serif;
-      background: #09090b;
-      color: #fafafa;
+      font-family: 'Inter', var(--gs-fonts-sans);
       padding: 48px;
       line-height: 1.5;
+      background: var(--gs-colors-bg);
+      color: var(--gs-colors-fg);
     }
 
     h1 {
@@ -24,10 +23,10 @@
       margin-bottom: 8px;
     }
 
-    h1 span { color: #10b981; }
+    h1 span { color: var(--gs-colors-accent); }
 
     .subtitle {
-      color: #71717a;
+      color: var(--gs-colors-fg-muted);
       font-size: 16px;
       margin-bottom: 64px;
     }
@@ -39,12 +38,12 @@
     .section-title {
       font-size: 13px;
       font-weight: 600;
-      color: #a1a1aa;
+      color: var(--gs-colors-fg-subtle);
       text-transform: uppercase;
       letter-spacing: 0.05em;
       margin-bottom: 24px;
       padding-bottom: 12px;
-      border-bottom: 1px solid #27272a;
+      border-bottom: 1px solid var(--gs-colors-border);
     }
 
     /* Theme Toggle */
@@ -53,17 +52,17 @@
       top: 24px;
       right: 24px;
       display: flex;
-      background: #27272a;
+      background: var(--gs-colors-bg-muted);
       border-radius: 8px;
       overflow: hidden;
-      border: 1px solid #3f3f46;
+      border: 1px solid var(--gs-colors-border);
     }
 
     .theme-toggle button {
       padding: 8px 16px;
       border: none;
       background: transparent;
-      color: #a1a1aa;
+      color: var(--gs-colors-fg-muted);
       font-family: inherit;
       font-size: 13px;
       cursor: pointer;
@@ -71,57 +70,34 @@
     }
 
     .theme-toggle button.active {
-      background: #10b981;
-      color: #ffffff;
+      background: var(--gs-colors-accent);
+      color: var(--gs-colors-accent-fg);
       font-weight: 600;
     }
 
     /* Colors */
-    .color-group {
-      margin-bottom: 32px;
-    }
-
-    .color-group-label {
-      font-size: 14px;
-      font-weight: 500;
-      margin-bottom: 12px;
-      color: #d4d4d8;
-    }
-
     .color-row {
       display: flex;
       gap: 8px;
       flex-wrap: wrap;
+      margin-bottom: 32px;
     }
 
-    .color-chip {
-      width: 80px;
-      text-align: center;
-    }
+    .color-chip { width: 80px; text-align: center; }
 
     .color-swatch {
       width: 80px;
       height: 56px;
       border-radius: 12px;
-      border: 1px solid rgba(255,255,255,0.08);
+      border: 1px solid var(--gs-colors-border-muted);
       margin-bottom: 6px;
       transition: transform 0.2s;
     }
 
-    .color-swatch:hover {
-      transform: scale(1.05);
-    }
+    .color-swatch:hover { transform: scale(1.05); }
 
-    .color-label {
-      font-size: 11px;
-      color: #71717a;
-    }
-
-    .color-hex {
-      font-size: 11px;
-      color: #52525b;
-      font-family: 'SF Mono', 'Fira Code', monospace;
-    }
+    .color-label { font-size: 11px; color: var(--gs-colors-fg-muted); }
+    .color-hex { font-size: 11px; color: var(--gs-colors-fg-subtle); font-family: monospace; }
 
     /* Semantic Colors */
     .semantic-grid {
@@ -133,14 +109,12 @@
     .semantic-card {
       padding: 16px;
       border-radius: 12px;
-      border: 1px solid #27272a;
-      background: #18181b;
+      border: 1px solid var(--gs-colors-border);
+      background: var(--gs-colors-bg-subtle);
       transition: border-color 0.2s;
     }
 
-    .semantic-card:hover {
-      border-color: #3f3f46;
-    }
+    .semantic-card:hover { border-color: var(--gs-colors-border-focus); }
 
     .semantic-preview {
       width: 100%;
@@ -149,17 +123,8 @@
       margin-bottom: 10px;
     }
 
-    .semantic-name {
-      font-size: 13px;
-      font-weight: 500;
-      color: #d4d4d8;
-    }
-
-    .semantic-value {
-      font-size: 11px;
-      color: #52525b;
-      font-family: monospace;
-    }
+    .semantic-name { font-size: 13px; font-weight: 500; color: var(--gs-colors-fg); }
+    .semantic-value { font-size: 11px; color: var(--gs-colors-fg-subtle); font-family: monospace; }
 
     /* Typography */
     .type-row {
@@ -167,238 +132,57 @@
       align-items: baseline;
       gap: 24px;
       padding: 16px 0;
-      border-bottom: 1px solid #18181b;
+      border-bottom: 1px solid var(--gs-colors-border-muted);
     }
 
-    .type-meta {
-      min-width: 100px;
-      font-size: 12px;
-      color: #52525b;
-      font-family: monospace;
-    }
-
-    .type-sample {
-      color: #fafafa;
-      letter-spacing: -0.01em;
-    }
+    .type-meta { min-width: 100px; font-size: 12px; color: var(--gs-colors-fg-subtle); font-family: monospace; }
+    .type-sample { color: var(--gs-colors-fg); letter-spacing: -0.01em; }
 
     /* Spacing */
-    .space-row {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin-bottom: 8px;
-    }
-
-    .space-label {
-      min-width: 60px;
-      font-size: 12px;
-      color: #52525b;
-      font-family: monospace;
-    }
+    .space-row { display: flex; align-items: center; gap: 16px; margin-bottom: 8px; }
+    .space-label { min-width: 60px; font-size: 12px; color: var(--gs-colors-fg-subtle); font-family: monospace; }
 
     .space-bar {
       height: 24px;
-      background: linear-gradient(90deg, #10b981, #059669);
+      background: linear-gradient(90deg, var(--gs-colors-accent), var(--gs-colors-accent-hover));
       border-radius: 4px;
-      transition: width 0.3s ease;
     }
 
-    .space-value {
-      font-size: 12px;
-      color: #71717a;
-      font-family: monospace;
-    }
+    .space-value { font-size: 12px; color: var(--gs-colors-fg-muted); font-family: monospace; }
 
     /* Radius */
-    .radius-row {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .radius-chip {
-      text-align: center;
-    }
+    .radius-row { display: flex; gap: 16px; flex-wrap: wrap; }
+    .radius-chip { text-align: center; }
 
     .radius-box {
       width: 64px;
       height: 64px;
-      background: #27272a;
-      border: 1px solid #3f3f46;
+      background: var(--gs-colors-bg-muted);
+      border: 1px solid var(--gs-colors-border);
       margin-bottom: 8px;
       transition: background 0.2s;
     }
 
-    .radius-box:hover {
-      background: #10b981;
-    }
+    .radius-box:hover { background: var(--gs-colors-accent); }
 
-    .radius-label {
-      font-size: 11px;
-      color: #71717a;
-    }
-
-    .radius-value {
-      font-size: 11px;
-      color: #52525b;
-      font-family: monospace;
-    }
+    .radius-label { font-size: 11px; color: var(--gs-colors-fg-muted); }
+    .radius-value { font-size: 11px; color: var(--gs-colors-fg-subtle); font-family: monospace; }
 
     /* Shadow */
-    .shadow-row {
-      display: flex;
-      gap: 24px;
-      flex-wrap: wrap;
-    }
-
-    .shadow-chip {
-      text-align: center;
-    }
+    .shadow-row { display: flex; gap: 24px; flex-wrap: wrap; }
+    .shadow-chip { text-align: center; }
 
     .shadow-box {
       width: 96px;
       height: 96px;
-      background: #18181b;
+      background: var(--gs-colors-bg-subtle);
       border-radius: 12px;
       margin-bottom: 8px;
     }
 
-    .shadow-label {
-      font-size: 11px;
-      color: #71717a;
-    }
+    .shadow-label { font-size: 11px; color: var(--gs-colors-fg-muted); }
 
-    /* Button Preview */
-    .preview-section {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-
-    .btn {
-      padding: 8px 16px;
-      border-radius: 8px;
-      font-family: inherit;
-      font-size: 14px;
-      font-weight: 500;
-      cursor: pointer;
-      border: none;
-      transition: all 0.15s;
-    }
-
-    .btn-primary {
-      background: #10b981;
-      color: #ffffff;
-    }
-    .btn-primary:hover { background: #059669; }
-
-    .btn-secondary {
-      background: #27272a;
-      color: #fafafa;
-      border: 1px solid #3f3f46;
-    }
-    .btn-secondary:hover { background: #3f3f46; }
-
-    .btn-ghost {
-      background: transparent;
-      color: #a1a1aa;
-    }
-    .btn-ghost:hover { background: #27272a; color: #fafafa; }
-
-    .btn-danger {
-      background: #ef4444;
-      color: white;
-    }
-    .btn-danger:hover { background: #dc2626; }
-
-    .btn-sm { padding: 6px 12px; font-size: 13px; }
-    .btn-lg { padding: 12px 24px; font-size: 16px; }
-
-    /* Input Preview */
-    .input-preview {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      max-width: 320px;
-    }
-
-    .input {
-      padding: 8px 12px;
-      border-radius: 8px;
-      border: 1px solid #27272a;
-      background: #18181b;
-      color: #fafafa;
-      font-family: inherit;
-      font-size: 14px;
-      outline: none;
-      transition: border-color 0.15s;
-    }
-
-    .input::placeholder { color: #52525b; }
-    .input:focus { border-color: #10b981; }
-
-    .input-error {
-      border-color: #ef4444;
-    }
-
-    .input-label {
-      font-size: 13px;
-      font-weight: 500;
-      color: #d4d4d8;
-    }
-
-    .input-hint {
-      font-size: 12px;
-      color: #52525b;
-    }
-
-    .input-error-text {
-      font-size: 12px;
-      color: #ef4444;
-    }
-
-    /* Badge Preview */
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      padding: 2px 8px;
-      border-radius: 9999px;
-      font-size: 12px;
-      font-weight: 500;
-    }
-
-    .badge-success { background: #064e3b33; color: #34d399; }
-    .badge-warning { background: #78350f33; color: #fbbf24; }
-    .badge-error { background: #7f1d1d33; color: #f87171; }
-    .badge-info { background: #1e3a5f33; color: #60a5fa; }
-
-    /* Card Preview */
-    .card {
-      background: #18181b;
-      border: 1px solid #27272a;
-      border-radius: 12px;
-      padding: 24px;
-      max-width: 360px;
-      transition: border-color 0.2s;
-    }
-
-    .card:hover { border-color: #3f3f46; }
-
-    .card-title {
-      font-size: 16px;
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
-
-    .card-desc {
-      font-size: 14px;
-      color: #d4d4d8;
-      margin-bottom: 16px;
-    }
-
-    /* Components Grid */
+    /* Component Preview */
     .component-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
@@ -407,53 +191,113 @@
 
     .component-block h4 {
       font-size: 13px;
-      color: #71717a;
+      color: var(--gs-colors-fg-muted);
       font-weight: 500;
       margin-bottom: 16px;
     }
 
-    /* ---- LIGHT THEME ---- */
-    body.light {
-      background: #ffffff;
-      color: #09090b;
+    .preview-section {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
     }
 
-    body.light .subtitle { color: #71717a; }
-    body.light .section-title { color: #52525b; border-color: #e4e4e7; }
-    body.light .color-label { color: #71717a; }
-    body.light .color-hex { color: #a1a1aa; }
-    body.light .color-swatch { border-color: rgba(0,0,0,0.08); }
-    body.light .semantic-card { background: #fafafa; border-color: #e4e4e7; }
-    body.light .semantic-card:hover { border-color: #d4d4d8; }
-    body.light .semantic-name { color: #3f3f46; }
-    body.light .semantic-value { color: #a1a1aa; }
-    body.light .type-row { border-color: #f4f4f5; }
-    body.light .type-meta { color: #a1a1aa; }
-    body.light .type-sample { color: #09090b; }
-    body.light .space-label { color: #a1a1aa; }
-    body.light .space-value { color: #71717a; }
-    body.light .radius-box { background: #f4f4f5; border-color: #e4e4e7; }
-    body.light .radius-box:hover { background: #10b981; }
-    body.light .radius-label { color: #71717a; }
-    body.light .radius-value { color: #a1a1aa; }
-    body.light .shadow-box { background: #ffffff; }
-    body.light .btn-secondary { background: #f4f4f5; color: #09090b; border-color: #e4e4e7; }
-    body.light .btn-secondary:hover { background: #e4e4e7; }
-    body.light .btn-ghost { color: #71717a; }
-    body.light .btn-ghost:hover { background: #f4f4f5; color: #09090b; }
-    body.light .input { background: #ffffff; border-color: #e4e4e7; color: #09090b; }
-    body.light .input::placeholder { color: #a1a1aa; }
-    body.light .input:focus { border-color: #10b981; }
-    body.light .card { background: #fafafa; border-color: #e4e4e7; }
-    body.light .card:hover { border-color: #d4d4d8; }
-    body.light .card-desc { color: #52525b; }
-    body.light .badge-success { background: #ecfdf5; color: #059669; }
-    body.light .badge-warning { background: #fffbeb; color: #d97706; }
-    body.light .badge-error { background: #fef2f2; color: #dc2626; }
-    body.light .badge-info { background: #eff6ff; color: #2563eb; }
-    body.light .theme-toggle { background: #f4f4f5; border-color: #e4e4e7; }
-    body.light .theme-toggle button { color: #71717a; }
-    body.light .theme-toggle button.active { background: #10b981; color: #ffffff; }
+    /* Buttons — using design system tokens */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 16px;
+      border-radius: var(--gs-radii-md);
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      border: none;
+      transition: all 0.15s;
+      line-height: 1;
+      height: 36px;
+    }
+
+    .btn-primary { background: var(--gs-colors-accent); color: var(--gs-colors-accent-fg); }
+    .btn-primary:hover { background: var(--gs-colors-accent-hover); }
+
+    .btn-secondary {
+      background: var(--gs-colors-bg-muted);
+      color: var(--gs-colors-fg);
+      border: 1px solid var(--gs-colors-border);
+    }
+    .btn-secondary:hover { background: var(--gs-colors-bg-subtle); }
+
+    .btn-ghost { background: transparent; color: var(--gs-colors-fg-muted); }
+    .btn-ghost:hover { background: var(--gs-colors-bg-muted); color: var(--gs-colors-fg); }
+
+    .btn-danger { background: var(--gs-colors-error); color: var(--gs-colors-accent-fg); }
+    .btn-danger:hover { opacity: 0.9; }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--gs-colors-accent);
+      border: 1px solid var(--gs-colors-accent);
+    }
+    .btn-outline:hover { background: var(--gs-colors-accent-subtle); }
+
+    .btn-sm { padding: 4px 12px; font-size: 12px; height: 32px; }
+    .btn-lg { padding: 12px 24px; font-size: 16px; height: 44px; }
+
+    /* Input */
+    .input-preview { display: flex; flex-direction: column; gap: 12px; max-width: 320px; }
+
+    .input {
+      width: 100%;
+      padding: 8px 12px;
+      border-radius: var(--gs-radii-md);
+      border: 1px solid var(--gs-colors-border);
+      background: var(--gs-colors-bg);
+      color: var(--gs-colors-fg);
+      font-family: inherit;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.15s;
+      height: 36px;
+    }
+
+    .input::placeholder { color: var(--gs-colors-fg-subtle); }
+    .input:focus { border-color: var(--gs-colors-border-focus); }
+    .input-error { border-color: var(--gs-colors-error); }
+    .input-error:focus { border-color: var(--gs-colors-error); }
+
+    /* Badge */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 8px;
+      border-radius: var(--gs-radii-full);
+      font-size: 12px;
+      font-weight: 500;
+      height: 24px;
+    }
+
+    .badge-success { background: var(--gs-colors-success-subtle); color: var(--gs-colors-success); }
+    .badge-warning { background: var(--gs-colors-warning-subtle); color: var(--gs-colors-warning); }
+    .badge-error { background: var(--gs-colors-error-subtle); color: var(--gs-colors-error); }
+    .badge-info { background: var(--gs-colors-info-subtle); color: var(--gs-colors-info); }
+
+    /* Card */
+    .card {
+      background: var(--gs-colors-bg-subtle);
+      border: 1px solid var(--gs-colors-border);
+      border-radius: var(--gs-radii-lg);
+      padding: 24px;
+      max-width: 360px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover { border-color: var(--gs-colors-border-focus); box-shadow: var(--gs-shadows-md); }
+
+    .card-title { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+    .card-desc { font-size: 14px; color: var(--gs-colors-fg-muted); margin-bottom: 16px; }
   </style>
 </head>
 <body>
@@ -463,124 +307,40 @@
   </div>
 
   <h1><span>Grannyshot</span> UI</h1>
-  <p class="subtitle">Design System Token Preview — Emerald + Cool Gray</p>
+  <p class="subtitle">Design System Preview — Panda CSS + Emerald</p>
 
   <!-- EMERALD -->
   <div class="section">
     <div class="section-title">Accent — Emerald</div>
     <div class="color-row">
-      <div class="color-chip">
-        <div class="color-swatch" style="background:#ecfdf5"></div>
-        <div class="color-label">50</div>
-        <div class="color-hex">#ecfdf5</div>
-      </div>
-      <div class="color-chip">
-        <div class="color-swatch" style="background:#d1fae5"></div>
-        <div class="color-label">100</div>
-        <div class="color-hex">#d1fae5</div>
-      </div>
-      <div class="color-chip">
-        <div class="color-swatch" style="background:#a7f3d0"></div>
-        <div class="color-label">200</div>
-        <div class="color-hex">#a7f3d0</div>
-      </div>
-      <div class="color-chip">
-        <div class="color-swatch" style="background:#6ee7b7"></div>
-        <div class="color-label">300</div>
-        <div class="color-hex">#6ee7b7</div>
-      </div>
-      <div class="color-chip">
-        <div class="color-swatch" style="background:#34d399"></div>
-        <div class="color-label">400</div>
-        <div class="color-hex">#34d399</div>
-      </div>
-      <div class="color-chip">
-        <div class="color-swatch" style="background:#10b981"></div>
-        <div class="color-label">500</div>
-        <div class="color-hex">#10b981</div>
-      </div>
-      <div class="color-chip">
-        <div class="color-swatch" style="background:#059669"></div>
-        <div class="color-label">600</div>
-        <div class="color-hex">#059669</div>
-      </div>
-      <div class="color-chip">
-        <div class="color-swatch" style="background:#047857"></div>
-        <div class="color-label">700</div>
-        <div class="color-hex">#047857</div>
-      </div>
-      <div class="color-chip">
-        <div class="color-swatch" style="background:#065f46"></div>
-        <div class="color-label">800</div>
-        <div class="color-hex">#065f46</div>
-      </div>
-      <div class="color-chip">
-        <div class="color-swatch" style="background:#064e3b"></div>
-        <div class="color-label">900</div>
-        <div class="color-hex">#064e3b</div>
-      </div>
+      <div class="color-chip"><div class="color-swatch" style="background:var(--gs-colors-emerald-50)"></div><div class="color-label">50</div></div>
+      <div class="color-chip"><div class="color-swatch" style="background:var(--gs-colors-emerald-100)"></div><div class="color-label">100</div></div>
+      <div class="color-chip"><div class="color-swatch" style="background:var(--gs-colors-emerald-200)"></div><div class="color-label">200</div></div>
+      <div class="color-chip"><div class="color-swatch" style="background:var(--gs-colors-emerald-300)"></div><div class="color-label">300</div></div>
+      <div class="color-chip"><div class="color-swatch" style="background:var(--gs-colors-emerald-400)"></div><div class="color-label">400</div></div>
+      <div class="color-chip"><div class="color-swatch" style="background:var(--gs-colors-emerald-500)"></div><div class="color-label">500</div></div>
+      <div class="color-chip"><div class="color-swatch" style="background:var(--gs-colors-emerald-600)"></div><div class="color-label">600</div></div>
+      <div class="color-chip"><div class="color-swatch" style="background:var(--gs-colors-emerald-700)"></div><div class="color-label">700</div></div>
+      <div class="color-chip"><div class="color-swatch" style="background:var(--gs-colors-emerald-800)"></div><div class="color-label">800</div></div>
+      <div class="color-chip"><div class="color-swatch" style="background:var(--gs-colors-emerald-900)"></div><div class="color-label">900</div></div>
     </div>
   </div>
 
   <!-- GRAY -->
   <div class="section">
-    <div class="section-title">Neutral — Cool Gray</div>
+    <div class="section-title">Neutral — Gray</div>
     <div class="color-row">
-      <div class="color-chip">
-        <div class="color-swatch" style="background:#fafafa"></div>
-        <div class="color-label">50</div>
-        <div class="color-hex">#fafafa</div>
-      </div>
-      <div class="color-chip">
-        <div class="color-swatch" style="background:#f4f4f5"></div>
-        <div class="color-label">100</div>
-        <div class="color-hex">#f4f4f5</div>
-      </div>
-      <div class="color-chip">
-        <div class="color-swatch" style="background:#e4e4e7"></div>
-        <div class="color-label">200</div>
-        <div class="color-hex">#e4e4e7</div>
-      </div>
-      <div class="color-chip">
-        <div class="color-swatch" style="background:#d4d4d8"></div>
-        <div class="color-label">300</div>
-        <div class="color-hex">#d4d4d8</div>
-      </div>
-      <div class="color-chip">
-        <div class="color-swatch" style="background:#a1a1aa"></div>
-        <div class="color-label">400</div>
-        <div class="color-hex">#a1a1aa</div>
-      </div>
-      <div class="color-chip">
-        <div class="color-swatch" style="background:#71717a"></div>
-        <div class="color-label">500</div>
-        <div class="color-hex">#71717a</div>
-      </div>
-      <div class="color-chip">
-        <div class="color-swatch" style="background:#52525b"></div>
-        <div class="color-label">600</div>
-        <div class="color-hex">#52525b</div>
-      </div>
-      <div class="color-chip">
-        <div class="color-swatch" style="background:#3f3f46"></div>
-        <div class="color-label">700</div>
-        <div class="color-hex">#3f3f46</div>
-      </div>
-      <div class="color-chip">
-        <div class="color-swatch" style="background:#27272a"></div>
-        <div class="color-label">800</div>
-        <div class="color-hex">#27272a</div>
-      </div>
-      <div class="color-chip">
-        <div class="color-swatch" style="background:#18181b"></div>
-        <div class="color-label">900</div>
-        <div class="color-hex">#18181b</div>
-      </div>
-      <div class="color-chip">
-        <div class="color-swatch" style="background:#09090b"></div>
-        <div class="color-label">950</div>
-        <div class="color-hex">#09090b</div>
-      </div>
+      <div class="color-chip"><div class="color-swatch" style="background:var(--gs-colors-gray-50)"></div><div class="color-label">50</div></div>
+      <div class="color-chip"><div class="color-swatch" style="background:var(--gs-colors-gray-100)"></div><div class="color-label">100</div></div>
+      <div class="color-chip"><div class="color-swatch" style="background:var(--gs-colors-gray-200)"></div><div class="color-label">200</div></div>
+      <div class="color-chip"><div class="color-swatch" style="background:var(--gs-colors-gray-300)"></div><div class="color-label">300</div></div>
+      <div class="color-chip"><div class="color-swatch" style="background:var(--gs-colors-gray-400)"></div><div class="color-label">400</div></div>
+      <div class="color-chip"><div class="color-swatch" style="background:var(--gs-colors-gray-500)"></div><div class="color-label">500</div></div>
+      <div class="color-chip"><div class="color-swatch" style="background:var(--gs-colors-gray-600)"></div><div class="color-label">600</div></div>
+      <div class="color-chip"><div class="color-swatch" style="background:var(--gs-colors-gray-700)"></div><div class="color-label">700</div></div>
+      <div class="color-chip"><div class="color-swatch" style="background:var(--gs-colors-gray-800)"></div><div class="color-label">800</div></div>
+      <div class="color-chip"><div class="color-swatch" style="background:var(--gs-colors-gray-900)"></div><div class="color-label">900</div></div>
+      <div class="color-chip"><div class="color-swatch" style="background:var(--gs-colors-gray-950)"></div><div class="color-label">950</div></div>
     </div>
   </div>
 
@@ -589,29 +349,29 @@
     <div class="section-title">Semantic Colors</div>
     <div class="semantic-grid">
       <div class="semantic-card">
-        <div class="semantic-preview" style="background:#10b981"></div>
+        <div class="semantic-preview" style="background:var(--gs-colors-accent)"></div>
         <div class="semantic-name">accent</div>
-        <div class="semantic-value">#10b981</div>
+        <div class="semantic-value">--gs-colors-accent</div>
       </div>
       <div class="semantic-card">
-        <div class="semantic-preview" style="background:#059669"></div>
+        <div class="semantic-preview" style="background:var(--gs-colors-success)"></div>
         <div class="semantic-name">success</div>
-        <div class="semantic-value">#059669</div>
+        <div class="semantic-value">--gs-colors-success</div>
       </div>
       <div class="semantic-card">
-        <div class="semantic-preview" style="background:#f59e0b"></div>
+        <div class="semantic-preview" style="background:var(--gs-colors-warning)"></div>
         <div class="semantic-name">warning</div>
-        <div class="semantic-value">#f59e0b</div>
+        <div class="semantic-value">--gs-colors-warning</div>
       </div>
       <div class="semantic-card">
-        <div class="semantic-preview" style="background:#ef4444"></div>
+        <div class="semantic-preview" style="background:var(--gs-colors-error)"></div>
         <div class="semantic-name">error</div>
-        <div class="semantic-value">#ef4444</div>
+        <div class="semantic-value">--gs-colors-error</div>
       </div>
       <div class="semantic-card">
-        <div class="semantic-preview" style="background:#3b82f6"></div>
+        <div class="semantic-preview" style="background:var(--gs-colors-info)"></div>
         <div class="semantic-name">info</div>
-        <div class="semantic-value">#3b82f6</div>
+        <div class="semantic-value">--gs-colors-info</div>
       </div>
     </div>
   </div>
@@ -620,151 +380,71 @@
   <div class="section">
     <div class="section-title">Typography</div>
     <div class="type-row">
-      <span class="type-meta">6xl / 48px</span>
-      <span class="type-sample" style="font-size:48px;font-weight:700;letter-spacing:-0.02em">Grannyshot</span>
+      <span class="type-meta">5xl / 48px</span>
+      <span class="type-sample" style="font-size:var(--gs-font-sizes-5xl);font-weight:700;letter-spacing:-0.02em">Grannyshot</span>
     </div>
     <div class="type-row">
-      <span class="type-meta">5xl / 36px</span>
-      <span class="type-sample" style="font-size:36px;font-weight:700;letter-spacing:-0.02em">Grannyshot</span>
+      <span class="type-meta">4xl / 36px</span>
+      <span class="type-sample" style="font-size:var(--gs-font-sizes-4xl);font-weight:700;letter-spacing:-0.02em">Grannyshot</span>
     </div>
     <div class="type-row">
-      <span class="type-meta">4xl / 30px</span>
-      <span class="type-sample" style="font-size:30px;font-weight:600;letter-spacing:-0.01em">Design System</span>
+      <span class="type-meta">3xl / 30px</span>
+      <span class="type-sample" style="font-size:var(--gs-font-sizes-3xl);font-weight:600;letter-spacing:-0.01em">Design System</span>
     </div>
     <div class="type-row">
-      <span class="type-meta">3xl / 24px</span>
-      <span class="type-sample" style="font-size:24px;font-weight:600;letter-spacing:-0.01em">Design System</span>
+      <span class="type-meta">2xl / 24px</span>
+      <span class="type-sample" style="font-size:var(--gs-font-sizes-2xl);font-weight:600;letter-spacing:-0.01em">Design System</span>
     </div>
     <div class="type-row">
-      <span class="type-meta">2xl / 20px</span>
-      <span class="type-sample" style="font-size:20px;font-weight:600">Component Library</span>
+      <span class="type-meta">xl / 20px</span>
+      <span class="type-sample" style="font-size:var(--gs-font-sizes-xl);font-weight:600">Component Library</span>
     </div>
     <div class="type-row">
-      <span class="type-meta">xl / 18px</span>
-      <span class="type-sample" style="font-size:18px;font-weight:500">Component Library</span>
+      <span class="type-meta">lg / 18px</span>
+      <span class="type-sample" style="font-size:var(--gs-font-sizes-lg);font-weight:500">Component Library</span>
     </div>
     <div class="type-row">
-      <span class="type-meta">lg / 16px</span>
-      <span class="type-sample" style="font-size:16px;font-weight:400">디자인 토큰 기반의 일관된 UI를 제공합니다.</span>
+      <span class="type-meta">md / 16px</span>
+      <span class="type-sample" style="font-size:var(--gs-font-sizes-md)">디자인 토큰 기반의 일관된 UI를 제공합니다.</span>
     </div>
     <div class="type-row">
-      <span class="type-meta">md / 14px</span>
-      <span class="type-sample" style="font-size:14px;font-weight:400">디자인 토큰 기반의 일관된 UI를 제공합니다.</span>
-    </div>
-    <div class="type-row">
-      <span class="type-meta">sm / 13px</span>
-      <span class="type-sample" style="font-size:13px;font-weight:400;color:#a1a1aa">캡션이나 보조 텍스트에 사용합니다.</span>
+      <span class="type-meta">sm / 14px</span>
+      <span class="type-sample" style="font-size:var(--gs-font-sizes-sm)">디자인 토큰 기반의 일관된 UI를 제공합니다.</span>
     </div>
     <div class="type-row">
       <span class="type-meta">xs / 12px</span>
-      <span class="type-sample" style="font-size:12px;font-weight:400;color:#71717a">라벨, 뱃지 등 가장 작은 텍스트</span>
+      <span class="type-sample" style="font-size:var(--gs-font-sizes-xs);color:var(--gs-colors-fg-muted)">라벨, 뱃지 등 가장 작은 텍스트</span>
     </div>
   </div>
 
   <!-- SPACING -->
   <div class="section">
     <div class="section-title">Spacing</div>
-    <div class="space-row">
-      <span class="space-label">1</span>
-      <div class="space-bar" style="width:4px"></div>
-      <span class="space-value">4px</span>
-    </div>
-    <div class="space-row">
-      <span class="space-label">2</span>
-      <div class="space-bar" style="width:8px"></div>
-      <span class="space-value">8px</span>
-    </div>
-    <div class="space-row">
-      <span class="space-label">3</span>
-      <div class="space-bar" style="width:12px"></div>
-      <span class="space-value">12px</span>
-    </div>
-    <div class="space-row">
-      <span class="space-label">4</span>
-      <div class="space-bar" style="width:16px"></div>
-      <span class="space-value">16px</span>
-    </div>
-    <div class="space-row">
-      <span class="space-label">5</span>
-      <div class="space-bar" style="width:20px"></div>
-      <span class="space-value">20px</span>
-    </div>
-    <div class="space-row">
-      <span class="space-label">6</span>
-      <div class="space-bar" style="width:24px"></div>
-      <span class="space-value">24px</span>
-    </div>
-    <div class="space-row">
-      <span class="space-label">8</span>
-      <div class="space-bar" style="width:32px"></div>
-      <span class="space-value">32px</span>
-    </div>
-    <div class="space-row">
-      <span class="space-label">10</span>
-      <div class="space-bar" style="width:40px"></div>
-      <span class="space-value">40px</span>
-    </div>
-    <div class="space-row">
-      <span class="space-label">12</span>
-      <div class="space-bar" style="width:48px"></div>
-      <span class="space-value">48px</span>
-    </div>
-    <div class="space-row">
-      <span class="space-label">16</span>
-      <div class="space-bar" style="width:64px"></div>
-      <span class="space-value">64px</span>
-    </div>
-    <div class="space-row">
-      <span class="space-label">20</span>
-      <div class="space-bar" style="width:80px"></div>
-      <span class="space-value">80px</span>
-    </div>
-    <div class="space-row">
-      <span class="space-label">24</span>
-      <div class="space-bar" style="width:96px"></div>
-      <span class="space-value">96px</span>
-    </div>
+    <div class="space-row"><span class="space-label">1</span><div class="space-bar" style="width:var(--gs-spacing-1)"></div><span class="space-value">4px</span></div>
+    <div class="space-row"><span class="space-label">2</span><div class="space-bar" style="width:var(--gs-spacing-2)"></div><span class="space-value">8px</span></div>
+    <div class="space-row"><span class="space-label">3</span><div class="space-bar" style="width:var(--gs-spacing-3)"></div><span class="space-value">12px</span></div>
+    <div class="space-row"><span class="space-label">4</span><div class="space-bar" style="width:var(--gs-spacing-4)"></div><span class="space-value">16px</span></div>
+    <div class="space-row"><span class="space-label">5</span><div class="space-bar" style="width:var(--gs-spacing-5)"></div><span class="space-value">20px</span></div>
+    <div class="space-row"><span class="space-label">6</span><div class="space-bar" style="width:var(--gs-spacing-6)"></div><span class="space-value">24px</span></div>
+    <div class="space-row"><span class="space-label">8</span><div class="space-bar" style="width:var(--gs-spacing-8)"></div><span class="space-value">32px</span></div>
+    <div class="space-row"><span class="space-label">10</span><div class="space-bar" style="width:var(--gs-spacing-10)"></div><span class="space-value">40px</span></div>
+    <div class="space-row"><span class="space-label">12</span><div class="space-bar" style="width:var(--gs-spacing-12)"></div><span class="space-value">48px</span></div>
+    <div class="space-row"><span class="space-label">16</span><div class="space-bar" style="width:var(--gs-spacing-16)"></div><span class="space-value">64px</span></div>
+    <div class="space-row"><span class="space-label">20</span><div class="space-bar" style="width:var(--gs-spacing-20)"></div><span class="space-value">80px</span></div>
+    <div class="space-row"><span class="space-label">24</span><div class="space-bar" style="width:var(--gs-spacing-24)"></div><span class="space-value">96px</span></div>
   </div>
 
   <!-- RADIUS -->
   <div class="section">
     <div class="section-title">Border Radius</div>
     <div class="radius-row">
-      <div class="radius-chip">
-        <div class="radius-box" style="border-radius:0px"></div>
-        <div class="radius-label">none</div>
-        <div class="radius-value">0px</div>
-      </div>
-      <div class="radius-chip">
-        <div class="radius-box" style="border-radius:4px"></div>
-        <div class="radius-label">sm</div>
-        <div class="radius-value">4px</div>
-      </div>
-      <div class="radius-chip">
-        <div class="radius-box" style="border-radius:8px"></div>
-        <div class="radius-label">md</div>
-        <div class="radius-value">8px</div>
-      </div>
-      <div class="radius-chip">
-        <div class="radius-box" style="border-radius:12px"></div>
-        <div class="radius-label">lg</div>
-        <div class="radius-value">12px</div>
-      </div>
-      <div class="radius-chip">
-        <div class="radius-box" style="border-radius:16px"></div>
-        <div class="radius-label">xl</div>
-        <div class="radius-value">16px</div>
-      </div>
-      <div class="radius-chip">
-        <div class="radius-box" style="border-radius:20px"></div>
-        <div class="radius-label">2xl</div>
-        <div class="radius-value">20px</div>
-      </div>
-      <div class="radius-chip">
-        <div class="radius-box" style="border-radius:9999px"></div>
-        <div class="radius-label">full</div>
-        <div class="radius-value">9999px</div>
-      </div>
+      <div class="radius-chip"><div class="radius-box" style="border-radius:var(--gs-radii-none)"></div><div class="radius-label">none</div></div>
+      <div class="radius-chip"><div class="radius-box" style="border-radius:var(--gs-radii-sm)"></div><div class="radius-label">sm</div></div>
+      <div class="radius-chip"><div class="radius-box" style="border-radius:var(--gs-radii-md)"></div><div class="radius-label">md</div></div>
+      <div class="radius-chip"><div class="radius-box" style="border-radius:var(--gs-radii-lg)"></div><div class="radius-label">lg</div></div>
+      <div class="radius-chip"><div class="radius-box" style="border-radius:var(--gs-radii-xl)"></div><div class="radius-label">xl</div></div>
+      <div class="radius-chip"><div class="radius-box" style="border-radius:var(--gs-radii-2xl)"></div><div class="radius-label">2xl</div></div>
+      <div class="radius-chip"><div class="radius-box" style="border-radius:var(--gs-radii-full)"></div><div class="radius-label">full</div></div>
     </div>
   </div>
 
@@ -772,26 +452,11 @@
   <div class="section">
     <div class="section-title">Shadows</div>
     <div class="shadow-row">
-      <div class="shadow-chip">
-        <div class="shadow-box" style="box-shadow:0 1px 2px rgba(0,0,0,0.05)"></div>
-        <div class="shadow-label">xs</div>
-      </div>
-      <div class="shadow-chip">
-        <div class="shadow-box" style="box-shadow:0 1px 3px rgba(0,0,0,0.1),0 1px 2px rgba(0,0,0,0.06)"></div>
-        <div class="shadow-label">sm</div>
-      </div>
-      <div class="shadow-chip">
-        <div class="shadow-box" style="box-shadow:0 4px 6px rgba(0,0,0,0.1),0 2px 4px rgba(0,0,0,0.06)"></div>
-        <div class="shadow-label">md</div>
-      </div>
-      <div class="shadow-chip">
-        <div class="shadow-box" style="box-shadow:0 10px 15px rgba(0,0,0,0.1),0 4px 6px rgba(0,0,0,0.05)"></div>
-        <div class="shadow-label">lg</div>
-      </div>
-      <div class="shadow-chip">
-        <div class="shadow-box" style="box-shadow:0 20px 25px rgba(0,0,0,0.1),0 10px 10px rgba(0,0,0,0.04)"></div>
-        <div class="shadow-label">xl</div>
-      </div>
+      <div class="shadow-chip"><div class="shadow-box" style="box-shadow:var(--gs-shadows-xs)"></div><div class="shadow-label">xs</div></div>
+      <div class="shadow-chip"><div class="shadow-box" style="box-shadow:var(--gs-shadows-sm)"></div><div class="shadow-label">sm</div></div>
+      <div class="shadow-chip"><div class="shadow-box" style="box-shadow:var(--gs-shadows-md)"></div><div class="shadow-label">md</div></div>
+      <div class="shadow-chip"><div class="shadow-box" style="box-shadow:var(--gs-shadows-lg)"></div><div class="shadow-label">lg</div></div>
+      <div class="shadow-chip"><div class="shadow-box" style="box-shadow:var(--gs-shadows-xl)"></div><div class="shadow-label">xl</div></div>
     </div>
   </div>
 
@@ -811,22 +476,15 @@
           <button class="btn btn-secondary">Secondary</button>
           <button class="btn btn-ghost">Ghost</button>
           <button class="btn btn-danger">Danger</button>
+          <button class="btn btn-outline">Outline</button>
         </div>
       </div>
 
       <div class="component-block">
         <h4>Input</h4>
         <div class="input-preview">
-          <div>
-            <div class="input-label">Label</div>
-            <input class="input" style="width:100%;margin-top:4px" placeholder="Placeholder text..." />
-            <div class="input-hint">도움말 텍스트입니다.</div>
-          </div>
-          <div>
-            <div class="input-label">Error state</div>
-            <input class="input input-error" style="width:100%;margin-top:4px" value="잘못된 입력" />
-            <div class="input-error-text">오류 메시지입니다.</div>
-          </div>
+          <input class="input" placeholder="Default input..." />
+          <input class="input input-error" value="Error state" />
         </div>
       </div>
 
@@ -853,10 +511,12 @@
 
   <script>
     function setTheme(theme) {
-      document.body.className = theme === 'light' ? 'light' : '';
-      document.getElementById('btn-dark').className = theme === 'dark' ? 'active' : '';
-      document.getElementById('btn-light').className = theme === 'light' ? 'active' : '';
+      document.documentElement.setAttribute('data-theme', theme)
+      document.getElementById('btn-dark').className = theme === 'dark' ? 'active' : ''
+      document.getElementById('btn-light').className = theme === 'light' ? 'active' : ''
     }
+    // default dark
+    setTheme('dark')
   </script>
 </body>
 </html>
