@@ -23,7 +23,7 @@ export const button = cva({
       _active: { transform: 'none' },
     },
     _focusVisible: {
-      boxShadow: '0 0 0 2px token(colors.bg), 0 0 0 4px token(colors.border.focus)',
+      boxShadow: '0 0 0 2px token(colors.bg), 0 0 0 4px token(colors.ring)',
     },
   },
 
@@ -47,7 +47,7 @@ export const button = cva({
       },
       danger: {
         bg: 'error',
-        color: 'accent.fg',
+        color: 'error.fg',
         _hover: { opacity: 0.9 },
       },
       outline: {
