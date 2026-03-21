@@ -1,5 +1,4 @@
 import React, { createContext, useContext, useEffect, useState, useCallback } from 'react'
-import { lightTheme, darkTheme } from '../tokens/colors.css'
 
 type Theme = 'light' | 'dark' | 'system'
 type ResolvedTheme = 'light' | 'dark'
@@ -55,11 +54,9 @@ export function ThemeProvider({ children, defaultTheme }: ThemeProviderProps) {
     return () => mq.removeEventListener('change', handler)
   }, [])
 
-  const themeClass = resolvedTheme === 'dark' ? darkTheme : lightTheme
-
   return (
     <ThemeContext.Provider value={{ theme, resolvedTheme, setTheme }}>
-      <div className={themeClass} style={{ colorScheme: resolvedTheme }}>
+      <div data-theme={resolvedTheme} style={{ colorScheme: resolvedTheme }}>
         {children}
       </div>
     </ThemeContext.Provider>
