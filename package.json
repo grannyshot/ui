@@ -5,7 +5,8 @@
     "build": "pnpm --filter grannyshot-ui build",
     "dev": "pnpm --filter grannyshot-ui dev",
     "build:docs": "pnpm --filter docs build",
-    "dev:docs": "pnpm --filter docs dev"
+    "dev:docs": "pnpm --filter docs dev",
+    "dev:playground": "pnpm --filter playground dev"
   },
   "pnpm": {
     "onlyBuiltDependencies": ["esbuild"]
