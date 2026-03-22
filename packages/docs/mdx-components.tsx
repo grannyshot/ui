@@ -1,10 +1,10 @@
-import { useMDXComponents as getThemeComponents } from 'nextra-theme-docs'
+import { useMDXComponents as getDocsMDXComponents } from 'nextra-theme-docs'
 
-const themeComponents = getThemeComponents()
+const docsComponents = getDocsMDXComponents()
 
-export function useMDXComponents(components: Record<string, React.ComponentType>) {
+export function useMDXComponents(components?: any) {
   return {
-    ...themeComponents,
+    ...docsComponents,
     ...components,
   }
 }
