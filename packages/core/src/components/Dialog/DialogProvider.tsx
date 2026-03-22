@@ -1,4 +1,4 @@
-import { useSyncExternalStore } from 'react'
+import { type ReactNode, useSyncExternalStore } from 'react'
 import { Dialog as ArkDialog } from '@ark-ui/react/dialog'
 import { Portal } from '@ark-ui/react/portal'
 import { cx, css } from '@/styled-system/css'
@@ -8,6 +8,7 @@ import {
   dialogPositioner,
   dialogTitle,
   dialogDescription,
+  type DialogContentVariants,
 } from './dialog.recipe'
 import { button } from '../Button/button.recipe'
 
@@ -22,15 +23,39 @@ type DialogOptions = {
   cancelText?: string
 }
 
-type DialogState = {
+type DialogOpenOptions = {
+  content: (close: () => void) => ReactNode
+  size?: NonNullable<DialogContentVariants>['size']
+}
+
+type DialogStateBase = {
   open: boolean
+  size: NonNullable<DialogContentVariants>['size']
+}
+
+type DialogStateConfirm = DialogStateBase & {
+  mode: 'confirm'
   title: string
   description: string
   confirmText: string
-  cancelText?: string
-  mode: 'confirm' | 'alert'
+  cancelText: string
   resolve: (value: boolean) => void
 }
+
+type DialogStateAlert = DialogStateBase & {
+  mode: 'alert'
+  title: string
+  description: string
+  confirmText: string
+  resolve: (value: boolean) => void
+}
+
+type DialogStateCustom = DialogStateBase & {
+  mode: 'custom'
+  content: (close: () => void) => ReactNode
+}
+
+type DialogState = DialogStateConfirm | DialogStateAlert | DialogStateCustom
 
 // ---------------------------------------------------------------------------
 // Store
@@ -68,6 +93,7 @@ export const dialog = {
     return new Promise<boolean>((resolve) => {
       setState({
         open: true,
+        size: 'sm',
         title: options.title,
         description: options.description,
         confirmText: options.confirmText,
@@ -82,6 +108,7 @@ export const dialog = {
     return new Promise<void>((resolve) => {
       setState({
         open: true,
+        size: 'sm',
         title: options.title,
         description: options.description,
         confirmText: options.confirmText,
@@ -89,6 +116,19 @@ export const dialog = {
         resolve: () => resolve(),
       })
     })
+  },
+
+  open(options: DialogOpenOptions) {
+    setState({
+      open: true,
+      size: options.size ?? 'md',
+      mode: 'custom',
+      content: options.content,
+    })
+  },
+
+  close() {
+    setState(null)
   },
 }
 
@@ -112,9 +152,13 @@ export function DialogProvider() {
 
   const handleClose = (confirmed: boolean) => {
     if (!current) return
-    current.resolve(confirmed)
+    if (current.mode !== 'custom') {
+      current.resolve(confirmed)
+    }
     setState(null)
   }
+
+  const close = () => handleClose(false)
 
   return (
     <ArkDialog.Root
@@ -128,8 +172,9 @@ export function DialogProvider() {
       <Portal disabled>
         <ArkDialog.Backdrop className={dialogOverlay} />
         <ArkDialog.Positioner className={dialogPositioner}>
-          <ArkDialog.Content className={dialogContent({ size: 'sm' })}>
-            {current && (
+          <ArkDialog.Content className={dialogContent({ size: current?.size })}>
+            {current?.mode === 'custom' && current.content(close)}
+            {current && current.mode !== 'custom' && (
               <>
                 <ArkDialog.Title className={dialogTitle}>
                   {current.title}
