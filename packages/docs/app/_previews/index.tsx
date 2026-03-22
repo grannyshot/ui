@@ -11,6 +11,7 @@ export const previews: Record<string, FC> = {
   button: ButtonPreview,
   'button-variants': () => <ButtonPreview section="variants" />,
   'button-sizes': () => <ButtonPreview section="sizes" />,
+  'button-disabled': () => <ButtonPreview section="disabled" />,
   badge: BadgePreview,
   input: InputPreview,
 }

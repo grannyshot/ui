@@ -25,6 +25,16 @@ export function ButtonPreview({ section }: { section?: string }) {
     )
   }
 
+  if (section === 'disabled') {
+    return (
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, alignItems: 'center' }}>
+        <Button disabled>Disabled</Button>
+        <Button variant="secondary" disabled>Disabled</Button>
+        <Button variant="outline" disabled>Disabled</Button>
+      </div>
+    )
+  }
+
   return (
     <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, alignItems: 'center' }}>
       <Button variant="primary">Click me</Button>
