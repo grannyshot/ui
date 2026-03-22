@@ -1,0 +1,90 @@
+# Getting Started
+
+## Installation
+
+```bash
+npm install @grannyshot/ui
+# or
+pnpm add @grannyshot/ui
+# or
+yarn add @grannyshot/ui
+```
+
+## Setup
+
+### 1. Import Styles
+
+Import the CSS file once at the root of your application:
+
+```tsx
+import '@grannyshot/ui/styles.css'
+```
+
+### 2. Add ThemeProvider
+
+Wrap your app with `ThemeProvider` to enable dark mode support:
+
+```tsx
+import { ThemeProvider } from '@grannyshot/ui'
+
+export default function App() {
+  return (
+    <ThemeProvider defaultTheme="system">
+      {/* your app */}
+    </ThemeProvider>
+  )
+}
+```
+
+### 3. Add Providers (Optional)
+
+For imperative APIs (toast, dialog, drawer), add their providers:
+
+```tsx
+import {
+  ThemeProvider,
+  ToastProvider,
+  DialogProvider,
+  DrawerProvider,
+} from '@grannyshot/ui'
+
+export default function App() {
+  return (
+    <ThemeProvider defaultTheme="system">
+      {/* your app */}
+      <ToastProvider placement="bottom-end" />
+      <DialogProvider />
+      <DrawerProvider />
+    </ThemeProvider>
+  )
+}
+```
+
+### 4. Use Components
+
+```tsx
+import { Button, Input, Field } from '@grannyshot/ui'
+
+function LoginForm() {
+  return (
+    <form>
+      <Field label="Email" required>
+        <Input placeholder="you@example.com" />
+      </Field>
+      <Button variant="primary">Sign in</Button>
+    </form>
+  )
+}
+```
+
+## Import Paths
+
+| Path | Description |
+|------|-------------|
+| `@grannyshot/ui` | All components, styles, tokens, and utilities |
+| `@grannyshot/ui/react` | React components only |
+| `@grannyshot/ui/styles` | Style recipes (cva) only |
+| `@grannyshot/ui/tokens` | Design tokens |
+| `@grannyshot/ui/context` | ThemeProvider and useTheme |
+| `@grannyshot/ui/utils` | cx utility |
+| `@grannyshot/ui/styles.css` | CSS file |

@@ -1,0 +1,37 @@
+export default {
+  '-- General': { type: 'separator', title: 'General' },
+  button: 'Button',
+  badge: 'Badge',
+  separator: 'Separator',
+  skeleton: 'Skeleton',
+  avatar: 'Avatar',
+
+  '-- Form': { type: 'separator', title: 'Form' },
+  input: 'Input',
+  textarea: 'Textarea',
+  label: 'Label',
+  checkbox: 'Checkbox',
+  switch: 'Switch',
+  select: 'Select',
+  combobox: 'Combobox',
+  slider: 'Slider',
+  'date-picker': 'DatePicker',
+  field: 'Field',
+
+  '-- Layout': { type: 'separator', title: 'Layout' },
+  card: 'Card',
+  table: 'Table',
+  tabs: 'Tabs',
+  accordion: 'Accordion',
+
+  '-- Overlay': { type: 'separator', title: 'Overlay' },
+  dialog: 'Dialog',
+  drawer: 'Drawer',
+  popover: 'Popover',
+  tooltip: 'Tooltip',
+  menu: 'Menu',
+
+  '-- Feedback': { type: 'separator', title: 'Feedback' },
+  toast: 'Toast',
+  progress: 'Progress',
+}

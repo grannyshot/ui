@@ -1,0 +1,99 @@
+# Dialog
+
+A modal dialog with declarative and imperative APIs.
+
+## Import
+
+```tsx
+import { Dialog, DialogProvider, dialog } from '@grannyshot/ui'
+```
+
+## Setup (Imperative)
+
+Add `DialogProvider` to your app root:
+
+```tsx
+<ThemeProvider>
+  <App />
+  <DialogProvider />
+</ThemeProvider>
+```
+
+## Imperative API
+
+### Confirm
+
+Returns a `Promise<boolean>` — `true` if confirmed, `false` if cancelled.
+
+```tsx
+const confirmed = await dialog.confirm({
+  title: 'Delete item',
+  description: 'This action cannot be undone.',
+  confirmText: 'Delete',
+  cancelText: 'Cancel',
+})
+
+if (confirmed) {
+  // delete logic
+}
+```
+
+### Alert
+
+Returns a `Promise<void>` — resolves when acknowledged.
+
+```tsx
+await dialog.alert({
+  title: 'Done',
+  description: 'Operation completed successfully.',
+  confirmText: 'OK',
+})
+```
+
+### Custom modal
+
+Open a dialog with fully custom content:
+
+```tsx
+dialog.open({
+  size: 'lg',
+  content: (close) => (
+    <div>
+      <h2>Custom Modal</h2>
+      <p>Any content you want</p>
+      <Button onClick={close}>Close</Button>
+    </div>
+  ),
+})
+```
+
+Close programmatically:
+
+```tsx
+dialog.close()
+```
+
+## Declarative API
+
+Use compound components for full control:
+
+```tsx
+<Dialog.Root>
+  <Dialog.Trigger asChild>
+    <Button>Open</Button>
+  </Dialog.Trigger>
+  <Dialog.Content size="sm">
+    <Dialog.CloseTrigger />
+    <Dialog.Title>Title</Dialog.Title>
+    <Dialog.Description>Description</Dialog.Description>
+    {/* your content */}
+  </Dialog.Content>
+</Dialog.Root>
+```
+
+## Props (Dialog.Content)
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Dialog width |
+| `className` | `string` | — | Additional CSS classes |

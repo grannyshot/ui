@@ -1,0 +1,101 @@
+# Toast
+
+Notification toasts with Sonner-style stacking animation. Supports imperative API.
+
+## Import
+
+```tsx
+import { ToastProvider, toast } from '@grannyshot/ui'
+```
+
+## Setup
+
+Add `ToastProvider` to your app root:
+
+```tsx
+<ThemeProvider>
+  <App />
+  <ToastProvider placement="bottom-end" />
+</ThemeProvider>
+```
+
+## Imperative API
+
+### Shorthand
+
+```tsx
+toast.success('Saved successfully')
+toast.error('Something went wrong')
+toast.warning('Be careful')
+toast.info('FYI')
+```
+
+### With description
+
+```tsx
+toast.success({
+  title: 'File uploaded',
+  description: 'Your file has been uploaded successfully.',
+})
+```
+
+### Promise
+
+```tsx
+await toast.promise(uploadFile(), {
+  loading: 'Uploading...',
+  success: 'Upload complete!',
+  error: 'Upload failed',
+})
+```
+
+### Custom render
+
+```tsx
+toast.custom((dismiss) => (
+  <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+    <Avatar size="sm" name="Bot" />
+    <div>
+      <p>Custom content</p>
+      <button onClick={dismiss}>Dismiss</button>
+    </div>
+  </div>
+))
+```
+
+### Dismiss
+
+```tsx
+const id = toast.success('Hello')
+toast.dismiss(id)   // dismiss specific
+toast.dismiss()     // dismiss all
+```
+
+## Placement
+
+```tsx
+<ToastProvider placement="top" />        // top center
+<ToastProvider placement="top-start" />  // top left
+<ToastProvider placement="top-end" />    // top right
+<ToastProvider placement="bottom" />     // bottom center
+<ToastProvider placement="bottom-start" /> // bottom left
+<ToastProvider placement="bottom-end" /> // bottom right (default)
+```
+
+## Props (ToastProvider)
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `placement` | `'top-start' \| 'top' \| 'top-end' \| 'bottom-start' \| 'bottom' \| 'bottom-end'` | `'bottom-end'` | Toast position |
+
+## Variants
+
+Toasts have a colored left border based on type:
+
+| Type | Color |
+|------|-------|
+| `success` | Green |
+| `error` | Red |
+| `warning` | Amber |
+| `info` | Blue |
+| default | Border color |

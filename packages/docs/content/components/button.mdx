@@ -1,0 +1,50 @@
+# Button
+
+A clickable button with multiple variants and sizes.
+
+## Import
+
+```tsx
+import { Button } from '@grannyshot/ui'
+```
+
+## Usage
+
+```tsx
+<Button variant="primary">Click me</Button>
+```
+
+## Variants
+
+```tsx
+<Button variant="primary">Primary</Button>
+<Button variant="secondary">Secondary</Button>
+<Button variant="outline">Outline</Button>
+<Button variant="ghost">Ghost</Button>
+<Button variant="danger">Danger</Button>
+```
+
+## Sizes
+
+```tsx
+<Button size="sm">Small</Button>
+<Button size="md">Medium</Button>
+<Button size="lg">Large</Button>
+```
+
+## Disabled
+
+```tsx
+<Button disabled>Disabled</Button>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `variant` | `'primary' \| 'secondary' \| 'outline' \| 'ghost' \| 'danger'` | `'primary'` | Visual style |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Button size |
+| `disabled` | `boolean` | `false` | Disabled state |
+| `className` | `string` | — | Additional CSS classes |
+
+Extends all native `<button>` HTML attributes.

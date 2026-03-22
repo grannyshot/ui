@@ -1,0 +1,82 @@
+# Theming
+
+grannyshot-ui uses **semantic tokens** for all colors, enabling seamless dark mode support.
+
+## ThemeProvider
+
+Wrap your app to enable theme switching:
+
+```tsx
+import { ThemeProvider } from '@grannyshot/ui'
+
+<ThemeProvider defaultTheme="system">
+  {children}
+</ThemeProvider>
+```
+
+**Options:** `light`, `dark`, `system`
+
+## useTheme Hook
+
+Access and control the current theme:
+
+```tsx
+import { useTheme } from '@grannyshot/ui'
+
+function ThemeToggle() {
+  const { theme, resolvedTheme, setTheme } = useTheme()
+
+  return (
+    <button onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}>
+      {resolvedTheme === 'dark' ? 'Light' : 'Dark'}
+    </button>
+  )
+}
+```
+
+## Semantic Tokens
+
+All components use semantic color tokens that automatically adapt to the theme:
+
+### Background
+| Token | Light | Dark |
+|-------|-------|------|
+| `bg` | white | gray.950 |
+| `bg.subtle` | gray.50 | gray.900 |
+| `bg.muted` | gray.100 | gray.800 |
+
+### Foreground
+| Token | Light | Dark |
+|-------|-------|------|
+| `fg` | gray.950 | gray.50 |
+| `fg.muted` | gray.500 | gray.300 |
+| `fg.subtle` | gray.400 | gray.500 |
+
+### Accent (Emerald)
+| Token | Light | Dark |
+|-------|-------|------|
+| `accent` | emerald.500 | emerald.500 |
+| `accent.hover` | emerald.600 | emerald.400 |
+| `accent.fg` | white | white |
+
+### Status
+| Token | Light | Dark |
+|-------|-------|------|
+| `success` | emerald.600 | emerald.400 |
+| `warning` | amber.500 | amber.400 |
+| `error` | red.500 | red.400 |
+| `info` | blue.500 | blue.400 |
+
+## CSS Variable Prefix
+
+All CSS variables use the `--gs-` prefix:
+
+```css
+var(--gs-colors-accent)
+var(--gs-colors-fg)
+var(--gs-spacing-4)
+```
+
+## Persistence
+
+Theme preference is stored in `localStorage` under the key `grannyshot-theme`.

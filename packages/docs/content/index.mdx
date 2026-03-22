@@ -1,0 +1,31 @@
+# grannyshot-ui
+
+A minimal, theme-aware design system built with **Panda CSS** and **Ark UI**.
+
+## Features
+
+- **26 components** — buttons, inputs, modals, toasts, date pickers, and more
+- **Dark mode** — seamless light/dark theme switching with semantic tokens
+- **Accessible** — built on Ark UI (Zag.js state machines) for keyboard navigation and screen reader support
+- **Imperative APIs** — `toast.success()`, `dialog.confirm()`, `drawer.open()` for quick interactions
+- **Tree-shakeable** — only import what you need, zero Panda CSS dependency for consumers
+- **TypeScript** — full type safety with exported variant types
+
+## Quick Start
+
+```bash
+npm install @grannyshot/ui
+```
+
+```tsx
+import '@grannyshot/ui/styles.css'
+import { Button, ThemeProvider } from '@grannyshot/ui'
+
+export default function App() {
+  return (
+    <ThemeProvider>
+      <Button variant="primary">Click me</Button>
+    </ThemeProvider>
+  )
+}
+```
