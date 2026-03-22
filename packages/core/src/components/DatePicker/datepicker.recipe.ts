@@ -141,6 +141,9 @@ export const datePickerTableHeader = css({
 })
 
 export const datePickerTableCellTrigger = css({
+  display: 'inline-flex',
+  alignItems: 'center',
+  justifyContent: 'center',
   width: '36px',
   height: '36px',
   borderRadius: 'md',
