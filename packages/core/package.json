@@ -46,18 +46,21 @@
     "dist"
   ],
   "scripts": {
-    "prepare": "panda codegen",
+    "prepublishOnly": "pnpm build",
     "build": "panda codegen && tsup && panda cssgen --outfile dist/styles.css",
     "dev": "panda codegen && tsup --watch"
   },
+  "author": "chotaegyu",
   "keywords": [
     "design-system",
     "panda-css",
+    "ark-ui",
     "react",
     "ui",
     "components",
     "tokens",
-    "theme"
+    "theme",
+    "dark-mode"
   ],
   "license": "MIT",
   "repository": {
