@@ -39,6 +39,16 @@ export default defineConfig({
   },
 
   theme: {
+    keyframes: {
+      fadeIn: {
+        from: { opacity: '0', transform: 'translateY(-4px)' },
+        to: { opacity: '1', transform: 'translateY(0)' },
+      },
+      fadeOut: {
+        from: { opacity: '1', transform: 'translateY(0)' },
+        to: { opacity: '0', transform: 'translateY(-4px)' },
+      },
+    },
     tokens: {
       colors: {
         white: { value: '#ffffff' },
