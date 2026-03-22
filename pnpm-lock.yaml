@@ -39,7 +39,7 @@ importers:
 
   packages/playground:
     dependencies:
-      grannyshot-ui:
+      '@grannyshot/ui':
         specifier: workspace:*
         version: link:../core
       react:

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import 'grannyshot-ui/styles.css'
+import '@grannyshot/ui/styles.css'
 import {
   ThemeProvider,
   useTheme,
@@ -36,7 +36,7 @@ import {
   DialogProvider,
   drawer,
   DrawerProvider,
-} from 'grannyshot-ui'
+} from '@grannyshot/ui'
 
 const containerStyle: React.CSSProperties = {
   fontFamily: "'Inter', system-ui, -apple-system, sans-serif",
