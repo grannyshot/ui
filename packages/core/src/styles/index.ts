@@ -14,3 +14,7 @@ export { tooltipContent, tooltipArrow, tooltipTrigger } from '@/components/Toolt
 export { popoverContent, popoverArrow, popoverArrowTip, popoverTitle, popoverDescription, popoverCloseTrigger } from '@/components/Popover/popover.recipe'
 export { tabsRoot, tabsList, tabsTrigger, tabsContent, tabsIndicator, type TabsListVariants } from '@/components/Tabs/tabs.recipe'
 export { accordionRoot, accordionItem, accordionItemTrigger, accordionItemContent, accordionItemIndicator } from '@/components/Accordion/accordion.recipe'
+export { avatar, avatarImage, type AvatarVariants } from '@/components/Avatar/avatar.recipe'
+export { tableRoot, tableHeader, tableHeaderCell, tableBody, tableRow, tableCell, tableCaption } from '@/components/Table/table.recipe'
+export { separator, type SeparatorVariants } from '@/components/Separator/separator.recipe'
+export { skeleton, type SkeletonVariants } from '@/components/Skeleton/skeleton.recipe'export { avatar, avatarImage, type AvatarVariants } from '@/components/Avatar/avatar.recipe'
