@@ -129,6 +129,7 @@ export const datePickerTable = css({
   width: '100%',
   borderCollapse: 'separate',
   borderSpacing: '0',
+  textAlign: 'center',
 })
 
 export const datePickerTableHeader = css({
