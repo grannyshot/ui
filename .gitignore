@@ -8,6 +8,9 @@ develop_docs/
 ## Claude Code
 .claude/
 
+## Next.js
+.next/
+
 ## Panda
 **/styled-system
 styled-system-studio
