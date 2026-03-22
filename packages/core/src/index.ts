@@ -6,6 +6,7 @@ export { button, type ButtonVariants } from '@/components/Button/button.recipe'
 export { input, type InputVariants } from '@/components/Input/input.recipe'
 export { badge, type BadgeVariants } from '@/components/Badge/badge.recipe'
 export { card, type CardVariants } from '@/components/Card/card.recipe'
+export { textarea, type TextareaVariants } from '@/components/Textarea/textarea.recipe'
 
 // Utils
 export { cx } from '@/styled-system/css'
@@ -18,3 +19,4 @@ export { Button } from '@/components/Button/Button'
 export { Input } from '@/components/Input/Input'
 export { Badge } from '@/components/Badge/Badge'
 export { Card } from '@/components/Card/Card'
+export { Textarea } from '@/components/Textarea/Textarea'
