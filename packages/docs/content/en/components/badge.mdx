@@ -1,0 +1,42 @@
+# Badge
+
+A small label used to display status or category information.
+
+## Import
+
+```tsx
+import { Badge } from '@grannyshot/ui'
+```
+
+## Usage
+
+```tsx
+<Badge variant="success">Active</Badge>
+```
+
+## Variants
+
+```tsx
+<Badge variant="success">Success</Badge>
+<Badge variant="warning">Warning</Badge>
+<Badge variant="error">Error</Badge>
+<Badge variant="info">Info</Badge>
+<Badge variant="neutral">Neutral</Badge>
+```
+
+## Sizes
+
+```tsx
+<Badge size="sm">Small</Badge>
+<Badge size="md">Medium</Badge>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `variant` | `'success' \| 'warning' \| 'error' \| 'info' \| 'neutral'` | `'neutral'` | Visual style |
+| `size` | `'sm' \| 'md'` | `'md'` | Badge size |
+| `className` | `string` | — | Additional CSS classes |
+
+Extends all native `<span>` HTML attributes.

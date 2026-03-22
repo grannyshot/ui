@@ -1,0 +1,48 @@
+# Input
+
+다양한 크기와 유효성 검증 상태를 지원하는 텍스트 입력 필드입니다.
+
+## Import
+
+```tsx
+import { Input } from '@grannyshot/ui'
+```
+
+## 사용법
+
+```tsx
+<Input placeholder="이름을 입력하세요" />
+```
+
+## 크기
+
+```tsx
+<Input size="sm" placeholder="Small" />
+<Input size="md" placeholder="Medium" />
+<Input size="lg" placeholder="Large" />
+```
+
+## 상태
+
+```tsx
+<Input state="error" placeholder="에러 상태" />
+<Input state="success" placeholder="성공 상태" />
+```
+
+## 비활성화
+
+```tsx
+<Input disabled placeholder="비활성화된 입력" />
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | 입력 필드 크기 |
+| `state` | `'default' \| 'error' \| 'success'` | `'default'` | 유효성 검증 상태 |
+| `placeholder` | `string` | — | 플레이스홀더 텍스트 |
+| `disabled` | `boolean` | `false` | 비활성화 상태 |
+| `className` | `string` | — | 추가 CSS 클래스 |
+
+네이티브 `<input>` HTML 속성을 모두 지원합니다.

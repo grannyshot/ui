@@ -1,0 +1,48 @@
+# Separator
+
+A visual divider that separates content into distinct sections.
+
+## Import
+
+```tsx
+import { Separator } from '@grannyshot/ui'
+```
+
+## Usage
+
+```tsx
+<p>Content above</p>
+<Separator />
+<p>Content below</p>
+```
+
+## Orientation
+
+### Horizontal (default)
+
+```tsx
+<Separator orientation="horizontal" />
+```
+
+### Vertical
+
+```tsx
+<div style={{ display: 'flex', alignItems: 'center', height: 24 }}>
+  <span>Left</span>
+  <Separator orientation="vertical" />
+  <span>Right</span>
+</div>
+```
+
+## Accessibility
+
+The Separator renders with `role="separator"` and `aria-orientation` set to the current orientation value automatically.
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `orientation` | `'horizontal' \| 'vertical'` | `'horizontal'` | Separator direction |
+| `className` | `string` | — | Additional CSS classes |
+
+Extends all native `<div>` HTML attributes.

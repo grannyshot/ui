@@ -1,0 +1,102 @@
+# Accordion
+
+A component that provides a list of collapsible content sections. Built on [Ark UI](https://ark-ui.com/react/docs/components/accordion).
+
+## Import
+
+```tsx
+import { Accordion } from '@grannyshot/ui'
+```
+
+## Usage
+
+```tsx
+<Accordion.Root collapsible>
+  <Accordion.Item value="item-1">
+    <Accordion.ItemTrigger>First item</Accordion.ItemTrigger>
+    <Accordion.ItemContent>
+      Content of the first item.
+    </Accordion.ItemContent>
+  </Accordion.Item>
+  <Accordion.Item value="item-2">
+    <Accordion.ItemTrigger>Second item</Accordion.ItemTrigger>
+    <Accordion.ItemContent>
+      Content of the second item.
+    </Accordion.ItemContent>
+  </Accordion.Item>
+</Accordion.Root>
+```
+
+## Collapsible
+
+When `collapsible` is set, clicking an open item will close it.
+
+```tsx
+<Accordion.Root collapsible>
+  <Accordion.Item value="item-1">
+    <Accordion.ItemTrigger>Collapsible item</Accordion.ItemTrigger>
+    <Accordion.ItemContent>Click again to close.</Accordion.ItemContent>
+  </Accordion.Item>
+</Accordion.Root>
+```
+
+## Multiple
+
+Set `multiple` to allow opening several items at the same time.
+
+```tsx
+<Accordion.Root multiple>
+  <Accordion.Item value="item-1">
+    <Accordion.ItemTrigger>Item 1</Accordion.ItemTrigger>
+    <Accordion.ItemContent>Content 1</Accordion.ItemContent>
+  </Accordion.Item>
+  <Accordion.Item value="item-2">
+    <Accordion.ItemTrigger>Item 2</Accordion.ItemTrigger>
+    <Accordion.ItemContent>Content 2</Accordion.ItemContent>
+  </Accordion.Item>
+  <Accordion.Item value="item-3">
+    <Accordion.ItemTrigger>Item 3</Accordion.ItemTrigger>
+    <Accordion.ItemContent>Content 3</Accordion.ItemContent>
+  </Accordion.Item>
+</Accordion.Root>
+```
+
+## Default Value
+
+Use `defaultValue` to specify which items are open initially.
+
+```tsx
+<Accordion.Root defaultValue={['item-2']} collapsible>
+  <Accordion.Item value="item-1">
+    <Accordion.ItemTrigger>Item 1</Accordion.ItemTrigger>
+    <Accordion.ItemContent>Content 1</Accordion.ItemContent>
+  </Accordion.Item>
+  <Accordion.Item value="item-2">
+    <Accordion.ItemTrigger>Item 2 (default open)</Accordion.ItemTrigger>
+    <Accordion.ItemContent>This item is open by default.</Accordion.ItemContent>
+  </Accordion.Item>
+</Accordion.Root>
+```
+
+## Compound Components
+
+| Component | Description |
+|-----------|-------------|
+| `Accordion.Root` | Accordion root. Sets `collapsible`, `multiple`, `defaultValue`, etc. |
+| `Accordion.Item` | Individual accordion item. `value` is required |
+| `Accordion.ItemTrigger` | Toggle button for the item (includes arrow icon automatically) |
+| `Accordion.ItemContent` | Item content area |
+
+## Props
+
+### Accordion.Root
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `collapsible` | `boolean` | `false` | Whether open items can be closed again |
+| `multiple` | `boolean` | `false` | Allow multiple items to be open |
+| `defaultValue` | `string[]` | — | Array of initially open item values |
+| `value` | `string[]` | — | Open items in controlled mode |
+| `onValueChange` | `(details: { value: string[] }) => void` | — | Callback when items change |
+
+Supports all Ark UI Accordion props.

@@ -1,0 +1,81 @@
+# Menu
+
+A dropdown menu for displaying a list of actions or options.
+
+## Import
+
+```tsx
+import { Menu } from '@grannyshot/ui'
+```
+
+## Basic Usage
+
+```tsx
+<Menu.Root>
+  <Menu.Trigger asChild>
+    <Button>Actions</Button>
+  </Menu.Trigger>
+  <Menu.Content>
+    <Menu.Item value="edit">Edit</Menu.Item>
+    <Menu.Item value="duplicate">Duplicate</Menu.Item>
+    <Menu.Separator />
+    <Menu.Item value="delete">Delete</Menu.Item>
+  </Menu.Content>
+</Menu.Root>
+```
+
+## Item Groups
+
+Organize items into labeled groups:
+
+```tsx
+<Menu.Root>
+  <Menu.Trigger asChild>
+    <Button>Options</Button>
+  </Menu.Trigger>
+  <Menu.Content>
+    <Menu.ItemGroup>
+      <Menu.ItemGroupLabel>File</Menu.ItemGroupLabel>
+      <Menu.Item value="new">New</Menu.Item>
+      <Menu.Item value="open">Open</Menu.Item>
+      <Menu.Item value="save">Save</Menu.Item>
+    </Menu.ItemGroup>
+    <Menu.Separator />
+    <Menu.ItemGroup>
+      <Menu.ItemGroupLabel>Edit</Menu.ItemGroupLabel>
+      <Menu.Item value="undo">Undo</Menu.Item>
+      <Menu.Item value="redo">Redo</Menu.Item>
+    </Menu.ItemGroup>
+  </Menu.Content>
+</Menu.Root>
+```
+
+## With Separator
+
+Use `Menu.Separator` to visually divide groups of items:
+
+```tsx
+<Menu.Root>
+  <Menu.Trigger asChild>
+    <Button>More</Button>
+  </Menu.Trigger>
+  <Menu.Content>
+    <Menu.Item value="profile">Profile</Menu.Item>
+    <Menu.Item value="settings">Settings</Menu.Item>
+    <Menu.Separator />
+    <Menu.Item value="logout">Log out</Menu.Item>
+  </Menu.Content>
+</Menu.Root>
+```
+
+## Compound Components
+
+| Component | Description |
+|-----------|-------------|
+| `Menu.Root` | State container |
+| `Menu.Trigger` | Element that toggles the menu |
+| `Menu.Content` | The dropdown content panel |
+| `Menu.Item` | A single menu item |
+| `Menu.Separator` | Visual divider between items |
+| `Menu.ItemGroup` | Groups related items together |
+| `Menu.ItemGroupLabel` | Label for an item group |

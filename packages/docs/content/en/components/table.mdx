@@ -1,0 +1,75 @@
+# Table
+
+A table component for displaying data in rows and columns. Built with the compound component pattern.
+
+## Import
+
+```tsx
+import { Table } from '@grannyshot/ui'
+```
+
+## Usage
+
+```tsx
+<Table.Root>
+  <Table.Header>
+    <tr>
+      <Table.HeaderCell>Name</Table.HeaderCell>
+      <Table.HeaderCell>Email</Table.HeaderCell>
+      <Table.HeaderCell>Role</Table.HeaderCell>
+    </tr>
+  </Table.Header>
+  <Table.Body>
+    <Table.Row>
+      <Table.Cell>John Doe</Table.Cell>
+      <Table.Cell>john@example.com</Table.Cell>
+      <Table.Cell>Admin</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell>Jane Smith</Table.Cell>
+      <Table.Cell>jane@example.com</Table.Cell>
+      <Table.Cell>Editor</Table.Cell>
+    </Table.Row>
+  </Table.Body>
+</Table.Root>
+```
+
+## Caption
+
+Use `Table.Caption` to add a description to the table.
+
+```tsx
+<Table.Root>
+  <Table.Header>
+    <tr>
+      <Table.HeaderCell>Product</Table.HeaderCell>
+      <Table.HeaderCell>Price</Table.HeaderCell>
+    </tr>
+  </Table.Header>
+  <Table.Body>
+    <Table.Row>
+      <Table.Cell>Laptop</Table.Cell>
+      <Table.Cell>$1,200</Table.Cell>
+    </Table.Row>
+  </Table.Body>
+  <Table.Caption>Product list for 2024</Table.Caption>
+</Table.Root>
+```
+
+## Hover Row
+
+Each row has a built-in hover background effect for better readability.
+
+## Compound Components
+
+| Component | Element | Description |
+|-----------|---------|-------------|
+| `Table.Root` | `<table>` | Table root |
+| `Table.Header` | `<thead>` | Header section |
+| `Table.HeaderCell` | `<th>` | Header cell |
+| `Table.Body` | `<tbody>` | Body section |
+| `Table.Row` | `<tr>` | Row |
+| `Table.Cell` | `<td>` | Cell |
+| `Table.Caption` | `<caption>` | Table caption |
+
+Each sub-component extends the native HTML attributes of its corresponding element.

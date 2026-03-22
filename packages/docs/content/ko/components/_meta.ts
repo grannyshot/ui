@@ -1,0 +1,37 @@
+export default {
+  '-- General': { type: 'separator', title: '일반' },
+  button: '버튼 (Button)',
+  badge: '뱃지 (Badge)',
+  separator: '구분선 (Separator)',
+  skeleton: '스켈레톤 (Skeleton)',
+  avatar: '아바타 (Avatar)',
+
+  '-- Form': { type: 'separator', title: '폼' },
+  input: '인풋 (Input)',
+  textarea: '텍스트 영역 (Textarea)',
+  label: '라벨 (Label)',
+  checkbox: '체크박스 (Checkbox)',
+  switch: '스위치 (Switch)',
+  select: '셀렉트 (Select)',
+  combobox: '콤보박스 (Combobox)',
+  slider: '슬라이더 (Slider)',
+  'date-picker': '날짜 선택 (DatePicker)',
+  field: '필드 (Field)',
+
+  '-- Layout': { type: 'separator', title: '레이아웃' },
+  card: '카드 (Card)',
+  table: '테이블 (Table)',
+  tabs: '탭 (Tabs)',
+  accordion: '아코디언 (Accordion)',
+
+  '-- Overlay': { type: 'separator', title: '오버레이' },
+  dialog: '다이얼로그 (Dialog)',
+  drawer: '드로어 (Drawer)',
+  popover: '팝오버 (Popover)',
+  tooltip: '툴팁 (Tooltip)',
+  menu: '메뉴 (Menu)',
+
+  '-- Feedback': { type: 'separator', title: '피드백' },
+  toast: '토스트 (Toast)',
+  progress: '프로그레스 (Progress)',
+}

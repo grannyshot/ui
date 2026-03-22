@@ -1,0 +1,59 @@
+# Progress
+
+A progress bar indicating completion status. Built on Ark UI.
+
+## Import
+
+```tsx
+import { Progress } from '@grannyshot/ui'
+```
+
+## Usage
+
+```tsx
+<Progress value={40} />
+```
+
+## Sizes
+
+```tsx
+<Progress size="sm" value={30} />  {/* 4px */}
+<Progress size="md" value={50} />  {/* 8px */}
+<Progress size="lg" value={70} />  {/* 12px */}
+```
+
+## With label
+
+```tsx
+<Progress value={60} label="Uploading..." />
+```
+
+## Show value
+
+```tsx
+<Progress value={75} showValue />
+```
+
+## With label and value
+
+```tsx
+<Progress value={45} label="Downloading" showValue />
+```
+
+## Min / Max
+
+```tsx
+<Progress value={3} min={0} max={10} />
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `number` | `0` | Current progress value |
+| `min` | `number` | `0` | Minimum value |
+| `max` | `number` | `100` | Maximum value |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Bar height (sm=4px, md=8px, lg=12px) |
+| `label` | `string` | — | Label text displayed above the bar |
+| `showValue` | `boolean` | `false` | Show percentage value |
+| `className` | `string` | — | Additional CSS classes |

@@ -1,0 +1,60 @@
+# Tooltip
+
+A small informational popup that appears on hover or focus.
+
+## Import
+
+```tsx
+import { Tooltip } from '@grannyshot/ui'
+```
+
+## Basic Usage
+
+Wrap any element to show a tooltip on hover:
+
+```tsx
+<Tooltip content="Save your changes">
+  <Button>Save</Button>
+</Tooltip>
+```
+
+## Open Delay
+
+Control how long the user must hover before the tooltip appears (default: 300ms):
+
+```tsx
+<Tooltip content="Instant tooltip" openDelay={0}>
+  <Button>Hover me</Button>
+</Tooltip>
+```
+
+## Close Delay
+
+Control how long the tooltip stays visible after the cursor leaves (default: 0ms):
+
+```tsx
+<Tooltip content="Lingers a bit" closeDelay={500}>
+  <Button>Hover me</Button>
+</Tooltip>
+```
+
+## With Icons
+
+Tooltips are especially useful for icon-only buttons:
+
+```tsx
+<Tooltip content="Delete item">
+  <IconButton aria-label="Delete">
+    <TrashIcon />
+  </IconButton>
+</Tooltip>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `content` | `ReactNode` | — | Tooltip content |
+| `openDelay` | `number` | `300` | Delay in ms before showing |
+| `closeDelay` | `number` | `0` | Delay in ms before hiding |
+| `children` | `ReactNode` | — | Trigger element |

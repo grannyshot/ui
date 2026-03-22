@@ -1,0 +1,50 @@
+# Avatar
+
+A visual representation of a user or entity. Supports image, initials fallback, and multiple sizes.
+
+## Import
+
+```tsx
+import { Avatar } from '@grannyshot/ui'
+```
+
+## Usage
+
+```tsx
+<Avatar src="/avatar.jpg" alt="John Doe" />
+```
+
+## With initials fallback
+
+When no `src` is provided or the image fails to load, initials are generated from the `name` prop.
+
+```tsx
+<Avatar name="John Doe" />
+```
+
+## Sizes
+
+```tsx
+<Avatar size="sm" name="SM" />  {/* 32px */}
+<Avatar size="md" name="MD" />  {/* 40px */}
+<Avatar size="lg" name="LG" />  {/* 48px */}
+<Avatar size="xl" name="XL" />  {/* 64px */}
+```
+
+## With image
+
+```tsx
+<Avatar src="/avatar.jpg" alt="Jane Smith" size="lg" />
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `src` | `string` | — | Image URL |
+| `alt` | `string` | — | Alt text for the image |
+| `name` | `string` | — | User name for initials fallback |
+| `size` | `'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` | Avatar size (32/40/48/64px) |
+| `className` | `string` | — | Additional CSS classes |
+
+Extends all native `<div>` HTML attributes.

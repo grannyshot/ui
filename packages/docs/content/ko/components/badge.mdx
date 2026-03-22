@@ -1,0 +1,42 @@
+# 뱃지 (Badge)
+
+상태나 카테고리 정보를 표시하는 작은 라벨 컴포넌트입니다.
+
+## Import
+
+```tsx
+import { Badge } from '@grannyshot/ui'
+```
+
+## 사용법
+
+```tsx
+<Badge variant="success">활성</Badge>
+```
+
+## 변형 (Variants)
+
+```tsx
+<Badge variant="success">Success</Badge>
+<Badge variant="warning">Warning</Badge>
+<Badge variant="error">Error</Badge>
+<Badge variant="info">Info</Badge>
+<Badge variant="neutral">Neutral</Badge>
+```
+
+## 크기 (Sizes)
+
+```tsx
+<Badge size="sm">Small</Badge>
+<Badge size="md">Medium</Badge>
+```
+
+## Props
+
+| Prop | Type | Default | 설명 |
+|------|------|---------|------|
+| `variant` | `'success' \| 'warning' \| 'error' \| 'info' \| 'neutral'` | `'neutral'` | 시각적 스타일 |
+| `size` | `'sm' \| 'md'` | `'md'` | 뱃지 크기 |
+| `className` | `string` | — | 추가 CSS 클래스 |
+
+네이티브 `<span>` HTML 속성을 모두 지원합니다.

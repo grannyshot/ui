@@ -1,0 +1,49 @@
+# Checkbox
+
+A checkbox control built on Ark UI with multiple sizes and indeterminate state support.
+
+## Import
+
+```tsx
+import { Checkbox } from '@grannyshot/ui'
+```
+
+## Usage
+
+```tsx
+<Checkbox label="Accept terms" />
+```
+
+## Sizes
+
+```tsx
+<Checkbox size="sm" label="Small" />
+<Checkbox size="md" label="Medium" />
+<Checkbox size="lg" label="Large" />
+```
+
+## States
+
+```tsx
+<Checkbox label="Unchecked" />
+<Checkbox label="Checked" defaultChecked />
+<Checkbox label="Indeterminate" checked="indeterminate" />
+```
+
+## Disabled
+
+```tsx
+<Checkbox label="Disabled" disabled />
+<Checkbox label="Disabled checked" disabled defaultChecked />
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `label` | `string` | — | Checkbox label text |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Checkbox size |
+| `checked` | `boolean \| 'indeterminate'` | — | Controlled checked state |
+| `defaultChecked` | `boolean` | `false` | Initial checked state |
+| `disabled` | `boolean` | `false` | Disabled state |
+| `className` | `string` | — | Additional CSS classes |

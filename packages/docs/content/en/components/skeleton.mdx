@@ -1,0 +1,58 @@
+# Skeleton
+
+A placeholder that indicates content is loading. Displays a pulsing animation to represent where content will appear.
+
+## Import
+
+```tsx
+import { Skeleton } from '@grannyshot/ui'
+```
+
+## Usage
+
+```tsx
+<Skeleton width={200} height={20} />
+```
+
+## Variants
+
+### Rectangular (default)
+
+```tsx
+<Skeleton variant="rectangular" width={200} height={120} />
+```
+
+### Text
+
+```tsx
+<Skeleton variant="text" width={160} />
+```
+
+### Circular
+
+```tsx
+<Skeleton variant="circular" width={48} height={48} />
+```
+
+## Composing a loading state
+
+```tsx
+<div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+  <Skeleton variant="circular" width={40} height={40} />
+  <div>
+    <Skeleton variant="text" width={120} />
+    <Skeleton variant="text" width={80} />
+  </div>
+</div>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `variant` | `'text' \| 'circular' \| 'rectangular'` | `'rectangular'` | Shape of the skeleton |
+| `width` | `number \| string` | — | Width of the skeleton |
+| `height` | `number \| string` | — | Height of the skeleton |
+| `className` | `string` | — | Additional CSS classes |
+
+Extends all native `<div>` HTML attributes.

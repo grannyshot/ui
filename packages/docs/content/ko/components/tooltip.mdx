@@ -1,0 +1,60 @@
+# Tooltip
+
+호버 또는 포커스 시 나타나는 작은 정보 팝업입니다.
+
+## Import
+
+```tsx
+import { Tooltip } from '@grannyshot/ui'
+```
+
+## 기본 사용법
+
+요소를 감싸면 호버 시 툴팁이 표시됩니다:
+
+```tsx
+<Tooltip content="변경사항을 저장합니다">
+  <Button>저장</Button>
+</Tooltip>
+```
+
+## 열림 지연 (Open Delay)
+
+툴팁이 나타나기까지의 호버 대기 시간을 설정합니다 (기본값: 300ms):
+
+```tsx
+<Tooltip content="즉시 나타나는 툴팁" openDelay={0}>
+  <Button>호버하세요</Button>
+</Tooltip>
+```
+
+## 닫힘 지연 (Close Delay)
+
+커서가 떠난 후 툴팁이 유지되는 시간을 설정합니다 (기본값: 0ms):
+
+```tsx
+<Tooltip content="잠시 유지되는 툴팁" closeDelay={500}>
+  <Button>호버하세요</Button>
+</Tooltip>
+```
+
+## 아이콘과 함께 사용
+
+아이콘만 있는 버튼에 특히 유용합니다:
+
+```tsx
+<Tooltip content="항목 삭제">
+  <IconButton aria-label="삭제">
+    <TrashIcon />
+  </IconButton>
+</Tooltip>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `content` | `ReactNode` | — | 툴팁 내용 |
+| `openDelay` | `number` | `300` | 표시 전 대기 시간 (ms) |
+| `closeDelay` | `number` | `0` | 숨김 전 대기 시간 (ms) |
+| `children` | `ReactNode` | — | 트리거 요소 |

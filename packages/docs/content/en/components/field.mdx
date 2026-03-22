@@ -1,0 +1,77 @@
+# Field
+
+A form field wrapper that provides label, hint text, error message, and automatic ARIA association for child form controls.
+
+## Import
+
+```tsx
+import { Field } from '@grannyshot/ui'
+```
+
+## Usage
+
+```tsx
+<Field label="Username">
+  <Input placeholder="Enter your username" />
+</Field>
+```
+
+## With Hint
+
+```tsx
+<Field label="Password" hint="Must be at least 8 characters">
+  <Input type="password" />
+</Field>
+```
+
+## Required
+
+```tsx
+<Field label="Email" required>
+  <Input type="email" placeholder="you@example.com" />
+</Field>
+```
+
+## Error State
+
+```tsx
+<Field label="Username" error="This username is already taken">
+  <Input />
+</Field>
+```
+
+## Disabled
+
+```tsx
+<Field label="Name" disabled>
+  <Input placeholder="Disabled field" />
+</Field>
+```
+
+## With Different Controls
+
+Field works with any form control component.
+
+```tsx
+<Field label="Framework" required>
+  <Select collection={collection} placeholder="Select a framework" />
+</Field>
+
+<Field label="Bio" hint="Tell us about yourself">
+  <Textarea placeholder="Write something..." />
+</Field>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `label` | `string` | — | Field label text |
+| `hint` | `string` | — | Helper text below the control |
+| `error` | `string` | — | Error message (replaces hint when present) |
+| `required` | `boolean` | `false` | Show required indicator on label |
+| `disabled` | `boolean` | `false` | Disable the field and child controls |
+| `children` | `ReactNode` | — | Form control (Input, Select, Textarea, etc.) |
+| `className` | `string` | — | Additional CSS classes |
+
+Field automatically connects the label, hint, and error message to the child form control via ARIA attributes (`aria-describedby`, `aria-invalid`, etc.).

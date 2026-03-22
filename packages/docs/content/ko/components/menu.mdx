@@ -1,0 +1,81 @@
+# Menu
+
+액션이나 옵션 목록을 표시하는 드롭다운 메뉴 컴포넌트입니다.
+
+## Import
+
+```tsx
+import { Menu } from '@grannyshot/ui'
+```
+
+## 기본 사용법
+
+```tsx
+<Menu.Root>
+  <Menu.Trigger asChild>
+    <Button>액션</Button>
+  </Menu.Trigger>
+  <Menu.Content>
+    <Menu.Item value="edit">수정</Menu.Item>
+    <Menu.Item value="duplicate">복제</Menu.Item>
+    <Menu.Separator />
+    <Menu.Item value="delete">삭제</Menu.Item>
+  </Menu.Content>
+</Menu.Root>
+```
+
+## 항목 그룹
+
+라벨이 있는 그룹으로 항목을 정리할 수 있습니다:
+
+```tsx
+<Menu.Root>
+  <Menu.Trigger asChild>
+    <Button>옵션</Button>
+  </Menu.Trigger>
+  <Menu.Content>
+    <Menu.ItemGroup>
+      <Menu.ItemGroupLabel>파일</Menu.ItemGroupLabel>
+      <Menu.Item value="new">새로 만들기</Menu.Item>
+      <Menu.Item value="open">열기</Menu.Item>
+      <Menu.Item value="save">저장</Menu.Item>
+    </Menu.ItemGroup>
+    <Menu.Separator />
+    <Menu.ItemGroup>
+      <Menu.ItemGroupLabel>편집</Menu.ItemGroupLabel>
+      <Menu.Item value="undo">실행 취소</Menu.Item>
+      <Menu.Item value="redo">다시 실행</Menu.Item>
+    </Menu.ItemGroup>
+  </Menu.Content>
+</Menu.Root>
+```
+
+## 구분선 사용
+
+`Menu.Separator`를 사용하여 항목 그룹을 시각적으로 구분할 수 있습니다:
+
+```tsx
+<Menu.Root>
+  <Menu.Trigger asChild>
+    <Button>더보기</Button>
+  </Menu.Trigger>
+  <Menu.Content>
+    <Menu.Item value="profile">프로필</Menu.Item>
+    <Menu.Item value="settings">설정</Menu.Item>
+    <Menu.Separator />
+    <Menu.Item value="logout">로그아웃</Menu.Item>
+  </Menu.Content>
+</Menu.Root>
+```
+
+## Compound 컴포넌트
+
+| 컴포넌트 | 설명 |
+|-----------|------|
+| `Menu.Root` | 상태 컨테이너 |
+| `Menu.Trigger` | 메뉴를 토글하는 요소 |
+| `Menu.Content` | 드롭다운 콘텐츠 패널 |
+| `Menu.Item` | 개별 메뉴 항목 |
+| `Menu.Separator` | 항목 간 시각적 구분선 |
+| `Menu.ItemGroup` | 관련 항목을 그룹화 |
+| `Menu.ItemGroupLabel` | 항목 그룹의 라벨 |

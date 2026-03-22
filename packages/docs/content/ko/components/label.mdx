@@ -1,0 +1,46 @@
+# Label
+
+필수 및 비활성화 상태를 지원하는 폼 컨트롤용 텍스트 레이블입니다.
+
+## Import
+
+```tsx
+import { Label } from '@grannyshot/ui'
+```
+
+## 사용법
+
+```tsx
+<Label>사용자명</Label>
+```
+
+## 필수 표시
+
+레이블 텍스트 옆에 필수 표시를 나타냅니다.
+
+```tsx
+<Label required>이메일</Label>
+```
+
+## 비활성화
+
+```tsx
+<Label disabled>비활성화된 필드</Label>
+```
+
+## 폼 컨트롤과 함께 사용
+
+```tsx
+<Label htmlFor="email" required>이메일</Label>
+<Input id="email" placeholder="you@example.com" />
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `required` | `boolean` | `false` | 필수 표시 여부 |
+| `disabled` | `boolean` | `false` | 비활성화 스타일 |
+| `className` | `string` | — | 추가 CSS 클래스 |
+
+네이티브 `<label>` HTML 속성을 모두 지원합니다.

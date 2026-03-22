@@ -1,0 +1,61 @@
+# Combobox
+
+A searchable select control built on Ark UI with collection-based items and filtering.
+
+## Import
+
+```tsx
+import { Combobox, createListCollection } from '@grannyshot/ui'
+```
+
+## Usage
+
+```tsx
+const collection = createListCollection({
+  items: [
+    { label: 'React', value: 'react' },
+    { label: 'Vue', value: 'vue' },
+    { label: 'Svelte', value: 'svelte' },
+    { label: 'Angular', value: 'angular' },
+  ],
+})
+
+<Combobox collection={collection} placeholder="Search frameworks..." />
+```
+
+## Sizes
+
+```tsx
+<Combobox collection={collection} size="sm" placeholder="Small" />
+<Combobox collection={collection} size="md" placeholder="Medium" />
+<Combobox collection={collection} size="lg" placeholder="Large" />
+```
+
+## Disabled
+
+```tsx
+<Combobox collection={collection} placeholder="Disabled" disabled />
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `collection` | `ListCollection` | — | Collection of selectable items |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Combobox size |
+| `placeholder` | `string` | — | Placeholder text for the search input |
+| `disabled` | `boolean` | `false` | Disabled state |
+| `className` | `string` | — | Additional CSS classes |
+
+### createListCollection
+
+Creates a collection from an array of items.
+
+```tsx
+const collection = createListCollection({
+  items: [
+    { label: 'Option 1', value: 'option-1' },
+    { label: 'Option 2', value: 'option-2' },
+  ],
+})
+```

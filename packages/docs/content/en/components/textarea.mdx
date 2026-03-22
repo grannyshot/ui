@@ -1,0 +1,57 @@
+# Textarea
+
+A multi-line text input with multiple sizes, validation states, and resize options.
+
+## Import
+
+```tsx
+import { Textarea } from '@grannyshot/ui'
+```
+
+## Usage
+
+```tsx
+<Textarea placeholder="Enter your message" />
+```
+
+## Sizes
+
+```tsx
+<Textarea size="sm" placeholder="Small" />
+<Textarea size="md" placeholder="Medium" />
+<Textarea size="lg" placeholder="Large" />
+```
+
+## States
+
+```tsx
+<Textarea state="error" placeholder="Error state" />
+<Textarea state="success" placeholder="Success state" />
+```
+
+## Resize
+
+```tsx
+<Textarea resize="none" placeholder="No resize" />
+<Textarea resize="vertical" placeholder="Vertical resize (default)" />
+<Textarea resize="both" placeholder="Both directions" />
+```
+
+## Disabled
+
+```tsx
+<Textarea disabled placeholder="Disabled textarea" />
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Textarea size |
+| `state` | `'default' \| 'error' \| 'success'` | `'default'` | Validation state |
+| `resize` | `'none' \| 'vertical' \| 'both'` | `'vertical'` | Resize behavior |
+| `placeholder` | `string` | — | Placeholder text |
+| `disabled` | `boolean` | `false` | Disabled state |
+| `className` | `string` | — | Additional CSS classes |
+
+Extends all native `<textarea>` HTML attributes.

@@ -1,0 +1,82 @@
+# 테마
+
+grannyshot-ui는 모든 색상에 **시맨틱 토큰**을 사용하여 다크 모드를 자연스럽게 지원합니다.
+
+## ThemeProvider
+
+앱을 감싸서 테마 전환을 활성화합니다:
+
+```tsx
+import { ThemeProvider } from '@grannyshot/ui'
+
+<ThemeProvider defaultTheme="system">
+  {children}
+</ThemeProvider>
+```
+
+**옵션:** `light`, `dark`, `system`
+
+## useTheme 훅
+
+현재 테마를 읽고 변경합니다:
+
+```tsx
+import { useTheme } from '@grannyshot/ui'
+
+function ThemeToggle() {
+  const { theme, resolvedTheme, setTheme } = useTheme()
+
+  return (
+    <button onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}>
+      {resolvedTheme === 'dark' ? '라이트' : '다크'}
+    </button>
+  )
+}
+```
+
+## 시맨틱 토큰
+
+모든 컴포넌트는 테마에 따라 자동 전환되는 시맨틱 색상 토큰을 사용합니다:
+
+### 배경
+| 토큰 | 라이트 | 다크 |
+|------|--------|------|
+| `bg` | white | gray.950 |
+| `bg.subtle` | gray.50 | gray.900 |
+| `bg.muted` | gray.100 | gray.800 |
+
+### 전경
+| 토큰 | 라이트 | 다크 |
+|------|--------|------|
+| `fg` | gray.950 | gray.50 |
+| `fg.muted` | gray.500 | gray.300 |
+| `fg.subtle` | gray.400 | gray.500 |
+
+### 액센트 (Emerald)
+| 토큰 | 라이트 | 다크 |
+|------|--------|------|
+| `accent` | emerald.500 | emerald.500 |
+| `accent.hover` | emerald.600 | emerald.400 |
+| `accent.fg` | white | white |
+
+### 상태
+| 토큰 | 라이트 | 다크 |
+|------|--------|------|
+| `success` | emerald.600 | emerald.400 |
+| `warning` | amber.500 | amber.400 |
+| `error` | red.500 | red.400 |
+| `info` | blue.500 | blue.400 |
+
+## CSS 변수 접두사
+
+모든 CSS 변수는 `--gs-` 접두사를 사용합니다:
+
+```css
+var(--gs-colors-accent)
+var(--gs-colors-fg)
+var(--gs-spacing-4)
+```
+
+## 저장
+
+테마 설정은 `localStorage`의 `grannyshot-theme` 키에 저장됩니다.

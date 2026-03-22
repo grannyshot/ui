@@ -1,0 +1,91 @@
+# Drawer
+
+A sliding panel that enters from the edge of the screen. Built on Ark UI Dialog.
+
+## Import
+
+```tsx
+import { Drawer, DrawerProvider, drawer } from '@grannyshot/ui'
+```
+
+## Setup (Imperative)
+
+Add `DrawerProvider` to your app root:
+
+```tsx
+<ThemeProvider>
+  <App />
+  <DrawerProvider />
+</ThemeProvider>
+```
+
+## Imperative API
+
+### Open
+
+Open a drawer programmatically with custom content:
+
+```tsx
+drawer.open({
+  title: 'Settings',
+  description: 'Manage your preferences',
+  placement: 'right',
+  content: (
+    <div>
+      <p>Your settings content here</p>
+    </div>
+  ),
+})
+```
+
+### Close
+
+Close the currently open drawer:
+
+```tsx
+drawer.close()
+```
+
+## Declarative API
+
+Use compound components for full control:
+
+```tsx
+<Drawer.Root>
+  <Drawer.Trigger asChild>
+    <Button>Open Drawer</Button>
+  </Drawer.Trigger>
+  <Drawer.Content placement="right">
+    <Drawer.Header>
+      <Drawer.Title>Navigation</Drawer.Title>
+      <Drawer.Description>Browse pages</Drawer.Description>
+      <Drawer.CloseTrigger />
+    </Drawer.Header>
+    <Drawer.Body>
+      {/* your content */}
+    </Drawer.Body>
+    <Drawer.Footer>
+      <Button>Save</Button>
+    </Drawer.Footer>
+  </Drawer.Content>
+</Drawer.Root>
+```
+
+## Placement
+
+The drawer can slide in from the left or right:
+
+```tsx
+{/* Left side */}
+<Drawer.Content placement="left">...</Drawer.Content>
+
+{/* Right side (default) */}
+<Drawer.Content placement="right">...</Drawer.Content>
+```
+
+## Props (Drawer.Content)
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `placement` | `'left' \| 'right'` | `'right'` | Side the drawer enters from |
+| `className` | `string` | — | Additional CSS classes |

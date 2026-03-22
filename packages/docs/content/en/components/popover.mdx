@@ -1,0 +1,75 @@
+# Popover
+
+A floating panel that appears next to a trigger element, useful for displaying additional content or actions.
+
+## Import
+
+```tsx
+import { Popover } from '@grannyshot/ui'
+```
+
+## Basic Usage
+
+```tsx
+<Popover.Root>
+  <Popover.Trigger asChild>
+    <Button>Open Popover</Button>
+  </Popover.Trigger>
+  <Popover.Content>
+    <Popover.Arrow />
+    <Popover.Title>Details</Popover.Title>
+    <Popover.Description>
+      Additional information goes here.
+    </Popover.Description>
+    <Popover.CloseTrigger />
+  </Popover.Content>
+</Popover.Root>
+```
+
+## With Form
+
+Popovers work well for inline editing or small forms:
+
+```tsx
+<Popover.Root>
+  <Popover.Trigger asChild>
+    <Button variant="outline">Edit Name</Button>
+  </Popover.Trigger>
+  <Popover.Content>
+    <Popover.Arrow />
+    <Popover.Title>Edit Name</Popover.Title>
+    <Input placeholder="Enter name" />
+    <Button size="sm">Save</Button>
+    <Popover.CloseTrigger />
+  </Popover.Content>
+</Popover.Root>
+```
+
+## Without Arrow
+
+Omit `Popover.Arrow` for a flat appearance:
+
+```tsx
+<Popover.Root>
+  <Popover.Trigger asChild>
+    <Button>Info</Button>
+  </Popover.Trigger>
+  <Popover.Content>
+    <Popover.Title>No Arrow</Popover.Title>
+    <Popover.Description>This popover has no arrow.</Popover.Description>
+    <Popover.CloseTrigger />
+  </Popover.Content>
+</Popover.Root>
+```
+
+## Compound Components
+
+| Component | Description |
+|-----------|-------------|
+| `Popover.Root` | State container |
+| `Popover.Trigger` | Element that toggles the popover |
+| `Popover.Content` | The floating content panel |
+| `Popover.Arrow` | Arrow pointing to the trigger |
+| `Popover.Title` | Title text |
+| `Popover.Description` | Description text |
+| `Popover.CloseTrigger` | Close button |

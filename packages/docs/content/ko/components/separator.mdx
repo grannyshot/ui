@@ -1,0 +1,48 @@
+# 구분선 (Separator)
+
+콘텐츠를 시각적으로 구분하는 구분선 컴포넌트입니다.
+
+## Import
+
+```tsx
+import { Separator } from '@grannyshot/ui'
+```
+
+## 사용법
+
+```tsx
+<p>위쪽 콘텐츠</p>
+<Separator />
+<p>아래쪽 콘텐츠</p>
+```
+
+## 방향 (Orientation)
+
+### 수평 (기본값)
+
+```tsx
+<Separator orientation="horizontal" />
+```
+
+### 수직
+
+```tsx
+<div style={{ display: 'flex', alignItems: 'center', height: 24 }}>
+  <span>왼쪽</span>
+  <Separator orientation="vertical" />
+  <span>오른쪽</span>
+</div>
+```
+
+## 접근성
+
+Separator는 `role="separator"`와 `aria-orientation` 속성이 자동으로 설정됩니다.
+
+## Props
+
+| Prop | Type | Default | 설명 |
+|------|------|---------|------|
+| `orientation` | `'horizontal' \| 'vertical'` | `'horizontal'` | 구분선 방향 |
+| `className` | `string` | — | 추가 CSS 클래스 |
+
+네이티브 `<div>` HTML 속성을 모두 지원합니다.

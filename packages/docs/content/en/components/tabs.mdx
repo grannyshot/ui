@@ -1,0 +1,99 @@
+# Tabs
+
+A component for switching between content panels using tabs. Built on [Ark UI](https://ark-ui.com/react/docs/components/tabs).
+
+## Import
+
+```tsx
+import { Tabs } from '@grannyshot/ui'
+```
+
+## Usage
+
+```tsx
+<Tabs.Root defaultValue="tab1">
+  <Tabs.List>
+    <Tabs.Trigger value="tab1">Overview</Tabs.Trigger>
+    <Tabs.Trigger value="tab2">Features</Tabs.Trigger>
+    <Tabs.Trigger value="tab3">Settings</Tabs.Trigger>
+    <Tabs.Indicator />
+  </Tabs.List>
+  <Tabs.Content value="tab1">Overview content</Tabs.Content>
+  <Tabs.Content value="tab2">Features content</Tabs.Content>
+  <Tabs.Content value="tab3">Settings content</Tabs.Content>
+</Tabs.Root>
+```
+
+## Variants
+
+Set the `variant` prop on `Tabs.Root` to automatically propagate the style to all child components.
+
+### Line (default)
+
+A tab style with a bottom border indicator.
+
+```tsx
+<Tabs.Root variant="line" defaultValue="tab1">
+  <Tabs.List>
+    <Tabs.Trigger value="tab1">Tab 1</Tabs.Trigger>
+    <Tabs.Trigger value="tab2">Tab 2</Tabs.Trigger>
+    <Tabs.Indicator />
+  </Tabs.List>
+  <Tabs.Content value="tab1">Line style content</Tabs.Content>
+  <Tabs.Content value="tab2">Line style content</Tabs.Content>
+</Tabs.Root>
+```
+
+### Pill
+
+A rounded tab style with background color.
+
+```tsx
+<Tabs.Root variant="pill" defaultValue="tab1">
+  <Tabs.List>
+    <Tabs.Trigger value="tab1">Tab 1</Tabs.Trigger>
+    <Tabs.Trigger value="tab2">Tab 2</Tabs.Trigger>
+  </Tabs.List>
+  <Tabs.Content value="tab1">Pill style content</Tabs.Content>
+  <Tabs.Content value="tab2">Pill style content</Tabs.Content>
+</Tabs.Root>
+```
+
+## Disabled
+
+Individual tabs can be disabled.
+
+```tsx
+<Tabs.Root defaultValue="tab1">
+  <Tabs.List>
+    <Tabs.Trigger value="tab1">Active</Tabs.Trigger>
+    <Tabs.Trigger value="tab2" disabled>Disabled</Tabs.Trigger>
+    <Tabs.Indicator />
+  </Tabs.List>
+  <Tabs.Content value="tab1">Active tab content</Tabs.Content>
+</Tabs.Root>
+```
+
+## Compound Components
+
+| Component | Description |
+|-----------|-------------|
+| `Tabs.Root` | Tab root. Sets `variant`, `defaultValue`, etc. |
+| `Tabs.List` | Container for tab triggers |
+| `Tabs.Trigger` | Individual tab button. `value` is required |
+| `Tabs.Content` | Tab content panel. Linked to trigger by `value` |
+| `Tabs.Indicator` | Active tab indicator (used with line variant) |
+
+## Props
+
+### Tabs.Root
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `variant` | `'line' \| 'pill'` | `'line'` | Tab style (auto-propagated to children) |
+| `defaultValue` | `string` | — | Initial active tab value |
+| `value` | `string` | — | Active tab value in controlled mode |
+| `onValueChange` | `(details: { value: string }) => void` | — | Callback when tab changes |
+| `lazyMount` | `boolean` | `true` | Lazy mount content panels |
+
+Supports all Ark UI Tabs props.

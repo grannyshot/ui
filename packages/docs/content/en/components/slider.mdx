@@ -1,0 +1,54 @@
+# Slider
+
+A range slider control built on Ark UI with label and value display.
+
+## Import
+
+```tsx
+import { Slider } from '@grannyshot/ui'
+```
+
+## Usage
+
+```tsx
+<Slider label="Volume" defaultValue={[50]} />
+```
+
+## Sizes
+
+```tsx
+<Slider size="sm" label="Small" defaultValue={[30]} />
+<Slider size="md" label="Medium" defaultValue={[50]} />
+<Slider size="lg" label="Large" defaultValue={[70]} />
+```
+
+## Show Value
+
+```tsx
+<Slider label="Brightness" showValue defaultValue={[75]} />
+```
+
+## Range
+
+```tsx
+<Slider label="Price" min={0} max={1000} defaultValue={[200]} />
+```
+
+## Disabled
+
+```tsx
+<Slider label="Disabled" defaultValue={[50]} disabled />
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `label` | `string` | — | Slider label text |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Slider size |
+| `showValue` | `boolean` | `false` | Display current value |
+| `defaultValue` | `number[]` | — | Initial value |
+| `min` | `number` | `0` | Minimum value |
+| `max` | `number` | `100` | Maximum value |
+| `disabled` | `boolean` | `false` | Disabled state |
+| `className` | `string` | — | Additional CSS classes |

@@ -1,0 +1,48 @@
+# Input
+
+A text input field with multiple sizes and validation states.
+
+## Import
+
+```tsx
+import { Input } from '@grannyshot/ui'
+```
+
+## Usage
+
+```tsx
+<Input placeholder="Enter your name" />
+```
+
+## Sizes
+
+```tsx
+<Input size="sm" placeholder="Small" />
+<Input size="md" placeholder="Medium" />
+<Input size="lg" placeholder="Large" />
+```
+
+## States
+
+```tsx
+<Input state="error" placeholder="Error state" />
+<Input state="success" placeholder="Success state" />
+```
+
+## Disabled
+
+```tsx
+<Input disabled placeholder="Disabled input" />
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Input size |
+| `state` | `'default' \| 'error' \| 'success'` | `'default'` | Validation state |
+| `placeholder` | `string` | — | Placeholder text |
+| `disabled` | `boolean` | `false` | Disabled state |
+| `className` | `string` | — | Additional CSS classes |
+
+Extends all native `<input>` HTML attributes.

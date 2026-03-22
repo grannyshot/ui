@@ -1,0 +1,46 @@
+# Label
+
+A text label for form controls with required and disabled states.
+
+## Import
+
+```tsx
+import { Label } from '@grannyshot/ui'
+```
+
+## Usage
+
+```tsx
+<Label>Username</Label>
+```
+
+## Required
+
+Displays a required indicator next to the label text.
+
+```tsx
+<Label required>Email</Label>
+```
+
+## Disabled
+
+```tsx
+<Label disabled>Disabled field</Label>
+```
+
+## With Form Control
+
+```tsx
+<Label htmlFor="email" required>Email</Label>
+<Input id="email" placeholder="you@example.com" />
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `required` | `boolean` | `false` | Show required indicator |
+| `disabled` | `boolean` | `false` | Disabled style |
+| `className` | `string` | — | Additional CSS classes |
+
+Extends all native `<label>` HTML attributes.

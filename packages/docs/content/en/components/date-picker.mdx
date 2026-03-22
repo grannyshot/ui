@@ -1,0 +1,52 @@
+# DatePicker
+
+A date picker control built on Ark UI with day, month, and year view navigation.
+
+## Import
+
+```tsx
+import { DatePicker } from '@grannyshot/ui'
+```
+
+## Usage
+
+```tsx
+<DatePicker />
+```
+
+## With Placeholder
+
+```tsx
+<DatePicker placeholder="Select a date" />
+```
+
+## View Modes
+
+The DatePicker supports three view modes that users can navigate between:
+
+- **Day view** — Select a specific day (default)
+- **Month view** — Select a month
+- **Year view** — Select a year
+
+```tsx
+{/* Start from month view */}
+<DatePicker view="month" />
+
+{/* Start from year view */}
+<DatePicker view="year" />
+```
+
+## Disabled
+
+```tsx
+<DatePicker disabled />
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `placeholder` | `string` | — | Placeholder text |
+| `view` | `'day' \| 'month' \| 'year'` | `'day'` | Initial calendar view |
+| `disabled` | `boolean` | `false` | Disabled state |
+| `className` | `string` | — | Additional CSS classes |

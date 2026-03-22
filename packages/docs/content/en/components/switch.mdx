@@ -1,0 +1,47 @@
+# Switch
+
+A toggle switch control built on Ark UI with multiple sizes.
+
+## Import
+
+```tsx
+import { Switch } from '@grannyshot/ui'
+```
+
+## Usage
+
+```tsx
+<Switch label="Enable notifications" />
+```
+
+## Sizes
+
+```tsx
+<Switch size="sm" label="Small" />
+<Switch size="md" label="Medium" />
+<Switch size="lg" label="Large" />
+```
+
+## Default Checked
+
+```tsx
+<Switch label="Enabled by default" defaultChecked />
+```
+
+## Disabled
+
+```tsx
+<Switch label="Disabled" disabled />
+<Switch label="Disabled on" disabled defaultChecked />
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `label` | `string` | — | Switch label text |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Switch size |
+| `checked` | `boolean` | — | Controlled checked state |
+| `defaultChecked` | `boolean` | `false` | Initial checked state |
+| `disabled` | `boolean` | `false` | Disabled state |
+| `className` | `string` | — | Additional CSS classes |

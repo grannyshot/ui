@@ -1,0 +1,57 @@
+# Card
+
+A container component for visually grouping content.
+
+## Import
+
+```tsx
+import { Card } from '@grannyshot/ui'
+```
+
+## Usage
+
+```tsx
+<Card>
+  <h3>Title</h3>
+  <p>Content inside the card.</p>
+</Card>
+```
+
+## Padding
+
+Use the `padding` prop to control inner spacing.
+
+```tsx
+<Card padding="sm">Small padding</Card>
+<Card padding="md">Medium padding (default)</Card>
+<Card padding="lg">Large padding</Card>
+```
+
+## Hoverable
+
+Set `hoverable` to highlight the border and shadow on hover.
+
+```tsx
+<Card hoverable>
+  Clickable card
+</Card>
+```
+
+## Composition Example
+
+```tsx
+<Card padding="lg" hoverable>
+  <h3>Project Name</h3>
+  <p>Project description goes here.</p>
+</Card>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `padding` | `'sm' \| 'md' \| 'lg'` | `'md'` | Inner padding size |
+| `hoverable` | `boolean` | `false` | Highlight effect on hover |
+| `className` | `string` | — | Additional CSS classes |
+
+Extends all native `<div>` HTML attributes.
