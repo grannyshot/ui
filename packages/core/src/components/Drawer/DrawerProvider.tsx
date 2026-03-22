@@ -45,7 +45,7 @@ function getSnapshot(): DrawerState {
 }
 
 function getServerSnapshot(): DrawerState {
-  return state
+  return { open: false, content: null, placement: 'right' }
 }
 
 function setState(newState: DrawerState) {
@@ -121,7 +121,7 @@ export function DrawerProvider() {
             )}
 
             <ArkDialog.CloseTrigger className={cx(drawerCloseTrigger)}>
-              <svg
+              <svg aria-hidden="true"
                 width="16"
                 height="16"
                 viewBox="0 0 24 24"
