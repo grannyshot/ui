@@ -10,22 +10,22 @@ function getInitials(name: string): string {
   return words[0][0].toUpperCase()
 }
 
-type AvatarProps = AvatarVariants & {
-  src?: string
-  alt?: string
-  name?: string
-  className?: string
-}
+type AvatarProps = AvatarVariants &
+  Omit<React.HTMLAttributes<HTMLDivElement>, 'children'> & {
+    src?: string
+    alt?: string
+    name?: string
+  }
 
 export const Avatar = forwardRef<HTMLDivElement, AvatarProps>(
-  ({ src, alt, name, size, className }, ref) => {
+  ({ src, alt, name, size, className, ...rest }, ref) => {
     const [imageError, setImageError] = useState(false)
 
     const showImage = src && !imageError
     const initials = name ? getInitials(name) : null
 
     return (
-      <div ref={ref} className={cx(avatar({ size }), className)}>
+      <div ref={ref} className={cx(avatar({ size }), className)} {...rest}>
         {showImage ? (
           <img
             src={src}
