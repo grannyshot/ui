@@ -34,8 +34,8 @@ export default async function RootLayout({ children, params }: LayoutProps) {
             </Navbar>
           }
           i18n={[
-            { locale: 'ko', name: '한국어' },
             { locale: 'en', name: 'English' },
+            { locale: 'ko', name: '한국어' },
           ]}
           pageMap={await getPageMap(`/${lang}`)}
           footer={<Footer>MIT {new Date().getFullYear()} © grannyshot</Footer>}
