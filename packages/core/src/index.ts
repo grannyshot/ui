@@ -20,6 +20,7 @@ export { tabsRoot, tabsList, tabsTrigger, tabsContent, tabsIndicator, type TabsL
 export { accordionRoot, accordionItem, accordionItemTrigger, accordionItemContent, accordionItemIndicator } from '@/components/Accordion/accordion.recipe'
 export { avatar, avatarImage, type AvatarVariants } from '@/components/Avatar/avatar.recipe'
 export { tableRoot, tableHeader, tableHeaderCell, tableBody, tableRow, tableCell, tableCaption } from '@/components/Table/table.recipe'
+export { separator, type SeparatorVariants } from '@/components/Separator/separator.recipe'
 
 // Utils
 export { cx } from '@/styled-system/css'
@@ -46,3 +47,4 @@ export { Tabs } from '@/components/Tabs/Tabs'
 export { Accordion } from '@/components/Accordion/Accordion'
 export { Avatar } from '@/components/Avatar/Avatar'
 export { Table } from '@/components/Table/Table'
+export { Separator } from '@/components/Separator/Separator'

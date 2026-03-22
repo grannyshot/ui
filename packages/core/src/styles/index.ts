@@ -16,3 +16,4 @@ export { tabsRoot, tabsList, tabsTrigger, tabsContent, tabsIndicator, type TabsL
 export { accordionRoot, accordionItem, accordionItemTrigger, accordionItemContent, accordionItemIndicator } from '@/components/Accordion/accordion.recipe'
 export { avatar, avatarImage, type AvatarVariants } from '@/components/Avatar/avatar.recipe'
 export { tableRoot, tableHeader, tableHeaderCell, tableBody, tableRow, tableCell, tableCaption } from '@/components/Table/table.recipe'
+export { separator, type SeparatorVariants } from '@/components/Separator/separator.recipe'
