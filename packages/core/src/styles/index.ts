@@ -11,3 +11,4 @@ export { fieldRoot, fieldHint, fieldError } from '@/components/Field/field.recip
 export { dialogOverlay, dialogContent, dialogPositioner, dialogTitle, dialogDescription, dialogCloseTrigger, type DialogContentVariants } from '@/components/Dialog/dialog.recipe'
 export { toastRoot, toastTitle, toastDescription, toastCloseTrigger, toastGroup, type ToastRootVariants } from '@/components/Toast/toast.recipe'
 export { tooltipContent, tooltipArrow, tooltipTrigger } from '@/components/Tooltip/tooltip.recipe'
+export { popoverContent, popoverArrow, popoverArrowTip, popoverTitle, popoverDescription, popoverCloseTrigger } from '@/components/Popover/popover.recipe'
