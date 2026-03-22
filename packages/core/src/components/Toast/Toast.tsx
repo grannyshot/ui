@@ -180,7 +180,7 @@ export const ToastProvider = forwardRef<HTMLDivElement, ToastProviderProps>(
                 )}
               </div>
               <ArkToast.CloseTrigger className={toastCloseTrigger}>
-                <svg
+                <svg aria-hidden="true"
                   width="14"
                   height="14"
                   viewBox="0 0 24 24"

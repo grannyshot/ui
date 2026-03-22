@@ -133,7 +133,7 @@ const DrawerCloseTrigger = forwardRef<HTMLButtonElement, DrawerCloseTriggerProps
         {...props}
       >
         {children ?? (
-          <svg
+          <svg aria-hidden="true"
             width="16"
             height="16"
             viewBox="0 0 24 24"

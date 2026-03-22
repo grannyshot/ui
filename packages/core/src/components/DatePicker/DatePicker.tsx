@@ -26,7 +26,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
         <ArkDatePicker.Control className={datePickerControl}>
           <ArkDatePicker.Input className={datePickerInput} />
           <ArkDatePicker.Trigger className={datePickerTrigger}>
-            <svg
+            <svg aria-hidden="true"
               width="16"
               height="16"
               viewBox="0 0 24 24"
@@ -52,7 +52,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
                     <>
                       <ArkDatePicker.ViewControl className={datePickerViewControl}>
                         <ArkDatePicker.PrevTrigger className={datePickerPrevTrigger}>
-                          <svg
+                          <svg aria-hidden="true"
                             width="16"
                             height="16"
                             viewBox="0 0 24 24"
@@ -69,7 +69,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
                           <ArkDatePicker.RangeText />
                         </ArkDatePicker.ViewTrigger>
                         <ArkDatePicker.NextTrigger className={datePickerNextTrigger}>
-                          <svg
+                          <svg aria-hidden="true"
                             width="16"
                             height="16"
                             viewBox="0 0 24 24"
@@ -123,7 +123,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
                     <>
                       <ArkDatePicker.ViewControl className={datePickerViewControl}>
                         <ArkDatePicker.PrevTrigger className={datePickerPrevTrigger}>
-                          <svg
+                          <svg aria-hidden="true"
                             width="16"
                             height="16"
                             viewBox="0 0 24 24"
@@ -140,7 +140,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
                           <ArkDatePicker.RangeText />
                         </ArkDatePicker.ViewTrigger>
                         <ArkDatePicker.NextTrigger className={datePickerNextTrigger}>
-                          <svg
+                          <svg aria-hidden="true"
                             width="16"
                             height="16"
                             viewBox="0 0 24 24"
@@ -182,7 +182,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
                     <>
                       <ArkDatePicker.ViewControl className={datePickerViewControl}>
                         <ArkDatePicker.PrevTrigger className={datePickerPrevTrigger}>
-                          <svg
+                          <svg aria-hidden="true"
                             width="16"
                             height="16"
                             viewBox="0 0 24 24"
@@ -199,7 +199,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
                           <ArkDatePicker.RangeText />
                         </ArkDatePicker.ViewTrigger>
                         <ArkDatePicker.NextTrigger className={datePickerNextTrigger}>
-                          <svg
+                          <svg aria-hidden="true"
                             width="16"
                             height="16"
                             viewBox="0 0 24 24"

@@ -38,7 +38,7 @@ export const Combobox = forwardRef<HTMLDivElement, ComboboxProps>(
             placeholder={placeholder}
           />
           <ArkCombobox.ClearTrigger className={comboboxClearTrigger}>
-            <svg
+            <svg aria-hidden="true"
               width="14"
               height="14"
               viewBox="0 0 24 24"
@@ -53,7 +53,7 @@ export const Combobox = forwardRef<HTMLDivElement, ComboboxProps>(
             </svg>
           </ArkCombobox.ClearTrigger>
           <ArkCombobox.Trigger className={comboboxTrigger}>
-            <svg
+            <svg aria-hidden="true"
               width="16"
               height="16"
               viewBox="0 0 24 24"
@@ -74,7 +74,7 @@ export const Combobox = forwardRef<HTMLDivElement, ComboboxProps>(
                 <ArkCombobox.Item key={item.value} item={item} className={comboboxItem}>
                   <ArkCombobox.ItemText>{item.label}</ArkCombobox.ItemText>
                   <ArkCombobox.ItemIndicator className={comboboxItemIndicator}>
-                    <svg
+                    <svg aria-hidden="true"
                       width="14"
                       height="14"
                       viewBox="0 0 24 24"

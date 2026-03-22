@@ -31,7 +31,7 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
           <ArkSelect.Trigger className={selectTrigger({ size })}>
             <ArkSelect.ValueText placeholder={placeholder} />
             <ArkSelect.Indicator className={selectIndicator}>
-              <svg
+              <svg aria-hidden="true"
                 width="16"
                 height="16"
                 viewBox="0 0 24 24"
@@ -53,7 +53,7 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
                 <ArkSelect.Item key={item.value} item={item} className={selectItem}>
                   <ArkSelect.ItemText>{item.label}</ArkSelect.ItemText>
                   <ArkSelect.ItemIndicator className={selectItemIndicator}>
-                    <svg
+                    <svg aria-hidden="true"
                       width="14"
                       height="14"
                       viewBox="0 0 24 24"

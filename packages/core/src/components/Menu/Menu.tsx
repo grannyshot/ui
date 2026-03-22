@@ -103,7 +103,7 @@ const MenuTriggerItem = forwardRef<HTMLDivElement, ArkMenu.TriggerItemProps>(
         {...props}
       >
         {children}
-        <svg
+        <svg aria-hidden="true"
           width="14"
           height="14"
           viewBox="0 0 24 24"
@@ -112,7 +112,6 @@ const MenuTriggerItem = forwardRef<HTMLDivElement, ArkMenu.TriggerItemProps>(
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
-          aria-hidden="true"
         >
           <path d="M9 18l6-6-6-6" />
         </svg>
