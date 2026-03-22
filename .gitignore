@@ -5,6 +5,9 @@ dist
 ## Dev docs (local only)
 develop_docs/
 
+## Claude Code
+.claude/
+
 ## Panda
 **/styled-system
 styled-system-studio
