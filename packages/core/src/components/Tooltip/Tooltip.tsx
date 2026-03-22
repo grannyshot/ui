@@ -1,5 +1,6 @@
 import React, { forwardRef } from 'react'
 import { Tooltip as ArkTooltip } from '@ark-ui/react/tooltip'
+import { Portal } from '@ark-ui/react/portal'
 import { tooltipTrigger, tooltipContent, tooltipArrow } from './tooltip.recipe'
 import { cx } from '@/styled-system/css'
 
@@ -18,14 +19,16 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
         <ArkTooltip.Trigger asChild className={tooltipTrigger}>
           {children}
         </ArkTooltip.Trigger>
-        <ArkTooltip.Positioner>
-          <ArkTooltip.Content ref={ref} className={cx(tooltipContent, className)}>
-            <ArkTooltip.Arrow className={tooltipArrow}>
-              <ArkTooltip.ArrowTip />
-            </ArkTooltip.Arrow>
-            {content}
-          </ArkTooltip.Content>
-        </ArkTooltip.Positioner>
+        <Portal disabled>
+          <ArkTooltip.Positioner>
+            <ArkTooltip.Content ref={ref} className={cx(tooltipContent, className)}>
+              <ArkTooltip.Arrow className={tooltipArrow}>
+                <ArkTooltip.ArrowTip />
+              </ArkTooltip.Arrow>
+              {content}
+            </ArkTooltip.Content>
+          </ArkTooltip.Positioner>
+        </Portal>
       </ArkTooltip.Root>
     )
   }
