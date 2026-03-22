@@ -31,6 +31,11 @@ import {
   Slider,
   Progress,
   Drawer,
+  toast,
+  dialog,
+  DialogProvider,
+  drawer,
+  DrawerProvider,
 } from 'grannyshot-ui'
 
 const containerStyle: React.CSSProperties = {
@@ -316,9 +321,10 @@ function Playground() {
       <section style={sectionStyle}>
         <h2 style={sectionTitle}>Dialog</h2>
         <div style={row}>
+          <span style={rowLabel}>Declarative</span>
           <Dialog.Root open={dialogOpen} onOpenChange={(e) => setDialogOpen(e.open)}>
             <Dialog.Trigger asChild>
-              <Button variant="primary">Open Dialog</Button>
+              <Button variant="outline">Open Dialog</Button>
             </Dialog.Trigger>
             <Dialog.Content size="sm">
               <Dialog.CloseTrigger />
@@ -333,26 +339,67 @@ function Playground() {
             </Dialog.Content>
           </Dialog.Root>
         </div>
+        <div style={row}>
+          <span style={rowLabel}>Imperative</span>
+          <Button variant="outline" onClick={async () => {
+            const ok = await dialog.confirm({ title: 'Delete item', description: 'This cannot be undone.', confirmText: 'Delete', cancelText: 'Cancel' })
+            toast[ok ? 'success' : 'info'](ok ? 'Deleted!' : 'Cancelled')
+          }}>
+            dialog.confirm
+          </Button>
+          <Button variant="outline" onClick={() => dialog.alert({ title: 'Done', description: 'Operation completed successfully.', confirmText: 'OK' })}>
+            dialog.alert
+          </Button>
+          <Button variant="outline" onClick={() => dialog.open({
+            size: 'md',
+            content: (close) => (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+                <h3 style={{ margin: 0, fontSize: 18, fontWeight: 600 }}>Custom Modal</h3>
+                <p style={{ margin: 0, fontSize: 14, opacity: 0.7 }}>This is a fully custom modal content.</p>
+                <Field label="Your feedback">
+                  <Textarea placeholder="Write something..." />
+                </Field>
+                <div style={{ display: 'flex', gap: 8, justifyContent: 'flex-end' }}>
+                  <Button variant="outline" onClick={close}>Cancel</Button>
+                  <Button variant="primary" onClick={() => { toast.success('Submitted!'); close() }}>Submit</Button>
+                </div>
+              </div>
+            ),
+          })}>
+            dialog.open (custom)
+          </Button>
+        </div>
       </section>
 
       {/* Toast */}
       <section style={sectionStyle}>
         <h2 style={sectionTitle}>Toast</h2>
         <div style={row}>
-          <Button variant="outline" onClick={() => toaster.create({ title: 'Default toast', description: 'This is a notification.' })}>
-            Default
+          <span style={rowLabel}>Shorthand</span>
+          <Button variant="outline" onClick={() => toast.success('Saved successfully')}>Success</Button>
+          <Button variant="outline" onClick={() => toast.error('Something went wrong')}>Error</Button>
+          <Button variant="outline" onClick={() => toast.warning('Be careful')}>Warning</Button>
+          <Button variant="outline" onClick={() => toast.info('Here is some info')}>Info</Button>
+        </div>
+        <div style={row}>
+          <span style={rowLabel}>Advanced</span>
+          <Button variant="outline" onClick={() => toast.promise(
+            new Promise((r) => setTimeout(r, 2000)),
+            { loading: 'Uploading...', success: 'Upload complete!', error: 'Upload failed' }
+          )}>
+            toast.promise
           </Button>
-          <Button variant="outline" onClick={() => toaster.create({ title: 'Success!', description: 'Operation completed.', type: 'success' })}>
-            Success
-          </Button>
-          <Button variant="outline" onClick={() => toaster.create({ title: 'Error', description: 'Something went wrong.', type: 'error' })}>
-            Error
-          </Button>
-          <Button variant="outline" onClick={() => toaster.create({ title: 'Warning', description: 'Please be careful.', type: 'warning' })}>
-            Warning
-          </Button>
-          <Button variant="outline" onClick={() => toaster.create({ title: 'Info', description: 'Here is some info.', type: 'info' })}>
-            Info
+          <Button variant="outline" onClick={() => toast.custom((dismiss) => (
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+              <Avatar size="sm" name="Bot" />
+              <div style={{ flex: 1 }}>
+                <p style={{ margin: 0, fontSize: 14, fontWeight: 600 }}>Custom Toast</p>
+                <p style={{ margin: 0, fontSize: 13, opacity: 0.7 }}>With any content you want</p>
+              </div>
+              <Button variant="ghost" size="sm" onClick={dismiss}>Dismiss</Button>
+            </div>
+          ))}>
+            toast.custom
           </Button>
         </div>
       </section>
@@ -592,6 +639,7 @@ function Playground() {
       <section style={sectionStyle}>
         <h2 style={sectionTitle}>Drawer</h2>
         <div style={row}>
+          <span style={rowLabel}>Declarative</span>
           <Drawer.Root open={drawerOpen} onOpenChange={(e) => setDrawerOpen(e.open)}>
             <Drawer.Trigger asChild>
               <Button variant="outline">Open Drawer</Button>
@@ -619,6 +667,24 @@ function Playground() {
             </Drawer.Content>
           </Drawer.Root>
         </div>
+        <div style={row}>
+          <span style={rowLabel}>Imperative</span>
+          <Button variant="outline" onClick={() => drawer.open({
+            title: 'Notifications',
+            description: 'Manage your notification settings',
+            content: (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+                <Switch label="Email notifications" defaultChecked />
+                <Switch label="Push notifications" />
+                <Switch label="SMS notifications" />
+                <Separator />
+                <Switch label="Marketing emails" />
+              </div>
+            ),
+          })}>
+            drawer.open
+          </Button>
+        </div>
       </section>
     </div>
   )
@@ -629,6 +695,8 @@ export default function App() {
     <ThemeProvider defaultTheme="dark">
       <Playground />
       <ToastProvider />
+      <DialogProvider />
+      <DrawerProvider />
     </ThemeProvider>
   )
 }
