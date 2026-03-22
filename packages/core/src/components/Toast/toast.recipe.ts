@@ -19,8 +19,8 @@ export const toastRoot = cva({
     transform: 'translateX(var(--x)) translateY(var(--y)) scale(var(--scale, 1))',
     height: 'var(--height, auto)',
     zIndex: 'var(--z-index)',
-    transition: 'translate 0.4s ease, scale 0.4s ease, opacity 0.4s ease, height 0.4s ease',
-    willChange: 'translate, scale, opacity, height',
+    transition: 'transform 0.35s cubic-bezier(0.21, 1.02, 0.73, 1), opacity 0.3s ease, height 0.35s ease',
+    willChange: 'transform, opacity, height',
   },
 
   variants: {

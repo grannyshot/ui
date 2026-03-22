@@ -1,4 +1,4 @@
-import React, { forwardRef, type ReactNode } from 'react'
+import React, { forwardRef, useRef, type ReactNode } from 'react'
 import { Toast as ArkToast, Toaster as ArkToaster, createToaster, type CreateToasterReturn } from '@ark-ui/react/toast'
 import type { ToasterProps as ArkToasterProps, ToastOptions } from '@ark-ui/react/toast'
 import {
@@ -24,10 +24,44 @@ function getVariant(type: string | undefined): ToastVariant {
   return variantMap[type] ?? 'default'
 }
 
-export const toaster: CreateToasterReturn = createToaster({
-  placement: 'bottom-end',
-  overlap: false,
-  gap: 16,
+// ---------------------------------------------------------------------------
+// Toaster instance — lazy init with placement
+// ---------------------------------------------------------------------------
+
+type ToastPlacement =
+  | 'top-start' | 'top' | 'top-end'
+  | 'bottom-start' | 'bottom' | 'bottom-end'
+
+let _toaster: CreateToasterReturn | null = null
+let _placement: ToastPlacement = 'bottom-end'
+
+function getToaster(): CreateToasterReturn {
+  if (!_toaster) {
+    _toaster = createToaster({
+      placement: _placement,
+      overlap: true,
+      gap: 14,
+    })
+  }
+  return _toaster
+}
+
+function initToaster(placement: ToastPlacement): CreateToasterReturn {
+  if (_toaster && _placement === placement) return _toaster
+  _placement = placement
+  _toaster = createToaster({
+    placement,
+    overlap: true,
+    gap: 14,
+  })
+  return _toaster
+}
+
+/** @deprecated Use `toast` instead. Direct toaster access for advanced use cases. */
+export const toaster: CreateToasterReturn = new Proxy({} as CreateToasterReturn, {
+  get(_, prop) {
+    return (getToaster() as any)[prop]
+  },
 })
 
 // --- Toast convenience API ---
@@ -70,7 +104,7 @@ function normalizePromiseOption<V>(
 function createTypedToast(type: 'success' | 'error' | 'warning' | 'info') {
   return (msg: ToastMessage): string => {
     const options = normalizeMessage(msg)
-    return toaster.create({ ...options, type })
+    return getToaster().create({ ...options, type })
   }
 }
 
@@ -84,7 +118,7 @@ export const toast = {
     promise: Promise<T> | (() => Promise<T>),
     msgs: ToastPromiseMessages<T>,
   ) {
-    return toaster.promise(promise, {
+    return getToaster().promise(promise, {
       loading: normalizeMessage(msgs.loading),
       success: normalizePromiseOption<T>(msgs.success),
       error: normalizePromiseOption<unknown>(msgs.error),
@@ -92,14 +126,14 @@ export const toast = {
   },
 
   custom(renderFn: CustomRenderFn): string {
-    return toaster.create({
+    return getToaster().create({
       type: 'info',
       meta: { render: renderFn },
     })
   },
 
   dismiss(id?: string) {
-    toaster.dismiss(id)
+    getToaster().dismiss(id)
   },
 }
 
@@ -113,16 +147,19 @@ function hasCustomRender(
 }
 
 type ToastProviderProps = Omit<ArkToasterProps, 'toaster' | 'children'> & {
+  placement?: ToastPlacement
   className?: string
 }
 
 export const ToastProvider = forwardRef<HTMLDivElement, ToastProviderProps>(
-  ({ className, ...props }, ref) => {
+  ({ placement = 'bottom-end', className, ...props }, ref) => {
+    const toasterRef = useRef(initToaster(placement))
+
     return (
-      <ArkToaster ref={ref} toaster={toaster} className={cx(toastGroup, className)} {...props}>
+      <ArkToaster ref={ref} toaster={toasterRef.current} className={cx(toastGroup, className)} {...props}>
         {(toastData) => {
           if (hasCustomRender(toastData.meta)) {
-            const dismissFn = () => toaster.dismiss(toastData.id)
+            const dismissFn = () => toasterRef.current.dismiss(toastData.id)
             return (
               <ArkToast.Root className={toastRoot({ variant: 'default' })}>
                 {toastData.meta.render(dismissFn)}
