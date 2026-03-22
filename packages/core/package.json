@@ -65,7 +65,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/grannyshot/ui"
+    "url": "https://github.com/grannyshot/ui.git"
   },
   "homepage": "https://grannyshot-ui.vercel.app",
   "publishConfig": {
