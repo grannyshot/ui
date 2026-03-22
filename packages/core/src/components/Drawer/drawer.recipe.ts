@@ -39,6 +39,7 @@ export const drawerContent = cva({
         marginLeft: 'auto',
         width: '100%',
         maxWidth: 'sm',
+        borderLeft: '1px solid token(colors.border)',
         '&[data-state=open]': {
           transform: 'translateX(0)',
         },
@@ -50,6 +51,7 @@ export const drawerContent = cva({
         marginRight: 'auto',
         width: '100%',
         maxWidth: 'sm',
+        borderRight: '1px solid token(colors.border)',
         '&[data-state=open]': {
           transform: 'translateX(0)',
         },
