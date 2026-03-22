@@ -23,7 +23,7 @@ export const drawerPositioner = css({
 
 export const drawerContent = cva({
   base: {
-    bg: 'bg',
+    bg: 'bg.subtle',
     boxShadow: 'xl',
     height: '100%',
     overflow: 'auto',
