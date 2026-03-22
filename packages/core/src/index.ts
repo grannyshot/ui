@@ -16,6 +16,7 @@ export { dialogOverlay, dialogContent, dialogPositioner, dialogTitle, dialogDesc
 export { toastRoot, toastTitle, toastDescription, toastCloseTrigger, toastGroup, type ToastRootVariants } from '@/components/Toast/toast.recipe'
 export { tooltipContent, tooltipArrow, tooltipTrigger } from '@/components/Tooltip/tooltip.recipe'
 export { popoverContent, popoverArrow, popoverArrowTip, popoverTitle, popoverDescription, popoverCloseTrigger } from '@/components/Popover/popover.recipe'
+export { tabsRoot, tabsList, tabsTrigger, tabsContent, tabsIndicator, type TabsListVariants } from '@/components/Tabs/tabs.recipe'
 
 // Utils
 export { cx } from '@/styled-system/css'
@@ -38,3 +39,4 @@ export { Dialog } from '@/components/Dialog/Dialog'
 export { ToastProvider, toaster } from '@/components/Toast/Toast'
 export { Tooltip } from '@/components/Tooltip/Tooltip'
 export { Popover } from '@/components/Popover/Popover'
+export { Tabs } from '@/components/Tabs/Tabs'
