@@ -13,3 +13,4 @@ export { toastRoot, toastTitle, toastDescription, toastCloseTrigger, toastGroup,
 export { tooltipContent, tooltipArrow, tooltipTrigger } from '@/components/Tooltip/tooltip.recipe'
 export { popoverContent, popoverArrow, popoverArrowTip, popoverTitle, popoverDescription, popoverCloseTrigger } from '@/components/Popover/popover.recipe'
 export { tabsRoot, tabsList, tabsTrigger, tabsContent, tabsIndicator, type TabsListVariants } from '@/components/Tabs/tabs.recipe'
+export { accordionRoot, accordionItem, accordionItemTrigger, accordionItemContent, accordionItemIndicator } from '@/components/Accordion/accordion.recipe'
