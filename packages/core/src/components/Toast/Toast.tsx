@@ -26,7 +26,7 @@ function getVariant(type: string | undefined): ToastVariant {
 
 export const toaster: CreateToasterReturn = createToaster({
   placement: 'bottom-end',
-  overlap: true,
+  overlap: false,
   gap: 16,
 })
 
