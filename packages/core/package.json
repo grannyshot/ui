@@ -67,7 +67,7 @@
     "type": "git",
     "url": "https://github.com/grannyshot/ui.git"
   },
-  "homepage": "https://grannyshot-ui.vercel.app",
+  "homepage": "https://ui.grannyshot.co.kr",
   "publishConfig": {
     "access": "public"
   },
