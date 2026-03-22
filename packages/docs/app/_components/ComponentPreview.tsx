@@ -1,56 +1,33 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { ThemeProvider } from '@grannyshot/ui'
+import { previews } from '../_previews'
 
 type ComponentPreviewProps = {
   name: string
-  height?: number
 }
 
-export function ComponentPreview({ name, height = 80 }: ComponentPreviewProps) {
-  const iframeRef = useRef<HTMLIFrameElement>(null)
-  const [iframeHeight, setIframeHeight] = useState(height)
+export function ComponentPreview({ name }: ComponentPreviewProps) {
+  const Preview = previews[name]
 
-  useEffect(() => {
-    const iframe = iframeRef.current
-    if (!iframe) return
-
-    const handleLoad = () => {
-      try {
-        const body = iframe.contentDocument?.body
-        if (body) {
-          setIframeHeight(Math.max(height, body.scrollHeight + 8))
-        }
-      } catch {
-        // cross-origin, use default height
-      }
-    }
-
-    iframe.addEventListener('load', handleLoad)
-    return () => iframe.removeEventListener('load', handleLoad)
-  }, [height])
+  if (!Preview) {
+    return null
+  }
 
   return (
     <div
       style={{
-        border: '1px solid var(--nextra-border)',
+        border: '1px solid var(--nextra-border, #e5e7eb)',
         borderRadius: 8,
-        overflow: 'hidden',
-        marginBottom: 16,
+        padding: 16,
         marginTop: 8,
+        marginBottom: 16,
+        background: 'var(--nextra-bg, #fafafa)',
       }}
     >
-      <iframe
-        ref={iframeRef}
-        src={`/preview/${name}`}
-        style={{
-          width: '100%',
-          height: iframeHeight,
-          border: 'none',
-          display: 'block',
-        }}
-        title={`${name} preview`}
-      />
+      <ThemeProvider defaultTheme="light">
+        <Preview />
+      </ThemeProvider>
     </div>
   )
 }

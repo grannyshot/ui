@@ -23,6 +23,7 @@
       "require": "./dist/styles/index.cjs"
     },
     "./styles.css": "./dist/styles.css",
+    "./styles-no-preflight.css": "./dist/styles-no-preflight.css",
     "./react": {
       "types": "./dist/react/index.d.ts",
       "import": "./dist/react/index.js",
@@ -47,7 +48,7 @@
   ],
   "scripts": {
     "prepublishOnly": "pnpm build",
-    "build": "panda codegen && tsup && panda cssgen --outfile dist/styles.css",
+    "build": "panda codegen && tsup && panda cssgen --outfile dist/styles.css && node scripts/strip-preflight.cjs",
     "dev": "panda codegen && tsup --watch"
   },
   "author": "chotaegyu",
