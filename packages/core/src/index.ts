@@ -12,6 +12,7 @@ export { checkboxRoot, checkboxControl, checkboxLabel, type CheckboxControlVaria
 export { switchRoot, switchControl, switchThumb, switchLabel, type SwitchControlVariants } from '@/components/Switch/switch.recipe'
 export { selectTrigger, selectContent, selectItem, selectIndicator, selectItemIndicator, selectLabel, type SelectTriggerVariants } from '@/components/Select/select.recipe'
 export { fieldRoot, fieldHint, fieldError } from '@/components/Field/field.recipe'
+export { dialogOverlay, dialogContent, dialogPositioner, dialogTitle, dialogDescription, dialogCloseTrigger, type DialogContentVariants } from '@/components/Dialog/dialog.recipe'
 
 // Utils
 export { cx } from '@/styled-system/css'
@@ -30,3 +31,4 @@ export { Checkbox } from '@/components/Checkbox/Checkbox'
 export { Switch } from '@/components/Switch/Switch'
 export { Select, createListCollection } from '@/components/Select/Select'
 export { Field } from '@/components/Field/Field'
+export { Dialog } from '@/components/Dialog/Dialog'
