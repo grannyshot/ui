@@ -11,6 +11,7 @@ export { label, type LabelVariants } from '@/components/Label/label.recipe'
 export { checkboxRoot, checkboxControl, checkboxLabel, type CheckboxControlVariants } from '@/components/Checkbox/checkbox.recipe'
 export { switchRoot, switchControl, switchThumb, switchLabel, type SwitchControlVariants } from '@/components/Switch/switch.recipe'
 export { selectTrigger, selectContent, selectItem, selectIndicator, selectItemIndicator, selectLabel, type SelectTriggerVariants } from '@/components/Select/select.recipe'
+export { fieldRoot, fieldHint, fieldError } from '@/components/Field/field.recipe'
 
 // Utils
 export { cx } from '@/styled-system/css'
@@ -28,3 +29,4 @@ export { Label } from '@/components/Label/Label'
 export { Checkbox } from '@/components/Checkbox/Checkbox'
 export { Switch } from '@/components/Switch/Switch'
 export { Select, createListCollection } from '@/components/Select/Select'
+export { Field } from '@/components/Field/Field'
