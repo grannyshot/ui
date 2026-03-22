@@ -1,47 +1,37 @@
-# grannyshot-ui
+# @grannyshot/ui
 
-A minimal, theme-aware design system built with [vanilla-extract](https://vanilla-extract.style/).
+A minimal, theme-aware design system built with [Panda CSS](https://panda-css.com/) and [Ark UI](https://ark-ui.com/).
+
+[![npm](https://img.shields.io/npm/v/@grannyshot/ui)](https://www.npmjs.com/package/@grannyshot/ui)
+[![license](https://img.shields.io/npm/l/@grannyshot/ui)](LICENSE)
+
+**[Documentation](https://ui.grannyshot.co.kr)** · **[GitHub](https://github.com/grannyshot/ui)** · **[npm](https://www.npmjs.com/package/@grannyshot/ui)**
+
+## Features
+
+- **26 components** — buttons, inputs, modals, toasts, date pickers, and more
+- **Dark mode** — seamless light/dark theme switching with semantic tokens
+- **Accessible** — built on Ark UI (Zag.js state machines) for keyboard navigation and screen reader support
+- **Imperative APIs** — `toast.success()`, `dialog.confirm()`, `drawer.open()`
+- **Tree-shakeable** — zero Panda CSS dependency for consumers
+- **TypeScript** — full type safety with exported variant types
 
 ## Install
 
 ```bash
-pnpm add grannyshot-ui
+npm install @grannyshot/ui
 ```
 
 ## Quick Start
 
 ```tsx
-import { ThemeProvider, Button, Input, Card } from 'grannyshot-ui'
-import 'grannyshot-ui/styles.css'
-
-function App() {
-  return (
-    <ThemeProvider>
-      <Card>
-        <Input label="Email" placeholder="you@example.com" />
-        <Button variant="primary">Submit</Button>
-      </Card>
-    </ThemeProvider>
-  )
-}
-```
-
-## Theme
-
-Wrap your app with `ThemeProvider` to enable light/dark/system theme switching:
-
-```tsx
-import { ThemeProvider, useTheme } from 'grannyshot-ui'
-
-function ThemeToggle() {
-  const { theme, setTheme } = useTheme()
-  return <button onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>Toggle</button>
-}
+import '@grannyshot/ui/styles.css'
+import { ThemeProvider, Button } from '@grannyshot/ui'
 
 function App() {
   return (
     <ThemeProvider defaultTheme="system">
-      <ThemeToggle />
+      <Button variant="primary">Click me</Button>
     </ThemeProvider>
   )
 }
@@ -49,23 +39,76 @@ function App() {
 
 ## Components
 
-- **Box** — Polymorphic layout primitive with sprinkles props
-- **Button** — primary / secondary / ghost / danger / outline variants
-- **Input** — Accessible form input with label, hint, error
-- **Badge** — Status indicators (success, warning, error, info, neutral)
-- **Card** — Container with padding and hover variants
+### General
+Button · Badge · Avatar · Separator · Skeleton
 
-## Exports
+### Form
+Input · Textarea · Label · Checkbox · Switch · Select · Combobox · Slider · DatePicker · Field
+
+### Layout
+Card · Table · Tabs · Accordion
+
+### Overlay
+Dialog · Drawer · Popover · Tooltip · Menu
+
+### Feedback
+Toast · Progress
+
+## Imperative APIs
+
+```tsx
+import { toast, dialog, drawer } from '@grannyshot/ui'
+
+// Toast
+toast.success('Saved!')
+toast.error('Something went wrong')
+await toast.promise(asyncFn(), {
+  loading: 'Uploading...',
+  success: 'Done!',
+  error: 'Failed',
+})
+toast.custom((dismiss) => <CustomToast onClose={dismiss} />)
+
+// Dialog
+const confirmed = await dialog.confirm({
+  title: 'Delete?',
+  description: 'This cannot be undone.',
+  confirmText: 'Delete',
+})
+dialog.open({ content: (close) => <CustomModal onClose={close} /> })
+
+// Drawer
+drawer.open({ title: 'Settings', content: <SettingsPanel /> })
+```
+
+## Theming
+
+```tsx
+import { ThemeProvider, useTheme } from '@grannyshot/ui'
+
+// Wrap your app
+<ThemeProvider defaultTheme="system">
+  <App />
+  <ToastProvider placement="bottom-end" />
+  <DialogProvider />
+  <DrawerProvider />
+</ThemeProvider>
+
+// Access theme
+const { theme, resolvedTheme, setTheme } = useTheme()
+```
+
+## Import Paths
 
 | Path | Contents |
 |------|----------|
-| `grannyshot-ui` | Everything |
-| `grannyshot-ui/tokens` | Design tokens (colors, typography, spacing, animation) |
-| `grannyshot-ui/styles` | Sprinkles + component recipes |
-| `grannyshot-ui/react` | React components |
-| `grannyshot-ui/context` | ThemeProvider + useTheme |
-| `grannyshot-ui/utils` | cn helper |
-| `grannyshot-ui/styles.css` | Generated CSS |
+| `@grannyshot/ui` | Everything |
+| `@grannyshot/ui/react` | React components only |
+| `@grannyshot/ui/styles` | Style recipes (cva) |
+| `@grannyshot/ui/tokens` | Design tokens |
+| `@grannyshot/ui/context` | ThemeProvider + useTheme |
+| `@grannyshot/ui/utils` | cx utility |
+| `@grannyshot/ui/styles.css` | CSS file |
 
 ## License
 
