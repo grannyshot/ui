@@ -128,7 +128,7 @@ export const datePickerNextTrigger = css({
 export const datePickerTable = css({
   width: '100%',
   borderCollapse: 'separate',
-  borderSpacing: '0',
+  borderSpacing: '0 2px',
   textAlign: 'center',
 })
 
