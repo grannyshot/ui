@@ -34,9 +34,10 @@ export const Slider = forwardRef<HTMLDivElement, SliderProps>(
           <ArkSlider.Track className={sliderTrack({ size })}>
             <ArkSlider.Range className={sliderRange} />
           </ArkSlider.Track>
-          <ArkSlider.Thumb index={0} className={sliderThumb({ size })} />
+          <ArkSlider.Thumb index={0} className={sliderThumb({ size })}>
+            <ArkSlider.HiddenInput />
+          </ArkSlider.Thumb>
         </ArkSlider.Control>
-        <ArkSlider.HiddenInput />
       </ArkSlider.Root>
     )
   }
