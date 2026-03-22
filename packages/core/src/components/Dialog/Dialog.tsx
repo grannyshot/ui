@@ -27,7 +27,7 @@ type DialogContentProps = DialogContentVariants & {
 const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>(
   ({ size, className, children, ...props }, ref) => {
     return (
-      <Portal>
+      <Portal disabled>
         <ArkDialog.Backdrop className={dialogOverlay} />
         <ArkDialog.Positioner className={dialogPositioner}>
           <ArkDialog.Content
