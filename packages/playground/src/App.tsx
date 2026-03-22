@@ -21,6 +21,10 @@ import {
   Popover,
   Tabs,
   Accordion,
+  Avatar,
+  Table,
+  Separator,
+  Skeleton,
 } from 'grannyshot-ui'
 
 const containerStyle: React.CSSProperties = {
@@ -430,6 +434,82 @@ function Playground() {
             </Accordion.ItemContent>
           </Accordion.Item>
         </Accordion.Root>
+      </section>
+
+      {/* Avatar */}
+      <section style={sectionStyle}>
+        <h2 style={sectionTitle}>Avatar</h2>
+        <div style={row}>
+          <span style={rowLabel}>Size</span>
+          <Avatar size="sm" name="John Doe" />
+          <Avatar size="md" name="Jane Smith" />
+          <Avatar size="lg" name="Alex" />
+          <Avatar size="xl" src="https://i.pravatar.cc/128" alt="User" />
+        </div>
+      </section>
+
+      {/* Table */}
+      <section style={sectionStyle}>
+        <h2 style={sectionTitle}>Table</h2>
+        <Table.Root>
+          <Table.Header>
+            <Table.Row>
+              <Table.HeaderCell>Name</Table.HeaderCell>
+              <Table.HeaderCell>Role</Table.HeaderCell>
+              <Table.HeaderCell>Status</Table.HeaderCell>
+            </Table.Row>
+          </Table.Header>
+          <Table.Body>
+            <Table.Row>
+              <Table.Cell>Alice Kim</Table.Cell>
+              <Table.Cell>Engineer</Table.Cell>
+              <Table.Cell><Badge variant="success">Active</Badge></Table.Cell>
+            </Table.Row>
+            <Table.Row>
+              <Table.Cell>Bob Park</Table.Cell>
+              <Table.Cell>Designer</Table.Cell>
+              <Table.Cell><Badge variant="warning">Away</Badge></Table.Cell>
+            </Table.Row>
+            <Table.Row>
+              <Table.Cell>Charlie Lee</Table.Cell>
+              <Table.Cell>PM</Table.Cell>
+              <Table.Cell><Badge variant="neutral">Offline</Badge></Table.Cell>
+            </Table.Row>
+          </Table.Body>
+        </Table.Root>
+      </section>
+
+      {/* Separator */}
+      <section style={sectionStyle}>
+        <h2 style={sectionTitle}>Separator</h2>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+          <p style={{ fontSize: 14 }}>Content above</p>
+          <Separator />
+          <p style={{ fontSize: 14 }}>Content below</p>
+        </div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginTop: 16, height: 40 }}>
+          <span style={{ fontSize: 14 }}>Left</span>
+          <Separator orientation="vertical" />
+          <span style={{ fontSize: 14 }}>Right</span>
+        </div>
+      </section>
+
+      {/* Skeleton */}
+      <section style={sectionStyle}>
+        <h2 style={sectionTitle}>Skeleton</h2>
+        <div style={{ display: 'flex', gap: 16, alignItems: 'flex-start' }}>
+          <Skeleton variant="circular" width={48} height={48} />
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 8, flex: 1 }}>
+            <Skeleton variant="text" width="60%" />
+            <Skeleton variant="text" width="100%" />
+            <Skeleton variant="text" width="80%" />
+          </div>
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16, marginTop: 16 }}>
+          <Skeleton variant="rectangular" height={120} />
+          <Skeleton variant="rectangular" height={120} />
+          <Skeleton variant="rectangular" height={120} />
+        </div>
       </section>
     </div>
   )
