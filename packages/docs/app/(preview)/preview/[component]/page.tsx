@@ -1,7 +1,7 @@
 'use client'
 
 import { ThemeProvider } from '@grannyshot/ui'
-import { previews } from '../../_previews'
+import { previews } from '../../../_previews'
 
 type Props = {
   params: Promise<{ component: string }>
