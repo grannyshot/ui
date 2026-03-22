@@ -6,3 +6,4 @@ export { textarea, type TextareaVariants } from '@/components/Textarea/textarea.
 export { label, type LabelVariants } from '@/components/Label/label.recipe'
 export { checkboxRoot, checkboxControl, checkboxLabel, type CheckboxControlVariants } from '@/components/Checkbox/checkbox.recipe'
 export { switchRoot, switchControl, switchThumb, switchLabel, type SwitchControlVariants } from '@/components/Switch/switch.recipe'
+export { selectTrigger, selectContent, selectItem, selectIndicator, selectItemIndicator, selectLabel, type SelectTriggerVariants } from '@/components/Select/select.recipe'

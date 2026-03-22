@@ -10,6 +10,7 @@ export { textarea, type TextareaVariants } from '@/components/Textarea/textarea.
 export { label, type LabelVariants } from '@/components/Label/label.recipe'
 export { checkboxRoot, checkboxControl, checkboxLabel, type CheckboxControlVariants } from '@/components/Checkbox/checkbox.recipe'
 export { switchRoot, switchControl, switchThumb, switchLabel, type SwitchControlVariants } from '@/components/Switch/switch.recipe'
+export { selectTrigger, selectContent, selectItem, selectIndicator, selectItemIndicator, selectLabel, type SelectTriggerVariants } from '@/components/Select/select.recipe'
 
 // Utils
 export { cx } from '@/styled-system/css'
@@ -26,3 +27,4 @@ export { Textarea } from '@/components/Textarea/Textarea'
 export { Label } from '@/components/Label/Label'
 export { Checkbox } from '@/components/Checkbox/Checkbox'
 export { Switch } from '@/components/Switch/Switch'
+export { Select, createListCollection } from '@/components/Select/Select'
