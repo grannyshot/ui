@@ -25,6 +25,12 @@ import {
   Table,
   Separator,
   Skeleton,
+  Combobox,
+  Menu,
+  DatePicker,
+  Slider,
+  Progress,
+  Drawer,
 } from 'grannyshot-ui'
 
 const containerStyle: React.CSSProperties = {
@@ -80,6 +86,17 @@ const roles = createListCollection({
   ],
 })
 
+const languages = createListCollection({
+  items: [
+    { label: 'TypeScript', value: 'typescript' },
+    { label: 'JavaScript', value: 'javascript' },
+    { label: 'Python', value: 'python' },
+    { label: 'Rust', value: 'rust' },
+    { label: 'Go', value: 'go' },
+    { label: 'Java', value: 'java' },
+  ],
+})
+
 function ThemeToggle() {
   const { theme, setTheme } = useTheme()
   const themes = ['light', 'dark', 'system'] as const
@@ -113,6 +130,8 @@ function ThemeToggle() {
 
 function Playground() {
   const [dialogOpen, setDialogOpen] = useState(false)
+  const [drawerOpen, setDrawerOpen] = useState(false)
+  const [progressValue, setProgressValue] = useState(45)
 
   return (
     <div style={containerStyle}>
@@ -509,6 +528,96 @@ function Playground() {
           <Skeleton variant="rectangular" height={120} />
           <Skeleton variant="rectangular" height={120} />
           <Skeleton variant="rectangular" height={120} />
+        </div>
+      </section>
+
+      {/* Combobox */}
+      <section style={sectionStyle}>
+        <h2 style={sectionTitle}>Combobox</h2>
+        <div style={{ maxWidth: 300 }}>
+          <Combobox collection={languages} placeholder="Search language..." />
+        </div>
+      </section>
+
+      {/* Menu */}
+      <section style={sectionStyle}>
+        <h2 style={sectionTitle}>Menu</h2>
+        <div style={row}>
+          <Menu.Root>
+            <Menu.Trigger asChild>
+              <Button variant="outline">Open Menu</Button>
+            </Menu.Trigger>
+            <Menu.Content>
+              <Menu.Item value="edit">Edit</Menu.Item>
+              <Menu.Item value="duplicate">Duplicate</Menu.Item>
+              <Menu.Separator />
+              <Menu.Item value="delete">Delete</Menu.Item>
+            </Menu.Content>
+          </Menu.Root>
+        </div>
+      </section>
+
+      {/* DatePicker */}
+      <section style={sectionStyle}>
+        <h2 style={sectionTitle}>DatePicker</h2>
+        <div style={{ maxWidth: 300 }}>
+          <DatePicker />
+        </div>
+      </section>
+
+      {/* Slider */}
+      <section style={sectionStyle}>
+        <h2 style={sectionTitle}>Slider</h2>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 24, maxWidth: 400 }}>
+          <Slider size="sm" label="Volume" defaultValue={[30]} />
+          <Slider size="md" label="Brightness" defaultValue={[60]} showValue />
+          <Slider size="lg" label="Opacity" defaultValue={[80]} showValue />
+        </div>
+      </section>
+
+      {/* Progress */}
+      <section style={sectionStyle}>
+        <h2 style={sectionTitle}>Progress</h2>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 16, maxWidth: 400 }}>
+          <Progress size="sm" value={25} label="Upload" showValue />
+          <Progress size="md" value={progressValue} label="Processing" showValue />
+          <Progress size="lg" value={80} label="Complete" showValue />
+          <Button variant="outline" size="sm" onClick={() => setProgressValue((v) => Math.min(100, v + 10))}>
+            +10%
+          </Button>
+        </div>
+      </section>
+
+      {/* Drawer */}
+      <section style={sectionStyle}>
+        <h2 style={sectionTitle}>Drawer</h2>
+        <div style={row}>
+          <Drawer.Root open={drawerOpen} onOpenChange={(e) => setDrawerOpen(e.open)}>
+            <Drawer.Trigger asChild>
+              <Button variant="outline">Open Drawer</Button>
+            </Drawer.Trigger>
+            <Drawer.Content>
+              <Drawer.Header>
+                <Drawer.Title>Settings</Drawer.Title>
+                <Drawer.Description>Configure your preferences</Drawer.Description>
+                <Drawer.CloseTrigger />
+              </Drawer.Header>
+              <Drawer.Body>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+                  <Field label="Display Name">
+                    <Input placeholder="Your name" />
+                  </Field>
+                  <Field label="Bio">
+                    <Textarea placeholder="Tell us about yourself" />
+                  </Field>
+                </div>
+              </Drawer.Body>
+              <Drawer.Footer>
+                <Button variant="outline" onClick={() => setDrawerOpen(false)}>Cancel</Button>
+                <Button variant="primary" onClick={() => setDrawerOpen(false)}>Save</Button>
+              </Drawer.Footer>
+            </Drawer.Content>
+          </Drawer.Root>
         </div>
       </section>
     </div>
