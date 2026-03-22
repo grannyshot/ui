@@ -14,6 +14,13 @@ import {
   Select,
   createListCollection,
   Field,
+  Dialog,
+  ToastProvider,
+  toaster,
+  Tooltip,
+  Popover,
+  Tabs,
+  Accordion,
 } from 'grannyshot-ui'
 
 const containerStyle: React.CSSProperties = {
@@ -101,7 +108,7 @@ function ThemeToggle() {
 }
 
 function Playground() {
-  const [checked, setChecked] = useState(false)
+  const [dialogOpen, setDialogOpen] = useState(false)
 
   return (
     <div style={containerStyle}>
@@ -281,6 +288,131 @@ function Playground() {
           </div>
         </Card>
       </section>
+
+      {/* Dialog */}
+      <section style={sectionStyle}>
+        <h2 style={sectionTitle}>Dialog</h2>
+        <div style={row}>
+          <Dialog.Root open={dialogOpen} onOpenChange={(e) => setDialogOpen(e.open)}>
+            <Dialog.Trigger asChild>
+              <Button variant="primary">Open Dialog</Button>
+            </Dialog.Trigger>
+            <Dialog.Content size="sm">
+              <Dialog.CloseTrigger />
+              <Dialog.Title>Confirm Action</Dialog.Title>
+              <Dialog.Description>
+                Are you sure you want to proceed? This action cannot be undone.
+              </Dialog.Description>
+              <div style={{ display: 'flex', gap: 8, justifyContent: 'flex-end' }}>
+                <Button variant="outline" onClick={() => setDialogOpen(false)}>Cancel</Button>
+                <Button variant="primary" onClick={() => setDialogOpen(false)}>Confirm</Button>
+              </div>
+            </Dialog.Content>
+          </Dialog.Root>
+        </div>
+      </section>
+
+      {/* Toast */}
+      <section style={sectionStyle}>
+        <h2 style={sectionTitle}>Toast</h2>
+        <div style={row}>
+          <Button variant="outline" onClick={() => toaster.create({ title: 'Default toast', description: 'This is a notification.' })}>
+            Default
+          </Button>
+          <Button variant="outline" onClick={() => toaster.create({ title: 'Success!', description: 'Operation completed.', type: 'success' })}>
+            Success
+          </Button>
+          <Button variant="outline" onClick={() => toaster.create({ title: 'Error', description: 'Something went wrong.', type: 'error' })}>
+            Error
+          </Button>
+          <Button variant="outline" onClick={() => toaster.create({ title: 'Warning', description: 'Please be careful.', type: 'warning' })}>
+            Warning
+          </Button>
+          <Button variant="outline" onClick={() => toaster.create({ title: 'Info', description: 'Here is some info.', type: 'info' })}>
+            Info
+          </Button>
+        </div>
+      </section>
+
+      {/* Tooltip */}
+      <section style={sectionStyle}>
+        <h2 style={sectionTitle}>Tooltip</h2>
+        <div style={row}>
+          <Tooltip content="This is a tooltip">
+            <Button variant="outline">Hover me</Button>
+          </Tooltip>
+          <Tooltip content="Another tooltip with longer text that wraps nicely">
+            <Badge variant="info">Info badge</Badge>
+          </Tooltip>
+        </div>
+      </section>
+
+      {/* Popover */}
+      <section style={sectionStyle}>
+        <h2 style={sectionTitle}>Popover</h2>
+        <div style={row}>
+          <Popover.Root>
+            <Popover.Trigger asChild>
+              <Button variant="outline">Open Popover</Button>
+            </Popover.Trigger>
+            <Popover.Content>
+              <Popover.Arrow />
+              <Popover.CloseTrigger />
+              <Popover.Title>Popover Title</Popover.Title>
+              <Popover.Description>
+                This is a popover with some content inside it.
+              </Popover.Description>
+            </Popover.Content>
+          </Popover.Root>
+        </div>
+      </section>
+
+      {/* Tabs */}
+      <section style={sectionStyle}>
+        <h2 style={sectionTitle}>Tabs</h2>
+        <Tabs.Root defaultValue="tab1">
+          <Tabs.List>
+            <Tabs.Trigger value="tab1">Account</Tabs.Trigger>
+            <Tabs.Trigger value="tab2">Password</Tabs.Trigger>
+            <Tabs.Trigger value="tab3" disabled>Settings</Tabs.Trigger>
+            <Tabs.Indicator />
+          </Tabs.List>
+          <Tabs.Content value="tab1">
+            <p style={{ fontSize: 14 }}>Manage your account settings and preferences.</p>
+          </Tabs.Content>
+          <Tabs.Content value="tab2">
+            <p style={{ fontSize: 14 }}>Change your password and security settings.</p>
+          </Tabs.Content>
+          <Tabs.Content value="tab3">
+            <p style={{ fontSize: 14 }}>Configure application settings.</p>
+          </Tabs.Content>
+        </Tabs.Root>
+      </section>
+
+      {/* Accordion */}
+      <section style={sectionStyle}>
+        <h2 style={sectionTitle}>Accordion</h2>
+        <Accordion.Root collapsible defaultValue={['item-1']}>
+          <Accordion.Item value="item-1">
+            <Accordion.ItemTrigger>What is grannyshot-ui?</Accordion.ItemTrigger>
+            <Accordion.ItemContent>
+              A Panda CSS-based design system with Ark UI for accessibility and interactions.
+            </Accordion.ItemContent>
+          </Accordion.Item>
+          <Accordion.Item value="item-2">
+            <Accordion.ItemTrigger>How do I install it?</Accordion.ItemTrigger>
+            <Accordion.ItemContent>
+              Install via npm: <code>npm install grannyshot-ui</code>, then import styles and components.
+            </Accordion.ItemContent>
+          </Accordion.Item>
+          <Accordion.Item value="item-3">
+            <Accordion.ItemTrigger>Does it support dark mode?</Accordion.ItemTrigger>
+            <Accordion.ItemContent>
+              Yes! Use ThemeProvider with light, dark, or system mode.
+            </Accordion.ItemContent>
+          </Accordion.Item>
+        </Accordion.Root>
+      </section>
     </div>
   )
 }
@@ -289,6 +421,7 @@ export default function App() {
   return (
     <ThemeProvider defaultTheme="dark">
       <Playground />
+      <ToastProvider />
     </ThemeProvider>
   )
 }
