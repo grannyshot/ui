@@ -15,12 +15,12 @@ export const toastRoot = cva({
     borderLeftStyle: 'solid',
     minWidth: '280px',
     maxWidth: '420px',
-    '&[data-state=open]': {
-      animation: 'fadeIn 0.2s ease',
-    },
-    '&[data-state=closed]': {
-      animation: 'fadeOut 0.15s ease',
-    },
+    opacity: 'var(--opacity)',
+    transform: 'translateX(var(--x)) translateY(var(--y)) scale(var(--scale, 1))',
+    height: 'var(--height, auto)',
+    zIndex: 'var(--z-index)',
+    transition: 'translate 0.4s ease, scale 0.4s ease, opacity 0.4s ease, height 0.4s ease',
+    willChange: 'translate, scale, opacity, height',
   },
 
   variants: {
@@ -81,12 +81,6 @@ export const toastCloseTrigger = css({
 })
 
 export const toastGroup = css({
-  position: 'fixed',
-  zIndex: 'toast',
-  display: 'flex',
-  flexDirection: 'column',
-  gap: '2',
-  p: '4',
   outline: 'none',
 })
 
