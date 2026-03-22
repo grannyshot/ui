@@ -27,6 +27,7 @@ export { menuContent, menuItem, menuSeparator, menuItemGroup, menuItemGroupLabel
 export { datePickerControl, datePickerInput, datePickerTrigger, datePickerContent, datePickerViewControl, datePickerViewTrigger, datePickerPrevTrigger, datePickerNextTrigger, datePickerTable, datePickerTableHeader, datePickerTableCellTrigger } from '@/components/DatePicker/datepicker.recipe'
 export { sliderRoot, sliderLabelGroup, sliderLabel, sliderControl, sliderTrack, sliderRange, sliderThumb, sliderValueText, type SliderTrackVariants } from '@/components/Slider/slider.recipe'
 export { progressRoot, progressHeader, progressLabel, progressTrack, progressRange, progressValueText, type ProgressTrackVariants } from '@/components/Progress/progress.recipe'
+export { drawerOverlay, drawerPositioner, drawerContent, drawerTitle, drawerDescription, drawerCloseTrigger, drawerHeader, drawerBody, drawerFooter, type DrawerContentVariants } from '@/components/Drawer/drawer.recipe'
 
 // Utils
 export { cx } from '@/styled-system/css'
@@ -60,3 +61,4 @@ export { Menu } from '@/components/Menu/Menu'
 export { DatePicker } from '@/components/DatePicker/DatePicker'
 export { Slider } from '@/components/Slider/Slider'
 export { Progress } from '@/components/Progress/Progress'
+export { Drawer } from '@/components/Drawer/Drawer'
