@@ -56,7 +56,7 @@ export function ThemeProvider({ children, defaultTheme }: ThemeProviderProps) {
 
   return (
     <ThemeContext.Provider value={{ theme, resolvedTheme, setTheme }}>
-      <div data-theme={resolvedTheme} style={{ colorScheme: resolvedTheme }}>
+      <div data-theme={resolvedTheme} style={{ colorScheme: resolvedTheme, minHeight: '100vh', background: 'var(--gs-colors-bg)', color: 'var(--gs-colors-fg)' }}>
         {children}
       </div>
     </ThemeContext.Provider>
