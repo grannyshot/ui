@@ -9,6 +9,7 @@ export { card, type CardVariants } from '@/components/Card/card.recipe'
 export { textarea, type TextareaVariants } from '@/components/Textarea/textarea.recipe'
 export { label, type LabelVariants } from '@/components/Label/label.recipe'
 export { checkboxRoot, checkboxControl, checkboxLabel, type CheckboxControlVariants } from '@/components/Checkbox/checkbox.recipe'
+export { switchRoot, switchControl, switchThumb, switchLabel, type SwitchControlVariants } from '@/components/Switch/switch.recipe'
 
 // Utils
 export { cx } from '@/styled-system/css'
@@ -24,3 +25,4 @@ export { Card } from '@/components/Card/Card'
 export { Textarea } from '@/components/Textarea/Textarea'
 export { Label } from '@/components/Label/Label'
 export { Checkbox } from '@/components/Checkbox/Checkbox'
+export { Switch } from '@/components/Switch/Switch'
