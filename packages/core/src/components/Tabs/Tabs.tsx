@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react'
+import React, { createContext, forwardRef, useContext } from 'react'
 import { Tabs as ArkTabs } from '@ark-ui/react/tabs'
 import {
   tabsRoot,
@@ -10,27 +10,36 @@ import {
 } from './tabs.recipe'
 import { cx } from '@/styled-system/css'
 
+type TabsVariant = NonNullable<TabsListVariants>['variant']
+
+const TabsVariantContext = createContext<TabsVariant>('line')
+
 type TabsRootProps = Omit<ArkTabs.RootProps, 'className'> & {
+  variant?: TabsVariant
   className?: string
 }
 
 const TabsRoot = forwardRef<HTMLDivElement, TabsRootProps>(
-  ({ className, ...props }, ref) => {
+  ({ variant = 'line', className, children, ...props }, ref) => {
     return (
-      <ArkTabs.Root ref={ref} lazyMount unmountOnExit className={cx(tabsRoot, className)} {...props} />
+      <TabsVariantContext.Provider value={variant}>
+        <ArkTabs.Root ref={ref} lazyMount unmountOnExit className={cx(tabsRoot, className)} {...props}>
+          {children}
+        </ArkTabs.Root>
+      </TabsVariantContext.Provider>
     )
   }
 )
 
 TabsRoot.displayName = 'Tabs.Root'
 
-type TabsListProps = TabsListVariants &
-  Omit<ArkTabs.ListProps, 'className'> & {
-    className?: string
-  }
+type TabsListProps = Omit<ArkTabs.ListProps, 'className'> & {
+  className?: string
+}
 
 const TabsList = forwardRef<HTMLDivElement, TabsListProps>(
-  ({ variant, className, ...props }, ref) => {
+  ({ className, ...props }, ref) => {
+    const variant = useContext(TabsVariantContext)
     return (
       <ArkTabs.List
         ref={ref}
@@ -49,10 +58,11 @@ type TabsTriggerProps = Omit<ArkTabs.TriggerProps, 'className'> & {
 
 const TabsTrigger = forwardRef<HTMLButtonElement, TabsTriggerProps>(
   ({ className, ...props }, ref) => {
+    const variant = useContext(TabsVariantContext)
     return (
       <ArkTabs.Trigger
         ref={ref}
-        className={cx(tabsTrigger, className)}
+        className={cx(tabsTrigger({ variant }), className)}
         {...props}
       />
     )

@@ -7,13 +7,21 @@ export const tabsRoot = css({
 
 export const tabsList = cva({
   base: {
-    display: 'flex',
-    borderBottom: '1px solid token(colors.border)',
+    display: 'inline-flex',
   },
 
   variants: {
     variant: {
-      line: {},
+      line: {
+        borderBottom: '1px solid token(colors.border)',
+        width: '100%',
+      },
+      pill: {
+        gap: '1',
+        bg: 'bg.muted',
+        p: '1',
+        borderRadius: 'lg',
+      },
     },
   },
 
@@ -22,30 +30,54 @@ export const tabsList = cva({
   },
 })
 
-export const tabsTrigger = css({
-  px: '4',
-  py: '2',
-  fontSize: 'sm',
-  fontWeight: 'medium',
-  color: 'fg.muted',
-  borderBottom: '2px solid transparent',
-  transition: 'color 0.15s ease, border-color 0.15s ease',
-  cursor: 'pointer',
-  outline: 'none',
-  bg: 'transparent',
-  '&[data-selected]': {
-    color: 'accent',
-    borderBottomColor: 'accent',
+export const tabsTrigger = cva({
+  base: {
+    fontSize: 'sm',
+    fontWeight: 'medium',
+    color: 'fg.muted',
+    transition: 'all 0.15s ease',
+    cursor: 'pointer',
+    outline: 'none',
+    bg: 'transparent',
+    border: 'none',
+    '&[data-disabled]': {
+      opacity: 0.5,
+      cursor: 'not-allowed',
+    },
+    '&[data-hover]:not([data-selected]):not([data-disabled])': {
+      color: 'fg',
+    },
+    '&[data-focus-visible]': {
+      boxShadow: '0 0 0 2px token(colors.bg), 0 0 0 4px token(colors.ring)',
+    },
   },
-  '&[data-disabled]': {
-    opacity: 0.5,
-    cursor: 'not-allowed',
+
+  variants: {
+    variant: {
+      line: {
+        px: '4',
+        py: '2',
+        borderBottom: '2px solid transparent',
+        '&[data-selected]': {
+          color: 'accent',
+          borderBottomColor: 'accent',
+        },
+      },
+      pill: {
+        px: '4',
+        py: '1',
+        borderRadius: 'md',
+        '&[data-selected]': {
+          color: 'fg',
+          bg: 'bg',
+          boxShadow: 'xs',
+        },
+      },
+    },
   },
-  '&[data-hover]:not([data-selected]):not([data-disabled])': {
-    color: 'fg',
-  },
-  '&[data-focus-visible]': {
-    boxShadow: '0 0 0 2px token(colors.bg), 0 0 0 4px token(colors.ring)',
+
+  defaultVariants: {
+    variant: 'line',
   },
 })
 
@@ -60,3 +92,4 @@ export const tabsIndicator = css({
 })
 
 export type TabsListVariants = RecipeVariantProps<typeof tabsList>
+export type TabsTriggerVariants = RecipeVariantProps<typeof tabsTrigger>

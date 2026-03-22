@@ -370,23 +370,41 @@ function Playground() {
       {/* Tabs */}
       <section style={sectionStyle}>
         <h2 style={sectionTitle}>Tabs</h2>
-        <Tabs.Root defaultValue="tab1">
-          <Tabs.List>
-            <Tabs.Trigger value="tab1">Account</Tabs.Trigger>
-            <Tabs.Trigger value="tab2">Password</Tabs.Trigger>
-            <Tabs.Trigger value="tab3" disabled>Settings</Tabs.Trigger>
-            <Tabs.Indicator />
-          </Tabs.List>
-          <Tabs.Content value="tab1">
-            <p style={{ fontSize: 14 }}>Manage your account settings and preferences.</p>
-          </Tabs.Content>
-          <Tabs.Content value="tab2">
-            <p style={{ fontSize: 14 }}>Change your password and security settings.</p>
-          </Tabs.Content>
-          <Tabs.Content value="tab3">
-            <p style={{ fontSize: 14 }}>Configure application settings.</p>
-          </Tabs.Content>
-        </Tabs.Root>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
+          <div>
+            <span style={rowLabel}>Line</span>
+            <Tabs.Root defaultValue="tab1" variant="line">
+              <Tabs.List>
+                <Tabs.Trigger value="tab1">Account</Tabs.Trigger>
+                <Tabs.Trigger value="tab2">Password</Tabs.Trigger>
+                <Tabs.Trigger value="tab3" disabled>Settings</Tabs.Trigger>
+                <Tabs.Indicator />
+              </Tabs.List>
+              <Tabs.Content value="tab1">
+                <p style={{ fontSize: 14 }}>Manage your account settings and preferences.</p>
+              </Tabs.Content>
+              <Tabs.Content value="tab2">
+                <p style={{ fontSize: 14 }}>Change your password and security settings.</p>
+              </Tabs.Content>
+            </Tabs.Root>
+          </div>
+          <div>
+            <span style={rowLabel}>Pill</span>
+            <Tabs.Root defaultValue="tab1" variant="pill">
+              <Tabs.List>
+                <Tabs.Trigger value="tab1">Account</Tabs.Trigger>
+                <Tabs.Trigger value="tab2">Password</Tabs.Trigger>
+                <Tabs.Trigger value="tab3" disabled>Settings</Tabs.Trigger>
+              </Tabs.List>
+              <Tabs.Content value="tab1">
+                <p style={{ fontSize: 14 }}>Manage your account settings and preferences.</p>
+              </Tabs.Content>
+              <Tabs.Content value="tab2">
+                <p style={{ fontSize: 14 }}>Change your password and security settings.</p>
+              </Tabs.Content>
+            </Tabs.Root>
+          </div>
+        </div>
       </section>
 
       {/* Accordion */}
