@@ -17,3 +17,4 @@ export { accordionRoot, accordionItem, accordionItemTrigger, accordionItemConten
 export { avatar, avatarImage, type AvatarVariants } from '@/components/Avatar/avatar.recipe'
 export { tableRoot, tableHeader, tableHeaderCell, tableBody, tableRow, tableCell, tableCaption } from '@/components/Table/table.recipe'
 export { separator, type SeparatorVariants } from '@/components/Separator/separator.recipe'
+export { skeleton, type SkeletonVariants } from '@/components/Skeleton/skeleton.recipe'

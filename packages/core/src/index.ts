@@ -21,6 +21,7 @@ export { accordionRoot, accordionItem, accordionItemTrigger, accordionItemConten
 export { avatar, avatarImage, type AvatarVariants } from '@/components/Avatar/avatar.recipe'
 export { tableRoot, tableHeader, tableHeaderCell, tableBody, tableRow, tableCell, tableCaption } from '@/components/Table/table.recipe'
 export { separator, type SeparatorVariants } from '@/components/Separator/separator.recipe'
+export { skeleton, type SkeletonVariants } from '@/components/Skeleton/skeleton.recipe'
 
 // Utils
 export { cx } from '@/styled-system/css'
@@ -48,3 +49,4 @@ export { Accordion } from '@/components/Accordion/Accordion'
 export { Avatar } from '@/components/Avatar/Avatar'
 export { Table } from '@/components/Table/Table'
 export { Separator } from '@/components/Separator/Separator'
+export { Skeleton } from '@/components/Skeleton/Skeleton'
