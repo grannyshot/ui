@@ -4,7 +4,15 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## 프로젝트 개요
 
-**grannyshot-ui** — Panda CSS 기반 개인 디자인 시스템. `grannyshot-ui` npm 패키지로 퍼블리시.
+**grannyshot-ui** — Panda CSS 기반 개인 디자인 시스템. `@grannyshot/ui` npm 패키지로 퍼블리시. public repo.
+
+## 개발 워크플로우
+
+- **main 직접 푸시 금지** — feature branch → PR → CI 통과 → 머지
+- 브랜치 네이밍: `feat/xxx`, `fix/xxx`, `refactor/xxx`, `docs/xxx`
+- **PR 머지 전 반드시 로컬 빌드 확인**: `pnpm build && pnpm build:docs`
+- CI (GitHub Actions)가 PR마다 빌드 + 타입 체크 자동 실행
+- 커밋 메시지: `FEAT:`, `FIX:`, `REFACTOR:`, `DOCS:` prefix 사용
 
 ## 커맨드
 
@@ -20,7 +28,7 @@ npx panda codegen                             # styled-system 재생성
 
 pnpm workspace. 패키지는 `packages/` 하위:
 - `packages/core` — 메인 라이브러리 (`grannyshot-ui`)
-- `packages/docs` — Nextra 기반 문서 사이트 (예정)
+- `packages/docs` — Nextra 기반 문서 사이트
 
 ## 아키텍처 — 레이어 구조
 
@@ -92,16 +100,18 @@ src/utils/       → cx re-export
 - React/React DOM은 optional peer dependency
 - `src/styled-system/`은 codegen 생성물 — git에 커밋하지 않음
 
-### UI 프리뷰
+### 문서 사이트 프리뷰
 
-- `preview.html` — 빌드된 CSS (`dist/styles.css`)를 참조하는 정적 프리뷰
-- `pnpm build` 후 브라우저에서 열어서 확인
-- 테마 토글 (`data-theme` 속성)로 light/dark 전환
+- `packages/docs`에서 `pnpm dev:docs`로 로컬 확인 (localhost:3000)
+- 컴포넌트 프리뷰는 inline rendering (`InlinePreview`) — iframe/Shadow DOM 아님
+- `styles-no-preflight.css`로 Nextra CSS와 공존 (preflight 제거, `--gs-` prefix로 충돌 없음)
+- `<html data-theme>` 동기화 스크립트로 다크모드 토큰 적용
+- 새 프리뷰 추가: `_previews/{name}.tsx` 작성 → `_previews/index.tsx` registry에 등록 → MDX에서 `<ComponentPreview name="..." />` 사용
 
 ## FE 전용 DoD (Definition of Done)
 
 글로벌 CLAUDE.md의 공통 DoD에 추가:
-- [ ] 빌드 성공 (`pnpm build` 통과)
+- [ ] 빌드 성공 (`pnpm build && pnpm build:docs` 통과)
 - [ ] 새 컴포넌트는 위 패턴(cva → forwardRef wrapper → re-export) 준수
 - [ ] 토큰 참조 시 하드코딩 금지, Panda 시맨틱 토큰 사용 (e.g., `bg: 'accent'`)
 - [ ] 스타일은 `styles/*.ts` 파일에서 `cva()` / `css()`로 정의
