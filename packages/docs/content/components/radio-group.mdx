@@ -1,0 +1,89 @@
+# RadioGroup
+
+A group of radio buttons for selecting a single option. Built on [Ark UI](https://ark-ui.com/react/docs/components/radio-group).
+
+<ComponentShadowPreview name="radio-group" />
+
+## Import
+
+```tsx
+import { RadioGroup } from '@grannyshot/ui'
+```
+
+## Usage
+
+```tsx
+<RadioGroup.Root defaultValue="option1">
+  <RadioGroup.Item value="option1" label="Option 1" />
+  <RadioGroup.Item value="option2" label="Option 2" />
+</RadioGroup.Root>
+```
+
+## With Label
+
+```tsx
+<RadioGroup.Root defaultValue="react" label="Framework">
+  <RadioGroup.Item value="react" label="React" />
+  <RadioGroup.Item value="vue" label="Vue" />
+  <RadioGroup.Item value="svelte" label="Svelte" />
+</RadioGroup.Root>
+```
+
+## Horizontal
+
+```tsx
+<RadioGroup.Root defaultValue="sm" orientation="horizontal">
+  <RadioGroup.Item value="sm" label="Small" />
+  <RadioGroup.Item value="md" label="Medium" />
+  <RadioGroup.Item value="lg" label="Large" />
+</RadioGroup.Root>
+```
+
+## Sizes
+
+```tsx
+<RadioGroup.Root size="sm" defaultValue="a">
+  <RadioGroup.Item value="a" label="Small" />
+</RadioGroup.Root>
+
+<RadioGroup.Root size="md" defaultValue="a">
+  <RadioGroup.Item value="a" label="Medium" />
+</RadioGroup.Root>
+
+<RadioGroup.Root size="lg" defaultValue="a">
+  <RadioGroup.Item value="a" label="Large" />
+</RadioGroup.Root>
+```
+
+## Disabled
+
+```tsx
+<RadioGroup.Root defaultValue="a" disabled>
+  <RadioGroup.Item value="a" label="Disabled A" />
+  <RadioGroup.Item value="b" label="Disabled B" />
+</RadioGroup.Root>
+```
+
+## API Reference
+
+### RadioGroup.Root
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Radio button size |
+| `label` | `string` | — | Group label |
+| `orientation` | `'horizontal' \| 'vertical'` | `'vertical'` | Layout direction |
+| `defaultValue` | `string` | — | Default selected value |
+| `value` | `string` | — | Controlled selected value |
+| `onValueChange` | `(details: { value: string }) => void` | — | Change handler |
+| `disabled` | `boolean` | `false` | Disable all items |
+| `className` | `string` | — | Additional CSS classes |
+
+### RadioGroup.Item
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `string` | — | Item value (required) |
+| `label` | `string` | — | Item label text |
+| `disabled` | `boolean` | `false` | Disable this item |
+| `className` | `string` | — | Additional CSS classes |

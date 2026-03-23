@@ -28,6 +28,7 @@ export { datePickerControl, datePickerInput, datePickerTrigger, datePickerConten
 export { sliderRoot, sliderLabelGroup, sliderLabel, sliderControl, sliderTrack, sliderRange, sliderThumb, sliderValueText, type SliderTrackVariants } from '@/components/Slider/slider.recipe'
 export { progressRoot, progressHeader, progressLabel, progressTrack, progressRange, progressValueText, type ProgressTrackVariants } from '@/components/Progress/progress.recipe'
 export { drawerOverlay, drawerPositioner, drawerContent, drawerTitle, drawerDescription, drawerCloseTrigger, drawerHeader, drawerBody, drawerFooter, type DrawerContentVariants } from '@/components/Drawer/drawer.recipe'
+export { radioGroupRoot, radioGroupLabel, radioGroupItem, radioGroupItemControl, radioGroupIndicator, radioGroupItemText, type RadioGroupItemControlVariants } from '@/components/RadioGroup/radio-group.recipe'
 
 // Utils
 export { cx } from '@/styled-system/css'
@@ -64,3 +65,4 @@ export { DatePicker } from '@/components/DatePicker/DatePicker'
 export { Slider } from '@/components/Slider/Slider'
 export { Progress } from '@/components/Progress/Progress'
 export { Drawer } from '@/components/Drawer/Drawer'
+export { RadioGroup } from '@/components/RadioGroup/RadioGroup'

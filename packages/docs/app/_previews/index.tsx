@@ -18,6 +18,7 @@ import { LabelPreview } from './label'
 import { MenuPreview } from './menu'
 import { PopoverPreview } from './popover'
 import { ProgressPreview } from './progress'
+import { RadioGroupPreview } from './radio-group'
 import { SelectPreview } from './select'
 import { SeparatorPreview } from './separator'
 import { SkeletonPreview } from './skeleton'
@@ -49,6 +50,7 @@ export const previews: Record<string, FC> = {
   menu: MenuPreview,
   popover: PopoverPreview,
   progress: ProgressPreview,
+  'radio-group': RadioGroupPreview,
   select: SelectPreview,
   separator: SeparatorPreview,
   skeleton: SkeletonPreview,
