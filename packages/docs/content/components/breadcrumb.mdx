@@ -1,0 +1,62 @@
+# Breadcrumb
+
+A navigation component that shows the current page's location within a hierarchy.
+
+<ComponentShadowPreview name="breadcrumb" />
+
+## Import
+
+```tsx
+import { Breadcrumb } from '@grannyshot/ui'
+```
+
+## Usage
+
+```tsx
+<Breadcrumb.Root>
+  <Breadcrumb.Item>
+    <Breadcrumb.Link href="/">Home</Breadcrumb.Link>
+    <Breadcrumb.Separator />
+  </Breadcrumb.Item>
+  <Breadcrumb.Item>
+    <Breadcrumb.Link href="/docs" current>Docs</Breadcrumb.Link>
+  </Breadcrumb.Item>
+</Breadcrumb.Root>
+```
+
+## Custom Separator
+
+```tsx
+<Breadcrumb.Root>
+  <Breadcrumb.Item>
+    <Breadcrumb.Link href="#">Home</Breadcrumb.Link>
+    <Breadcrumb.Separator>›</Breadcrumb.Separator>
+  </Breadcrumb.Item>
+  <Breadcrumb.Item>
+    <Breadcrumb.Link href="#" current>Page</Breadcrumb.Link>
+  </Breadcrumb.Item>
+</Breadcrumb.Root>
+```
+
+## API Reference
+
+### Breadcrumb.Root
+
+Renders a `<nav aria-label="Breadcrumb">`. Extends native `<nav>` attributes.
+
+### Breadcrumb.Item
+
+Renders a `<li>`. Extends native `<li>` attributes.
+
+### Breadcrumb.Link
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `href` | `string` | — | Link destination |
+| `current` | `boolean` | `false` | Marks as current page (`aria-current="page"`) |
+
+Extends native `<a>` attributes.
+
+### Breadcrumb.Separator
+
+Renders `/` by default. Pass children for custom separator. Extends native `<span>` attributes.
