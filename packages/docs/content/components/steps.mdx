@@ -1,0 +1,44 @@
+# Steps
+
+A step indicator for multi-step processes. Built on [Ark UI](https://ark-ui.com/react/docs/components/steps).
+
+<ComponentShadowPreview name="steps" />
+
+## Import
+
+```tsx
+import { Steps } from '@grannyshot/ui'
+```
+
+## Usage
+
+```tsx
+<Steps.Root count={3} defaultStep={0}>
+  <Steps.List>
+    <Steps.Item index={0} title="Account" />
+    <Steps.Item index={1} title="Profile" />
+    <Steps.Item index={2} title="Complete" />
+  </Steps.List>
+  <Steps.Content index={0}>Step 1 content.</Steps.Content>
+  <Steps.Content index={1}>Step 2 content.</Steps.Content>
+  <Steps.Content index={2}>Step 3 content.</Steps.Content>
+  <Steps.CompletedContent>All done!</Steps.CompletedContent>
+</Steps.Root>
+```
+
+## API Reference
+
+### Steps.Root
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `count` | `number` | — | Total number of steps |
+| `defaultStep` | `number` | `0` | Default active step |
+| `step` | `number` | — | Controlled active step |
+
+### Steps.Item
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `index` | `number` | — | Step index (required) |
+| `title` | `string` | — | Step label |

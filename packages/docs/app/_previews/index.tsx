@@ -13,6 +13,8 @@ import { CheckboxPreview } from './checkbox'
 import { ComboboxPreview } from './combobox'
 import { DatePickerPreview } from './date-picker'
 import { DialogPreview } from './dialog'
+import { EmptyStatePreview } from './empty-state'
+import { FileUploadPreview } from './file-upload'
 import { DrawerPreview } from './drawer'
 import { FieldPreview } from './field'
 import { InputPreview } from './input'
@@ -28,9 +30,12 @@ import { SelectPreview } from './select'
 import { SeparatorPreview } from './separator'
 import { SkeletonPreview } from './skeleton'
 import { SliderPreview } from './slider'
+import { StepsPreview } from './steps'
 import { SwitchPreview } from './switch'
 import { TablePreview } from './table'
 import { TabsPreview } from './tabs'
+import { TagsInputPreview } from './tags-input'
+import { ToggleGroupPreview } from './toggle-group'
 import { TextareaPreview } from './textarea'
 import { ToastPreview } from './toast'
 import { TooltipPreview } from './tooltip'
@@ -50,6 +55,8 @@ export const previews: Record<string, FC> = {
   combobox: ComboboxPreview,
   'date-picker': DatePickerPreview,
   dialog: DialogPreview,
+  'empty-state': EmptyStatePreview,
+  'file-upload': FileUploadPreview,
   drawer: DrawerPreview,
   field: FieldPreview,
   input: InputPreview,
@@ -65,9 +72,12 @@ export const previews: Record<string, FC> = {
   separator: SeparatorPreview,
   skeleton: SkeletonPreview,
   slider: SliderPreview,
+  steps: StepsPreview,
   switch: SwitchPreview,
   table: TablePreview,
   tabs: TabsPreview,
+  'tags-input': TagsInputPreview,
+  'toggle-group': ToggleGroupPreview,
   textarea: TextareaPreview,
   toast: ToastPreview,
   tooltip: TooltipPreview,

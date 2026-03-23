@@ -1,0 +1,37 @@
+# TagsInput
+
+A tag input for adding and removing tags. Built on [Ark UI](https://ark-ui.com/react/docs/components/tags-input).
+
+<ComponentShadowPreview name="tags-input" />
+
+## Import
+
+```tsx
+import { TagsInput } from '@grannyshot/ui'
+```
+
+## Usage
+
+```tsx
+<TagsInput label="Tags" defaultValue={['React']} placeholder="Add tag..." />
+```
+
+## Sizes
+
+```tsx
+<TagsInput size="sm" defaultValue={['Small']} />
+<TagsInput size="md" defaultValue={['Medium']} />
+<TagsInput size="lg" defaultValue={['Large']} />
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Input size |
+| `label` | `string` | — | Label text |
+| `placeholder` | `string` | `'Add tag...'` | Input placeholder |
+| `defaultValue` | `string[]` | — | Default tags |
+| `value` | `string[]` | — | Controlled tags |
+| `disabled` | `boolean` | `false` | Disabled state |
+| `className` | `string` | — | Additional CSS classes |
