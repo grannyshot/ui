@@ -12,6 +12,17 @@ interface FieldProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode
 }
 
+/**
+ * Form field wrapper with label, hint, and error message.
+ * Automatically associates label with child input via aria attributes.
+ *
+ * @example
+ * ```tsx
+ * <Field label="Email" required error="Invalid email">
+ *   <Input type="email" />
+ * </Field>
+ * ```
+ */
 export const Field = forwardRef<HTMLDivElement, FieldProps>(
   ({ label, hint, error, required, disabled, children, className, id: idProp, ...rest }, ref) => {
     const autoId = useId()
