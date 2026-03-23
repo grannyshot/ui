@@ -3,6 +3,7 @@
 import type { FC } from 'react'
 
 import { AccordionPreview } from './accordion'
+import { AlertPreview } from './alert'
 import { AvatarPreview } from './avatar'
 import { BadgePreview } from './badge'
 import { ButtonPreview } from './button'
@@ -32,6 +33,7 @@ import { TooltipPreview } from './tooltip'
 
 export const previews: Record<string, FC> = {
   accordion: AccordionPreview,
+  alert: AlertPreview,
   avatar: AvatarPreview,
   badge: BadgePreview,
   button: ButtonPreview,

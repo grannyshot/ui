@@ -1,0 +1,54 @@
+# Alert
+
+A status message component for displaying feedback to users.
+
+<ComponentShadowPreview name="alert" />
+
+## Import
+
+```tsx
+import { Alert } from '@grannyshot/ui'
+```
+
+## Usage
+
+```tsx
+<Alert variant="info" title="Info">
+  This is an informational message.
+</Alert>
+```
+
+## Variants
+
+```tsx
+<Alert variant="info" title="Info">Informational message.</Alert>
+<Alert variant="success" title="Success">Operation completed.</Alert>
+<Alert variant="warning" title="Warning">Please review.</Alert>
+<Alert variant="error" title="Error">Something went wrong.</Alert>
+```
+
+## Without Title
+
+```tsx
+<Alert variant="info">A simple alert without a title.</Alert>
+```
+
+## Without Icon
+
+```tsx
+<Alert variant="success" title="Done" icon={false}>
+  Custom alert without icon.
+</Alert>
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `variant` | `'info' \| 'success' \| 'warning' \| 'error'` | `'info'` | Visual style |
+| `title` | `ReactNode` | — | Alert title |
+| `icon` | `ReactNode \| false` | auto | Custom icon, or `false` to hide |
+| `className` | `string` | — | Additional CSS classes |
+| `children` | `ReactNode` | — | Alert description |
+
+Extends all native `<div>` HTML attributes.
