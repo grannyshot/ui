@@ -67,7 +67,7 @@ export const sliderThumb = cva({
     border: '2px solid token(colors.accent)',
     boxShadow: 'sm',
     cursor: 'pointer',
-    transition: 'all 0.2s ease',
+    transition: 'box-shadow 0.2s ease, border-color 0.2s ease',
     outline: 'none',
     '&[data-focus-visible]': {
       boxShadow: '0 0 0 2px token(colors.bg), 0 0 0 4px token(colors.ring)',

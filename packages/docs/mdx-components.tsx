@@ -1,12 +1,13 @@
 import { useMDXComponents as getDocsMDXComponents } from 'nextra-theme-docs'
-import { ComponentPreview } from './app/_components/ComponentPreview'
+import { InlinePreview } from './app/_components/InlinePreview'
 
 const docsComponents = getDocsMDXComponents()
 
 export function useMDXComponents(components?: any) {
   return {
     ...docsComponents,
-    ComponentPreview,
+    ComponentPreview: InlinePreview,
+    ComponentShadowPreview: InlinePreview,
     ...components,
   }
 }
