@@ -30,3 +30,8 @@ export { paginationRoot, paginationItem, paginationEllipsis, type PaginationItem
 export { breadcrumbRoot, breadcrumbList, breadcrumbItem, breadcrumbLink, breadcrumbSeparator } from '@/components/Breadcrumb/breadcrumb.recipe'
 export { numberInputRoot, numberInputLabel, numberInputControl, numberInputInput, numberInputTrigger, numberInputIncrementTrigger, numberInputDecrementTrigger, type NumberInputVariants } from '@/components/NumberInput/number-input.recipe'
 export { pinInputRoot, pinInputLabel, pinInputControl, pinInputInput, type PinInputVariants } from '@/components/PinInput/pin-input.recipe'
+export { fileUploadRoot, fileUploadLabel, fileUploadDropzone, fileUploadTrigger, fileUploadItemGroup, fileUploadItem, fileUploadItemName, fileUploadItemSizeText, fileUploadItemDeleteTrigger } from '@/components/FileUpload/file-upload.recipe'
+export { tagsInputRoot, tagsInputLabel, tagsInputControl, tagsInputItem, tagsInputItemText, tagsInputItemDeleteTrigger, tagsInputInput, type TagsInputControlVariants } from '@/components/TagsInput/tags-input.recipe'
+export { toggleGroupRoot, toggleGroupItem, type ToggleGroupRootVariants } from '@/components/ToggleGroup/toggle-group.recipe'
+export { stepsRoot, stepsList, stepsItem, stepsTrigger, stepsIndicator, stepsSeparator, stepsContent, type StepsIndicatorVariants } from '@/components/Steps/steps.recipe'
+export { emptyStateRoot, emptyStateIcon, emptyStateTitle, emptyStateDescription, emptyStateActions } from '@/components/EmptyState/empty-state.recipe'

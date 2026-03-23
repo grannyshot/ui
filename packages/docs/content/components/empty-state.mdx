@@ -1,0 +1,43 @@
+# EmptyState
+
+A placeholder component for when there is no data to display.
+
+<ComponentShadowPreview name="empty-state" />
+
+## Import
+
+```tsx
+import { EmptyState } from '@grannyshot/ui'
+```
+
+## Usage
+
+```tsx
+<EmptyState
+  title="No results"
+  description="Try adjusting your search or filters."
+/>
+```
+
+## With Icon and Actions
+
+```tsx
+<EmptyState
+  icon={<MyIcon />}
+  title="No documents"
+  description="Get started by creating your first document."
+  actions={<Button variant="primary">Create</Button>}
+/>
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `icon` | `ReactNode` | — | Icon element |
+| `title` | `ReactNode` | — | Title text |
+| `description` | `ReactNode` | — | Description text |
+| `actions` | `ReactNode` | — | Action buttons |
+| `className` | `string` | — | Additional CSS classes |
+
+Extends all native `<div>` HTML attributes.
