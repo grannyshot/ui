@@ -1,0 +1,91 @@
+# grannyshot-ui
+
+> Panda CSS + Ark UI based React design system with 37 components.
+
+## Docs
+
+- [Components](https://ui.grannyshot.co.kr/components/button): Full component documentation
+- [GitHub](https://github.com/grannyshot/ui): Source code
+- [npm](https://www.npmjs.com/package/@grannyshot/ui): Package
+
+## Install
+
+```
+npm install @grannyshot/ui
+```
+
+## Setup
+
+```tsx
+import '@grannyshot/ui/styles.css'
+import { Button } from '@grannyshot/ui'
+import { ThemeProvider } from '@grannyshot/ui'
+```
+
+## Components (37)
+
+### General
+- Button: variant(primary|secondary|outline|ghost|danger), size(sm|md|lg)
+- Badge: variant(success|warning|error|info|neutral), size(sm|md)
+- Avatar: size(sm|md|lg|xl), name, src
+- Separator: orientation(horizontal|vertical)
+- Skeleton: variant(text|circular|rectangular)
+- EmptyState: icon, title, description, actions
+- Alert: variant(info|success|warning|error), title, icon
+
+### Form
+- Input: size(sm|md|lg), state(default|error|success)
+- Textarea: size(sm|md|lg), state, resize
+- Label: required, disabled
+- Field: label, hint, error, required (form field wrapper)
+- Checkbox: size(sm|md|lg), label
+- Switch: size(sm|md|lg), label
+- RadioGroup: compound(Root+Item), size(sm|md|lg), orientation
+- Select: size(sm|md|lg), collection(createListCollection)
+- Combobox: size(sm|md|lg), collection, placeholder
+- NumberInput: size(sm|md|lg), min, max, step
+- PinInput: size(sm|md|lg), length, mask
+- Slider: size(sm|md|lg), label, showValue
+- DatePicker: calendar date selection
+- FileUpload: drag-and-drop, maxFiles
+- TagsInput: size(sm|md|lg), tag add/remove
+
+### Layout
+- Card: padding(sm|md|lg), hoverable
+- Table: compound(Root,Header,HeaderCell,Body,Row,Cell,Caption)
+- Tabs: compound(Root,List,Trigger,Content,Indicator), variant(line|pill)
+- Accordion: compound(Root,Item,ItemTrigger,ItemContent)
+- Steps: compound(Root,List,Item,Content,CompletedContent)
+
+### Overlay
+- Dialog: compound, size(sm|md|lg)
+- Drawer: compound, placement(left|right)
+- Popover: compound with Arrow
+- Tooltip: content, openDelay, closeDelay
+- Menu: compound with ItemGroup, Separator
+
+### Feedback
+- Toast: toast.success/error/warning/info() + ToastProvider
+- Progress: size(sm|md|lg), label, showValue
+
+### Navigation
+- Pagination: count, pageSize, size(sm|md)
+- Breadcrumb: compound(Root,Item,Link,Separator)
+- ToggleGroup: compound(Root,Item), size(sm|md|lg), multiple
+
+## Theme
+
+- Light / Dark / System via ThemeProvider
+- CSS variables: --gs-* prefix
+- Dark mode: [data-theme=dark] selector
+- useTheme() hook for programmatic control
+
+## Import Paths
+
+- `@grannyshot/ui` — all exports
+- `@grannyshot/ui/react` — React components only
+- `@grannyshot/ui/styles` — recipe functions (cva)
+- `@grannyshot/ui/tokens` — design token functions
+- `@grannyshot/ui/context` — ThemeProvider + useTheme
+- `@grannyshot/ui/utils` — cx utility
+- `@grannyshot/ui/styles.css` — required CSS

@@ -14,6 +14,21 @@ import {
 
 type DialogRootProps = ArkDialog.RootProps
 
+/**
+ * Modal dialog with backdrop overlay. Use compound pattern.
+ *
+ * @example
+ * ```tsx
+ * <Dialog.Root>
+ *   <Dialog.Trigger asChild><Button>Open</Button></Dialog.Trigger>
+ *   <Dialog.Content size="md">
+ *     <Dialog.CloseTrigger />
+ *     <Dialog.Title>Title</Dialog.Title>
+ *     <Dialog.Description>Description</Dialog.Description>
+ *   </Dialog.Content>
+ * </Dialog.Root>
+ * ```
+ */
 const DialogRoot = (props: DialogRootProps) => {
   return <ArkDialog.Root lazyMount unmountOnExit {...props} />
 }
