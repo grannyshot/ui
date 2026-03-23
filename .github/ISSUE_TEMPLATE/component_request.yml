@@ -1,0 +1,37 @@
+name: "\U0001F9E9 Component Request"
+description: "새 컴포넌트 추가 요청"
+labels: ["new component"]
+body:
+  - type: input
+    id: name
+    attributes:
+      label: "컴포넌트 이름"
+      placeholder: "예: Pagination, Breadcrumb, Alert"
+    validations:
+      required: true
+  - type: textarea
+    id: reason
+    attributes:
+      label: "필요한 이유"
+      description: "어떤 상황에서 사용하나요?"
+    validations:
+      required: true
+  - type: textarea
+    id: reference
+    attributes:
+      label: "참고 레퍼런스"
+      description: "다른 디자인 시스템이나 라이브러리 예시 링크"
+      placeholder: "예: https://ui.shadcn.com/docs/components/pagination"
+    validations:
+      required: false
+  - type: dropdown
+    id: ark_ui
+    attributes:
+      label: "Ark UI 지원 여부"
+      description: "Ark UI에 해당 headless 컴포넌트가 있나요?"
+      options:
+        - "있음"
+        - "없음"
+        - "모르겠음"
+    validations:
+      required: false
