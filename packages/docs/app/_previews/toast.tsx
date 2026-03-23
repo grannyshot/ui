@@ -4,7 +4,8 @@ import { Button, ToastProvider, toast } from '@grannyshot/ui'
 
 export function ToastPreview() {
   return (
-    <ToastProvider>
+    <>
+      <ToastProvider />
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
         <Button variant="primary" onClick={() => toast.success('Success!')}>
           Success
@@ -19,6 +20,6 @@ export function ToastPreview() {
           Info
         </Button>
       </div>
-    </ToastProvider>
+    </>
   )
 }
