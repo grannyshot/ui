@@ -11,7 +11,7 @@ grannyshot-ui 개발 로드맵. 개인 프로젝트 + 오픈소스로 점진적 
 - [x] Issue/PR 템플릿
 - [x] Changeset 설정
 
-## Phase 2: 컴포넌트 확장
+## Phase 2: 컴포넌트 확장 ✅
 
 실무 필수 컴포넌트를 우선순위대로 추가.
 
