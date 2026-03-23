@@ -9,7 +9,7 @@ A minimal, theme-aware design system built with [Panda CSS](https://panda-css.co
 
 ## Features
 
-- **26 components** — buttons, inputs, modals, toasts, date pickers, and more
+- **37 components** — buttons, inputs, modals, toasts, date pickers, and more
 - **Dark mode** — seamless light/dark theme switching with semantic tokens
 - **Accessible** — built on Ark UI (Zag.js state machines) for keyboard navigation and screen reader support
 - **Imperative APIs** — `toast.success()`, `dialog.confirm()`, `drawer.open()`
@@ -40,16 +40,19 @@ function App() {
 ## Components
 
 ### General
-Button · Badge · Avatar · Separator · Skeleton
+Button · Badge · Avatar · Separator · Skeleton · Alert · EmptyState
 
 ### Form
-Input · Textarea · Label · Checkbox · Switch · Select · Combobox · Slider · DatePicker · Field
+Input · Textarea · Label · Checkbox · Switch · RadioGroup · Select · Combobox · NumberInput · PinInput · Slider · DatePicker · FileUpload · TagsInput · Field
 
 ### Layout
-Card · Table · Tabs · Accordion
+Card · Table · Tabs · Accordion · Steps
 
 ### Overlay
 Dialog · Drawer · Popover · Tooltip · Menu
+
+### Navigation
+Pagination · Breadcrumb · ToggleGroup
 
 ### Feedback
 Toast · Progress

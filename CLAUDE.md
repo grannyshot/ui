@@ -67,13 +67,27 @@ src/utils/       → cx re-export
 - 테마 설정은 `localStorage` (`grannyshot-theme` 키)에 저장
 - light / dark / system 모드 지원
 
-### 새 컴포넌트 추가 시 패턴
+### 새 컴포넌트 추가 시 체크리스트
 
-1. `styles/{name}.ts` — `cva()` 정의 + `RecipeVariantProps` 타입 export
-2. `styles/index.ts` — re-export 추가
-3. `react/{Name}.tsx` — `forwardRef` + `cx(recipe({variants}), className)` 패턴
-4. `react/index.ts` — re-export 추가
+**코드:**
+1. `src/components/{Name}/{Name}.tsx` — `forwardRef` + `cx(recipe({variants}), className)` 패턴
+2. `src/components/{Name}/{name}.recipe.ts` — `cva()` 정의 + `RecipeVariantProps` 타입 export
+3. `src/react/index.ts` — re-export 추가
+4. `src/styles/index.ts` — re-export 추가
 5. `src/index.ts` — 스타일/컴포넌트 모두 re-export
+
+**문서 (필수 — 컴포넌트와 같은 PR에 포함):**
+6. `packages/docs/app/_previews/{name}.tsx` — 라이브 프리뷰 컴포넌트
+7. `packages/docs/app/_previews/index.tsx` — registry에 import + 등록
+8. `packages/docs/content/components/{name}.mdx` — 문서 페이지 (Import, Usage, Variants, API Reference)
+9. `README.md` — Components 섹션에 추가
+10. `packages/core/CLAUDE.md` — 컴포넌트 목록 + 사용 패턴 업데이트
+11. `packages/docs/public/llms.txt` — Components 섹션에 추가
+
+**배포 시 (npm publish 할 때):**
+12. `packages/core/package.json` — version bump
+13. `CHANGELOG.md` — 변경사항 기록
+14. GitHub Release — release notes 작성
 
 ### 컴포넌트 작성 규칙
 
@@ -110,8 +124,8 @@ src/utils/       → cx re-export
 
 ## FE 전용 DoD (Definition of Done)
 
-글로벌 CLAUDE.md의 공통 DoD에 추가:
 - [ ] 빌드 성공 (`pnpm build && pnpm build:docs` 통과)
-- [ ] 새 컴포넌트는 위 패턴(cva → forwardRef wrapper → re-export) 준수
+- [ ] 새 컴포넌트는 위 체크리스트(코드 1~5 + 문서 6~11) 전부 완료
 - [ ] 토큰 참조 시 하드코딩 금지, Panda 시맨틱 토큰 사용 (e.g., `bg: 'accent'`)
 - [ ] 스타일은 `styles/*.ts` 파일에서 `cva()` / `css()`로 정의
+- [ ] README, CLAUDE.md(소비자용), llms.txt에 컴포넌트 반영

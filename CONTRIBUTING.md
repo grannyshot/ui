@@ -43,13 +43,32 @@ pnpm build:docs       # docs 빌드 (Next.js static)
 1. `src/components/{Name}/{Name}.tsx` — React 컴포넌트
 2. `src/components/{Name}/{name}.recipe.ts` — cva 스타일
 3. `src/react/index.ts` — re-export
-4. `src/index.ts` — re-export
+4. `src/styles/index.ts` — re-export
+5. `src/index.ts` — re-export (styles + react 둘 다)
 
 ### Docs (packages/docs)
 
-5. `app/_previews/{name}.tsx` — 라이브 프리뷰 컴포넌트
-6. `app/_previews/index.tsx` — registry에 추가
-7. `content/components/{name}.mdx` — 문서 페이지
+6. `app/_previews/{name}.tsx` — 라이브 프리뷰 컴포넌트
+7. `app/_previews/index.tsx` — registry에 import + 등록
+8. `content/components/{name}.mdx` — 문서 페이지
+
+### 문서 최신화 (같은 PR에 필수 포함)
+
+9. `README.md` — Components 섹션에 컴포넌트 이름 추가
+10. `packages/core/CLAUDE.md` — 컴포넌트 목록 + props 요약 + 사용 예제 추가
+11. `packages/docs/public/llms.txt` — Components 섹션에 컴포넌트 + props 추가
+
+> 문서 누락 시 PR 머지하지 않습니다. 컴포넌트와 문서는 항상 함께 갑니다.
+
+## 배포 프로세스
+
+npm publish 시 다음을 수행:
+
+1. `packages/core/package.json` — version bump (semver)
+2. `CHANGELOG.md` — 변경사항 기록 (`## [x.y.z] - YYYY-MM-DD`)
+3. `pnpm --filter @grannyshot/ui publish --access public`
+4. `git tag vX.Y.Z && git push --tags`
+5. `gh release create vX.Y.Z` — GitHub Release notes 작성
 
 ## 프리뷰 시스템
 
