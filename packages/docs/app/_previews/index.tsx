@@ -5,6 +5,7 @@ import type { FC } from 'react'
 import { AccordionPreview } from './accordion'
 import { AlertPreview } from './alert'
 import { AvatarPreview } from './avatar'
+import { BreadcrumbPreview } from './breadcrumb'
 import { BadgePreview } from './badge'
 import { ButtonPreview } from './button'
 import { CardPreview } from './card'
@@ -17,7 +18,10 @@ import { FieldPreview } from './field'
 import { InputPreview } from './input'
 import { LabelPreview } from './label'
 import { MenuPreview } from './menu'
+import { NumberInputPreview } from './number-input'
 import { PopoverPreview } from './popover'
+import { PaginationPreview } from './pagination'
+import { PinInputPreview } from './pin-input'
 import { ProgressPreview } from './progress'
 import { RadioGroupPreview } from './radio-group'
 import { SelectPreview } from './select'
@@ -35,6 +39,7 @@ export const previews: Record<string, FC> = {
   accordion: AccordionPreview,
   alert: AlertPreview,
   avatar: AvatarPreview,
+  breadcrumb: BreadcrumbPreview,
   badge: BadgePreview,
   button: ButtonPreview,
   'button-variants': () => <ButtonPreview section="variants" />,
@@ -50,7 +55,10 @@ export const previews: Record<string, FC> = {
   input: InputPreview,
   label: LabelPreview,
   menu: MenuPreview,
+  'number-input': NumberInputPreview,
   popover: PopoverPreview,
+  pagination: PaginationPreview,
+  'pin-input': PinInputPreview,
   progress: ProgressPreview,
   'radio-group': RadioGroupPreview,
   select: SelectPreview,

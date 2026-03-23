@@ -30,6 +30,10 @@ export { progressRoot, progressHeader, progressLabel, progressTrack, progressRan
 export { drawerOverlay, drawerPositioner, drawerContent, drawerTitle, drawerDescription, drawerCloseTrigger, drawerHeader, drawerBody, drawerFooter, type DrawerContentVariants } from '@/components/Drawer/drawer.recipe'
 export { radioGroupRoot, radioGroupLabel, radioGroupItem, radioGroupItemControl, radioGroupIndicator, radioGroupItemText, type RadioGroupItemControlVariants } from '@/components/RadioGroup/radio-group.recipe'
 export { alert, alertIcon, alertTitle, alertDescription, type AlertVariants } from '@/components/Alert/alert.recipe'
+export { paginationRoot, paginationItem, paginationEllipsis, type PaginationItemVariants } from '@/components/Pagination/pagination.recipe'
+export { breadcrumbRoot, breadcrumbList, breadcrumbItem, breadcrumbLink, breadcrumbSeparator } from '@/components/Breadcrumb/breadcrumb.recipe'
+export { numberInputRoot, numberInputLabel, numberInputControl, numberInputInput, numberInputTrigger, numberInputIncrementTrigger, numberInputDecrementTrigger, type NumberInputVariants } from '@/components/NumberInput/number-input.recipe'
+export { pinInputRoot, pinInputLabel, pinInputControl, pinInputInput, type PinInputVariants } from '@/components/PinInput/pin-input.recipe'
 
 // Utils
 export { cx } from '@/styled-system/css'
@@ -68,3 +72,7 @@ export { Progress } from '@/components/Progress/Progress'
 export { Drawer } from '@/components/Drawer/Drawer'
 export { RadioGroup } from '@/components/RadioGroup/RadioGroup'
 export { Alert } from '@/components/Alert/Alert'
+export { Pagination } from '@/components/Pagination/Pagination'
+export { Breadcrumb } from '@/components/Breadcrumb/Breadcrumb'
+export { NumberInput } from '@/components/NumberInput/NumberInput'
+export { PinInput } from '@/components/PinInput/PinInput'

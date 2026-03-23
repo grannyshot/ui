@@ -1,0 +1,43 @@
+# PinInput
+
+A verification code input with individual character fields. Built on [Ark UI](https://ark-ui.com/react/docs/components/pin-input).
+
+<ComponentShadowPreview name="pin-input" />
+
+## Import
+
+```tsx
+import { PinInput } from '@grannyshot/ui'
+```
+
+## Usage
+
+```tsx
+<PinInput label="Verification Code" length={4} />
+```
+
+## Masked
+
+```tsx
+<PinInput label="Password" length={6} mask />
+```
+
+## Sizes
+
+```tsx
+<PinInput size="sm" length={4} />
+<PinInput size="md" length={4} />
+<PinInput size="lg" length={4} />
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Input size |
+| `label` | `string` | — | Label text |
+| `length` | `number` | `4` | Number of input fields |
+| `mask` | `boolean` | `false` | Hide characters (password style) |
+| `placeholder` | `string` | — | Placeholder for each field |
+| `disabled` | `boolean` | `false` | Disabled state |
+| `className` | `string` | — | Additional CSS classes |

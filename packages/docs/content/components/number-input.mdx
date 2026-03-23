@@ -1,0 +1,45 @@
+# NumberInput
+
+A numeric input with increment/decrement controls. Built on [Ark UI](https://ark-ui.com/react/docs/components/number-input).
+
+<ComponentShadowPreview name="number-input" />
+
+## Import
+
+```tsx
+import { NumberInput } from '@grannyshot/ui'
+```
+
+## Usage
+
+```tsx
+<NumberInput label="Quantity" defaultValue="1" min={0} max={99} />
+```
+
+## Sizes
+
+```tsx
+<NumberInput size="sm" defaultValue="0" />
+<NumberInput size="md" defaultValue="0" />
+<NumberInput size="lg" defaultValue="0" />
+```
+
+## Min / Max / Step
+
+```tsx
+<NumberInput defaultValue="50" min={0} max={100} step={10} />
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Input size |
+| `label` | `string` | — | Label text |
+| `defaultValue` | `string` | — | Default value |
+| `value` | `string` | — | Controlled value |
+| `min` | `number` | — | Minimum value |
+| `max` | `number` | — | Maximum value |
+| `step` | `number` | `1` | Step increment |
+| `disabled` | `boolean` | `false` | Disabled state |
+| `className` | `string` | — | Additional CSS classes |

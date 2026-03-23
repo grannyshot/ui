@@ -1,0 +1,37 @@
+# Pagination
+
+A pagination control for navigating through pages. Built on [Ark UI](https://ark-ui.com/react/docs/components/pagination).
+
+<ComponentShadowPreview name="pagination" />
+
+## Import
+
+```tsx
+import { Pagination } from '@grannyshot/ui'
+```
+
+## Usage
+
+```tsx
+<Pagination count={100} pageSize={10} defaultPage={1} />
+```
+
+## Sizes
+
+```tsx
+<Pagination count={50} pageSize={10} size="sm" />
+<Pagination count={50} pageSize={10} size="md" />
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `count` | `number` | — | Total item count |
+| `pageSize` | `number` | `10` | Items per page |
+| `defaultPage` | `number` | `1` | Default active page |
+| `page` | `number` | — | Controlled active page |
+| `onPageChange` | `(details: { page: number }) => void` | — | Page change handler |
+| `size` | `'sm' \| 'md'` | `'md'` | Button size |
+| `siblingCount` | `number` | `1` | Pages shown beside current |
+| `className` | `string` | — | Additional CSS classes |
