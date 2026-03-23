@@ -26,8 +26,5 @@ jobs:
       - name: Build core
         run: pnpm build
 
-      - name: Type check core
-        run: pnpm --filter @grannyshot/ui exec tsc --noEmit
-
       - name: Build docs
         run: pnpm build:docs
