@@ -49,3 +49,13 @@ result = result.replace(/\n{3,}/g, '\n\n')
 
 fs.writeFileSync('dist/styles-no-preflight.css', result.trim() + '\n')
 console.log('Generated dist/styles-no-preflight.css')
+
+// Generate layered version for Tailwind/other CSS framework coexistence
+// Wraps all styles in @layer grannyshot { ... } so internal layers become
+// grannyshot.tokens, grannyshot.recipes, grannyshot.utilities
+// Layer 밖 스타일(Tailwind 등)이 항상 우선 → 소비자가 오버라이드 가능
+const noPreflight = result.trim()
+const layeredContent = noPreflight.replace(/^@layer [^;]+;\n*/m, '')
+const layered = `@layer grannyshot {\n${layeredContent}\n}\n`
+fs.writeFileSync('dist/styles-layered.css', layered)
+console.log('Generated dist/styles-layered.css')

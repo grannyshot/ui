@@ -77,6 +77,58 @@ function LoginForm() {
 }
 ```
 
+## Using with Tailwind CSS
+
+Tailwind CSS 프로젝트에서 grannyshot-ui를 사용할 때는 `styles-layered.css`를 import하세요.
+일반 `styles.css` 대신 이 파일을 사용하면 **CSS Layer 충돌 없이** 공존합니다.
+
+### 왜 필요한가요?
+
+Panda CSS와 Tailwind CSS는 둘 다 `@layer base`, `@layer utilities` 같은 동일한 이름의 CSS Layer를 사용합니다.
+같은 이름의 layer가 merge되면서 스타일 우선순위가 꼬이고, reset 스타일이 서로 덮어씌우는 문제가 발생합니다.
+
+`styles-layered.css`는 모든 grannyshot-ui 스타일을 `@layer grannyshot { ... }`로 감싸서,
+내부 layer가 `grannyshot.tokens`, `grannyshot.utilities`로 네임스페이스됩니다.
+Tailwind의 `utilities`와 완전히 분리됩니다.
+
+### Setup
+
+```tsx
+// ❌ Tailwind 프로젝트에서 이렇게 하면 충돌
+import '@grannyshot/ui/styles.css'
+
+// ✅ 대신 layered 버전 사용
+import '@grannyshot/ui/styles-layered.css'
+```
+
+### 동작 방식
+
+- **grannyshot-ui 컴포넌트**: `@layer grannyshot` 안에서 스타일 적용 → 컴포넌트 자체 스타일 유지
+- **Tailwind 클래스**: layer 밖에서 동작 → grannyshot-ui보다 항상 우선순위 높음
+- **커스터마이징**: grannyshot-ui 컴포넌트에 Tailwind 클래스를 추가하면 Tailwind가 이김
+
+```tsx
+// grannyshot-ui 기본 스타일 유지
+<Button variant="primary">Submit</Button>
+
+// Tailwind로 오버라이드 가능
+<Button variant="primary" className="rounded-full">Submit</Button>
+
+// Tailwind 레이아웃 안에 grannyshot-ui 컴포넌트
+<div className="grid grid-cols-2 gap-4 p-6">
+  <Card>...</Card>
+  <Card>...</Card>
+</div>
+```
+
+### CSS 파일 비교
+
+| 파일 | 용도 |
+|------|------|
+| `styles.css` | 단독 사용 (Tailwind 없는 프로젝트) |
+| `styles-no-preflight.css` | 다른 CSS 프레임워크와 함께 사용 (reset 제거) |
+| `styles-layered.css` | **Tailwind CSS와 함께 사용** (layer 네임스페이스 분리) |
+
 ## Import Paths
 
 | Path | Description |
@@ -87,4 +139,6 @@ function LoginForm() {
 | `@grannyshot/ui/tokens` | Design tokens |
 | `@grannyshot/ui/context` | ThemeProvider and useTheme |
 | `@grannyshot/ui/utils` | cx utility |
-| `@grannyshot/ui/styles.css` | CSS file |
+| `@grannyshot/ui/styles.css` | CSS file (단독 사용) |
+| `@grannyshot/ui/styles-layered.css` | CSS file (Tailwind 공존용) |
+| `@grannyshot/ui/styles-no-preflight.css` | CSS file (reset 제거) |
