@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react'
 import { ToggleGroup as ArkToggleGroup } from '@ark-ui/react/toggle-group'
 import { toggleGroupRoot, toggleGroupItem, type ToggleGroupRootVariants } from './toggle-group.recipe'
-import { cx } from '@/styled-system/css'
+import { cn } from '@/lib/cn'
 
 type ToggleGroupRootProps = ToggleGroupRootVariants &
   Omit<ArkToggleGroup.RootProps, 'className'> & {
@@ -11,7 +11,7 @@ type ToggleGroupRootProps = ToggleGroupRootVariants &
 const ToggleGroupRoot = forwardRef<HTMLDivElement, ToggleGroupRootProps>(
   ({ size, className, children, ...rootProps }, ref) => {
     return (
-      <ArkToggleGroup.Root ref={ref} className={cx(toggleGroupRoot({ size }), className)} {...rootProps}>
+      <ArkToggleGroup.Root ref={ref} className={cn(toggleGroupRoot({ size }), className)} {...rootProps}>
         {React.Children.map(children, (child) => {
           if (React.isValidElement<ToggleGroupItemProps>(child) && child.type === ToggleGroupItem) {
             return React.cloneElement(child, { size: child.props.size ?? size })
@@ -37,7 +37,7 @@ const ToggleGroupItem = forwardRef<HTMLButtonElement, ToggleGroupItemProps>(
       <ArkToggleGroup.Item
         ref={ref}
         value={value}
-        className={cx(toggleGroupItem({ size }), className)}
+        className={cn(toggleGroupItem({ size }), className)}
         {...props}
       />
     )

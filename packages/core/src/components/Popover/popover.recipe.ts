@@ -1,58 +1,17 @@
-import { css } from '@/styled-system/css'
+export const popoverContent =
+  'relative bg-gs-bg border border-gs-border rounded-md shadow-lg p-4 z-[1500] min-w-[200px] data-[state=open]:animate-fade-in data-[state=closed]:animate-fade-out'
 
-export const popoverContent = css({
-  position: 'relative',
-  bg: 'bg',
-  border: '1px solid token(colors.border)',
-  borderRadius: 'md',
-  boxShadow: 'lg',
-  p: '4',
-  zIndex: 'popover',
-  minWidth: '200px',
-  '&[data-state=open]': {
-    animation: 'fadeIn 0.15s ease',
-  },
-  '&[data-state=closed]': {
-    animation: 'fadeOut 0.1s ease',
-  },
-})
+export const popoverArrow =
+  '[--arrow-size:8px] [--arrow-background:var(--gs-bg)]'
 
-export const popoverArrow = css({
-  '--arrow-size': '8px',
-  '--arrow-background': 'token(colors.bg)',
-})
+export const popoverArrowTip =
+  'border-t border-l border-gs-border'
 
-export const popoverArrowTip = css({
-  borderTopWidth: '1px',
-  borderLeftWidth: '1px',
-  borderColor: 'border',
-})
+export const popoverTitle =
+  'text-sm font-semibold text-gs-fg'
 
-export const popoverTitle = css({
-  fontSize: 'sm',
-  fontWeight: 'semibold',
-  color: 'fg',
-})
+export const popoverDescription =
+  'text-sm text-gs-fg-muted'
 
-export const popoverDescription = css({
-  fontSize: 'sm',
-  color: 'fg.muted',
-})
-
-export const popoverCloseTrigger = css({
-  position: 'absolute',
-  top: '2',
-  right: '2',
-  display: 'inline-flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  width: '24px',
-  height: '24px',
-  borderRadius: 'sm',
-  color: 'fg.muted',
-  cursor: 'pointer',
-  transition: 'color 0.15s ease',
-  _hover: {
-    color: 'fg',
-  },
-})
+export const popoverCloseTrigger =
+  'absolute top-2 right-2 inline-flex items-center justify-center w-[24px] h-[24px] rounded-sm text-gs-fg-muted cursor-pointer transition-[color] duration-150 ease-in-out hover:text-gs-fg'

@@ -1,54 +1,15 @@
-import { cva, css } from '@/styled-system/css'
-import type { RecipeVariantProps } from '@/styled-system/css'
+import { tv } from 'tailwind-variants'
 
-export const paginationRoot = css({
-  display: 'flex',
-  alignItems: 'center',
-  gap: '1',
-})
+export const paginationRoot =
+  'flex items-center gap-1'
 
-export const paginationItem = cva({
-  base: {
-    display: 'inline-flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 'md',
-    fontWeight: 'medium',
-    cursor: 'pointer',
-    transition: 'all 0.15s ease',
-    border: '1px solid transparent',
-    color: 'fg.muted',
-    bg: 'transparent',
-    '&:hover': {
-      bg: 'bg.muted',
-      color: 'fg',
-    },
-    '&[data-selected]': {
-      bg: 'accent',
-      color: 'accent.fg',
-      borderColor: 'accent',
-      '&:hover': {
-        bg: 'accent.hover',
-      },
-    },
-    '&[data-disabled]': {
-      opacity: 0.5,
-      cursor: 'not-allowed',
-    },
-  },
+export const paginationItem = tv({
+  base: 'inline-flex items-center justify-center rounded-md font-medium cursor-pointer transition-all duration-150 ease-in-out border border-transparent text-gs-fg-muted bg-transparent hover:bg-gs-bg-muted hover:text-gs-fg data-[selected]:bg-gs-accent data-[selected]:text-gs-accent-fg data-[selected]:border-gs-accent data-[selected]:hover:bg-gs-accent-hover data-[disabled]:opacity-50 data-[disabled]:cursor-not-allowed',
 
   variants: {
     size: {
-      sm: {
-        minWidth: '32px',
-        height: '32px',
-        fontSize: 'xs',
-      },
-      md: {
-        minWidth: '36px',
-        height: '36px',
-        fontSize: 'sm',
-      },
+      sm: 'min-w-[32px] h-[32px] text-xs',
+      md: 'min-w-[36px] h-[36px] text-sm',
     },
   },
 
@@ -57,27 +18,13 @@ export const paginationItem = cva({
   },
 })
 
-export const paginationEllipsis = cva({
-  base: {
-    display: 'inline-flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    color: 'fg.subtle',
-    userSelect: 'none',
-  },
+export const paginationEllipsis = tv({
+  base: 'inline-flex items-center justify-center text-gs-fg-subtle select-none',
 
   variants: {
     size: {
-      sm: {
-        minWidth: '32px',
-        height: '32px',
-        fontSize: 'xs',
-      },
-      md: {
-        minWidth: '36px',
-        height: '36px',
-        fontSize: 'sm',
-      },
+      sm: 'min-w-[32px] h-[32px] text-xs',
+      md: 'min-w-[36px] h-[36px] text-sm',
     },
   },
 
@@ -86,4 +33,4 @@ export const paginationEllipsis = cva({
   },
 })
 
-export type PaginationItemVariants = RecipeVariantProps<typeof paginationItem>
+export type PaginationItemVariants = Parameters<typeof paginationItem>[0]

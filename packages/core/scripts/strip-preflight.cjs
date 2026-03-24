@@ -1,7 +1,8 @@
 const fs = require('fs')
 const css = fs.readFileSync('dist/styles.css', 'utf8')
 
-// Find positions of each @layer block
+// Tailwind v4 puts preflight in @layer base { ... }
+// Remove the entire @layer base block to strip preflight
 const layers = []
 const layerRegex = /^@layer (\w+)\{/gm
 let match
@@ -28,34 +29,15 @@ for (const layer of layers) {
   }
 }
 
-// Remove reset and base layers
-const skipLayers = new Set(['reset', 'base'])
+// Remove base layer (contains preflight/reset)
 let result = css
-
-// Remove from end to start so positions don't shift
-const toRemove = layers.filter(l => skipLayers.has(l.name)).reverse()
+const toRemove = layers.filter(l => l.name === 'base').reverse()
 for (const layer of toRemove) {
   result = result.slice(0, layer.start) + result.slice(layer.end)
 }
-
-// Fix layer order declaration
-result = result.replace(
-  /@layer reset, base, tokens, recipes, utilities;/,
-  '@layer tokens, recipes, utilities;'
-)
 
 // Clean up extra blank lines
 result = result.replace(/\n{3,}/g, '\n\n')
 
 fs.writeFileSync('dist/styles-no-preflight.css', result.trim() + '\n')
 console.log('Generated dist/styles-no-preflight.css')
-
-// Generate layered version for Tailwind/other CSS framework coexistence
-// Wraps all styles in @layer grannyshot { ... } so internal layers become
-// grannyshot.tokens, grannyshot.recipes, grannyshot.utilities
-// Layer 밖 스타일(Tailwind 등)이 항상 우선 → 소비자가 오버라이드 가능
-const noPreflight = result.trim()
-const layeredContent = noPreflight.replace(/^@layer [^;]+;\n*/m, '')
-const layered = `@layer grannyshot {\n${layeredContent}\n}\n`
-fs.writeFileSync('dist/styles-layered.css', layered)
-console.log('Generated dist/styles-layered.css')

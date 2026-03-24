@@ -1,27 +1,15 @@
-import { cva, css } from '@/styled-system/css'
-import type { RecipeVariantProps } from '@/styled-system/css'
+import { tv } from 'tailwind-variants'
 
-export const tabsRoot = css({
-  width: '100%',
-})
+export const tabsRoot =
+  'w-full'
 
-export const tabsList = cva({
-  base: {
-    display: 'inline-flex',
-  },
+export const tabsList = tv({
+  base: 'inline-flex',
 
   variants: {
     variant: {
-      line: {
-        borderBottom: '1px solid token(colors.border)',
-        width: '100%',
-      },
-      pill: {
-        gap: '1',
-        bg: 'bg.muted',
-        p: '1',
-        borderRadius: 'lg',
-      },
+      line: 'border-b border-gs-border w-full',
+      pill: 'gap-1 bg-gs-bg-muted p-1 rounded-lg',
     },
   },
 
@@ -30,49 +18,13 @@ export const tabsList = cva({
   },
 })
 
-export const tabsTrigger = cva({
-  base: {
-    fontSize: 'sm',
-    fontWeight: 'medium',
-    color: 'fg.muted',
-    transition: 'all 0.15s ease',
-    cursor: 'pointer',
-    outline: 'none',
-    bg: 'transparent',
-    border: 'none',
-    '&[data-disabled]': {
-      opacity: 0.5,
-      cursor: 'not-allowed',
-    },
-    '&[data-hover]:not([data-selected]):not([data-disabled])': {
-      color: 'fg',
-    },
-    '&[data-focus-visible]': {
-      boxShadow: '0 0 0 2px token(colors.bg), 0 0 0 4px token(colors.ring)',
-    },
-  },
+export const tabsTrigger = tv({
+  base: 'text-sm font-medium text-gs-fg-muted transition-all duration-150 ease-in-out cursor-pointer outline-none bg-transparent border-none data-[disabled]:opacity-50 data-[disabled]:cursor-not-allowed data-[hover]:not-data-selected:not-data-disabled:text-gs-fg data-[focus-visible]:shadow-[0_0_0_2px_var(--gs-bg),0_0_0_4px_var(--gs-ring)]',
 
   variants: {
     variant: {
-      line: {
-        px: '4',
-        py: '2',
-        borderBottom: '2px solid transparent',
-        '&[data-selected]': {
-          color: 'accent',
-          borderBottomColor: 'accent',
-        },
-      },
-      pill: {
-        px: '4',
-        py: '1',
-        borderRadius: 'md',
-        '&[data-selected]': {
-          color: 'fg',
-          bg: 'bg',
-          boxShadow: 'xs',
-        },
-      },
+      line: 'px-4 py-2 border-b-2 border-transparent data-[selected]:text-gs-accent data-[selected]:border-b-gs-accent',
+      pill: 'px-4 py-1 rounded-md data-[selected]:text-gs-fg data-[selected]:bg-gs-bg data-[selected]:shadow-xs',
     },
   },
 
@@ -81,15 +33,11 @@ export const tabsTrigger = cva({
   },
 })
 
-export const tabsContent = css({
-  pt: '4',
-  outline: 'none',
-})
+export const tabsContent =
+  'pt-4 outline-none'
 
-export const tabsIndicator = css({
-  bg: 'accent',
-  height: '2px',
-})
+export const tabsIndicator =
+  'bg-gs-accent h-0.5'
 
-export type TabsListVariants = RecipeVariantProps<typeof tabsList>
-export type TabsTriggerVariants = RecipeVariantProps<typeof tabsTrigger>
+export type TabsListVariants = Parameters<typeof tabsList>[0]
+export type TabsTriggerVariants = Parameters<typeof tabsTrigger>[0]

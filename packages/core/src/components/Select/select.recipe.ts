@@ -1,52 +1,13 @@
-import { cva, css } from '@/styled-system/css'
-import type { RecipeVariantProps } from '@/styled-system/css'
+import { tv } from 'tailwind-variants'
 
-export const selectTrigger = cva({
-  base: {
-    display: 'inline-flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    width: '100%',
-    borderRadius: 'md',
-    border: '1px solid token(colors.border)',
-    bg: 'bg',
-    color: 'fg',
-    cursor: 'pointer',
-    transition: 'border-color 0.15s ease',
-    outline: 'none',
-    gap: '2',
-    '&[data-placeholder-shown]': {
-      color: 'fg.subtle',
-    },
-    '&[data-state=open]': {
-      borderColor: 'border.focus',
-    },
-    '&[data-disabled]': {
-      opacity: 0.5,
-      cursor: 'not-allowed',
-    },
-    '&[data-focus-visible]': {
-      boxShadow: '0 0 0 2px token(colors.bg), 0 0 0 4px token(colors.ring)',
-    },
-  },
+export const selectTrigger = tv({
+  base: 'inline-flex items-center justify-between w-full rounded-md border border-gs-border bg-gs-bg text-gs-fg cursor-pointer transition-[border-color] duration-150 ease-in-out outline-none gap-2 data-[placeholder-shown]:text-gs-fg-subtle data-[state=open]:border-gs-border-focus data-[disabled]:opacity-50 data-[disabled]:cursor-not-allowed data-[focus-visible]:shadow-[0_0_0_2px_var(--gs-bg),0_0_0_4px_var(--gs-ring)]',
 
   variants: {
     size: {
-      sm: {
-        px: '3',
-        height: '32px',
-        fontSize: 'xs',
-      },
-      md: {
-        px: '3',
-        height: '36px',
-        fontSize: 'sm',
-      },
-      lg: {
-        px: '4',
-        height: '44px',
-        fontSize: 'md',
-      },
+      sm: 'px-3 h-8 text-xs',
+      md: 'px-3 h-9 text-sm',
+      lg: 'px-4 h-11 text-base',
     },
   },
 
@@ -55,68 +16,14 @@ export const selectTrigger = cva({
   },
 })
 
-export const selectContent = css({
-  bg: 'bg',
-  border: '1px solid token(colors.border)',
-  borderRadius: 'md',
-  boxShadow: 'lg',
-  overflow: 'hidden',
-  py: '1',
-  zIndex: 'dropdown',
-  minWidth: 'var(--reference-width)',
-  '&[data-state=open]': {
-    animation: 'fadeIn 0.15s ease',
-  },
-  '&[data-state=closed]': {
-    animation: 'fadeOut 0.1s ease',
-  },
-})
+export const selectContent = 'bg-gs-bg border border-gs-border rounded-md shadow-lg overflow-hidden py-1 z-[1000] min-w-[var(--reference-width)] data-[state=open]:animate-fade-in data-[state=closed]:animate-fade-out'
 
-export const selectItem = css({
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'space-between',
-  px: '3',
-  py: '2',
-  fontSize: 'sm',
-  cursor: 'pointer',
-  transition: 'background 0.1s ease',
-  outline: 'none',
-  '&[data-highlighted]': {
-    bg: 'bg.muted',
-  },
-  '&[data-state=checked]': {
-    color: 'accent',
-    fontWeight: 'medium',
-  },
-  '&[data-disabled]': {
-    opacity: 0.5,
-    cursor: 'not-allowed',
-  },
-})
+export const selectItem = 'flex items-center justify-between px-3 py-2 text-sm cursor-pointer transition-[background] duration-100 ease-in-out outline-none data-[highlighted]:bg-gs-bg-muted data-[state=checked]:text-gs-accent data-[state=checked]:font-medium data-[disabled]:opacity-50 data-[disabled]:cursor-not-allowed'
 
-export const selectIndicator = css({
-  color: 'fg.subtle',
-  transition: 'transform 0.15s ease',
-  flexShrink: 0,
-  width: '16px',
-  height: '16px',
-  '&[data-state=open]': {
-    transform: 'rotate(180deg)',
-  },
-})
+export const selectIndicator = 'text-gs-fg-subtle transition-transform duration-150 ease-in-out shrink-0 w-4 h-4 data-[state=open]:rotate-180'
 
-export const selectItemIndicator = css({
-  color: 'accent',
-  flexShrink: 0,
-})
+export const selectItemIndicator = 'text-gs-accent shrink-0'
 
-export const selectLabel = css({
-  display: 'block',
-  fontSize: 'xs',
-  fontWeight: 'medium',
-  color: 'fg',
-  mb: '1',
-})
+export const selectLabel = 'block text-xs font-medium text-gs-fg mb-1'
 
-export type SelectTriggerVariants = RecipeVariantProps<typeof selectTrigger>
+export type SelectTriggerVariants = Parameters<typeof selectTrigger>[0]

@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react'
 import { label, type LabelVariants } from './label.recipe'
-import { cx } from '@/styled-system/css'
+import { cn } from '@/lib/cn'
 
 type LabelProps = React.LabelHTMLAttributes<HTMLLabelElement> & LabelVariants
 
@@ -9,7 +9,7 @@ export const Label = forwardRef<HTMLLabelElement, LabelProps>(
     return (
       <label
         ref={ref}
-        className={cx(label({ required, disabled }), className)}
+        className={cn(label({ required, disabled }), className)}
         {...rest}
       />
     )

@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react'
 import { input, type InputVariants } from './input.recipe'
-import { cx } from '@/styled-system/css'
+import { cn } from '@/lib/cn'
 
 type InputProps = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> &
   InputVariants
@@ -22,7 +22,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     return (
       <input
         ref={ref}
-        className={cx(input({ size, state }), className)}
+        className={cn(input({ size, state }), className)}
         {...rest}
       />
     )

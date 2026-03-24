@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react'
 import { badge, type BadgeVariants } from './badge.recipe'
-import { cx } from '@/styled-system/css'
+import { cn } from '@/lib/cn'
 
 type BadgeProps = BadgeVariants &
   React.HTMLAttributes<HTMLSpanElement> & {
@@ -10,7 +10,7 @@ type BadgeProps = BadgeVariants &
 export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
   ({ variant, size, children, className, ...rest }, ref) => {
     return (
-      <span ref={ref} className={cx(badge({ variant, size }), className)} {...rest}>
+      <span ref={ref} className={cn(badge({ variant, size }), className)} {...rest}>
         {children}
       </span>
     )

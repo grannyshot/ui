@@ -1,88 +1,37 @@
-import { cva, css } from '@/styled-system/css'
-import type { RecipeVariantProps } from '@/styled-system/css'
+import { tv } from 'tailwind-variants'
 
-export const tagsInputRoot = css({
-  display: 'flex',
-  flexDirection: 'column',
-  gap: '1',
-  width: '100%',
-})
+export const tagsInputRoot = 'flex flex-col gap-1 w-full'
 
-export const tagsInputLabel = css({
-  fontSize: 'sm',
-  fontWeight: 'medium',
-  color: 'fg',
-})
+export const tagsInputLabel = 'text-sm font-medium text-gs-fg'
 
-export const tagsInputControl = cva({
-  base: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    alignItems: 'center',
-    gap: '1',
-    borderRadius: 'md',
-    border: '1px solid token(colors.border)',
-    bg: 'bg',
-    transition: 'border-color 0.15s ease, box-shadow 0.15s ease',
-    '&:focus-within': {
-      borderColor: 'accent',
-      boxShadow: '0 0 0 2px token(colors.bg), 0 0 0 4px token(colors.ring)',
-    },
-  },
+export const tagsInputControl = tv({
+  base: 'flex flex-wrap items-center gap-1 rounded-md border border-gs-border bg-gs-bg transition-[border-color,box-shadow] duration-150 ease-in-out focus-within:border-gs-accent focus-within:shadow-[0_0_0_2px_var(--gs-bg),0_0_0_4px_var(--gs-ring)]',
   variants: {
     size: {
-      sm: { minHeight: '32px', px: '2', py: '1' },
-      md: { minHeight: '36px', px: '2', py: '1' },
-      lg: { minHeight: '44px', px: '3', py: '1.5' },
+      sm: 'min-h-8 px-2 py-1',
+      md: 'min-h-9 px-2 py-1',
+      lg: 'min-h-11 px-3 py-1.5',
     },
   },
   defaultVariants: { size: 'md' },
 })
 
-export const tagsInputItem = css({
-  display: 'inline-flex',
-  alignItems: 'center',
-  gap: '1',
-  borderRadius: 'sm',
-  bg: 'bg.muted',
-  color: 'fg',
-  fontSize: 'sm',
-  px: '2',
-  py: '0.5',
-})
+export const tagsInputItem = 'inline-flex items-center gap-1 rounded-sm bg-gs-bg-muted text-gs-fg text-sm px-2 py-0.5'
 
-export const tagsInputItemText = css({
-  fontSize: 'sm',
-})
+export const tagsInputItemText = 'text-sm'
 
-export const tagsInputItemDeleteTrigger = css({
-  display: 'inline-flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  color: 'fg.muted',
-  cursor: 'pointer',
-  borderRadius: 'sm',
-  '&:hover': { color: 'fg' },
-  '& svg': { width: '12px', height: '12px' },
-})
+export const tagsInputItemDeleteTrigger = 'inline-flex items-center justify-center text-gs-fg-muted cursor-pointer rounded-sm hover:text-gs-fg [&_svg]:w-3 [&_svg]:h-3'
 
-export const tagsInputInput = cva({
-  base: {
-    flex: 1,
-    minWidth: '80px',
-    border: 'none',
-    outline: 'none',
-    bg: 'transparent',
-    color: 'fg',
-  },
+export const tagsInputInput = tv({
+  base: 'flex-1 min-w-[80px] border-none outline-none bg-transparent text-gs-fg',
   variants: {
     size: {
-      sm: { fontSize: 'sm', height: '24px' },
-      md: { fontSize: 'sm', height: '28px' },
-      lg: { fontSize: 'md', height: '32px' },
+      sm: 'text-sm h-6',
+      md: 'text-sm h-7',
+      lg: 'text-base h-8',
     },
   },
   defaultVariants: { size: 'md' },
 })
 
-export type TagsInputControlVariants = RecipeVariantProps<typeof tagsInputControl>
+export type TagsInputControlVariants = Parameters<typeof tagsInputControl>[0]

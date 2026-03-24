@@ -1,7 +1,7 @@
 import { type ReactNode, useSyncExternalStore } from 'react'
 import { Dialog as ArkDialog } from '@ark-ui/react/dialog'
 import { Portal } from '@ark-ui/react/portal'
-import { cx, css } from '@/styled-system/css'
+import { cn } from '@/lib/cn'
 import {
   dialogOverlay,
   dialogContent,
@@ -136,12 +136,7 @@ export const dialog = {
 // Styles
 // ---------------------------------------------------------------------------
 
-const footerStyle = css({
-  display: 'flex',
-  justifyContent: 'flex-end',
-  gap: '2',
-  mt: '2',
-})
+const footerStyle = 'flex justify-end gap-2 mt-2'
 
 // ---------------------------------------------------------------------------
 // Component

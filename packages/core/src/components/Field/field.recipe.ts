@@ -1,20 +1,5 @@
-import { css } from '@/styled-system/css'
+export const fieldRoot = 'flex flex-col gap-1 w-full'
 
-export const fieldRoot = css({
-  display: 'flex',
-  flexDirection: 'column',
-  gap: '1',
-  width: '100%',
-})
+export const fieldHint = 'text-xs text-gs-fg-muted mt-1'
 
-export const fieldHint = css({
-  fontSize: 'xs',
-  color: 'fg.muted',
-  mt: '1',
-})
-
-export const fieldError = css({
-  fontSize: 'xs',
-  color: 'error',
-  mt: '1',
-})
+export const fieldError = 'text-xs text-gs-error mt-1'

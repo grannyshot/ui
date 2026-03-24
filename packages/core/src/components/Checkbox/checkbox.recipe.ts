@@ -1,67 +1,15 @@
-import { cva, css } from '@/styled-system/css'
-import type { RecipeVariantProps } from '@/styled-system/css'
+import { tv } from 'tailwind-variants'
 
-export const checkboxRoot = css({
-  display: 'inline-flex',
-  alignItems: 'center',
-  gap: '2',
-  cursor: 'pointer',
-  '&[data-disabled]': {
-    opacity: 0.5,
-    cursor: 'not-allowed',
-  },
-})
+export const checkboxRoot = 'inline-flex items-center gap-2 cursor-pointer data-[disabled]:opacity-50 data-[disabled]:cursor-not-allowed'
 
-export const checkboxControl = cva({
-  base: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 'sm',
-    border: '1px solid token(colors.border)',
-    bg: 'bg',
-    transition: 'all 0.15s ease',
-    flexShrink: 0,
-    color: 'transparent',
-    '&[data-state=checked], &[data-state=indeterminate]': {
-      bg: 'accent',
-      borderColor: 'accent',
-      color: 'accent.fg',
-    },
-    '&[data-focus-visible]': {
-      boxShadow: '0 0 0 2px token(colors.bg), 0 0 0 4px token(colors.ring)',
-    },
-    '&[data-hover]:not([data-disabled])': {
-      borderColor: 'border.strong',
-    },
-  },
+export const checkboxControl = tv({
+  base: 'flex items-center justify-center rounded-sm border border-gs-border bg-gs-bg transition-all duration-150 ease-in-out shrink-0 text-transparent data-[state=checked]:bg-gs-accent data-[state=checked]:border-gs-accent data-[state=checked]:text-gs-accent-fg data-[state=indeterminate]:bg-gs-accent data-[state=indeterminate]:border-gs-accent data-[state=indeterminate]:text-gs-accent-fg data-[focus-visible]:shadow-[0_0_0_2px_var(--gs-bg),0_0_0_4px_var(--gs-ring)] data-[hover]:not-data-[disabled]:border-gs-border-strong',
 
   variants: {
     size: {
-      sm: {
-        width: '16px',
-        height: '16px',
-        '& svg': {
-          width: '12px',
-          height: '12px',
-        },
-      },
-      md: {
-        width: '20px',
-        height: '20px',
-        '& svg': {
-          width: '14px',
-          height: '14px',
-        },
-      },
-      lg: {
-        width: '24px',
-        height: '24px',
-        '& svg': {
-          width: '16px',
-          height: '16px',
-        },
-      },
+      sm: 'w-4 h-4 [&_svg]:w-3 [&_svg]:h-3',
+      md: 'w-5 h-5 [&_svg]:w-3.5 [&_svg]:h-3.5',
+      lg: 'w-6 h-6 [&_svg]:w-4 [&_svg]:h-4',
     },
   },
 
@@ -70,14 +18,6 @@ export const checkboxControl = cva({
   },
 })
 
-export const checkboxLabel = css({
-  fontSize: 'sm',
-  fontWeight: 'medium',
-  color: 'fg',
-  userSelect: 'none',
-  '&[data-disabled]': {
-    color: 'fg.subtle',
-  },
-})
+export const checkboxLabel = 'text-sm font-medium text-gs-fg select-none data-[disabled]:text-gs-fg-subtle'
 
-export type CheckboxControlVariants = RecipeVariantProps<typeof checkboxControl>
+export type CheckboxControlVariants = Parameters<typeof checkboxControl>[0]

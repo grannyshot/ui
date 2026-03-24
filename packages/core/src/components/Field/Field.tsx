@@ -1,7 +1,7 @@
 import React, { forwardRef, useId } from 'react'
 import { Label } from '@/components/Label/Label'
 import { fieldRoot, fieldHint, fieldError } from './field.recipe'
-import { cx } from '@/styled-system/css'
+import { cn } from '@/lib/cn'
 
 interface FieldProps extends React.HTMLAttributes<HTMLDivElement> {
   label?: string
@@ -36,7 +36,7 @@ export const Field = forwardRef<HTMLDivElement, FieldProps>(
     ].filter(Boolean).join(' ') || undefined
 
     return (
-      <div ref={ref} className={cx(fieldRoot, className)} {...rest}>
+      <div ref={ref} className={cn(fieldRoot, className)} {...rest}>
         {label && (
           <Label htmlFor={id} required={required} disabled={disabled}>
             {label}

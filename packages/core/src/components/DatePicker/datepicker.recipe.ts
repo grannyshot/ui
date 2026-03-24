@@ -1,174 +1,21 @@
-import { css } from '@/styled-system/css'
+export const datePickerControl = 'flex gap-2'
 
-export const datePickerControl = css({
-  display: 'flex',
-  gap: '2',
-})
+export const datePickerInput = 'w-full border border-gs-border rounded-md px-3 h-9 text-sm bg-gs-bg text-gs-fg outline-none transition-[border-color] duration-150 ease-in-out focus:border-gs-border-focus data-[disabled]:opacity-50 data-[disabled]:cursor-not-allowed placeholder:text-gs-fg-subtle'
 
-export const datePickerInput = css({
-  width: '100%',
-  border: '1px solid token(colors.border)',
-  borderRadius: 'md',
-  px: '3',
-  height: '36px',
-  fontSize: 'sm',
-  bg: 'bg',
-  color: 'fg',
-  outline: 'none',
-  transition: 'border-color 0.15s ease',
-  '&:focus': {
-    borderColor: 'border.focus',
-  },
-  '&[data-disabled]': {
-    opacity: 0.5,
-    cursor: 'not-allowed',
-  },
-  '&::placeholder': {
-    color: 'fg.subtle',
-  },
-})
+export const datePickerTrigger = 'inline-flex items-center justify-center shrink-0 w-9 h-9 rounded-md border border-gs-border bg-gs-bg text-gs-fg-muted cursor-pointer transition-[border-color,color] duration-150 ease-in-out hover:border-gs-border-focus hover:text-gs-fg data-[disabled]:opacity-50 data-[disabled]:cursor-not-allowed'
 
-export const datePickerTrigger = css({
-  display: 'inline-flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  flexShrink: 0,
-  width: '36px',
-  height: '36px',
-  borderRadius: 'md',
-  border: '1px solid token(colors.border)',
-  bg: 'bg',
-  color: 'fg.muted',
-  cursor: 'pointer',
-  transition: 'border-color 0.15s ease, color 0.15s ease',
-  '&:hover': {
-    borderColor: 'border.focus',
-    color: 'fg',
-  },
-  '&[data-disabled]': {
-    opacity: 0.5,
-    cursor: 'not-allowed',
-  },
-})
+export const datePickerContent = 'bg-gs-bg border border-gs-border rounded-md shadow-lg p-4 z-[1000] data-[state=open]:animate-fade-in data-[state=closed]:animate-fade-out'
 
-export const datePickerContent = css({
-  bg: 'bg',
-  border: '1px solid token(colors.border)',
-  borderRadius: 'md',
-  boxShadow: 'lg',
-  p: '4',
-  zIndex: 'dropdown',
-  '&[data-state=open]': {
-    animation: 'fadeIn 0.15s ease',
-  },
-  '&[data-state=closed]': {
-    animation: 'fadeOut 0.1s ease',
-  },
-})
+export const datePickerViewControl = 'flex justify-between items-center mb-2'
 
-export const datePickerViewControl = css({
-  display: 'flex',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-  mb: '2',
-})
+export const datePickerViewTrigger = 'text-sm font-semibold text-gs-fg cursor-pointer bg-transparent border-none rounded-md px-2 py-1 transition-[background] duration-100 ease-in-out hover:bg-gs-bg-muted'
 
-export const datePickerViewTrigger = css({
-  fontSize: 'sm',
-  fontWeight: 'semibold',
-  color: 'fg',
-  cursor: 'pointer',
-  bg: 'transparent',
-  border: 'none',
-  borderRadius: 'md',
-  px: '2',
-  py: '1',
-  transition: 'background 0.1s ease',
-  '&:hover': {
-    bg: 'bg.muted',
-  },
-})
+export const datePickerPrevTrigger = 'inline-flex items-center justify-center w-7 h-7 rounded-md bg-transparent border-none text-gs-fg-muted cursor-pointer transition-[background,color] duration-100 ease-in-out hover:bg-gs-bg-muted hover:text-gs-fg'
 
-export const datePickerPrevTrigger = css({
-  display: 'inline-flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  width: '28px',
-  height: '28px',
-  borderRadius: 'md',
-  bg: 'transparent',
-  border: 'none',
-  color: 'fg.muted',
-  cursor: 'pointer',
-  transition: 'background 0.1s ease, color 0.1s ease',
-  '&:hover': {
-    bg: 'bg.muted',
-    color: 'fg',
-  },
-})
+export const datePickerNextTrigger = 'inline-flex items-center justify-center w-7 h-7 rounded-md bg-transparent border-none text-gs-fg-muted cursor-pointer transition-[background,color] duration-100 ease-in-out hover:bg-gs-bg-muted hover:text-gs-fg'
 
-export const datePickerNextTrigger = css({
-  display: 'inline-flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  width: '28px',
-  height: '28px',
-  borderRadius: 'md',
-  bg: 'transparent',
-  border: 'none',
-  color: 'fg.muted',
-  cursor: 'pointer',
-  transition: 'background 0.1s ease, color 0.1s ease',
-  '&:hover': {
-    bg: 'bg.muted',
-    color: 'fg',
-  },
-})
+export const datePickerTable = 'w-full border-collapse text-center [border-spacing:0_2px]'
 
-export const datePickerTable = css({
-  width: '100%',
-  borderCollapse: 'separate',
-  borderSpacing: '0 2px',
-  textAlign: 'center',
-})
+export const datePickerTableHeader = 'text-xs font-medium text-gs-fg-subtle text-center pb-1'
 
-export const datePickerTableHeader = css({
-  fontSize: 'xs',
-  fontWeight: 'medium',
-  color: 'fg.subtle',
-  textAlign: 'center',
-  pb: '1',
-})
-
-export const datePickerTableCellTrigger = css({
-  display: 'inline-flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  width: '36px',
-  height: '36px',
-  borderRadius: 'md',
-  fontSize: 'sm',
-  cursor: 'pointer',
-  bg: 'transparent',
-  border: 'none',
-  color: 'fg',
-  transition: 'background 0.1s ease',
-  '&[data-today]': {
-    fontWeight: 'bold',
-  },
-  '&[data-selected]': {
-    bg: 'accent',
-    color: 'accent.fg',
-  },
-  '&:hover:not([data-selected])': {
-    bg: 'bg.muted',
-  },
-  '&[data-outside-range]': {
-    color: 'fg.subtle',
-    opacity: 0.5,
-  },
-  '&[data-disabled]': {
-    opacity: 0.3,
-    cursor: 'not-allowed',
-  },
-})
+export const datePickerTableCellTrigger = 'inline-flex items-center justify-center w-9 h-9 rounded-md text-sm cursor-pointer bg-transparent border-none text-gs-fg transition-[background] duration-100 ease-in-out data-[today]:font-bold data-[selected]:bg-gs-accent data-[selected]:text-gs-accent-fg hover:not-data-[selected]:bg-gs-bg-muted data-[outside-range]:text-gs-fg-subtle data-[outside-range]:opacity-50 data-[disabled]:opacity-30 data-[disabled]:cursor-not-allowed'

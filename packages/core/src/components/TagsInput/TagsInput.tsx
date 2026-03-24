@@ -5,7 +5,7 @@ import {
   tagsInputItemText, tagsInputItemDeleteTrigger, tagsInputInput,
   type TagsInputControlVariants,
 } from './tags-input.recipe'
-import { cx } from '@/styled-system/css'
+import { cn } from '@/lib/cn'
 
 type TagsInputProps = TagsInputControlVariants &
   Omit<ArkTagsInput.RootProps, 'className'> & {
@@ -17,7 +17,7 @@ type TagsInputProps = TagsInputControlVariants &
 export const TagsInput = forwardRef<HTMLDivElement, TagsInputProps>(
   ({ size, label, placeholder = 'Add tag...', className, ...rootProps }, ref) => {
     return (
-      <ArkTagsInput.Root ref={ref} className={cx(tagsInputRoot, className)} {...rootProps}>
+      <ArkTagsInput.Root ref={ref} className={cn(tagsInputRoot, className)} {...rootProps}>
         {label && <ArkTagsInput.Label className={tagsInputLabel}>{label}</ArkTagsInput.Label>}
         <ArkTagsInput.Control className={tagsInputControl({ size })}>
           <ArkTagsInput.Context>

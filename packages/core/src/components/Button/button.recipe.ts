@@ -1,91 +1,28 @@
-import { cva } from '@/styled-system/css'
-import type { RecipeVariantProps } from '@/styled-system/css'
+import { tv } from 'tailwind-variants'
 
-export const button = cva({
-  base: {
-    display: 'inline-flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: '2',
-    borderRadius: 'md',
-    fontWeight: 'medium',
-    border: 'none',
-    cursor: 'pointer',
-    transition: 'all 0.15s ease',
-    outline: 'none',
-    lineHeight: '1',
-    _active: {
-      transform: 'scale(0.97)',
-    },
-    _disabled: {
-      opacity: 0.5,
-      cursor: 'not-allowed',
-      _active: { transform: 'none' },
-    },
-    _focusVisible: {
-      boxShadow: '0 0 0 2px token(colors.bg), 0 0 0 4px token(colors.ring)',
-    },
-  },
-
+export const button = tv({
+  base: 'inline-flex items-center justify-center gap-2 rounded-md font-medium border-0 cursor-pointer transition-all duration-150 ease-in-out outline-none leading-none active:scale-[0.97] disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100 focus-visible:shadow-[0_0_0_2px_var(--gs-bg),0_0_0_4px_var(--gs-ring)]',
   variants: {
     variant: {
-      primary: {
-        bg: 'accent',
-        color: 'accent.fg',
-        _hover: { bg: 'accent.hover' },
-      },
-      secondary: {
-        bg: 'bg.muted',
-        color: 'fg',
-        border: '1px solid token(colors.border)',
-        _hover: { bg: 'bg.subtle' },
-      },
-      ghost: {
-        bg: 'transparent',
-        color: 'fg.muted',
-        _hover: { bg: 'bg.muted', color: 'fg' },
-      },
-      danger: {
-        bg: 'error',
-        color: 'error.fg',
-        _hover: { opacity: 0.9 },
-      },
-      outline: {
-        bg: 'transparent',
-        color: 'accent',
-        border: '1px solid token(colors.accent)',
-        _hover: { bg: 'accent.subtle' },
-      },
+      primary: 'bg-gs-accent text-gs-accent-fg hover:bg-gs-accent-hover',
+      secondary: 'bg-gs-bg-muted text-gs-fg border border-gs-border hover:bg-gs-bg-subtle',
+      ghost: 'bg-transparent text-gs-fg-muted hover:bg-gs-bg-muted hover:text-gs-fg',
+      danger: 'bg-gs-error text-gs-error-fg hover:opacity-90',
+      outline: 'bg-transparent text-gs-accent border border-gs-accent hover:bg-gs-accent-subtle',
     },
     size: {
-      sm: {
-        px: '3',
-        py: '1',
-        fontSize: 'xs',
-        height: '32px',
-      },
-      md: {
-        px: '4',
-        py: '2',
-        fontSize: 'sm',
-        height: '36px',
-      },
-      lg: {
-        px: '6',
-        py: '3',
-        fontSize: 'md',
-        height: '44px',
-      },
+      sm: 'px-3 py-1 text-xs h-8',
+      md: 'px-4 py-2 text-sm h-9',
+      lg: 'px-6 py-3 text-base h-11',
     },
     fullWidth: {
-      true: { width: '100%' },
+      true: 'w-full',
     },
   },
-
   defaultVariants: {
     variant: 'primary',
     size: 'md',
   },
 })
 
-export type ButtonVariants = RecipeVariantProps<typeof button>
+export type ButtonVariants = Parameters<typeof button>[0]

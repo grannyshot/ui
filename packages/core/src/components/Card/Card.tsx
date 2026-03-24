@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react'
 import { card, type CardVariants } from './card.recipe'
-import { cx } from '@/styled-system/css'
+import { cn } from '@/lib/cn'
 
 type CardProps = CardVariants &
   React.HTMLAttributes<HTMLDivElement> & {
@@ -10,7 +10,7 @@ type CardProps = CardVariants &
 export const Card = forwardRef<HTMLDivElement, CardProps>(
   ({ padding, hoverable, children, className, ...rest }, ref) => {
     return (
-      <div ref={ref} className={cx(card({ padding, hoverable }), className)} {...rest}>
+      <div ref={ref} className={cn(card({ padding, hoverable }), className)} {...rest}>
         {children}
       </div>
     )

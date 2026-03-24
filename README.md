@@ -1,6 +1,6 @@
 # @grannyshot/ui
 
-A minimal, theme-aware design system built with [Panda CSS](https://panda-css.com/) and [Ark UI](https://ark-ui.com/).
+A minimal, theme-aware design system built with [Tailwind CSS](https://tailwindcss.com/) and [Ark UI](https://ark-ui.com/).
 
 [![npm](https://img.shields.io/npm/v/@grannyshot/ui)](https://www.npmjs.com/package/@grannyshot/ui)
 [![license](https://img.shields.io/npm/l/@grannyshot/ui)](LICENSE)
@@ -13,7 +13,8 @@ A minimal, theme-aware design system built with [Panda CSS](https://panda-css.co
 - **Dark mode** — seamless light/dark theme switching with semantic tokens
 - **Accessible** — built on Ark UI (Zag.js state machines) for keyboard navigation and screen reader support
 - **Imperative APIs** — `toast.success()`, `dialog.confirm()`, `drawer.open()`
-- **Tree-shakeable** — zero Panda CSS dependency for consumers
+- **Tailwind CSS native** — no CSS conflicts in Tailwind projects, easy className overrides
+- **Next.js ready** — `'use client'` directives, SSR-safe theming with `ThemeScript`
 - **TypeScript** — full type safety with exported variant types
 
 ## Install
@@ -26,15 +27,33 @@ npm install @grannyshot/ui
 
 ```tsx
 import '@grannyshot/ui/styles.css'
-import { ThemeProvider, Button } from '@grannyshot/ui'
+import { Button } from '@grannyshot/ui'
 
 function App() {
-  return (
-    <ThemeProvider defaultTheme="system">
-      <Button variant="primary">Click me</Button>
-    </ThemeProvider>
-  )
+  return <Button variant="primary">Click me</Button>
 }
+```
+
+### Dark Mode (Optional)
+
+Option A: ThemeProvider (client-side)
+```tsx
+import { ThemeProvider } from '@grannyshot/ui'
+
+<ThemeProvider defaultTheme="system">
+  <App />
+</ThemeProvider>
+```
+
+Option B: Blocking script (SSR, no flash)
+```tsx
+// layout.tsx (Next.js)
+import { ThemeScript } from '@grannyshot/ui'
+
+<html>
+  <head><ThemeScript /></head>
+  <body>{children}</body>
+</html>
 ```
 
 ## Components
@@ -62,42 +81,17 @@ Toast · Progress
 ```tsx
 import { toast, dialog, drawer } from '@grannyshot/ui'
 
-// Toast
 toast.success('Saved!')
-toast.error('Something went wrong')
-await toast.promise(asyncFn(), {
-  loading: 'Uploading...',
-  success: 'Done!',
-  error: 'Failed',
-})
-toast.custom((dismiss) => <CustomToast onClose={dismiss} />)
-
-// Dialog
-const confirmed = await dialog.confirm({
-  title: 'Delete?',
-  description: 'This cannot be undone.',
-  confirmText: 'Delete',
-})
-dialog.open({ content: (close) => <CustomModal onClose={close} /> })
-
-// Drawer
+const confirmed = await dialog.confirm({ title: 'Delete?', description: 'This cannot be undone.', confirmText: 'Delete' })
 drawer.open({ title: 'Settings', content: <SettingsPanel /> })
 ```
 
 ## Theming
 
 ```tsx
-import { ThemeProvider, useTheme } from '@grannyshot/ui'
+import { useTheme } from '@grannyshot/ui'
 
-// Wrap your app
-<ThemeProvider defaultTheme="system">
-  <App />
-  <ToastProvider placement="bottom-end" />
-  <DialogProvider />
-  <DrawerProvider />
-</ThemeProvider>
-
-// Access theme
+// Works with or without ThemeProvider
 const { theme, resolvedTheme, setTheme } = useTheme()
 ```
 
@@ -107,11 +101,12 @@ const { theme, resolvedTheme, setTheme } = useTheme()
 |------|----------|
 | `@grannyshot/ui` | Everything |
 | `@grannyshot/ui/react` | React components only |
-| `@grannyshot/ui/styles` | Style recipes (cva) |
+| `@grannyshot/ui/styles` | Style recipes (tv) |
 | `@grannyshot/ui/tokens` | Design tokens |
-| `@grannyshot/ui/context` | ThemeProvider + useTheme |
-| `@grannyshot/ui/utils` | cx utility |
-| `@grannyshot/ui/styles.css` | CSS file |
+| `@grannyshot/ui/context` | ThemeProvider + ThemeScript + useTheme |
+| `@grannyshot/ui/utils` | cn utility |
+| `@grannyshot/ui/styles.css` | CSS file (Tailwind projects or standalone) |
+| `@grannyshot/ui/styles-no-preflight.css` | CSS file (other frameworks, no reset) |
 
 ## License
 

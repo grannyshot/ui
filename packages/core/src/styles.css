@@ -1,0 +1,147 @@
+@import "tailwindcss";
+
+/* ── Register semantic tokens as Tailwind utilities ── */
+/* Only gs-* tokens — no overrides to Tailwind's default palette */
+@theme inline {
+  --color-gs-bg: var(--gs-bg);
+  --color-gs-bg-subtle: var(--gs-bg-subtle);
+  --color-gs-bg-muted: var(--gs-bg-muted);
+  --color-gs-bg-inverse: var(--gs-bg-inverse);
+  --color-gs-fg: var(--gs-fg);
+  --color-gs-fg-muted: var(--gs-fg-muted);
+  --color-gs-fg-subtle: var(--gs-fg-subtle);
+  --color-gs-fg-inverse: var(--gs-fg-inverse);
+  --color-gs-border: var(--gs-border);
+  --color-gs-border-muted: var(--gs-border-muted);
+  --color-gs-border-strong: var(--gs-border-strong);
+  --color-gs-border-focus: var(--gs-border-focus);
+  --color-gs-ring: var(--gs-ring);
+  --color-gs-overlay: var(--gs-overlay);
+  --color-gs-accent: var(--gs-accent);
+  --color-gs-accent-hover: var(--gs-accent-hover);
+  --color-gs-accent-muted: var(--gs-accent-muted);
+  --color-gs-accent-subtle: var(--gs-accent-subtle);
+  --color-gs-accent-fg: var(--gs-accent-fg);
+  --color-gs-success: var(--gs-success);
+  --color-gs-success-subtle: var(--gs-success-subtle);
+  --color-gs-success-fg: var(--gs-success-fg);
+  --color-gs-warning: var(--gs-warning);
+  --color-gs-warning-subtle: var(--gs-warning-subtle);
+  --color-gs-warning-fg: var(--gs-warning-fg);
+  --color-gs-error: var(--gs-error);
+  --color-gs-error-subtle: var(--gs-error-subtle);
+  --color-gs-error-fg: var(--gs-error-fg);
+  --color-gs-info: var(--gs-info);
+  --color-gs-info-subtle: var(--gs-info-subtle);
+  --color-gs-info-fg: var(--gs-info-fg);
+
+  --animate-fade-in: fade-in 0.2s ease;
+  --animate-fade-out: fade-out 0.15s ease;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-out {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(-4px); }
+}
+
+/* ── Semantic Tokens (CSS Custom Properties) ── */
+:root {
+  --gs-bg: #ffffff;
+  --gs-bg-subtle: #fafafa;
+  --gs-bg-muted: #f4f4f5;
+  --gs-bg-inverse: #09090b;
+  --gs-fg: #09090b;
+  --gs-fg-muted: #71717a;
+  --gs-fg-subtle: #a1a1aa;
+  --gs-fg-inverse: #ffffff;
+  --gs-border: #e4e4e7;
+  --gs-border-muted: #f4f4f5;
+  --gs-border-strong: #d4d4d8;
+  --gs-border-focus: #10b981;
+  --gs-ring: #10b981;
+  --gs-overlay: rgba(0, 0, 0, 0.5);
+  --gs-accent: #10b981;
+  --gs-accent-hover: #059669;
+  --gs-accent-muted: #a7f3d0;
+  --gs-accent-subtle: #ecfdf5;
+  --gs-accent-fg: #ffffff;
+  --gs-success: #059669;
+  --gs-success-subtle: #ecfdf5;
+  --gs-success-fg: #ffffff;
+  --gs-warning: #f59e0b;
+  --gs-warning-subtle: #fffbeb;
+  --gs-warning-fg: #ffffff;
+  --gs-error: #ef4444;
+  --gs-error-subtle: #fef2f2;
+  --gs-error-fg: #ffffff;
+  --gs-info: #3b82f6;
+  --gs-info-subtle: #eff6ff;
+  --gs-info-fg: #ffffff;
+}
+
+[data-theme="dark"] {
+  --gs-bg: #09090b;
+  --gs-bg-subtle: #18181b;
+  --gs-bg-muted: #27272a;
+  --gs-bg-inverse: #ffffff;
+  --gs-fg: #fafafa;
+  --gs-fg-muted: #d4d4d8;
+  --gs-fg-subtle: #71717a;
+  --gs-fg-inverse: #09090b;
+  --gs-border: #27272a;
+  --gs-border-muted: #18181b;
+  --gs-border-strong: #3f3f46;
+  --gs-border-focus: #34d399;
+  --gs-ring: #34d399;
+  --gs-overlay: rgba(0, 0, 0, 0.7);
+  --gs-accent: #10b981;
+  --gs-accent-hover: #34d399;
+  --gs-accent-muted: #064e3b;
+  --gs-accent-subtle: color-mix(in srgb, #064e3b 20%, transparent);
+  --gs-accent-fg: #ffffff;
+  --gs-success: #34d399;
+  --gs-success-subtle: color-mix(in srgb, #064e3b 20%, transparent);
+  --gs-success-fg: #ffffff;
+  --gs-warning: #fbbf24;
+  --gs-warning-subtle: color-mix(in srgb, #78350f 20%, transparent);
+  --gs-warning-fg: #09090b;
+  --gs-error: #f87171;
+  --gs-error-subtle: color-mix(in srgb, #7f1d1d 20%, transparent);
+  --gs-error-fg: #ffffff;
+  --gs-info: #60a5fa;
+  --gs-info-subtle: color-mix(in srgb, #1e3a8a 20%, transparent);
+  --gs-info-fg: #ffffff;
+}
+
+/* ── Global Styles (in @layer base so utilities can override) ── */
+@layer base {
+  body {
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    color: var(--gs-fg);
+    background: var(--gs-bg);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  button, input, select, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  img, svg {
+    display: block;
+    max-width: 100%;
+  }
+}

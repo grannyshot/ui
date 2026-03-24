@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react'
 import { skeleton, type SkeletonVariants } from './skeleton.recipe'
-import { cx } from '@/styled-system/css'
+import { cn } from '@/lib/cn'
 
 type SkeletonProps = SkeletonVariants &
   Omit<React.HTMLAttributes<HTMLDivElement>, 'children'> & {
@@ -13,7 +13,7 @@ export const Skeleton = forwardRef<HTMLDivElement, SkeletonProps>(
     return (
       <div
         ref={ref}
-        className={cx(skeleton({ variant }), className)}
+        className={cn(skeleton({ variant }), className)}
         style={{ width, height, ...style }}
         {...rest}
       />

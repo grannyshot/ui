@@ -1,45 +1,15 @@
-import { cva, css } from '@/styled-system/css'
-import type { RecipeVariantProps } from '@/styled-system/css'
+import { tv } from 'tailwind-variants'
 
-export const toastRoot = cva({
-  base: {
-    display: 'flex',
-    gap: '3',
-    alignItems: 'flex-start',
-    bg: 'bg',
-    border: '1px solid token(colors.border)',
-    borderRadius: 'md',
-    boxShadow: 'lg',
-    p: '4',
-    borderLeftWidth: '3px',
-    borderLeftStyle: 'solid',
-    minWidth: '280px',
-    maxWidth: '420px',
-    opacity: 'var(--opacity)',
-    transform: 'translateX(var(--x)) translateY(var(--y)) scale(var(--scale, 1))',
-    height: 'var(--height, auto)',
-    zIndex: 'var(--z-index)',
-    transition: 'transform 0.35s cubic-bezier(0.21, 1.02, 0.73, 1), opacity 0.3s ease, height 0.35s ease',
-    willChange: 'transform, opacity, height',
-  },
+export const toastRoot = tv({
+  base: 'flex gap-3 items-start bg-gs-bg border border-gs-border rounded-md shadow-lg p-4 border-l-[3px] min-w-[280px] max-w-[420px] opacity-[var(--opacity)] translate-x-[var(--x)] translate-y-[var(--y)] scale-[var(--scale,1)] h-[var(--height,auto)] z-[var(--z-index)] transition-[transform,opacity,height] duration-350 ease-[cubic-bezier(0.21,1.02,0.73,1)] will-change-[transform,opacity,height]',
 
   variants: {
     variant: {
-      default: {
-        borderLeftColor: 'token(colors.border)',
-      },
-      success: {
-        borderLeftColor: 'token(colors.success)',
-      },
-      error: {
-        borderLeftColor: 'token(colors.error)',
-      },
-      warning: {
-        borderLeftColor: 'token(colors.warning)',
-      },
-      info: {
-        borderLeftColor: 'token(colors.info)',
-      },
+      default: 'border-l-gs-border',
+      success: 'border-l-gs-success',
+      error: 'border-l-gs-error',
+      warning: 'border-l-gs-warning',
+      info: 'border-l-gs-info',
     },
   },
 
@@ -48,40 +18,16 @@ export const toastRoot = cva({
   },
 })
 
-export const toastTitle = css({
-  fontSize: 'sm',
-  fontWeight: 'semibold',
-  color: 'fg',
-})
+export const toastTitle =
+  'text-sm font-semibold text-gs-fg'
 
-export const toastDescription = css({
-  fontSize: 'sm',
-  color: 'fg.muted',
-  mt: '1',
-})
+export const toastDescription =
+  'text-sm text-gs-fg-muted mt-1'
 
-export const toastCloseTrigger = css({
-  display: 'inline-flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  flexShrink: 0,
-  width: '20px',
-  height: '20px',
-  borderRadius: 'sm',
-  color: 'fg.subtle',
-  cursor: 'pointer',
-  border: 'none',
-  bg: 'transparent',
-  transition: 'color 0.15s ease, background 0.15s ease',
-  ml: 'auto',
-  _hover: {
-    color: 'fg',
-    bg: 'bg.muted',
-  },
-})
+export const toastCloseTrigger =
+  'inline-flex items-center justify-center shrink-0 w-[20px] h-[20px] rounded-sm text-gs-fg-subtle cursor-pointer border-none bg-transparent transition-[color,background] duration-150 ease-in-out ml-auto hover:text-gs-fg hover:bg-gs-bg-muted'
 
-export const toastGroup = css({
-  outline: 'none',
-})
+export const toastGroup =
+  'outline-none'
 
-export type ToastRootVariants = RecipeVariantProps<typeof toastRoot>
+export type ToastRootVariants = Parameters<typeof toastRoot>[0]

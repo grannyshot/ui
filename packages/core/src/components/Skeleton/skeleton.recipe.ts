@@ -1,32 +1,17 @@
-import { cva } from '@/styled-system/css'
-import type { RecipeVariantProps } from '@/styled-system/css'
+import { tv } from 'tailwind-variants'
 
-export const skeleton = cva({
-  base: {
-    bg: 'bg.muted',
-    borderRadius: 'md',
-    animation: 'pulse 2s ease-in-out infinite',
-  },
-
+export const skeleton = tv({
+  base: 'bg-gs-bg-muted rounded-md animate-pulse',
   variants: {
     variant: {
-      text: {
-        height: '1em',
-        width: '100%',
-        borderRadius: 'sm',
-      },
-      circular: {
-        borderRadius: 'full',
-      },
-      rectangular: {
-        borderRadius: 'md',
-      },
+      text: 'h-[1em] w-full rounded-sm',
+      circular: 'rounded-full',
+      rectangular: 'rounded-md',
     },
   },
-
   defaultVariants: {
     variant: 'rectangular',
   },
 })
 
-export type SkeletonVariants = RecipeVariantProps<typeof skeleton>
+export type SkeletonVariants = Parameters<typeof skeleton>[0]

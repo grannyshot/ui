@@ -1,50 +1,21 @@
-import { cva, css } from '@/styled-system/css'
-import type { RecipeVariantProps } from '@/styled-system/css'
+import { tv } from 'tailwind-variants'
 
-export const sliderRoot = css({
-  display: 'flex',
-  flexDirection: 'column',
-  gap: '1',
-  width: '100%',
-})
+export const sliderRoot = 'flex flex-col gap-1 w-full'
 
-export const sliderLabelGroup = css({
-  display: 'flex',
-  justifyContent: 'space-between',
-})
+export const sliderLabelGroup = 'flex justify-between'
 
-export const sliderLabel = css({
-  fontSize: 'sm',
-  fontWeight: 'medium',
-  color: 'fg',
-})
+export const sliderLabel = 'text-sm font-medium text-gs-fg'
 
-export const sliderControl = css({
-  display: 'flex',
-  alignItems: 'center',
-  position: 'relative',
-})
+export const sliderControl = 'flex items-center relative'
 
-export const sliderTrack = cva({
-  base: {
-    width: '100%',
-    borderRadius: 'full',
-    bg: 'bg.muted',
-    position: 'relative',
-    overflow: 'hidden',
-  },
+export const sliderTrack = tv({
+  base: 'w-full rounded-full bg-gs-bg-muted relative overflow-hidden',
 
   variants: {
     size: {
-      sm: {
-        height: '4px',
-      },
-      md: {
-        height: '6px',
-      },
-      lg: {
-        height: '8px',
-      },
+      sm: 'h-1',
+      md: 'h-1.5',
+      lg: 'h-2',
     },
   },
 
@@ -53,45 +24,16 @@ export const sliderTrack = cva({
   },
 })
 
-export const sliderRange = css({
-  position: 'absolute',
-  height: '100%',
-  bg: 'accent',
-  borderRadius: 'full',
-})
+export const sliderRange = 'absolute h-full bg-gs-accent rounded-full'
 
-export const sliderThumb = cva({
-  base: {
-    borderRadius: 'full',
-    bg: 'bg',
-    border: '2px solid token(colors.accent)',
-    boxShadow: 'sm',
-    cursor: 'pointer',
-    transition: 'box-shadow 0.2s ease, border-color 0.2s ease',
-    outline: 'none',
-    '&[data-focus-visible]': {
-      boxShadow: '0 0 0 2px token(colors.bg), 0 0 0 4px token(colors.ring)',
-    },
-    '&[data-disabled]': {
-      opacity: 0.5,
-      cursor: 'not-allowed',
-    },
-  },
+export const sliderThumb = tv({
+  base: 'rounded-full bg-gs-bg border-2 border-gs-accent shadow-sm cursor-pointer transition-[box-shadow,border-color] duration-200 ease-in-out outline-none data-[focus-visible]:shadow-[0_0_0_2px_var(--gs-bg),0_0_0_4px_var(--gs-ring)] data-[disabled]:opacity-50 data-[disabled]:cursor-not-allowed',
 
   variants: {
     size: {
-      sm: {
-        width: '16px',
-        height: '16px',
-      },
-      md: {
-        width: '20px',
-        height: '20px',
-      },
-      lg: {
-        width: '24px',
-        height: '24px',
-      },
+      sm: 'w-4 h-4',
+      md: 'w-5 h-5',
+      lg: 'w-6 h-6',
     },
   },
 
@@ -100,9 +42,6 @@ export const sliderThumb = cva({
   },
 })
 
-export const sliderValueText = css({
-  fontSize: 'sm',
-  color: 'fg.muted',
-})
+export const sliderValueText = 'text-sm text-gs-fg-muted'
 
-export type SliderTrackVariants = RecipeVariantProps<typeof sliderTrack>
+export type SliderTrackVariants = Parameters<typeof sliderTrack>[0]

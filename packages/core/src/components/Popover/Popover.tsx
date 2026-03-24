@@ -9,7 +9,7 @@ import {
   popoverDescription,
   popoverCloseTrigger,
 } from './popover.recipe'
-import { cx } from '@/styled-system/css'
+import { cn } from '@/lib/cn'
 
 type PopoverRootProps = ArkPopover.RootProps
 
@@ -32,7 +32,7 @@ const PopoverContent = forwardRef<HTMLDivElement, ArkPopover.ContentProps>(
         <ArkPopover.Positioner>
           <ArkPopover.Content
             ref={ref}
-            className={cx(popoverContent, className)}
+            className={cn(popoverContent, className)}
             {...props}
           />
         </ArkPopover.Positioner>
@@ -45,7 +45,7 @@ PopoverContent.displayName = 'Popover.Content'
 const PopoverArrow = forwardRef<HTMLDivElement, ArkPopover.ArrowProps>(
   ({ className, ...props }, ref) => {
     return (
-      <ArkPopover.Arrow ref={ref} className={cx(popoverArrow, className)} {...props}>
+      <ArkPopover.Arrow ref={ref} className={cn(popoverArrow, className)} {...props}>
         <ArkPopover.ArrowTip className={popoverArrowTip} />
       </ArkPopover.Arrow>
     )
@@ -58,7 +58,7 @@ const PopoverTitle = forwardRef<HTMLDivElement, ArkPopover.TitleProps>(
     return (
       <ArkPopover.Title
         ref={ref}
-        className={cx(popoverTitle, className)}
+        className={cn(popoverTitle, className)}
         {...props}
       />
     )
@@ -71,7 +71,7 @@ const PopoverDescription = forwardRef<HTMLDivElement, ArkPopover.DescriptionProp
     return (
       <ArkPopover.Description
         ref={ref}
-        className={cx(popoverDescription, className)}
+        className={cn(popoverDescription, className)}
         {...props}
       />
     )
@@ -84,7 +84,7 @@ const PopoverCloseTrigger = forwardRef<HTMLButtonElement, ArkPopover.CloseTrigge
     return (
       <ArkPopover.CloseTrigger
         ref={ref}
-        className={cx(popoverCloseTrigger, className)}
+        className={cn(popoverCloseTrigger, className)}
         {...props}
       >
         {children ?? (

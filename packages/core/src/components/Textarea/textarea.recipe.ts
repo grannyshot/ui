@@ -1,38 +1,29 @@
-import { cva } from '@/styled-system/css'
-import type { RecipeVariantProps } from '@/styled-system/css'
+import { tv } from 'tailwind-variants'
 
-export const textarea = cva({
-  base: {
-    width: '100%',
-    borderRadius: 'md',
-    border: '1px solid token(colors.border)',
-    bg: 'bg',
-    color: 'fg',
-    outline: 'none',
-    transition: 'border-color 0.15s ease',
-    lineHeight: 'normal',
-    _placeholder: { color: 'fg.subtle' },
-    _focus: { borderColor: 'border.focus' },
-    _disabled: { opacity: 0.5, cursor: 'not-allowed' },
-  },
+export const textarea = tv({
+  base: 'w-full rounded-md border border-gs-border bg-gs-bg text-gs-fg outline-none transition-[border-color] duration-150 ease-in-out leading-normal placeholder:text-gs-fg-subtle focus:border-gs-border-focus disabled:opacity-50 disabled:cursor-not-allowed',
   variants: {
     size: {
-      sm: { px: '3', py: '1', fontSize: 'xs', minHeight: '64px' },
-      md: { px: '3', py: '2', fontSize: 'sm', minHeight: '80px' },
-      lg: { px: '4', py: '3', fontSize: 'md', minHeight: '120px' },
+      sm: 'px-3 py-1 text-xs min-h-16',
+      md: 'px-3 py-2 text-sm min-h-20',
+      lg: 'px-4 py-3 text-base min-h-30',
     },
     state: {
-      default: {},
-      error: { borderColor: 'error', _focus: { borderColor: 'error' } },
-      success: { borderColor: 'success', _focus: { borderColor: 'success' } },
+      default: '',
+      error: 'border-gs-error focus:border-gs-error',
+      success: 'border-gs-success focus:border-gs-success',
     },
     resize: {
-      none: { resize: 'none' },
-      vertical: { resize: 'vertical' },
-      both: { resize: 'both' },
+      none: 'resize-none',
+      vertical: 'resize-y',
+      both: 'resize',
     },
   },
-  defaultVariants: { size: 'md', state: 'default', resize: 'vertical' },
+  defaultVariants: {
+    size: 'md',
+    state: 'default',
+    resize: 'vertical',
+  },
 })
 
-export type TextareaVariants = RecipeVariantProps<typeof textarea>
+export type TextareaVariants = Parameters<typeof textarea>[0]

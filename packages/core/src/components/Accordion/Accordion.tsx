@@ -7,7 +7,7 @@ import {
   accordionItemContent,
   accordionItemIndicator,
 } from './accordion.recipe'
-import { cx } from '@/styled-system/css'
+import { cn } from '@/lib/cn'
 
 type AccordionRootProps = Omit<ArkAccordion.RootProps, 'className'> & {
   className?: string
@@ -18,7 +18,7 @@ const AccordionRoot = forwardRef<HTMLDivElement, AccordionRootProps>(
     return (
       <ArkAccordion.Root
         ref={ref}
-        className={cx(accordionRoot, className)}
+        className={cn(accordionRoot, className)}
         {...props}
       />
     )
@@ -36,7 +36,7 @@ const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>(
     return (
       <ArkAccordion.Item
         ref={ref}
-        className={cx(accordionItem, className)}
+        className={cn(accordionItem, className)}
         {...props}
       />
     )
@@ -54,7 +54,7 @@ const AccordionItemTrigger = forwardRef<HTMLButtonElement, AccordionItemTriggerP
     return (
       <ArkAccordion.ItemTrigger
         ref={ref}
-        className={cx(accordionItemTrigger, className)}
+        className={cn(accordionItemTrigger, className)}
         {...props}
       >
         {children}
@@ -88,7 +88,7 @@ const AccordionItemContent = forwardRef<HTMLDivElement, AccordionItemContentProp
     return (
       <ArkAccordion.ItemContent
         ref={ref}
-        className={cx(accordionItemContent, className)}
+        className={cn(accordionItemContent, className)}
         {...props}
       />
     )

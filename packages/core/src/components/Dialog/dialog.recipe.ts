@@ -1,48 +1,16 @@
-import { cva, css } from '@/styled-system/css'
-import type { RecipeVariantProps } from '@/styled-system/css'
+import { tv } from 'tailwind-variants'
 
-export const dialogOverlay = css({
-  position: 'fixed',
-  inset: 0,
-  bg: 'overlay',
-  zIndex: 'overlay',
-  '&[data-state=open]': {
-    animation: 'fadeIn 0.2s ease',
-  },
-  '&[data-state=closed]': {
-    animation: 'fadeOut 0.15s ease',
-  },
-})
+export const dialogOverlay =
+  'fixed inset-0 bg-gs-overlay z-[1300] data-[state=open]:animate-fade-in data-[state=closed]:animate-fade-out'
 
-export const dialogContent = cva({
-  base: {
-    position: 'relative',
-    bg: 'bg',
-    border: '1px solid token(colors.border)',
-    borderRadius: 'lg',
-    boxShadow: 'xl',
-    zIndex: 'modal',
-    width: '100%',
-    p: '6',
-    '&[data-state=open]': {
-      animation: 'fadeIn 0.2s ease',
-    },
-    '&[data-state=closed]': {
-      animation: 'fadeOut 0.15s ease',
-    },
-  },
+export const dialogContent = tv({
+  base: 'relative bg-gs-bg border border-gs-border rounded-lg shadow-xl z-[1400] w-full p-6 data-[state=open]:animate-fade-in data-[state=closed]:animate-fade-out',
 
   variants: {
     size: {
-      sm: {
-        maxWidth: 'sm',
-      },
-      md: {
-        maxWidth: 'md',
-      },
-      lg: {
-        maxWidth: 'lg',
-      },
+      sm: 'max-w-xs',
+      md: 'max-w-md',
+      lg: 'max-w-lg',
     },
   },
 
@@ -51,46 +19,16 @@ export const dialogContent = cva({
   },
 })
 
-export const dialogPositioner = css({
-  position: 'fixed',
-  inset: 0,
-  zIndex: 'modal',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  p: '4',
-})
+export const dialogPositioner =
+  'fixed inset-0 z-[1400] flex items-center justify-center p-4'
 
-export const dialogTitle = css({
-  fontSize: 'lg',
-  fontWeight: 'semibold',
-  color: 'fg',
-  mb: '2',
-})
+export const dialogTitle =
+  'text-lg font-semibold text-gs-fg mb-2'
 
-export const dialogDescription = css({
-  fontSize: 'sm',
-  color: 'fg.muted',
-  mb: '4',
-})
+export const dialogDescription =
+  'text-sm text-gs-fg-muted mb-4'
 
-export const dialogCloseTrigger = css({
-  position: 'absolute',
-  top: '3',
-  right: '3',
-  display: 'inline-flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  width: '28px',
-  height: '28px',
-  borderRadius: 'sm',
-  color: 'fg.muted',
-  cursor: 'pointer',
-  transition: 'background 0.15s ease, color 0.15s ease',
-  '&:hover': {
-    bg: 'bg.muted',
-    color: 'fg',
-  },
-})
+export const dialogCloseTrigger =
+  'absolute top-3 right-3 inline-flex items-center justify-center w-[28px] h-[28px] rounded-sm text-gs-fg-muted cursor-pointer transition-[background,color] duration-150 ease-in-out hover:bg-gs-bg-muted hover:text-gs-fg'
 
-export type DialogContentVariants = RecipeVariantProps<typeof dialogContent>
+export type DialogContentVariants = Parameters<typeof dialogContent>[0]

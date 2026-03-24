@@ -1,96 +1,17 @@
-import { cva, css } from '@/styled-system/css'
-import type { RecipeVariantProps } from '@/styled-system/css'
+export const fileUploadRoot = 'flex flex-col gap-3 w-full'
 
-export const fileUploadRoot = css({
-  display: 'flex',
-  flexDirection: 'column',
-  gap: '3',
-  width: '100%',
-})
+export const fileUploadLabel = 'text-sm font-medium text-gs-fg'
 
-export const fileUploadLabel = css({
-  fontSize: 'sm',
-  fontWeight: 'medium',
-  color: 'fg',
-})
+export const fileUploadDropzone = 'flex flex-col items-center justify-center gap-2 p-8 rounded-lg border-2 border-dashed border-gs-border bg-gs-bg-subtle text-gs-fg-muted cursor-pointer transition-[border-color,background] duration-150 ease-in-out hover:border-gs-accent hover:bg-gs-accent-subtle data-[dragging]:border-gs-accent data-[dragging]:bg-gs-accent-subtle'
 
-export const fileUploadDropzone = css({
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  justifyContent: 'center',
-  gap: '2',
-  padding: '8',
-  borderRadius: 'lg',
-  border: '2px dashed token(colors.border)',
-  bg: 'bg.subtle',
-  color: 'fg.muted',
-  cursor: 'pointer',
-  transition: 'border-color 0.15s ease, background 0.15s ease',
-  '&:hover': {
-    borderColor: 'accent',
-    bg: 'accent.subtle',
-  },
-  '&[data-dragging]': {
-    borderColor: 'accent',
-    bg: 'accent.subtle',
-  },
-})
+export const fileUploadTrigger = 'text-sm font-medium text-gs-accent cursor-pointer hover:underline'
 
-export const fileUploadTrigger = css({
-  fontSize: 'sm',
-  fontWeight: 'medium',
-  color: 'accent',
-  cursor: 'pointer',
-  '&:hover': {
-    textDecoration: 'underline',
-  },
-})
+export const fileUploadItemGroup = 'flex flex-col gap-2'
 
-export const fileUploadItemGroup = css({
-  display: 'flex',
-  flexDirection: 'column',
-  gap: '2',
-})
+export const fileUploadItem = 'flex items-center gap-3 p-2 rounded-md border border-gs-border bg-gs-bg text-sm'
 
-export const fileUploadItem = css({
-  display: 'flex',
-  alignItems: 'center',
-  gap: '3',
-  padding: '2',
-  borderRadius: 'md',
-  border: '1px solid token(colors.border)',
-  bg: 'bg',
-  fontSize: 'sm',
-})
+export const fileUploadItemName = 'flex-1 text-gs-fg overflow-hidden text-ellipsis whitespace-nowrap'
 
-export const fileUploadItemName = css({
-  flex: 1,
-  color: 'fg',
-  overflow: 'hidden',
-  textOverflow: 'ellipsis',
-  whiteSpace: 'nowrap',
-})
+export const fileUploadItemSizeText = 'text-gs-fg-muted text-xs shrink-0'
 
-export const fileUploadItemSizeText = css({
-  color: 'fg.muted',
-  fontSize: 'xs',
-  flexShrink: 0,
-})
-
-export const fileUploadItemDeleteTrigger = css({
-  display: 'inline-flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  width: '24px',
-  height: '24px',
-  borderRadius: 'sm',
-  color: 'fg.muted',
-  cursor: 'pointer',
-  transition: 'background 0.15s ease, color 0.15s ease',
-  flexShrink: 0,
-  '&:hover': {
-    bg: 'bg.muted',
-    color: 'error',
-  },
-})
+export const fileUploadItemDeleteTrigger = 'inline-flex items-center justify-center w-6 h-6 rounded-sm text-gs-fg-muted cursor-pointer transition-[background,color] duration-150 ease-in-out shrink-0 hover:bg-gs-bg-muted hover:text-gs-error'

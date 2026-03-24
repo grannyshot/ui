@@ -9,7 +9,7 @@ import {
   progressValueText,
   type ProgressTrackVariants,
 } from './progress.recipe'
-import { cx } from '@/styled-system/css'
+import { cn } from '@/lib/cn'
 
 type ProgressProps = ProgressTrackVariants &
   Omit<ArkProgress.RootProps, 'className'> & {
@@ -21,7 +21,7 @@ type ProgressProps = ProgressTrackVariants &
 export const Progress = forwardRef<HTMLDivElement, ProgressProps>(
   ({ size, label, showValue, className, ...rootProps }, ref) => {
     return (
-      <ArkProgress.Root ref={ref} className={cx(progressRoot, className)} {...rootProps}>
+      <ArkProgress.Root ref={ref} className={cn(progressRoot, className)} {...rootProps}>
         {(label || showValue) && (
           <div className={progressHeader}>
             {label && <ArkProgress.Label className={progressLabel}>{label}</ArkProgress.Label>}

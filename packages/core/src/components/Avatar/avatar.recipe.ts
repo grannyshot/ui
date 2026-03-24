@@ -1,54 +1,20 @@
-import { cva, css } from '@/styled-system/css'
-import type { RecipeVariantProps } from '@/styled-system/css'
+import { tv } from 'tailwind-variants'
 
-export const avatar = cva({
-  base: {
-    display: 'inline-flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 'full',
-    overflow: 'hidden',
-    bg: 'bg.muted',
-    color: 'fg.muted',
-    fontWeight: 'medium',
-    flexShrink: 0,
-    userSelect: 'none',
-  },
-
+export const avatar = tv({
+  base: 'inline-flex items-center justify-center rounded-full overflow-hidden bg-gs-bg-muted text-gs-fg-muted font-medium shrink-0 select-none',
   variants: {
     size: {
-      sm: {
-        w: '32px',
-        h: '32px',
-        fontSize: 'xs',
-      },
-      md: {
-        w: '40px',
-        h: '40px',
-        fontSize: 'sm',
-      },
-      lg: {
-        w: '48px',
-        h: '48px',
-        fontSize: 'md',
-      },
-      xl: {
-        w: '64px',
-        h: '64px',
-        fontSize: 'lg',
-      },
+      sm: 'w-8 h-8 text-xs',
+      md: 'w-10 h-10 text-sm',
+      lg: 'w-12 h-12 text-base',
+      xl: 'w-16 h-16 text-lg',
     },
   },
-
   defaultVariants: {
     size: 'md',
   },
 })
 
-export const avatarImage = css({
-  w: '100%',
-  h: '100%',
-  objectFit: 'cover',
-})
+export const avatarImage = 'w-full h-full object-cover'
 
-export type AvatarVariants = RecipeVariantProps<typeof avatar>
+export type AvatarVariants = Parameters<typeof avatar>[0]

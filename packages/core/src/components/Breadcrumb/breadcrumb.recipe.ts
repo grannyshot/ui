@@ -1,45 +1,14 @@
-import { css } from '@/styled-system/css'
+export const breadcrumbRoot =
+  'flex'
 
-export const breadcrumbRoot = css({
-  display: 'flex',
-})
+export const breadcrumbList =
+  'flex items-center gap-1 flex-wrap list-none m-0 p-0'
 
-export const breadcrumbList = css({
-  display: 'flex',
-  alignItems: 'center',
-  gap: '1',
-  flexWrap: 'wrap',
-  listStyle: 'none',
-  margin: 0,
-  padding: 0,
-})
+export const breadcrumbItem =
+  'inline-flex items-center gap-1 text-sm'
 
-export const breadcrumbItem = css({
-  display: 'inline-flex',
-  alignItems: 'center',
-  gap: '1',
-  fontSize: 'sm',
-})
+export const breadcrumbLink =
+  'text-gs-fg-muted no-underline transition-[color] duration-150 ease-in-out hover:text-gs-fg aria-[current=page]:text-gs-fg aria-[current=page]:font-medium aria-[current=page]:cursor-default aria-[current=page]:hover:text-gs-fg'
 
-export const breadcrumbLink = css({
-  color: 'fg.muted',
-  textDecoration: 'none',
-  transition: 'color 0.15s ease',
-  '&:hover': {
-    color: 'fg',
-  },
-  '&[aria-current=page]': {
-    color: 'fg',
-    fontWeight: 'medium',
-    cursor: 'default',
-    '&:hover': {
-      color: 'fg',
-    },
-  },
-})
-
-export const breadcrumbSeparator = css({
-  color: 'fg.subtle',
-  fontSize: 'sm',
-  userSelect: 'none',
-})
+export const breadcrumbSeparator =
+  'text-gs-fg-subtle text-sm select-none'

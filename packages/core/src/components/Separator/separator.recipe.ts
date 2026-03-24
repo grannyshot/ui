@@ -1,29 +1,16 @@
-import { cva } from '@/styled-system/css'
-import type { RecipeVariantProps } from '@/styled-system/css'
+import { tv } from 'tailwind-variants'
 
-export const separator = cva({
-  base: {
-    bg: 'border',
-    flexShrink: 0,
-  },
-
+export const separator = tv({
+  base: 'bg-gs-border shrink-0',
   variants: {
     orientation: {
-      horizontal: {
-        width: '100%',
-        height: '1px',
-      },
-      vertical: {
-        width: '1px',
-        height: '100%',
-        alignSelf: 'stretch',
-      },
+      horizontal: 'w-full h-px',
+      vertical: 'w-px h-full self-stretch',
     },
   },
-
   defaultVariants: {
     orientation: 'horizontal',
   },
 })
 
-export type SeparatorVariants = RecipeVariantProps<typeof separator>
+export type SeparatorVariants = Parameters<typeof separator>[0]

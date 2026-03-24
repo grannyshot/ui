@@ -1,65 +1,23 @@
-import { cva } from '@/styled-system/css'
-import type { RecipeVariantProps } from '@/styled-system/css'
+import { tv } from 'tailwind-variants'
 
-export const input = cva({
-  base: {
-    width: '100%',
-    borderRadius: 'md',
-    border: '1px solid token(colors.border)',
-    bg: 'bg',
-    color: 'fg',
-    outline: 'none',
-    transition: 'border-color 0.15s ease',
-    _placeholder: {
-      color: 'fg.subtle',
-    },
-    _focus: {
-      borderColor: 'border.focus',
-    },
-    _disabled: {
-      opacity: 0.5,
-      cursor: 'not-allowed',
-    },
-  },
-
+export const input = tv({
+  base: 'w-full rounded-md border border-gs-border bg-gs-bg text-gs-fg outline-none transition-[border-color] duration-150 ease-in-out placeholder:text-gs-fg-subtle focus:border-gs-border-focus disabled:opacity-50 disabled:cursor-not-allowed',
   variants: {
     size: {
-      sm: {
-        px: '3',
-        py: '1',
-        fontSize: 'xs',
-        height: '32px',
-      },
-      md: {
-        px: '3',
-        py: '2',
-        fontSize: 'sm',
-        height: '36px',
-      },
-      lg: {
-        px: '4',
-        py: '3',
-        fontSize: 'md',
-        height: '44px',
-      },
+      sm: 'px-3 py-1 text-xs h-8',
+      md: 'px-3 py-2 text-sm h-9',
+      lg: 'px-4 py-3 text-base h-11',
     },
     state: {
-      default: {},
-      error: {
-        borderColor: 'error',
-        _focus: { borderColor: 'error' },
-      },
-      success: {
-        borderColor: 'success',
-        _focus: { borderColor: 'success' },
-      },
+      default: '',
+      error: 'border-gs-error focus:border-gs-error',
+      success: 'border-gs-success focus:border-gs-success',
     },
   },
-
   defaultVariants: {
     size: 'md',
     state: 'default',
   },
 })
 
-export type InputVariants = RecipeVariantProps<typeof input>
+export type InputVariants = Parameters<typeof input>[0]

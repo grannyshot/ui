@@ -1,3 +1,5 @@
+'use client'
+
 // Tokens
 export { token, type Token } from '@/tokens'
 
@@ -41,10 +43,10 @@ export { stepsRoot, stepsList, stepsItem, stepsTrigger, stepsIndicator, stepsSep
 export { emptyStateRoot, emptyStateIcon, emptyStateTitle, emptyStateDescription, emptyStateActions } from '@/components/EmptyState/empty-state.recipe'
 
 // Utils
-export { cx } from '@/styled-system/css'
+export { cn, cn as cx } from '@/lib/cn'
 
 // Context
-export { ThemeProvider, useTheme } from '@/context/ThemeProvider'
+export { ThemeProvider, ThemeScript, useTheme } from '@/context/ThemeProvider'
 
 // React Components
 export { Button } from '@/components/Button/Button'

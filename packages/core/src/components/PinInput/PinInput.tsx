@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react'
 import { PinInput as ArkPinInput } from '@ark-ui/react/pin-input'
 import { pinInputRoot, pinInputLabel, pinInputControl, pinInputInput, type PinInputVariants } from './pin-input.recipe'
-import { cx } from '@/styled-system/css'
+import { cn } from '@/lib/cn'
 
 type PinInputProps = PinInputVariants &
   Omit<ArkPinInput.RootProps, 'className'> & {
@@ -16,7 +16,7 @@ export const PinInput = forwardRef<HTMLDivElement, PinInputProps>(
     return (
       <ArkPinInput.Root
         ref={ref}
-        className={cx(pinInputRoot, className)}
+        className={cn(pinInputRoot, className)}
         mask={mask}
         {...rootProps}
       >

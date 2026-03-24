@@ -5,7 +5,7 @@ import {
   fileUploadItemGroup, fileUploadItem, fileUploadItemName, fileUploadItemSizeText,
   fileUploadItemDeleteTrigger,
 } from './file-upload.recipe'
-import { cx } from '@/styled-system/css'
+import { cn } from '@/lib/cn'
 
 type FileUploadProps = Omit<ArkFileUpload.RootProps, 'className'> & {
   label?: string
@@ -15,7 +15,7 @@ type FileUploadProps = Omit<ArkFileUpload.RootProps, 'className'> & {
 const FileUploadRoot = forwardRef<HTMLDivElement, FileUploadProps>(
   ({ label, className, ...rootProps }, ref) => {
     return (
-      <ArkFileUpload.Root ref={ref} className={cx(fileUploadRoot, className)} {...rootProps}>
+      <ArkFileUpload.Root ref={ref} className={cn(fileUploadRoot, className)} {...rootProps}>
         {label && <ArkFileUpload.Label className={fileUploadLabel}>{label}</ArkFileUpload.Label>}
         <ArkFileUpload.Dropzone className={fileUploadDropzone}>
           <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

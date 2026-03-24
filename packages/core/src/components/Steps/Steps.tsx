@@ -5,7 +5,7 @@ import {
   stepsIndicator, stepsSeparator, stepsContent,
   type StepsIndicatorVariants,
 } from './steps.recipe'
-import { cx } from '@/styled-system/css'
+import { cn } from '@/lib/cn'
 
 type StepsRootProps = StepsIndicatorVariants &
   Omit<ArkSteps.RootProps, 'className'> & {
@@ -14,14 +14,14 @@ type StepsRootProps = StepsIndicatorVariants &
 
 const StepsRoot = forwardRef<HTMLDivElement, StepsRootProps>(
   ({ size, className, ...props }, ref) => (
-    <ArkSteps.Root ref={ref} className={cx(stepsRoot, className)} {...props} />
+    <ArkSteps.Root ref={ref} className={cn(stepsRoot, className)} {...props} />
   )
 )
 StepsRoot.displayName = 'Steps.Root'
 
 const StepsList = forwardRef<HTMLDivElement, { className?: string; children?: React.ReactNode }>(
   ({ className, ...props }, ref) => (
-    <ArkSteps.List ref={ref} className={cx(stepsList, className)} {...props} />
+    <ArkSteps.List ref={ref} className={cn(stepsList, className)} {...props} />
   )
 )
 StepsList.displayName = 'Steps.List'
@@ -33,7 +33,7 @@ type StepsItemProps = StepsIndicatorVariants & Omit<ArkSteps.ItemProps, 'classNa
 
 const StepsItem = forwardRef<HTMLDivElement, StepsItemProps>(
   ({ size, title, className, index, ...props }, ref) => (
-    <ArkSteps.Item ref={ref} index={index} className={cx(stepsItem, className)} {...props}>
+    <ArkSteps.Item ref={ref} index={index} className={cn(stepsItem, className)} {...props}>
       <ArkSteps.Trigger className={stepsTrigger}>
         <ArkSteps.Indicator className={stepsIndicator({ size })}>
           {index + 1}
@@ -48,14 +48,14 @@ StepsItem.displayName = 'Steps.Item'
 
 const StepsContent = forwardRef<HTMLDivElement, ArkSteps.ContentProps & { className?: string }>(
   ({ className, ...props }, ref) => (
-    <ArkSteps.Content ref={ref} className={cx(stepsContent, className)} {...props} />
+    <ArkSteps.Content ref={ref} className={cn(stepsContent, className)} {...props} />
   )
 )
 StepsContent.displayName = 'Steps.Content'
 
 const StepsCompletedContent = forwardRef<HTMLDivElement, { className?: string; children?: React.ReactNode }>(
   ({ className, ...props }, ref) => (
-    <ArkSteps.CompletedContent ref={ref} className={cx(stepsContent, className)} {...props} />
+    <ArkSteps.CompletedContent ref={ref} className={cn(stepsContent, className)} {...props} />
   )
 )
 StepsCompletedContent.displayName = 'Steps.CompletedContent'

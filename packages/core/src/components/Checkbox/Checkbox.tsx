@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react'
 import { Checkbox as ArkCheckbox } from '@ark-ui/react/checkbox'
 import { checkboxRoot, checkboxControl, checkboxLabel, type CheckboxControlVariants } from './checkbox.recipe'
-import { cx } from '@/styled-system/css'
+import { cn } from '@/lib/cn'
 
 type CheckboxProps = CheckboxControlVariants &
   Omit<ArkCheckbox.RootProps, 'className'> & {
@@ -12,7 +12,7 @@ type CheckboxProps = CheckboxControlVariants &
 export const Checkbox = forwardRef<HTMLLabelElement, CheckboxProps>(
   ({ size, label, className, ...rootProps }, ref) => {
     return (
-      <ArkCheckbox.Root ref={ref} className={cx(checkboxRoot, className)} {...rootProps}>
+      <ArkCheckbox.Root ref={ref} className={cn(checkboxRoot, className)} {...rootProps}>
         <ArkCheckbox.Control className={checkboxControl({ size })}>
           <ArkCheckbox.Indicator>
             <svg aria-hidden="true" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">

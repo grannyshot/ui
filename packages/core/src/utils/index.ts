@@ -1,1 +1,1 @@
-export { cx } from '@/styled-system/css'
+export { cn, cn as cx } from '@/lib/cn'

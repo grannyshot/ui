@@ -9,7 +9,7 @@ import {
   menuItemGroupLabel,
   menuTriggerItem,
 } from './menu.recipe'
-import { cx } from '@/styled-system/css'
+import { cn } from '@/lib/cn'
 
 type MenuRootProps = ArkMenu.RootProps
 
@@ -32,7 +32,7 @@ const MenuContent = forwardRef<HTMLDivElement, ArkMenu.ContentProps>(
         <ArkMenu.Positioner>
           <ArkMenu.Content
             ref={ref}
-            className={cx(menuContent, className)}
+            className={cn(menuContent, className)}
             {...props}
           />
         </ArkMenu.Positioner>
@@ -47,7 +47,7 @@ const MenuItem = forwardRef<HTMLDivElement, ArkMenu.ItemProps>(
     return (
       <ArkMenu.Item
         ref={ref}
-        className={cx(menuItem, className)}
+        className={cn(menuItem, className)}
         {...props}
       />
     )
@@ -60,7 +60,7 @@ const MenuSeparator = forwardRef<HTMLHRElement, ArkMenu.SeparatorProps>(
     return (
       <ArkMenu.Separator
         ref={ref}
-        className={cx(menuSeparator, className)}
+        className={cn(menuSeparator, className)}
         {...props}
       />
     )
@@ -73,7 +73,7 @@ const MenuItemGroup = forwardRef<HTMLDivElement, ArkMenu.ItemGroupProps>(
     return (
       <ArkMenu.ItemGroup
         ref={ref}
-        className={cx(menuItemGroup, className)}
+        className={cn(menuItemGroup, className)}
         {...props}
       />
     )
@@ -86,7 +86,7 @@ const MenuItemGroupLabel = forwardRef<HTMLDivElement, ArkMenu.ItemGroupLabelProp
     return (
       <ArkMenu.ItemGroupLabel
         ref={ref}
-        className={cx(menuItemGroupLabel, className)}
+        className={cn(menuItemGroupLabel, className)}
         {...props}
       />
     )
@@ -99,7 +99,7 @@ const MenuTriggerItem = forwardRef<HTMLDivElement, ArkMenu.TriggerItemProps>(
     return (
       <ArkMenu.TriggerItem
         ref={ref}
-        className={cx(menuTriggerItem, className)}
+        className={cn(menuTriggerItem, className)}
         {...props}
       >
         {children}

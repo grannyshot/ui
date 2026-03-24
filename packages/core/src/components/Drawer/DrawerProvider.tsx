@@ -1,7 +1,7 @@
 import React, { useSyncExternalStore } from 'react'
 import { Dialog as ArkDialog } from '@ark-ui/react/dialog'
 import { Portal } from '@ark-ui/react/portal'
-import { cx } from '@/styled-system/css'
+import { cn } from '@/lib/cn'
 import {
   drawerOverlay,
   drawerContent,
@@ -120,7 +120,7 @@ export function DrawerProvider() {
               </div>
             )}
 
-            <ArkDialog.CloseTrigger className={cx(drawerCloseTrigger)}>
+            <ArkDialog.CloseTrigger className={cn(drawerCloseTrigger)}>
               <svg aria-hidden="true"
                 width="16"
                 height="16"

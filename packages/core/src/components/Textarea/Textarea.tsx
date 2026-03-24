@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react'
 import { textarea, type TextareaVariants } from './textarea.recipe'
-import { cx } from '@/styled-system/css'
+import { cn } from '@/lib/cn'
 
 type TextareaProps = Omit<React.TextareaHTMLAttributes<HTMLTextAreaElement>, 'size'> &
   TextareaVariants
@@ -10,7 +10,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
     return (
       <textarea
         ref={ref}
-        className={cx(textarea({ size, state, resize }), className)}
+        className={cn(textarea({ size, state, resize }), className)}
         {...rest}
       />
     )

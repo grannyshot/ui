@@ -8,7 +8,7 @@ import {
   tabsIndicator,
   type TabsListVariants,
 } from './tabs.recipe'
-import { cx } from '@/styled-system/css'
+import { cn } from '@/lib/cn'
 
 type TabsVariant = NonNullable<TabsListVariants>['variant']
 
@@ -23,7 +23,7 @@ const TabsRoot = forwardRef<HTMLDivElement, TabsRootProps>(
   ({ variant = 'line', className, children, ...props }, ref) => {
     return (
       <TabsVariantContext.Provider value={variant}>
-        <ArkTabs.Root ref={ref} lazyMount unmountOnExit className={cx(tabsRoot, className)} {...props}>
+        <ArkTabs.Root ref={ref} lazyMount unmountOnExit className={cn(tabsRoot, className)} {...props}>
           {children}
         </ArkTabs.Root>
       </TabsVariantContext.Provider>
@@ -43,7 +43,7 @@ const TabsList = forwardRef<HTMLDivElement, TabsListProps>(
     return (
       <ArkTabs.List
         ref={ref}
-        className={cx(tabsList({ variant }), className)}
+        className={cn(tabsList({ variant }), className)}
         {...props}
       />
     )
@@ -62,7 +62,7 @@ const TabsTrigger = forwardRef<HTMLButtonElement, TabsTriggerProps>(
     return (
       <ArkTabs.Trigger
         ref={ref}
-        className={cx(tabsTrigger({ variant }), className)}
+        className={cn(tabsTrigger({ variant }), className)}
         {...props}
       />
     )
@@ -80,7 +80,7 @@ const TabsContent = forwardRef<HTMLDivElement, TabsContentProps>(
     return (
       <ArkTabs.Content
         ref={ref}
-        className={cx(tabsContent, className)}
+        className={cn(tabsContent, className)}
         {...props}
       />
     )
@@ -98,7 +98,7 @@ const TabsIndicator = forwardRef<HTMLDivElement, TabsIndicatorProps>(
     return (
       <ArkTabs.Indicator
         ref={ref}
-        className={cx(tabsIndicator, className)}
+        className={cn(tabsIndicator, className)}
         {...props}
       />
     )

@@ -1,1 +1,3 @@
-export { ThemeProvider, useTheme } from './ThemeProvider'
+'use client'
+
+export { ThemeProvider, ThemeScript, useTheme } from './ThemeProvider'

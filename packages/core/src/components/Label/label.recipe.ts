@@ -1,31 +1,15 @@
-import { cva } from '@/styled-system/css'
-import type { RecipeVariantProps } from '@/styled-system/css'
+import { tv } from 'tailwind-variants'
 
-export const label = cva({
-  base: {
-    display: 'block',
-    fontSize: 'xs',
-    fontWeight: 'medium',
-    color: 'fg',
-    cursor: 'default',
-  },
-
+export const label = tv({
+  base: 'block text-xs font-medium text-gs-fg cursor-default',
   variants: {
     required: {
-      true: {
-        _after: {
-          content: '" *"',
-          color: 'error',
-        },
-      },
+      true: 'after:content-["_*"] after:text-gs-error',
     },
     disabled: {
-      true: {
-        opacity: 0.5,
-        cursor: 'not-allowed',
-      },
+      true: 'opacity-50 cursor-not-allowed',
     },
   },
 })
 
-export type LabelVariants = RecipeVariantProps<typeof label>
+export type LabelVariants = Parameters<typeof label>[0]

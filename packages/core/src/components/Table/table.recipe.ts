@@ -1,48 +1,19 @@
-import { css } from '@/styled-system/css'
+export const tableRoot =
+  'w-full border-collapse text-sm'
 
-export const tableRoot = css({
-  width: '100%',
-  borderCollapse: 'collapse',
-  fontSize: 'sm',
-})
+export const tableHeader =
+  'border-b border-gs-border'
 
-export const tableHeader = css({
-  borderBottom: '1px solid token(colors.border)',
-})
+export const tableHeaderCell =
+  'px-4 py-3 text-left text-xs font-semibold text-gs-fg-muted uppercase tracking-wide'
 
-export const tableHeaderCell = css({
-  px: '4',
-  py: '3',
-  textAlign: 'left',
-  fontSize: 'xs',
-  fontWeight: 'semibold',
-  color: 'fg.muted',
-  textTransform: 'uppercase',
-  letterSpacing: 'wide',
-})
+export const tableBody = ''
 
-export const tableBody = css({})
+export const tableRow =
+  'border-b border-gs-border-muted transition-[background] duration-100 ease-in-out last:border-b-0 hover:bg-gs-bg-subtle'
 
-export const tableRow = css({
-  borderBottom: '1px solid token(colors.border.muted)',
-  transition: 'background 0.1s ease',
-  '&:last-child': {
-    borderBottom: 'none',
-  },
-  '&:hover': {
-    bg: 'bg.subtle',
-  },
-})
+export const tableCell =
+  'px-4 py-3 text-gs-fg'
 
-export const tableCell = css({
-  px: '4',
-  py: '3',
-  color: 'fg',
-})
-
-export const tableCaption = css({
-  mt: '2',
-  fontSize: 'sm',
-  color: 'fg.muted',
-  textAlign: 'left',
-})
+export const tableCaption =
+  'mt-2 text-sm text-gs-fg-muted text-left'

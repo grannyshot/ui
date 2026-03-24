@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react'
 import { button, type ButtonVariants } from './button.recipe'
-import { cx } from '@/styled-system/css'
+import { cn } from '@/lib/cn'
 
 type ButtonProps = ButtonVariants &
   React.ButtonHTMLAttributes<HTMLButtonElement> & {
@@ -25,7 +25,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <button
         ref={ref}
-        className={cx(button({ variant, size, fullWidth }), className)}
+        className={cn(button({ variant, size, fullWidth }), className)}
         {...rest}
       >
         {children}

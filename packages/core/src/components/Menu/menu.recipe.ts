@@ -1,73 +1,16 @@
-import { css } from '@/styled-system/css'
+export const menuContent =
+  'bg-gs-bg border border-gs-border rounded-md shadow-lg py-1 z-[1000] min-w-[160px] data-[state=open]:animate-fade-in data-[state=closed]:animate-fade-out'
 
-export const menuContent = css({
-  bg: 'bg',
-  border: '1px solid token(colors.border)',
-  borderRadius: 'md',
-  boxShadow: 'lg',
-  py: '1',
-  zIndex: 'dropdown',
-  minWidth: '160px',
-  '&[data-state=open]': {
-    animation: 'fadeIn 0.15s ease',
-  },
-  '&[data-state=closed]': {
-    animation: 'fadeOut 0.1s ease',
-  },
-})
+export const menuItem =
+  'flex items-center gap-2 px-3 py-2 text-sm cursor-pointer outline-none transition-[background] duration-100 ease-in-out data-[highlighted]:bg-gs-bg-muted data-[disabled]:opacity-50 data-[disabled]:cursor-not-allowed'
 
-export const menuItem = css({
-  display: 'flex',
-  alignItems: 'center',
-  gap: '2',
-  px: '3',
-  py: '2',
-  fontSize: 'sm',
-  cursor: 'pointer',
-  outline: 'none',
-  transition: 'background 0.1s ease',
-  '&[data-highlighted]': {
-    bg: 'bg.muted',
-  },
-  '&[data-disabled]': {
-    opacity: 0.5,
-    cursor: 'not-allowed',
-  },
-})
+export const menuSeparator =
+  'h-px bg-gs-border mx-1 my-1'
 
-export const menuSeparator = css({
-  height: '1px',
-  bg: 'border',
-  mx: '1',
-  my: '1',
-})
+export const menuItemGroup = ''
 
-export const menuItemGroup = css({})
+export const menuItemGroupLabel =
+  'px-3 py-1 text-xs font-semibold text-gs-fg-muted'
 
-export const menuItemGroupLabel = css({
-  px: '3',
-  py: '1',
-  fontSize: 'xs',
-  fontWeight: 'semibold',
-  color: 'fg.muted',
-})
-
-export const menuTriggerItem = css({
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'space-between',
-  gap: '2',
-  px: '3',
-  py: '2',
-  fontSize: 'sm',
-  cursor: 'pointer',
-  outline: 'none',
-  transition: 'background 0.1s ease',
-  '&[data-highlighted]': {
-    bg: 'bg.muted',
-  },
-  '&[data-disabled]': {
-    opacity: 0.5,
-    cursor: 'not-allowed',
-  },
-})
+export const menuTriggerItem =
+  'flex items-center justify-between gap-2 px-3 py-2 text-sm cursor-pointer outline-none transition-[background] duration-100 ease-in-out data-[highlighted]:bg-gs-bg-muted data-[disabled]:opacity-50 data-[disabled]:cursor-not-allowed'

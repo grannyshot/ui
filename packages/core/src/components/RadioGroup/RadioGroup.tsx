@@ -9,7 +9,7 @@ import {
   radioGroupItemText,
   type RadioGroupItemControlVariants,
 } from './radio-group.recipe'
-import { cx } from '@/styled-system/css'
+import { cn } from '@/lib/cn'
 
 type RadioGroupProps = RadioGroupItemControlVariants &
   Omit<ArkRadioGroup.RootProps, 'className'> & {
@@ -20,7 +20,7 @@ type RadioGroupProps = RadioGroupItemControlVariants &
 const RadioGroupRoot = forwardRef<HTMLDivElement, RadioGroupProps>(
   ({ size, label, className, children, ...rootProps }, ref) => {
     return (
-      <ArkRadioGroup.Root ref={ref} className={cx(radioGroupRoot, className)} {...rootProps}>
+      <ArkRadioGroup.Root ref={ref} className={cn(radioGroupRoot, className)} {...rootProps}>
         {label && <ArkRadioGroup.Label className={radioGroupLabel}>{label}</ArkRadioGroup.Label>}
         {React.Children.map(children, (child) => {
           if (React.isValidElement<RadioGroupItemProps>(child) && child.type === RadioGroupItem) {
@@ -48,7 +48,7 @@ const RadioGroupItem = forwardRef<HTMLLabelElement, RadioGroupItemProps>(
         ref={ref}
         value={value}
         disabled={disabled}
-        className={cx(radioGroupItem, className)}
+        className={cn(radioGroupItem, className)}
         {...props}
       >
         <ArkRadioGroup.ItemControl className={radioGroupItemControl({ size })}>

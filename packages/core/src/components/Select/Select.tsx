@@ -11,7 +11,6 @@ import {
   selectLabel,
   type SelectTriggerVariants,
 } from './select.recipe'
-import { cx } from '@/styled-system/css'
 
 export { createListCollection } from '@ark-ui/react/select'
 

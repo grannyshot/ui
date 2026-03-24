@@ -1,6 +1,6 @@
 import React, { forwardRef, useState } from 'react'
 import { avatar, avatarImage, type AvatarVariants } from './avatar.recipe'
-import { cx } from '@/styled-system/css'
+import { cn } from '@/lib/cn'
 
 function getInitials(name: string): string {
   const words = name.trim().split(/\s+/)
@@ -25,7 +25,7 @@ export const Avatar = forwardRef<HTMLDivElement, AvatarProps>(
     const initials = name ? getInitials(name) : null
 
     return (
-      <div ref={ref} className={cx(avatar({ size }), className)} {...rest}>
+      <div ref={ref} className={cn(avatar({ size }), className)} {...rest}>
         {showImage ? (
           <img
             src={src}

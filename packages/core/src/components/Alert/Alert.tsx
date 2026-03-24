@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react'
 import { alert, alertIcon, alertTitle, alertDescription, type AlertVariants } from './alert.recipe'
-import { cx } from '@/styled-system/css'
+import { cn } from '@/lib/cn'
 
 const icons: Record<string, React.ReactNode> = {
   info: (
@@ -44,7 +44,7 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>(
     const resolvedIcon = icon === false ? null : (icon ?? icons[variant ?? 'info'])
 
     return (
-      <div ref={ref} role="alert" className={cx(alert({ variant }), className)} {...props}>
+      <div ref={ref} role="alert" className={cn(alert({ variant }), className)} {...props}>
         {resolvedIcon && <span className={alertIcon({ variant })}>{resolvedIcon}</span>}
         <div>
           {title && <div className={alertTitle}>{title}</div>}

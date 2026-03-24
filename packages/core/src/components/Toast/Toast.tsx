@@ -8,7 +8,7 @@ import {
   toastCloseTrigger,
   toastGroup,
 } from './toast.recipe'
-import { cx } from '@/styled-system/css'
+import { cn } from '@/lib/cn'
 
 type ToastVariant = 'default' | 'success' | 'error' | 'warning' | 'info'
 
@@ -156,7 +156,7 @@ export const ToastProvider = forwardRef<HTMLDivElement, ToastProviderProps>(
     const toasterRef = useRef(initToaster(placement))
 
     return (
-      <ArkToaster ref={ref} toaster={toasterRef.current} className={cx(toastGroup, className)} {...props}>
+      <ArkToaster ref={ref} toaster={toasterRef.current} className={cn(toastGroup, className)} {...props}>
         {(toastData) => {
           if (hasCustomRender(toastData.meta)) {
             const dismissFn = () => toasterRef.current.dismiss(toastData.id)

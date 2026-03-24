@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react'
 import { Dialog as ArkDialog } from '@ark-ui/react/dialog'
 import { Portal } from '@ark-ui/react/portal'
-import { cx } from '@/styled-system/css'
+import { cn } from '@/lib/cn'
 import {
   dialogOverlay,
   dialogContent,
@@ -47,7 +47,7 @@ const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>(
         <ArkDialog.Positioner className={dialogPositioner}>
           <ArkDialog.Content
             ref={ref}
-            className={cx(dialogContent({ size }), className)}
+            className={cn(dialogContent({ size }), className)}
             {...props}
           >
             {children}
@@ -69,7 +69,7 @@ const DialogTitle = forwardRef<HTMLHeadingElement, DialogTitleProps>(
     return (
       <ArkDialog.Title
         ref={ref}
-        className={cx(dialogTitle, className)}
+        className={cn(dialogTitle, className)}
         {...props}
       />
     )
@@ -87,7 +87,7 @@ const DialogDescription = forwardRef<HTMLParagraphElement, DialogDescriptionProp
     return (
       <ArkDialog.Description
         ref={ref}
-        className={cx(dialogDescription, className)}
+        className={cn(dialogDescription, className)}
         {...props}
       />
     )
@@ -105,7 +105,7 @@ const DialogCloseTrigger = forwardRef<HTMLButtonElement, DialogCloseTriggerProps
     return (
       <ArkDialog.CloseTrigger
         ref={ref}
-        className={cx(dialogCloseTrigger, className)}
+        className={cn(dialogCloseTrigger, className)}
         {...props}
       >
         {children ?? (

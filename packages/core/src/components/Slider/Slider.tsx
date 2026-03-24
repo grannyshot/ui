@@ -11,7 +11,7 @@ import {
   sliderValueText,
   type SliderTrackVariants,
 } from './slider.recipe'
-import { cx } from '@/styled-system/css'
+import { cn } from '@/lib/cn'
 
 type SliderProps = SliderTrackVariants &
   Omit<ArkSlider.RootProps, 'className'> & {
@@ -23,7 +23,7 @@ type SliderProps = SliderTrackVariants &
 export const Slider = forwardRef<HTMLDivElement, SliderProps>(
   ({ size, label, showValue, className, ...rootProps }, ref) => {
     return (
-      <ArkSlider.Root ref={ref} className={cx(sliderRoot, className)} {...rootProps}>
+      <ArkSlider.Root ref={ref} className={cn(sliderRoot, className)} {...rootProps}>
         {(label || showValue) && (
           <div className={sliderLabelGroup}>
             {label && <ArkSlider.Label className={sliderLabel}>{label}</ArkSlider.Label>}

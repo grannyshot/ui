@@ -1,35 +1,5 @@
-import { css } from '@/styled-system/css'
-
-export const emptyStateRoot = css({
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  justifyContent: 'center',
-  textAlign: 'center',
-  padding: '8',
-  gap: '3',
-})
-
-export const emptyStateIcon = css({
-  color: 'fg.subtle',
-  width: '48px',
-  height: '48px',
-})
-
-export const emptyStateTitle = css({
-  fontSize: 'lg',
-  fontWeight: 'semibold',
-  color: 'fg',
-})
-
-export const emptyStateDescription = css({
-  fontSize: 'sm',
-  color: 'fg.muted',
-  maxWidth: '360px',
-})
-
-export const emptyStateActions = css({
-  display: 'flex',
-  gap: '2',
-  marginTop: '1',
-})
+export const emptyStateRoot = 'flex flex-col items-center justify-center text-center p-8 gap-3'
+export const emptyStateIcon = 'text-gs-fg-subtle w-12 h-12'
+export const emptyStateTitle = 'text-lg font-semibold text-gs-fg'
+export const emptyStateDescription = 'text-sm text-gs-fg-muted max-w-[360px]'
+export const emptyStateActions = 'flex gap-2 mt-1'

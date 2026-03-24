@@ -1,6 +1,6 @@
 # @grannyshot/ui — AI Guide
 
-Panda CSS + Ark UI 기반 React 디자인 시스템. 37개 컴포넌트.
+Tailwind CSS + Ark UI 기반 React 디자인 시스템. 37개 컴포넌트.
 
 ## 설치 & 설정
 
@@ -15,16 +15,18 @@ import '@grannyshot/ui/styles.css'
 // 2. 컴포넌트 import
 import { Button, Input, Dialog } from '@grannyshot/ui'
 
-// 3. 테마 (선택)
-import { ThemeProvider } from '@grannyshot/ui'
+// 3. 다크모드 (선택 — 아래 중 택 1)
 
-function App() {
-  return (
-    <ThemeProvider defaultTheme="system">
-      <YourApp />
-    </ThemeProvider>
-  )
-}
+// Option A: ThemeProvider
+import { ThemeProvider } from '@grannyshot/ui'
+<ThemeProvider defaultTheme="system"><App /></ThemeProvider>
+
+// Option B: Blocking script (Next.js, SSR, no flash)
+import { ThemeScript } from '@grannyshot/ui'
+<html><head><ThemeScript /></head><body>{children}</body></html>
+
+// Option C: 직접 설정
+<html data-theme="dark">...</html>
 ```
 
 ## 컴포넌트 목록
@@ -139,13 +141,15 @@ toast.error('오류 발생')
 ## 테마
 
 - Light/Dark/System 지원
-- `<ThemeProvider defaultTheme="system">` 로 설정
+- ThemeProvider 선택사항 — `<html data-theme="dark">`만으로도 동작
+- `ThemeScript`: blocking script로 flash 방지 (SSR용)
 - CSS 변수: `--gs-*` prefix (충돌 없음)
 - 다크모드: `[data-theme=dark]` selector
 
 ```tsx
 import { useTheme } from '@grannyshot/ui'
 
+// ThemeProvider 없이도 동작
 const { theme, setTheme } = useTheme()
 setTheme('dark') // 'light' | 'dark' | 'system'
 ```
@@ -158,7 +162,7 @@ import { Button } from '@grannyshot/ui/react'      // React 컴포넌트만
 import { button } from '@grannyshot/ui/styles'     // recipe 함수만
 import { token } from '@grannyshot/ui/tokens'      // 토큰 함수
 import { ThemeProvider } from '@grannyshot/ui/context' // 테마만
-import { cx } from '@grannyshot/ui/utils'          // 유틸리티
+import { cn } from '@grannyshot/ui/utils'          // 유틸리티
 ```
 
 ## 문서

@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react'
 import { Switch as ArkSwitch } from '@ark-ui/react/switch'
 import { switchRoot, switchControl, switchThumb, switchLabel, type SwitchControlVariants } from './switch.recipe'
-import { cx } from '@/styled-system/css'
+import { cn } from '@/lib/cn'
 
 type SwitchProps = SwitchControlVariants &
   Omit<ArkSwitch.RootProps, 'className'> & {
@@ -12,7 +12,7 @@ type SwitchProps = SwitchControlVariants &
 export const Switch = forwardRef<HTMLLabelElement, SwitchProps>(
   ({ size, label, className, ...rootProps }, ref) => {
     return (
-      <ArkSwitch.Root ref={ref} className={cx(switchRoot, className)} {...rootProps}>
+      <ArkSwitch.Root ref={ref} className={cn(switchRoot, className)} {...rootProps}>
         <ArkSwitch.Control className={switchControl({ size })}>
           <ArkSwitch.Thumb className={switchThumb({ size })} />
         </ArkSwitch.Control>

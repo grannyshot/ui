@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react'
 import { emptyStateRoot, emptyStateIcon, emptyStateTitle, emptyStateDescription, emptyStateActions } from './empty-state.recipe'
-import { cx } from '@/styled-system/css'
+import { cn } from '@/lib/cn'
 
 type EmptyStateProps = React.HTMLAttributes<HTMLDivElement> & {
   icon?: React.ReactNode
@@ -13,7 +13,7 @@ type EmptyStateProps = React.HTMLAttributes<HTMLDivElement> & {
 export const EmptyState = forwardRef<HTMLDivElement, EmptyStateProps>(
   ({ icon, title, description, actions, className, children, ...props }, ref) => {
     return (
-      <div ref={ref} className={cx(emptyStateRoot, className)} {...props}>
+      <div ref={ref} className={cn(emptyStateRoot, className)} {...props}>
         {icon && <div className={emptyStateIcon}>{icon}</div>}
         {title && <div className={emptyStateTitle}>{title}</div>}
         {description && <div className={emptyStateDescription}>{description}</div>}

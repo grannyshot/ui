@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react'
 import { breadcrumbRoot, breadcrumbList, breadcrumbItem, breadcrumbLink, breadcrumbSeparator } from './breadcrumb.recipe'
-import { cx } from '@/styled-system/css'
+import { cn } from '@/lib/cn'
 
 type BreadcrumbRootProps = React.HTMLAttributes<HTMLElement> & {
   className?: string
@@ -9,7 +9,7 @@ type BreadcrumbRootProps = React.HTMLAttributes<HTMLElement> & {
 const BreadcrumbRoot = forwardRef<HTMLElement, BreadcrumbRootProps>(
   ({ className, children, ...props }, ref) => {
     return (
-      <nav ref={ref} aria-label="Breadcrumb" className={cx(breadcrumbRoot, className)} {...props}>
+      <nav ref={ref} aria-label="Breadcrumb" className={cn(breadcrumbRoot, className)} {...props}>
         <ol className={breadcrumbList}>{children}</ol>
       </nav>
     )
@@ -24,7 +24,7 @@ type BreadcrumbItemProps = React.LiHTMLAttributes<HTMLLIElement> & {
 const BreadcrumbItem = forwardRef<HTMLLIElement, BreadcrumbItemProps>(
   ({ className, children, ...props }, ref) => {
     return (
-      <li ref={ref} className={cx(breadcrumbItem, className)} {...props}>
+      <li ref={ref} className={cn(breadcrumbItem, className)} {...props}>
         {children}
       </li>
     )
@@ -43,7 +43,7 @@ const BreadcrumbLink = forwardRef<HTMLAnchorElement, BreadcrumbLinkProps>(
       <a
         ref={ref}
         aria-current={current ? 'page' : undefined}
-        className={cx(breadcrumbLink, className)}
+        className={cn(breadcrumbLink, className)}
         {...props}
       />
     )
@@ -58,7 +58,7 @@ type BreadcrumbSeparatorProps = React.HTMLAttributes<HTMLSpanElement> & {
 const BreadcrumbSeparator = forwardRef<HTMLSpanElement, BreadcrumbSeparatorProps>(
   ({ className, children, ...props }, ref) => {
     return (
-      <span ref={ref} role="presentation" className={cx(breadcrumbSeparator, className)} {...props}>
+      <span ref={ref} role="presentation" className={cn(breadcrumbSeparator, className)} {...props}>
         {children ?? '/'}
       </span>
     )

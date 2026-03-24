@@ -20,9 +20,11 @@ Import the CSS file once at the root of your application:
 import '@grannyshot/ui/styles.css'
 ```
 
-### 2. Add ThemeProvider
+### 2. Dark Mode (Optional)
 
-Wrap your app with `ThemeProvider` to enable dark mode support:
+3가지 방법 중 택 1:
+
+**Option A: ThemeProvider (가장 간단)**
 
 ```tsx
 import { ThemeProvider } from '@grannyshot/ui'
@@ -36,26 +38,46 @@ export default function App() {
 }
 ```
 
-### 3. Add Providers (Optional)
-
-For imperative APIs (toast, dialog, drawer), add their providers:
+**Option B: Blocking Script (Next.js, SSR — flash 없음)**
 
 ```tsx
-import {
-  ThemeProvider,
-  ToastProvider,
-  DialogProvider,
-  DrawerProvider,
-} from '@grannyshot/ui'
+// app/layout.tsx
+import { ThemeScript } from '@grannyshot/ui'
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="ko">
+      <head><ThemeScript /></head>
+      <body>{children}</body>
+    </html>
+  )
+}
+```
+
+**Option C: 직접 설정**
+
+```html
+<!-- data-theme 속성만 세팅하면 됩니다 -->
+<html data-theme="dark">
+  ...
+</html>
+```
+
+### 3. Add Providers (Optional)
+
+명령형 API (toast, dialog, drawer)를 사용하려면 Provider를 추가하세요:
+
+```tsx
+import { ToastProvider, DialogProvider, DrawerProvider } from '@grannyshot/ui'
 
 export default function App() {
   return (
-    <ThemeProvider defaultTheme="system">
+    <>
       {/* your app */}
       <ToastProvider placement="bottom-end" />
       <DialogProvider />
       <DrawerProvider />
-    </ThemeProvider>
+    </>
   )
 }
 ```
@@ -79,33 +101,14 @@ function LoginForm() {
 
 ## Using with Tailwind CSS
 
-Tailwind CSS 프로젝트에서 grannyshot-ui를 사용할 때는 `styles-layered.css`를 import하세요.
-일반 `styles.css` 대신 이 파일을 사용하면 **CSS Layer 충돌 없이** 공존합니다.
-
-### 왜 필요한가요?
-
-Panda CSS와 Tailwind CSS는 둘 다 `@layer base`, `@layer utilities` 같은 동일한 이름의 CSS Layer를 사용합니다.
-같은 이름의 layer가 merge되면서 스타일 우선순위가 꼬이고, reset 스타일이 서로 덮어씌우는 문제가 발생합니다.
-
-`styles-layered.css`는 모든 grannyshot-ui 스타일을 `@layer grannyshot { ... }`로 감싸서,
-내부 layer가 `grannyshot.tokens`, `grannyshot.utilities`로 네임스페이스됩니다.
-Tailwind의 `utilities`와 완전히 분리됩니다.
-
-### Setup
+grannyshot-ui는 Tailwind CSS로 빌드되어 있어서 **Tailwind 프로젝트에서 충돌 없이** 바로 사용할 수 있습니다.
 
 ```tsx
-// ❌ Tailwind 프로젝트에서 이렇게 하면 충돌
+// Tailwind 프로젝트에서도 그냥 사용
 import '@grannyshot/ui/styles.css'
-
-// ✅ 대신 layered 버전 사용
-import '@grannyshot/ui/styles-layered.css'
 ```
 
-### 동작 방식
-
-- **grannyshot-ui 컴포넌트**: `@layer grannyshot` 안에서 스타일 적용 → 컴포넌트 자체 스타일 유지
-- **Tailwind 클래스**: layer 밖에서 동작 → grannyshot-ui보다 항상 우선순위 높음
-- **커스터마이징**: grannyshot-ui 컴포넌트에 Tailwind 클래스를 추가하면 Tailwind가 이김
+컴포넌트에 Tailwind 클래스를 추가하면 자연스럽게 오버라이드됩니다:
 
 ```tsx
 // grannyshot-ui 기본 스타일 유지
@@ -125,9 +128,8 @@ import '@grannyshot/ui/styles-layered.css'
 
 | 파일 | 용도 |
 |------|------|
-| `styles.css` | 단독 사용 (Tailwind 없는 프로젝트) |
-| `styles-no-preflight.css` | 다른 CSS 프레임워크와 함께 사용 (reset 제거) |
-| `styles-layered.css` | **Tailwind CSS와 함께 사용** (layer 네임스페이스 분리) |
+| `styles.css` | 기본 — Tailwind 프로젝트 또는 단독 사용 |
+| `styles-no-preflight.css` | 다른 CSS 프레임워크와 함께 사용 (Tailwind reset 제거) |
 
 ## Import Paths
 
@@ -135,10 +137,9 @@ import '@grannyshot/ui/styles-layered.css'
 |------|-------------|
 | `@grannyshot/ui` | All components, styles, tokens, and utilities |
 | `@grannyshot/ui/react` | React components only |
-| `@grannyshot/ui/styles` | Style recipes (cva) only |
+| `@grannyshot/ui/styles` | Style recipes (tv) only |
 | `@grannyshot/ui/tokens` | Design tokens |
-| `@grannyshot/ui/context` | ThemeProvider and useTheme |
-| `@grannyshot/ui/utils` | cx utility |
-| `@grannyshot/ui/styles.css` | CSS file (단독 사용) |
-| `@grannyshot/ui/styles-layered.css` | CSS file (Tailwind 공존용) |
+| `@grannyshot/ui/context` | ThemeProvider, ThemeScript, and useTheme |
+| `@grannyshot/ui/utils` | cn utility |
+| `@grannyshot/ui/styles.css` | CSS file |
 | `@grannyshot/ui/styles-no-preflight.css` | CSS file (reset 제거) |

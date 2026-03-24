@@ -1,91 +1,32 @@
-import { cva, css } from '@/styled-system/css'
-import type { RecipeVariantProps } from '@/styled-system/css'
+import { tv } from 'tailwind-variants'
 
-export const stepsRoot = css({
-  display: 'flex',
-  flexDirection: 'column',
-  gap: '4',
-  width: '100%',
-})
+export const stepsRoot =
+  'flex flex-col gap-4 w-full'
 
-export const stepsList = css({
-  display: 'flex',
-  alignItems: 'center',
-  gap: '0',
-  width: '100%',
-})
+export const stepsList =
+  'flex items-center gap-0 w-full'
 
-export const stepsItem = css({
-  display: 'flex',
-  alignItems: 'center',
-  flex: 1,
-  '&:last-child': {
-    flex: 'none',
-  },
-})
+export const stepsItem =
+  'flex items-center flex-1 last:flex-none'
 
-export const stepsTrigger = css({
-  display: 'flex',
-  alignItems: 'center',
-  gap: '2',
-  cursor: 'pointer',
-  fontSize: 'sm',
-  fontWeight: 'medium',
-  color: 'fg.muted',
-  whiteSpace: 'nowrap',
-  '&[data-current]': {
-    color: 'accent',
-  },
-  '&[data-complete]': {
-    color: 'fg',
-  },
-})
+export const stepsTrigger =
+  'flex items-center gap-2 cursor-pointer text-sm font-medium text-gs-fg-muted whitespace-nowrap data-[current]:text-gs-accent data-[complete]:text-gs-fg'
 
-export const stepsIndicator = cva({
-  base: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 'full',
-    border: '2px solid token(colors.border)',
-    bg: 'bg',
-    color: 'fg.muted',
-    fontWeight: 'semibold',
-    fontSize: 'xs',
-    flexShrink: 0,
-    transition: 'all 0.15s ease',
-    '&[data-current]': {
-      borderColor: 'accent',
-      color: 'accent',
-    },
-    '&[data-complete]': {
-      borderColor: 'accent',
-      bg: 'accent',
-      color: 'accent.fg',
-    },
-  },
+export const stepsIndicator = tv({
+  base: 'flex items-center justify-center rounded-full border-2 border-gs-border bg-gs-bg text-gs-fg-muted font-semibold text-xs shrink-0 transition-all duration-150 ease-in-out data-[current]:border-gs-accent data-[current]:text-gs-accent data-[complete]:border-gs-accent data-[complete]:bg-gs-accent data-[complete]:text-gs-accent-fg',
   variants: {
     size: {
-      sm: { width: '28px', height: '28px' },
-      md: { width: '32px', height: '32px' },
+      sm: 'w-[28px] h-[28px]',
+      md: 'w-[32px] h-[32px]',
     },
   },
   defaultVariants: { size: 'md' },
 })
 
-export const stepsSeparator = css({
-  flex: 1,
-  height: '2px',
-  bg: 'border',
-  mx: '2',
-  '&[data-complete]': {
-    bg: 'accent',
-  },
-})
+export const stepsSeparator =
+  'flex-1 h-0.5 bg-gs-border mx-2 data-[complete]:bg-gs-accent'
 
-export const stepsContent = css({
-  fontSize: 'sm',
-  color: 'fg.muted',
-})
+export const stepsContent =
+  'text-sm text-gs-fg-muted'
 
-export type StepsIndicatorVariants = RecipeVariantProps<typeof stepsIndicator>
+export type StepsIndicatorVariants = Parameters<typeof stepsIndicator>[0]

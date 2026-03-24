@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react'
 import { Dialog as ArkDialog } from '@ark-ui/react/dialog'
 import { Portal } from '@ark-ui/react/portal'
-import { cx } from '@/styled-system/css'
+import { cn } from '@/lib/cn'
 import {
   drawerOverlay,
   drawerContent,
@@ -35,7 +35,7 @@ const DrawerContent = forwardRef<HTMLDivElement, DrawerContentProps>(
         <ArkDialog.Positioner className={drawerPositioner}>
           <ArkDialog.Content
             ref={ref}
-            className={cx(drawerContent({ placement }), className)}
+            className={cn(drawerContent({ placement }), className)}
             {...props}
           >
             {children}
@@ -54,7 +54,7 @@ type DrawerHeaderProps = {
 
 const DrawerHeader = forwardRef<HTMLDivElement, DrawerHeaderProps>(
   ({ className, ...props }, ref) => {
-    return <div ref={ref} className={cx(drawerHeader, className)} {...props} />
+    return <div ref={ref} className={cn(drawerHeader, className)} {...props} />
   }
 )
 DrawerHeader.displayName = 'Drawer.Header'
@@ -66,7 +66,7 @@ type DrawerBodyProps = {
 
 const DrawerBody = forwardRef<HTMLDivElement, DrawerBodyProps>(
   ({ className, ...props }, ref) => {
-    return <div ref={ref} className={cx(drawerBody, className)} {...props} />
+    return <div ref={ref} className={cn(drawerBody, className)} {...props} />
   }
 )
 DrawerBody.displayName = 'Drawer.Body'
@@ -78,7 +78,7 @@ type DrawerFooterProps = {
 
 const DrawerFooter = forwardRef<HTMLDivElement, DrawerFooterProps>(
   ({ className, ...props }, ref) => {
-    return <div ref={ref} className={cx(drawerFooter, className)} {...props} />
+    return <div ref={ref} className={cn(drawerFooter, className)} {...props} />
   }
 )
 DrawerFooter.displayName = 'Drawer.Footer'
@@ -93,7 +93,7 @@ const DrawerTitle = forwardRef<HTMLHeadingElement, DrawerTitleProps>(
     return (
       <ArkDialog.Title
         ref={ref}
-        className={cx(drawerTitle, className)}
+        className={cn(drawerTitle, className)}
         {...props}
       />
     )
@@ -111,7 +111,7 @@ const DrawerDescription = forwardRef<HTMLParagraphElement, DrawerDescriptionProp
     return (
       <ArkDialog.Description
         ref={ref}
-        className={cx(drawerDescription, className)}
+        className={cn(drawerDescription, className)}
         {...props}
       />
     )
@@ -129,7 +129,7 @@ const DrawerCloseTrigger = forwardRef<HTMLButtonElement, DrawerCloseTriggerProps
     return (
       <ArkDialog.CloseTrigger
         ref={ref}
-        className={cx(drawerCloseTrigger, className)}
+        className={cn(drawerCloseTrigger, className)}
         {...props}
       >
         {children ?? (
