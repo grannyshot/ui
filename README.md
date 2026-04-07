@@ -21,6 +21,10 @@ A minimal, theme-aware design system built with [Tailwind CSS](https://tailwindc
 
 ```bash
 npm install @grannyshot/ui
+# or
+pnpm add @grannyshot/ui
+# or
+yarn add @grannyshot/ui
 ```
 
 ## Quick Start
