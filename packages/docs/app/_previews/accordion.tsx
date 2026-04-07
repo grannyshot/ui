@@ -8,7 +8,7 @@ export function AccordionPreview() {
       <Accordion.Item value="item1">
         <Accordion.ItemTrigger>What is grannyshot-ui?</Accordion.ItemTrigger>
         <Accordion.ItemContent>
-          A minimal, theme-aware design system built with Panda CSS and Ark UI.
+          A minimal, theme-aware design system built with Tailwind CSS and Ark UI.
         </Accordion.ItemContent>
       </Accordion.Item>
       <Accordion.Item value="item2">

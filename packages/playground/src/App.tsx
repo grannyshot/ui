@@ -484,7 +484,7 @@ function Playground() {
           <Accordion.Item value="item-1">
             <Accordion.ItemTrigger>What is grannyshot-ui?</Accordion.ItemTrigger>
             <Accordion.ItemContent>
-              A Panda CSS-based design system with Ark UI for accessibility and interactions.
+              A Tailwind CSS-based design system with Ark UI for accessibility and interactions.
             </Accordion.ItemContent>
           </Accordion.Item>
           <Accordion.Item value="item-2">

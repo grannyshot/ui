@@ -101,23 +101,18 @@ function LoginForm() {
 
 ## Using with Tailwind CSS
 
-grannyshot-ui는 Tailwind CSS로 빌드되어 있어서 **Tailwind 프로젝트에서 충돌 없이** 바로 사용할 수 있습니다.
+grannyshot-ui는 Tailwind CSS로 빌드되어 있어서 Tailwind 프로젝트에서 충돌 없이 사용할 수 있습니다.
 
 ```tsx
-// Tailwind 프로젝트에서도 그냥 사용
 import '@grannyshot/ui/styles.css'
 ```
 
-컴포넌트에 Tailwind 클래스를 추가하면 자연스럽게 오버라이드됩니다:
+컴포넌트에 Tailwind 클래스를 추가하면 오버라이드됩니다:
 
 ```tsx
-// grannyshot-ui 기본 스타일 유지
 <Button variant="primary">Submit</Button>
-
-// Tailwind로 오버라이드 가능
 <Button variant="primary" className="rounded-full">Submit</Button>
 
-// Tailwind 레이아웃 안에 grannyshot-ui 컴포넌트
 <div className="grid grid-cols-2 gap-4 p-6">
   <Card>...</Card>
   <Card>...</Card>

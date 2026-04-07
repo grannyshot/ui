@@ -89,7 +89,7 @@ MDX에서 사용:
 
 ## 기술 스택
 
-- **Panda CSS** — 스타일링 + 토큰
+- **Tailwind CSS** — 스타일링 + 토큰
 - **Ark UI** — 접근성 기반 헤드리스 컴포넌트
 - **tsup** — ESM + CJS 번들링
 - **Nextra** — 문서 사이트
