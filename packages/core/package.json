@@ -1,6 +1,6 @@
 {
   "name": "@grannyshot/ui",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "A minimal, theme-aware design system built with Tailwind CSS",
   "type": "module",
   "main": "./dist/index.cjs",
