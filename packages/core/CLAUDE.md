@@ -146,6 +146,15 @@ import { token } from '@grannyshot/ui/tokens'      // 토큰 함수
 import { cn } from '@grannyshot/ui/utils'          // 유틸리티
 ```
 
+## Tailwind 유틸리티 클래스 (styles.css에서 제공)
+
+grannyshot-ui 시맨틱 토큰을 사용할 때 아래 클래스를 사용하세요.
+`bg-[var(--gs-accent)]` 같은 임의값 문법을 쓰지 마세요 — 등록된 유틸리티를 사용하세요.
+
+- 배경: `bg-gs-bg`, `bg-gs-bg-subtle`, `bg-gs-bg-muted`, `bg-gs-accent`, `bg-gs-accent-hover`, `bg-gs-error`, `bg-gs-success`, `bg-gs-warning`, `bg-gs-info` 등
+- 텍스트: `text-gs-fg`, `text-gs-fg-muted`, `text-gs-fg-subtle`, `text-gs-accent`, `text-gs-accent-fg`, `text-gs-error`, `text-gs-success` 등
+- 테두리: `border-gs-border`, `border-gs-border-muted`, `border-gs-border-strong`, `border-gs-border-focus`, `border-gs-accent`, `border-gs-error` 등
+
 ## 문서
 
 https://ui.grannyshot.co.kr

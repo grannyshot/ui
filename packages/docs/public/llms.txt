@@ -72,6 +72,30 @@ import { Button } from '@grannyshot/ui'
 - Breadcrumb: compound(Root,Item,Link,Separator)
 - ToggleGroup: compound(Root,Item), size(sm|md|lg), multiple
 
+## Tailwind Utility Classes (provided by @grannyshot/ui/styles.css)
+
+When styling with grannyshot-ui semantic tokens, use these Tailwind classes.
+Do NOT use arbitrary values like `bg-[var(--gs-accent)]` — use the registered utilities instead.
+
+### Background
+bg-gs-bg, bg-gs-bg-subtle, bg-gs-bg-muted, bg-gs-bg-inverse,
+bg-gs-accent, bg-gs-accent-hover, bg-gs-accent-muted, bg-gs-accent-subtle,
+bg-gs-success, bg-gs-success-subtle, bg-gs-warning, bg-gs-warning-subtle,
+bg-gs-error, bg-gs-error-subtle, bg-gs-info, bg-gs-info-subtle, bg-gs-overlay
+
+### Text
+text-gs-fg, text-gs-fg-muted, text-gs-fg-subtle, text-gs-fg-inverse,
+text-gs-accent, text-gs-accent-fg, text-gs-success, text-gs-success-fg,
+text-gs-warning, text-gs-warning-fg, text-gs-error, text-gs-error-fg,
+text-gs-info, text-gs-info-fg
+
+### Border
+border-gs-border, border-gs-border-muted, border-gs-border-strong, border-gs-border-focus,
+border-gs-accent, border-gs-error, border-gs-success, border-gs-warning, border-gs-info
+
+### Ring / Focus
+ring-gs-ring, shadow-[0_0_0_2px_var(--gs-bg),0_0_0_4px_var(--gs-ring)]
+
 ## Theme
 
 - Light / Dark
