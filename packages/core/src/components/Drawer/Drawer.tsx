@@ -30,7 +30,7 @@ type DrawerContentProps = DrawerContentVariants & {
 const DrawerContent = forwardRef<HTMLDivElement, DrawerContentProps>(
   ({ placement, className, children, ...props }, ref) => {
     return (
-      <Portal disabled>
+      <Portal>
         <ArkDialog.Backdrop className={drawerOverlay} />
         <ArkDialog.Positioner className={drawerPositioner}>
           <ArkDialog.Content

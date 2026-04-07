@@ -67,7 +67,7 @@ export const Combobox = forwardRef<HTMLDivElement, ComboboxProps>(
             </svg>
           </ArkCombobox.Trigger>
         </ArkCombobox.Control>
-        <Portal disabled>
+        <Portal>
           <ArkCombobox.Positioner>
             <ArkCombobox.Content className={comboboxContent}>
               {collection.items.map((item: CollectionItem) => (

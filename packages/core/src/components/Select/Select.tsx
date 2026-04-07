@@ -45,7 +45,7 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
             </ArkSelect.Indicator>
           </ArkSelect.Trigger>
         </ArkSelect.Control>
-        <Portal disabled>
+        <Portal>
           <ArkSelect.Positioner>
             <ArkSelect.Content className={selectContent}>
               {collection.items.map((item: CollectionItem) => (

@@ -164,7 +164,7 @@ export function DialogProvider() {
       lazyMount
       unmountOnExit
     >
-      <Portal disabled>
+      <Portal>
         <ArkDialog.Backdrop className={dialogOverlay} />
         <ArkDialog.Positioner className={dialogPositioner}>
           <ArkDialog.Content className={dialogContent({ size: current?.size })}>

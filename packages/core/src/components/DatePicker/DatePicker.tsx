@@ -43,7 +43,7 @@ export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
             </svg>
           </ArkDatePicker.Trigger>
         </ArkDatePicker.Control>
-        <Portal disabled>
+        <Portal>
           <ArkDatePicker.Positioner>
             <ArkDatePicker.Content className={datePickerContent}>
               <ArkDatePicker.View view="day">

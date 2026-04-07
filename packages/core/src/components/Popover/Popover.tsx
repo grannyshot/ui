@@ -28,7 +28,7 @@ PopoverTrigger.displayName = 'Popover.Trigger'
 const PopoverContent = forwardRef<HTMLDivElement, ArkPopover.ContentProps>(
   ({ className, ...props }, ref) => {
     return (
-      <Portal disabled>
+      <Portal>
         <ArkPopover.Positioner>
           <ArkPopover.Content
             ref={ref}

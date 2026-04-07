@@ -28,7 +28,7 @@ MenuTrigger.displayName = 'Menu.Trigger'
 const MenuContent = forwardRef<HTMLDivElement, ArkMenu.ContentProps>(
   ({ className, ...props }, ref) => {
     return (
-      <Portal disabled>
+      <Portal>
         <ArkMenu.Positioner>
           <ArkMenu.Content
             ref={ref}

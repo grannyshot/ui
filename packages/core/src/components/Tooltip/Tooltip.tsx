@@ -19,7 +19,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
         <ArkTooltip.Trigger asChild className={tooltipTrigger}>
           {children}
         </ArkTooltip.Trigger>
-        <Portal disabled>
+        <Portal>
           <ArkTooltip.Positioner>
             <ArkTooltip.Content ref={ref} className={cn(tooltipContent, className)}>
               <ArkTooltip.Arrow className={tooltipArrow}>

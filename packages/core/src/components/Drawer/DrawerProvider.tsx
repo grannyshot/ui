@@ -99,7 +99,7 @@ export function DrawerProvider() {
       lazyMount
       unmountOnExit
     >
-      <Portal disabled>
+      <Portal>
         <ArkDialog.Backdrop className={drawerOverlay} />
         <ArkDialog.Positioner className={drawerPositioner}>
           <ArkDialog.Content
