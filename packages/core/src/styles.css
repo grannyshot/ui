@@ -84,7 +84,7 @@
   --gs-info-fg: #ffffff;
 }
 
-[data-theme="dark"] {
+.dark {
   --gs-bg: #09090b;
   --gs-bg-subtle: #18181b;
   --gs-bg-muted: #27272a;

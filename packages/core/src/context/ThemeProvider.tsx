@@ -33,22 +33,27 @@ function resolveTheme(theme: Theme, systemTheme: ResolvedTheme): ResolvedTheme {
 
 function applyTheme(resolved: ResolvedTheme) {
   if (typeof document === 'undefined') return
-  document.documentElement.setAttribute('data-theme', resolved)
-  document.documentElement.style.colorScheme = resolved
+  const root = document.documentElement
+  if (resolved === 'dark') {
+    root.classList.add('dark')
+  } else {
+    root.classList.remove('dark')
+  }
+  root.style.colorScheme = resolved
 }
 
 // ── ThemeScript ──────────────────────────────────────────────
-// Blocking <script> that sets data-theme before first paint.
+// Blocking <script> that sets class="dark" before first paint.
 // No flash, no hydration mismatch.
 
-const THEME_SCRIPT = `(function(){try{var t=localStorage.getItem('${STORAGE_KEY}')||'system';if(t==='system')t=matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t);document.documentElement.style.colorScheme=t}catch(e){}})()`
+const THEME_SCRIPT = `(function(){try{var t=localStorage.getItem('${STORAGE_KEY}')||'system';if(t==='system')t=matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';if(t==='dark')document.documentElement.classList.add('dark');document.documentElement.style.colorScheme=t}catch(e){}})()`
 
 export function ThemeScript() {
   return <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
 }
 
 // ── ThemeProvider ────────────────────────────────────────────
-// Optional wrapper. No wrapper div — just sets data-theme on <html>.
+// Optional wrapper. No wrapper div — just sets class="dark" on <html>.
 
 interface ThemeProviderProps {
   children: React.ReactNode
@@ -107,7 +112,7 @@ export function ThemeProvider({ children, defaultTheme }: ThemeProviderProps) {
 
 // ── useTheme ─────────────────────────────────────────────────
 // Works with or without ThemeProvider.
-// Without provider: reads/writes data-theme on <html> directly.
+// Without provider: reads/writes class="dark" on <html> directly.
 
 export function useTheme(): ThemeContextValue {
   const context = useContext(ThemeContext)

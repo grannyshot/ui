@@ -75,10 +75,10 @@ import { Button } from '@grannyshot/ui'
 ## Theme
 
 - Light / Dark / System
-- ThemeProvider optional — just set `<html data-theme="dark">` directly
+- ThemeProvider optional — just set `<html class="dark">` directly
 - ThemeScript: blocking script for SSR (no flash)
 - CSS variables: --gs-* prefix
-- Dark mode: [data-theme=dark] selector
+- Dark mode: .dark selector
 - useTheme() hook works with or without ThemeProvider
 
 ## Import Paths

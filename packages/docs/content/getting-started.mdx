@@ -57,8 +57,8 @@ export default function RootLayout({ children }) {
 **Option C: 직접 설정**
 
 ```html
-<!-- data-theme 속성만 세팅하면 됩니다 -->
-<html data-theme="dark">
+<!-- class="dark" 속성만 세팅하면 됩니다 -->
+<html class="dark"="dark">
   ...
 </html>
 ```
@@ -124,26 +124,13 @@ import '@grannyshot/ui/styles.css'
 </div>
 ```
 
-### Tailwind dark: 프리픽스 연동
-
-grannyshot-ui 컴포넌트는 `--gs-*` CSS 변수로 자동 다크모드가 적용되지만,
-**내 코드에서 Tailwind의 `dark:` 프리픽스를 함께 쓰고 싶다면** 한 줄 설정이 필요합니다:
-
-```css
-/* src/index.css 또는 globals.css */
-@import 'tailwindcss';
-@import '@grannyshot/ui/styles.css';
-
-@variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
-```
-
-이제 grannyshot-ui 컴포넌트와 Tailwind `dark:` 클래스가 동시에 동작합니다:
+Tailwind `dark:` 프리픽스도 추가 설정 없이 바로 동작합니다:
 
 ```tsx
-// grannyshot-ui 컴포넌트 — 자동 다크모드 (설정 불필요)
+// grannyshot-ui 다크모드 — 자동 적용
 <Button variant="primary">Submit</Button>
 
-// 내 코드에서 dark: 사용 — @variant 설정 필요
+// 내 코드에서 dark: — 바로 동작
 <div className="bg-white dark:bg-gray-900">
   <p className="text-gray-900 dark:text-gray-100">Hello</p>
 </div>

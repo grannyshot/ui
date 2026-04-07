@@ -34,7 +34,7 @@ export function InlinePreview({ name }: InlinePreviewProps) {
         border: '1px solid color-mix(in srgb, currentColor 20%, transparent)',
       }}
     >
-      <div ref={wrapperRef} data-theme={dark ? 'dark' : 'light'}>
+      <div ref={wrapperRef} className={dark ? 'dark' : ''}>
         <div style={{ padding: 16 }}>
           <Preview />
         </div>

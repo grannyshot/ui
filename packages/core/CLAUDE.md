@@ -26,7 +26,7 @@ import { ThemeScript } from '@grannyshot/ui'
 <html><head><ThemeScript /></head><body>{children}</body></html>
 
 // Option C: 직접 설정
-<html data-theme="dark">...</html>
+<html class="dark">...</html>
 ```
 
 ## 컴포넌트 목록
@@ -141,10 +141,10 @@ toast.error('오류 발생')
 ## 테마
 
 - Light/Dark/System 지원
-- ThemeProvider 선택사항 — `<html data-theme="dark">`만으로도 동작
+- ThemeProvider 선택사항 — `<html class="dark">`만으로도 동작
 - `ThemeScript`: blocking script로 flash 방지 (SSR용)
 - CSS 변수: `--gs-*` prefix (충돌 없음)
-- 다크모드: `[data-theme=dark]` selector
+- 다크모드: `.dark` selector
 
 ```tsx
 import { useTheme } from '@grannyshot/ui'
