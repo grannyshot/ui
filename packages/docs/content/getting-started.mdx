@@ -22,43 +22,10 @@ import '@grannyshot/ui/styles.css'
 
 ### 2. Dark Mode (Optional)
 
-3가지 방법 중 택 1:
-
-**Option A: ThemeProvider (가장 간단)**
-
-```tsx
-import { ThemeProvider } from '@grannyshot/ui'
-
-export default function App() {
-  return (
-    <ThemeProvider defaultTheme="system">
-      {/* your app */}
-    </ThemeProvider>
-  )
-}
-```
-
-**Option B: Blocking Script (Next.js, SSR — flash 없음)**
-
-```tsx
-// app/layout.tsx
-import { ThemeScript } from '@grannyshot/ui'
-
-export default function RootLayout({ children }) {
-  return (
-    <html lang="ko">
-      <head><ThemeScript /></head>
-      <body>{children}</body>
-    </html>
-  )
-}
-```
-
-**Option C: 직접 설정**
+`<html>` 요소에 `class="dark"`를 추가하면 다크모드가 적용됩니다. [next-themes](https://github.com/pacocoursey/next-themes) 등과 호환됩니다.
 
 ```html
-<!-- class="dark" 속성만 세팅하면 됩니다 -->
-<html class="dark"="dark">
+<html class="dark">
   ...
 </html>
 ```
@@ -146,7 +113,6 @@ Tailwind `dark:` 프리픽스도 추가 설정 없이 바로 동작합니다:
 | `@grannyshot/ui/react` | React components only |
 | `@grannyshot/ui/styles` | Style recipes (tv) only |
 | `@grannyshot/ui/tokens` | Design tokens |
-| `@grannyshot/ui/context` | ThemeProvider, ThemeScript, and useTheme |
 | `@grannyshot/ui/utils` | cn utility |
 | `@grannyshot/ui/styles.css` | CSS file |
 | `@grannyshot/ui/styles-no-preflight.css` | CSS file (reset 제거) |

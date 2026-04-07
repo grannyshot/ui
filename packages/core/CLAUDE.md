@@ -15,17 +15,8 @@ import '@grannyshot/ui/styles.css'
 // 2. 컴포넌트 import
 import { Button, Input, Dialog } from '@grannyshot/ui'
 
-// 3. 다크모드 (선택 — 아래 중 택 1)
-
-// Option A: ThemeProvider
-import { ThemeProvider } from '@grannyshot/ui'
-<ThemeProvider defaultTheme="system"><App /></ThemeProvider>
-
-// Option B: Blocking script (Next.js, SSR, no flash)
-import { ThemeScript } from '@grannyshot/ui'
-<html><head><ThemeScript /></head><body>{children}</body></html>
-
-// Option C: 직접 설정
+// 3. 다크모드 (선택)
+// <html class="dark"> 설정으로 동작. next-themes 등과 호환.
 <html class="dark">...</html>
 ```
 
@@ -140,19 +131,10 @@ toast.error('오류 발생')
 
 ## 테마
 
-- Light/Dark/System 지원
-- ThemeProvider 선택사항 — `<html class="dark">`만으로도 동작
-- `ThemeScript`: blocking script로 flash 방지 (SSR용)
+- Light/Dark 지원
+- 다크모드: `<html class="dark">` 설정으로 동작
 - CSS 변수: `--gs-*` prefix (충돌 없음)
-- 다크모드: `.dark` selector
-
-```tsx
-import { useTheme } from '@grannyshot/ui'
-
-// ThemeProvider 없이도 동작
-const { theme, setTheme } = useTheme()
-setTheme('dark') // 'light' | 'dark' | 'system'
-```
+- next-themes 등 외부 테마 라이브러리와 호환
 
 ## Import 경로
 
@@ -161,7 +143,6 @@ import { Button } from '@grannyshot/ui'           // 전체 (권장)
 import { Button } from '@grannyshot/ui/react'      // React 컴포넌트만
 import { button } from '@grannyshot/ui/styles'     // recipe 함수만
 import { token } from '@grannyshot/ui/tokens'      // 토큰 함수
-import { ThemeProvider } from '@grannyshot/ui/context' // 테마만
 import { cn } from '@grannyshot/ui/utils'          // 유틸리티
 ```
 

@@ -74,12 +74,10 @@ import { Button } from '@grannyshot/ui'
 
 ## Theme
 
-- Light / Dark / System
-- ThemeProvider optional — just set `<html class="dark">` directly
-- ThemeScript: blocking script for SSR (no flash)
+- Light / Dark
+- Dark mode: add `class="dark"` to `<html>` element
 - CSS variables: --gs-* prefix
-- Dark mode: .dark selector
-- useTheme() hook works with or without ThemeProvider
+- Compatible with next-themes or manual toggle
 
 ## Import Paths
 
@@ -87,7 +85,6 @@ import { Button } from '@grannyshot/ui'
 - `@grannyshot/ui/react` — React components only
 - `@grannyshot/ui/styles` — recipe functions (tv)
 - `@grannyshot/ui/tokens` — design token functions
-- `@grannyshot/ui/context` — ThemeProvider + ThemeScript + useTheme
 - `@grannyshot/ui/utils` — cn utility
 - `@grannyshot/ui/styles.css` — CSS (Tailwind projects or standalone)
 - `@grannyshot/ui/styles-no-preflight.css` — CSS without reset (other frameworks)

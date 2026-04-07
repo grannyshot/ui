@@ -14,7 +14,7 @@ A minimal, theme-aware design system built with [Tailwind CSS](https://tailwindc
 - **Accessible** — built on Ark UI (Zag.js state machines) for keyboard navigation and screen reader support
 - **Imperative APIs** — `toast.success()`, `dialog.confirm()`, `drawer.open()`
 - **Tailwind CSS native** — no CSS conflicts in Tailwind projects, easy className overrides
-- **Next.js ready** — `'use client'` directives, SSR-safe theming with `ThemeScript`
+- **Next.js ready** — `'use client'` directives, class-based dark mode
 - **TypeScript** — full type safety with exported variant types
 
 ## Install
@@ -40,23 +40,11 @@ function App() {
 
 ### Dark Mode (Optional)
 
-Option A: ThemeProvider (client-side)
-```tsx
-import { ThemeProvider } from '@grannyshot/ui'
+Add `class="dark"` to your `<html>` element for dark mode. Works with [next-themes](https://github.com/pacocoursey/next-themes) or any manual toggle.
 
-<ThemeProvider defaultTheme="system">
-  <App />
-</ThemeProvider>
-```
-
-Option B: Blocking script (SSR, no flash)
-```tsx
-// layout.tsx (Next.js)
-import { ThemeScript } from '@grannyshot/ui'
-
-<html>
-  <head><ThemeScript /></head>
-  <body>{children}</body>
+```html
+<html class="dark">
+  ...
 </html>
 ```
 
@@ -90,15 +78,6 @@ const confirmed = await dialog.confirm({ title: 'Delete?', description: 'This ca
 drawer.open({ title: 'Settings', content: <SettingsPanel /> })
 ```
 
-## Theming
-
-```tsx
-import { useTheme } from '@grannyshot/ui'
-
-// Works with or without ThemeProvider
-const { theme, resolvedTheme, setTheme } = useTheme()
-```
-
 ## Import Paths
 
 | Path | Contents |
@@ -107,7 +86,6 @@ const { theme, resolvedTheme, setTheme } = useTheme()
 | `@grannyshot/ui/react` | React components only |
 | `@grannyshot/ui/styles` | Style recipes (tv) |
 | `@grannyshot/ui/tokens` | Design tokens |
-| `@grannyshot/ui/context` | ThemeProvider + ThemeScript + useTheme |
 | `@grannyshot/ui/utils` | cn utility |
 | `@grannyshot/ui/styles.css` | CSS file (Tailwind projects or standalone) |
 | `@grannyshot/ui/styles-no-preflight.css` | CSS file (other frameworks, no reset) |

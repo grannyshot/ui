@@ -2,37 +2,17 @@
 
 grannyshot-ui uses **semantic tokens** for all colors, enabling seamless dark mode support.
 
-## ThemeProvider
+## Dark Mode
 
-Wrap your app to enable theme switching:
+Dark mode is class-based. Add `class="dark"` to your `<html>` element:
 
-```tsx
-import { ThemeProvider } from '@grannyshot/ui'
-
-<ThemeProvider defaultTheme="system">
-  {children}
-</ThemeProvider>
+```html
+<html class="dark">
+  ...
+</html>
 ```
 
-**Options:** `light`, `dark`, `system`
-
-## useTheme Hook
-
-Access and control the current theme:
-
-```tsx
-import { useTheme } from '@grannyshot/ui'
-
-function ThemeToggle() {
-  const { theme, resolvedTheme, setTheme } = useTheme()
-
-  return (
-    <button onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}>
-      {resolvedTheme === 'dark' ? 'Light' : 'Dark'}
-    </button>
-  )
-}
-```
+No provider or wrapper component is needed. This is compatible with [next-themes](https://github.com/pacocoursey/next-themes) or any manual toggle.
 
 ## Semantic Tokens
 
@@ -76,7 +56,3 @@ var(--gs-colors-accent)
 var(--gs-colors-fg)
 var(--gs-spacing-4)
 ```
-
-## Persistence
-
-Theme preference is stored in `localStorage` under the key `grannyshot-theme`.

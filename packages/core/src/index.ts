@@ -45,9 +45,6 @@ export { emptyStateRoot, emptyStateIcon, emptyStateTitle, emptyStateDescription,
 // Utils
 export { cn, cn as cx } from '@/lib/cn'
 
-// Context
-export { ThemeProvider, ThemeScript, useTheme } from '@/context/ThemeProvider'
-
 // React Components
 export { Button } from '@/components/Button/Button'
 export { Input } from '@/components/Input/Input'

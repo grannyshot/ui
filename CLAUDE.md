@@ -39,13 +39,12 @@ dist/styles.css  → 빌드된 CSS (Tailwind utilities + 시맨틱 토큰)
 src/styles/      → 컴포넌트 recipes (tailwind-variants tv())
   ↓ import
 src/react/       → React 컴포넌트 (styles 위에 얇은 래퍼)
-src/context/     → ThemeProvider + ThemeScript + useTheme
 src/tokens/      → token() 함수 (CSS 변수 참조 반환)
 src/utils/       → cn (clsx + tailwind-merge)
 src/lib/cn.ts    → cn 유틸리티 구현
 ```
 
-각 레이어는 독립 엔트리포인트로 임포트 가능 (`grannyshot-ui/tokens`, `grannyshot-ui/styles`, `grannyshot-ui/react`, `grannyshot-ui/context`, `grannyshot-ui/utils`).
+각 레이어는 독립 엔트리포인트로 임포트 가능 (`grannyshot-ui/tokens`, `grannyshot-ui/styles`, `grannyshot-ui/react`, `grannyshot-ui/utils`).
 
 ## 핵심 패턴
 
@@ -63,11 +62,8 @@ src/lib/cn.ts    → cn 유틸리티 구현
 
 - `:root`에 라이트 테마 기본 적용 (`--gs-*` CSS 변수)
 - `.dark` 선택자로 다크모드 토큰 오버라이드
-- `ThemeProvider`는 선택사항 — `<html class="dark">` 직접 설정으로도 동작
-- `ThemeScript` 컴포넌트: blocking `<script>`로 flash 방지
-- `useTheme()`: ThemeProvider 없이도 DOM 기반으로 동작
-- 테마 설정은 `localStorage` (`grannyshot-theme` 키)에 저장
-- light / dark / system 모드 지원
+- 다크모드: `<html class="dark">` 설정으로 동작
+- next-themes 등 외부 테마 라이브러리와 호환
 
 ### 새 컴포넌트 추가 시 체크리스트
 
@@ -93,7 +89,7 @@ src/lib/cn.ts    → cn 유틸리티 구현
 
 ### 컴포넌트 작성 규칙
 
-- `'use client'` 디렉티브: `src/index.ts`, `src/react/index.ts`, `src/context/index.ts`에 포함 (Next.js App Router 호환)
+- `'use client'` 디렉티브: `src/index.ts`, `src/react/index.ts`에 포함 (Next.js App Router 호환)
 - `forwardRef`로 ref 전달
 - `displayName` 설정
 - native HTML attributes 확장 (`React.ButtonHTMLAttributes` 등)

@@ -1,8 +1,6 @@
 import { useState } from 'react'
 import '@grannyshot/ui/styles.css'
 import {
-  ThemeProvider,
-  useTheme,
   Button,
   Input,
   Badge,
@@ -103,33 +101,26 @@ const languages = createListCollection({
 })
 
 function ThemeToggle() {
-  const { theme, setTheme } = useTheme()
-  const themes = ['light', 'dark', 'system'] as const
+  const toggle = () => document.documentElement.classList.toggle('dark')
 
   return (
-    <div style={{ display: 'flex', gap: 4 }}>
-      {themes.map((t) => (
-        <button
-          key={t}
-          onClick={() => setTheme(t)}
-          style={{
-            padding: '6px 14px',
-            fontSize: 13,
-            fontWeight: 500,
-            border: '1px solid',
-            borderColor: theme === t ? 'var(--gs-colors-accent)' : 'var(--gs-colors-border)',
-            borderRadius: 6,
-            background: theme === t ? 'var(--gs-colors-accent)' : 'transparent',
-            color: theme === t ? 'var(--gs-colors-accent-fg)' : 'inherit',
-            cursor: 'pointer',
-            transition: 'all 150ms',
-            fontFamily: 'inherit',
-          }}
-        >
-          {t.charAt(0).toUpperCase() + t.slice(1)}
-        </button>
-      ))}
-    </div>
+    <button
+      onClick={toggle}
+      style={{
+        padding: '6px 14px',
+        fontSize: 13,
+        fontWeight: 500,
+        border: '1px solid var(--gs-border)',
+        borderRadius: 6,
+        background: 'transparent',
+        color: 'inherit',
+        cursor: 'pointer',
+        transition: 'all 150ms',
+        fontFamily: 'inherit',
+      }}
+    >
+      Toggle Dark Mode
+    </button>
   )
 }
 
@@ -496,7 +487,7 @@ function Playground() {
           <Accordion.Item value="item-3">
             <Accordion.ItemTrigger>Does it support dark mode?</Accordion.ItemTrigger>
             <Accordion.ItemContent>
-              Yes! Use ThemeProvider with light, dark, or system mode.
+              Yes! Just add class="dark" to your html element.
             </Accordion.ItemContent>
           </Accordion.Item>
         </Accordion.Root>
@@ -692,11 +683,11 @@ function Playground() {
 
 export default function App() {
   return (
-    <ThemeProvider defaultTheme="dark">
+    <>
       <Playground />
       <ToastProvider />
       <DialogProvider />
       <DrawerProvider />
-    </ThemeProvider>
+    </>
   )
 }

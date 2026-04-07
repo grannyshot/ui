@@ -19,13 +19,9 @@ npm install @grannyshot/ui
 
 ```tsx
 import '@grannyshot/ui/styles.css'
-import { Button, ThemeProvider } from '@grannyshot/ui'
+import { Button } from '@grannyshot/ui'
 
 export default function App() {
-  return (
-    <ThemeProvider>
-      <Button variant="primary">Click me</Button>
-    </ThemeProvider>
-  )
+  return <Button variant="primary">Click me</Button>
 }
 ```

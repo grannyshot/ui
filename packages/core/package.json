@@ -33,11 +33,6 @@
       "types": "./dist/utils/index.d.ts",
       "import": "./dist/utils/index.js",
       "require": "./dist/utils/index.cjs"
-    },
-    "./context": {
-      "types": "./dist/context/index.d.ts",
-      "import": "./dist/context/index.js",
-      "require": "./dist/context/index.cjs"
     }
   },
   "sideEffects": [
