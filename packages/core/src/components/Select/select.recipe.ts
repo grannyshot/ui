@@ -16,7 +16,7 @@ export const selectTrigger = tv({
   },
 })
 
-export const selectContent = 'bg-gs-bg border border-gs-border rounded-md shadow-lg overflow-hidden py-1 z-[1000] min-w-[var(--reference-width)] data-[state=open]:animate-fade-in data-[state=closed]:animate-fade-out'
+export const selectContent = 'bg-gs-bg text-gs-fg border border-gs-border rounded-md shadow-lg overflow-hidden py-1 z-[1000] min-w-[var(--reference-width)] data-[state=open]:animate-fade-in data-[state=closed]:animate-fade-out'
 
 export const selectItem = 'flex items-center justify-between pl-3 pr-3 py-2 text-sm cursor-pointer transition-[background] duration-100 ease-in-out outline-none data-[highlighted]:bg-gs-bg-muted data-[state=checked]:text-gs-accent data-[state=checked]:font-medium data-[disabled]:opacity-50 data-[disabled]:cursor-not-allowed'
 

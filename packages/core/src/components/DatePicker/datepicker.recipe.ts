@@ -4,7 +4,7 @@ export const datePickerInput = 'w-full border border-gs-border rounded-md pl-3 p
 
 export const datePickerTrigger = 'inline-flex items-center justify-center shrink-0 w-9 h-9 rounded-md border border-gs-border bg-gs-bg text-gs-fg-muted cursor-pointer transition-[border-color,color] duration-150 ease-in-out hover:border-gs-border-focus hover:text-gs-fg data-[disabled]:opacity-50 data-[disabled]:cursor-not-allowed'
 
-export const datePickerContent = 'bg-gs-bg border border-gs-border rounded-md shadow-lg p-4 z-[1000] data-[state=open]:animate-fade-in data-[state=closed]:animate-fade-out'
+export const datePickerContent = 'bg-gs-bg text-gs-fg border border-gs-border rounded-md shadow-lg p-4 z-[1000] data-[state=open]:animate-fade-in data-[state=closed]:animate-fade-out'
 
 export const datePickerViewControl = 'flex justify-between items-center mb-2'
 

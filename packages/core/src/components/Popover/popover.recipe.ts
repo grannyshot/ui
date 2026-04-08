@@ -1,5 +1,5 @@
 export const popoverContent =
-  'relative bg-gs-bg border border-gs-border rounded-md shadow-lg p-4 z-[1500] min-w-[200px] data-[state=open]:animate-fade-in data-[state=closed]:animate-fade-out'
+  'relative bg-gs-bg text-gs-fg border border-gs-border rounded-md shadow-lg p-4 z-[1500] min-w-[200px] data-[state=open]:animate-fade-in data-[state=closed]:animate-fade-out'
 
 export const popoverArrow =
   '[--arrow-size:8px] [--arrow-background:var(--gs-bg)]'

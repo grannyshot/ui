@@ -7,7 +7,7 @@ export const drawerPositioner =
   'fixed inset-0 z-[1400] flex'
 
 export const drawerContent = tv({
-  base: 'bg-gs-bg-subtle shadow-xl h-full overflow-auto relative flex flex-col transition-transform duration-300 ease-in-out',
+  base: 'bg-gs-bg-subtle text-gs-fg shadow-xl h-full overflow-auto relative flex flex-col transition-transform duration-300 ease-in-out',
 
   variants: {
     placement: {

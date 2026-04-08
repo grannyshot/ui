@@ -1,7 +1,7 @@
 import { tv } from 'tailwind-variants'
 
 export const toastRoot = tv({
-  base: 'flex gap-3 items-start bg-gs-bg border border-gs-border rounded-md shadow-lg p-4 border-l-[3px] min-w-[280px] max-w-[420px] opacity-[var(--opacity)] translate-x-[var(--x)] translate-y-[var(--y)] scale-[var(--scale,1)] h-[var(--height,auto)] z-[var(--z-index)] transition-[transform,opacity,height] duration-350 ease-[cubic-bezier(0.21,1.02,0.73,1)] will-change-[transform,opacity,height]',
+  base: 'flex gap-3 items-start bg-gs-bg text-gs-fg border border-gs-border rounded-md shadow-lg p-4 border-l-[3px] min-w-[280px] max-w-[420px] opacity-[var(--opacity)] translate-x-[var(--x)] translate-y-[var(--y)] scale-[var(--scale,1)] h-[var(--height,auto)] z-[var(--z-index)] transition-[transform,opacity,height] duration-350 ease-[cubic-bezier(0.21,1.02,0.73,1)] will-change-[transform,opacity,height]',
 
   variants: {
     variant: {

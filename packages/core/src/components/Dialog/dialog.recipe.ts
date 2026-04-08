@@ -4,7 +4,7 @@ export const dialogOverlay =
   'fixed inset-0 bg-gs-overlay z-[1300] data-[state=open]:animate-fade-in data-[state=closed]:animate-fade-out'
 
 export const dialogContent = tv({
-  base: 'relative bg-gs-bg border border-gs-border rounded-lg shadow-xl z-[1400] w-full p-6 data-[state=open]:animate-fade-in data-[state=closed]:animate-fade-out',
+  base: 'relative bg-gs-bg text-gs-fg border border-gs-border rounded-lg shadow-xl z-[1400] w-full p-6 data-[state=open]:animate-fade-in data-[state=closed]:animate-fade-out',
 
   variants: {
     size: {
