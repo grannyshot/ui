@@ -59,7 +59,7 @@ import { Button, Input, Dialog } from '@grannyshot/ui'
 - `Dialog` — compound: Root, Trigger, Content, Title, Description, CloseTrigger / size: sm, md, lg
 - `Drawer` — compound: Root, Trigger, Content, Header, Body, Footer / placement: left, right
 - `Popover` — compound: Root, Trigger, Content, Arrow, Title, Description
-- `Tooltip` — content prop, openDelay, closeDelay
+- `Tooltip` — content, openDelay, closeDelay, positioning({ placement: top|bottom|left|right })
 - `Menu` — compound: Root, Trigger, Content, Item, Separator, ItemGroup
 
 ### 피드백

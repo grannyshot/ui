@@ -60,7 +60,7 @@ import { Button } from '@grannyshot/ui'
 - Dialog: compound, size(sm|md|lg)
 - Drawer: compound, placement(left|right)
 - Popover: compound with Arrow
-- Tooltip: content, openDelay, closeDelay
+- Tooltip: content, openDelay, closeDelay, positioning({ placement: top|bottom|left|right|*-start|*-end })
 - Menu: compound with ItemGroup, Separator
 
 ### Feedback
