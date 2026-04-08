@@ -11,9 +11,9 @@ export const numberInputInput = tv({
 
   variants: {
     size: {
-      sm: 'h-8 text-sm px-3',
-      md: 'h-9 text-sm px-3',
-      lg: 'h-11 text-base px-4',
+      sm: 'h-8 text-sm pl-3 pr-3',
+      md: 'h-9 text-sm pl-3 pr-3',
+      lg: 'h-11 text-base pl-4 pr-4',
     },
   },
 

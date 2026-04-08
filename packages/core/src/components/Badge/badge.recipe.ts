@@ -11,8 +11,8 @@ export const badge = tv({
       neutral: 'bg-gs-bg-muted text-gs-fg-muted',
     },
     size: {
-      sm: 'px-2 py-0 text-xs h-5',
-      md: 'px-2 py-1 text-xs h-6',
+      sm: 'pl-2 pr-2 py-0 text-xs h-5',
+      md: 'pl-2 pr-2 py-1 text-xs h-6',
     },
   },
   defaultVariants: {

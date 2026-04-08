@@ -11,9 +11,9 @@ export const button = tv({
       outline: 'bg-transparent text-gs-accent border border-gs-accent hover:bg-gs-accent-subtle',
     },
     size: {
-      sm: 'px-3 py-1 text-xs h-8',
-      md: 'px-4 py-2 text-sm h-9',
-      lg: 'px-6 py-3 text-base h-11',
+      sm: 'pl-3 pr-3 py-1 text-xs h-8',
+      md: 'pl-4 pr-4 py-2 text-sm h-9',
+      lg: 'pl-6 pr-6 py-3 text-base h-11',
     },
     fullWidth: {
       true: 'w-full',

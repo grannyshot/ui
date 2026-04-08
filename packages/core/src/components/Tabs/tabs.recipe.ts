@@ -23,8 +23,8 @@ export const tabsTrigger = tv({
 
   variants: {
     variant: {
-      line: 'px-4 py-2 border-b-2 border-transparent data-[selected]:text-gs-accent data-[selected]:border-b-gs-accent',
-      pill: 'px-4 py-1 rounded-md data-[selected]:text-gs-fg data-[selected]:bg-gs-bg data-[selected]:shadow-xs',
+      line: 'pl-4 pr-4 py-2 border-b-2 border-transparent data-[selected]:text-gs-accent data-[selected]:border-b-gs-accent',
+      pill: 'pl-4 pr-4 py-1 rounded-md data-[selected]:text-gs-fg data-[selected]:bg-gs-bg data-[selected]:shadow-xs',
     },
   },
 

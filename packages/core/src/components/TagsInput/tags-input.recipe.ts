@@ -8,15 +8,15 @@ export const tagsInputControl = tv({
   base: 'flex flex-wrap items-center gap-1 rounded-md border border-gs-border bg-gs-bg transition-[border-color,box-shadow] duration-150 ease-in-out focus-within:border-gs-accent focus-within:shadow-[0_0_0_2px_var(--gs-bg),0_0_0_4px_var(--gs-ring)]',
   variants: {
     size: {
-      sm: 'min-h-8 px-2 py-1',
-      md: 'min-h-9 px-2 py-1',
-      lg: 'min-h-11 px-3 py-1.5',
+      sm: 'min-h-8 pl-2 pr-2 py-1',
+      md: 'min-h-9 pl-2 pr-2 py-1',
+      lg: 'min-h-11 pl-3 pr-3 py-1.5',
     },
   },
   defaultVariants: { size: 'md' },
 })
 
-export const tagsInputItem = 'inline-flex items-center gap-1 rounded-sm bg-gs-bg-muted text-gs-fg text-sm px-2 py-0.5'
+export const tagsInputItem = 'inline-flex items-center gap-1 rounded-sm bg-gs-bg-muted text-gs-fg text-sm pl-2 pr-2 py-0.5'
 
 export const tagsInputItemText = 'text-sm'
 
