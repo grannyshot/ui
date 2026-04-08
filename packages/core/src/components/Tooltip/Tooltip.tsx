@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react'
 import { Tooltip as ArkTooltip } from '@ark-ui/react/tooltip'
 import { Portal } from '@ark-ui/react/portal'
-import { tooltipTrigger, tooltipContent, tooltipArrow } from './tooltip.recipe'
+import { tooltipContent, tooltipArrow } from './tooltip.recipe'
 import { cn } from '@/lib/cn'
 
 type TooltipProps = Omit<ArkTooltip.RootProps, 'className'> & {
@@ -16,7 +16,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
   ({ content, children, openDelay = 300, closeDelay = 0, className, ...rootProps }, ref) => {
     return (
       <ArkTooltip.Root openDelay={openDelay} closeDelay={closeDelay} lazyMount unmountOnExit {...rootProps}>
-        <ArkTooltip.Trigger asChild className={tooltipTrigger}>
+        <ArkTooltip.Trigger asChild>
           {children}
         </ArkTooltip.Trigger>
         <Portal>

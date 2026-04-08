@@ -1,6 +1,3 @@
-export const tooltipTrigger =
-  'inline-flex'
-
 export const tooltipContent =
   'bg-gs-bg-inverse text-gs-fg-inverse text-xs font-medium px-3 py-1 rounded-sm shadow-md z-[1500] max-w-[200px] data-[state=open]:animate-fade-in data-[state=closed]:animate-fade-out'
 

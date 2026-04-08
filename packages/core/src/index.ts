@@ -16,7 +16,7 @@ export { selectTrigger, selectContent, selectItem, selectIndicator, selectItemIn
 export { fieldRoot, fieldHint, fieldError } from '@/components/Field/field.recipe'
 export { dialogOverlay, dialogContent, dialogPositioner, dialogTitle, dialogDescription, dialogCloseTrigger, type DialogContentVariants } from '@/components/Dialog/dialog.recipe'
 export { toastRoot, toastTitle, toastDescription, toastCloseTrigger, toastGroup, type ToastRootVariants } from '@/components/Toast/toast.recipe'
-export { tooltipContent, tooltipArrow, tooltipTrigger } from '@/components/Tooltip/tooltip.recipe'
+export { tooltipContent, tooltipArrow } from '@/components/Tooltip/tooltip.recipe'
 export { popoverContent, popoverArrow, popoverArrowTip, popoverTitle, popoverDescription, popoverCloseTrigger } from '@/components/Popover/popover.recipe'
 export { tabsRoot, tabsList, tabsTrigger, tabsContent, tabsIndicator, type TabsListVariants } from '@/components/Tabs/tabs.recipe'
 export { accordionRoot, accordionItem, accordionItemTrigger, accordionItemContent, accordionItemIndicator } from '@/components/Accordion/accordion.recipe'
